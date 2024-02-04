@@ -1,0 +1,552 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+
+\section*{481 Lecture 1/16/24}
+\barh \vspace{10px}
+\section{Chapter 1: Probablities and Interference (Mackay Ch 2-3)}
+\barh
+
+\paragraph{An ensemble: $x$ random variable}
+
+\begin{align*}
+    A_x &= (a_1, a_2, \dots, a_n) \\
+    P_x &= (p_1, p_2, \dots, p_n) \\
+    &p(x = a_i) = p_i 
+\end{align*}
+$x$ takes value $a_i$ with probability $p_i$
+\begin{align*}
+    p \geq 0, \quad \sum_{a_i \in A_x} p(x = a_i) = 1
+\end{align*}
+
+Short hand for $p(x = a_i)$ is $p(a_i), \quad p(x)$
+
+Joint ensemble: $X, Y$ ensembles
+\begin{align*}
+    XY &= \text{ordered pairs} (x, y) \quad x \in A_X, y \in A_Y \\
+    P(x,y) &= \text{joint probability of x and y} 
+\end{align*}
+
+Marginal probability: $P(x,y) \rightarrow P(x), P(y)$
+\begin{align*}
+    P(x) &= \sum_{y \in A_y} P(x,y) \\
+    P_x(x = a_i) &= \sum_{b \epsilon A_y} P_{XY}(x = a_i, y = b)
+\end{align*}
+
+Conditional probability: 
+\begin{align*}
+    P(x = a_i | y = b_j) = \frac{P(x = a_i, y = b_j)}{P(y = b_j)} 
+\end{align*}
+``Probability of $x = a_i$ given that $y = b_j$ (is true)''
+
+\paragraph{Example 1}
+$XY = 2$ successive letters in english alphabet.
+$P_x$ and $P_y$ are identical `frequency of a letter in english'
+\begin{align*}
+    A_{xy} &= \{aa, ab, ac, \dots, zz\}
+\end{align*} 
+
+\begin{align*}
+    P(y | x = `q') 
+\end{align*}
+Peak at $y = `u'$
+\begin{align*}
+    \neq P_Y(y)
+\end{align*}
+because $x$ and $y$ are not independent
+
+$X,Y$ ``independent'' if (and only if) $P(x,y) = P(x)P(y)$
+
+Userful relations: $P(x, y) = P(x | y) P(y) = P(y | x) P(x)$
+
+For any assumption H
+\begin{align*}
+    \forall H : \qquad P(x,y | H) = p(x, y | H) p(y | H)
+\end{align*}
+
+`Sum rule':
+\begin{align*}
+    P(x | H) = \sum_{y \in A_y} P(x,y | H) = \sum_{y \in A_y} P(x | y, H) P(y | H)
+\end{align*}
+
+\newpage
+\section{Lecture 1/18}
+\hrule \vspace{10px}
+
+\paragraph{Last time:} Main point $P(y|x) \neq P(y)$
+
+Useful relations: Conditional probability
+\begin{align*}
+    P(x|y) = \frac{P(x,y)}{P(y)}
+\end{align*}
+where the joint relation is 
+\begin{align*}
+    P(x,y) = P(x|y) P(y) = P(y|x) P(x)
+\end{align*}
+this can be rewritten into \emph{Baye's theorem}
+\begin{align*}
+    P(y|x) = \frac{P(x|y) P(y)}{P(x)}
+\end{align*}
+
+\paragraph{Example 2:} Apply Baye's theorem
+Alex is test for a nast disease.
+\begin{itemize}
+    \item Disease status: $a$ (sick or healthy)
+    \item Test outcome: $b$ (positive or negative)
+\end{itemize}
+``Test is 95\% reliable'' or
+\begin{align*}
+    P(+|\textrm{sick}) = 0.95, \quad P(-|\textrm{healthy}) = 0.95
+\end{align*}
+Disease is nasty but rare $P(\textrm{sick}) = 0.01$; $P(\textrm{Healthy}) = 0.99$\\
+Test is positive, what is the probability that Alex is sick? $P(\textrm{sick}|+)=?$
+\subparagraph*{Solution} Use Baye's theorem:
+\begin{align*}
+    P(\textrm{sick}|+) = \frac{P(+|\textrm{sick}) P(\textrm{sick})}{P(+)}  
+\end{align*}
+where $P(+)$ is the probability of a positive test result. This can be found using the sum rule
+\begin{align*}
+    P(+) = P(+|\textrm{sick}) P(\textrm{sick}) + P(+|\textrm{healthy}) P(\textrm{healthy})
+\end{align*}
+Thus
+\begin{align*}
+    P(\textrm{sick}|+) = \frac{0.95*0.01}{0.95*0.01 + 0.05*0.99} = 0.161
+\end{align*}
+% 3x3 table
+It is useful to write the probabilities in a table
+\begin{center}
+    \begin{tabular}{c|c|c|c}
+        & $b = +$ & $b = -$ & $P(b)$ \\
+        \hline
+        $a = \textrm{sick}$ & $0.95*0.01$ & $0.05*0.01$ & $0.01$ \\
+        $a = \textrm{healthy}$ & $0.05*0.99$ & $0.95*0.99$ & $0.99$ \\
+        \hline
+        $P(a)$ & $0.161$ & $0.839$ & $1$
+    \end{tabular}
+\end{center}
+where columns represent the 95:5 reliable test.
+\paragraph{Exclam!}
+\begin{align*}
+    P(S|+) \neq P(+|S)
+\end{align*}
+
+\paragraph{A brief philosphical interlude\dots}
+The `Bayesian viewpoint':
+
+Probability as degree of beliefs in propositions given assumptions \& evidence, or 
+Probability as `freq of outcomes in repeat random experiments'
+
+\subsection*{Forward and inverse problems}
+
+So far we have talked about Cond Prob, Baye's thrm, and and example.
+
+\paragraph{Generative Model:} Parameters $\Theta \rightarrow P(D|\Theta) \rightarrow (P)$ outcomes
+(data) AKA `forward problem'
+
+`a model' predicts an outcome given parameters. The model is a probablity distribution due to all 
+the uncertainties and errors we have in the real world. 
+
+\paragraph{The Inverse Problem} $P(\Theta|D)$
+
+The inverse problem is the opposite of the forward problem (obviously). Also related to the issues
+regarding `inference' and using Baye's theorem.
+
+\paragraph{Example 3:} A forward problem
+
+An urn contains $K$ balls, $B$ balls are black, and $K-B$ balls are white. A ball is drawn at $N$
+times with replacement.
+
+\begin{itemize}
+    \item $n_B = $ \# of times a black ball is drawn 
+    \item $P(n_B)$, average $n_B$?, STD?
+\end{itemize}
+With
+\begin{align*}
+    f_B = \frac{B}{K}
+\end{align*}
+The probability is given by the binomial distribution
+\begin{align*}
+    P(n_B|N,f_B) = \binom{N}{n_B} f_B^{n_B} (1-f_B)^{N-n_B}
+\end{align*}
+The mean is $N*f_B$ and the STD is $\sqrt{N*f_B*(1-f_B)}$
+
+\paragraph{Example 4:} An inverse problem
+
+We have 11 urns, each with 10 balls. $u$ is the number of black balls in each urn and the
+urns have $u = 0, 1, \dots, 10$ black balls. Alex selects an urn at random and draws $N$ balls 
+at random with replacement.
+Bob wates Alex, but does not know which urn $u$ was selected. For Bob, what is 
+$P(u|N,n_B)$?
+
+\emph{We have the data, but we are trying to infer the parameter $u$}
+
+\subparagraph*{Solution} Use Baye's theorem
+
+\begin{align*}
+    P(u|N,n_B) = \frac{P(n_B|u) P(u)}{P(n_B)}
+\end{align*}
+where $P(n_B|u)$ is the `forward' part from Ex 2, $P(u) = 1/11$, and $P(n_B)$ is the `normalization'
+that makes it a valid prob. distribution:
+\begin{align*}
+    P(n_B) = \sum_{u'} P(n_B|u') P(u')
+\end{align*}
+Therefore
+\begin{align*}
+    P(u|N,n_B) \propto \binom{N}{n_B} \qt(\frac{u}{10})^{n_B} \qt(1-\frac{u}{10})^{N-n_B}
+\end{align*}
+e.g. $n_B = 3, N = 10$
+
+\emph{insert figure 1.2}
+
+The (0,0) point is impossible because we picked 3 black balls, and the urn $u=0$ has no black balls.
+The same is true for the (10,10) point. The most likely point is $u=3$\dots
+
+\subparagraph*{Exclam!}
+
+This is known as `Posterior Probabilty'
+\begin{itemize}
+    \item $\Theta$ is the parameter
+    \item $D$ is the data
+    \item $P(\Theta)$ is the prior
+    \item $P(D|\Theta)$ is the likelihood: a function of $D$ prob of data given param \\
+        (sums to 1 over all options for $D$). As a function of $\Theta \rightarrow$
+        likelihood of $\Theta$ 
+    \item $P(\Theta|D)$ is the posterior
+    \item $P(D)$ is the normalization
+    \item [!] \textbf{Probability of \emph{data}}
+    \item [!] \textbf{Likelihood of \emph{parameters}}
+\end{itemize}
+
+
+\paragraph{Role of Prior:}
+\begin{itemize}
+    \item[!] You can't do inference without making assumptions
+\end{itemize}
+
+\newpage
+\section*{Lecture 1/23/24}
+\barh \vspace{10px}
+
+\paragraph{Last time: }
+\begin{itemize}
+    \item Forward $p(data | param)$
+    \item Inverse $p(param | data)$
+\end{itemize}
+Using Baye's theorem
+\begin{align*}
+    p(\theta|D) = \frac{p(D|\theta) p(\theta)}{p(D)}
+    = \frac{\textrm{likelihood} \cdot \textrm{prior}}{\textrm{norm}}
+\end{align*}
+\paragraph{Note:} You can't do inference w/o working assumptions (prior) priors are subjective. From
+the inverse problem ex from last week: what is the probability that next ball Alex draws is black?
+\begin{align*}
+    P(B) = \sum P(u) P(B|u)
+\end{align*}
+
+\paragraph{Note:} Infereince $\neq$ decision/choice of model. Inference is assigning probabilties to
+hypothesese. 
+
+\paragraph{Problem } USB Cable frustrations ``It takes 3 tries to plug in a USB cable''
+
+During our first try to plug in the cable, we are collecting data. And if its wrong, we `believe'
+that the orientation is wrong, thus we flip it believing that the 2nd try is the correct one. But in
+fact, this is wrong and the 3rd try is the correct one. 
+
+\paragraph{How to collect data?}
+
+% chapter 2
+\section*{Lecture 1/25/24}
+\barh \vspace{10px}
+\section{Chapter 2: Probabilities and Interference (Mackay Ch 2-3)}
+\barh
+
+\paragraph{Example 5:} Tossing a coin
+
+\begin{itemize}
+    \item 3 times: H, H, H
+    \item 10 times: H, H, ... H
+\end{itemize}
+what is the probability of the next toss being H?
+
+\paragraph{Ex 5.1} Coin with freq of heads $f_H$ is tossed $N$ times and $n_H$ heads. What is the 
+probability of the next toss being H? (Ex 4 but with fixed unknown parameter)
+
+Prior: subjective assumption (e.g. could be uniform) then do inference.
+
+\paragraph{Ex 5.2} $N$ tosses, $n_H$ heads. What is the probability that the coin is biased?
+(Model Comparison)
+
+\pagebreak
+\section*{Lecture 1/30/24}
+\barh \vspace{10px}
+
+\paragraph{Last time:} Simple inference (within a model) where we solve for $p(data | param)$ and
+now we move on to model comparison!
+
+\section*{Ch 2: Model Comparaison Mackay Ch 3 \& 28}
+
+A coint that is possibly bent has a frequency of heads $f_H$. For $N = 100$ tosses, $n_H = 90$ heads
+which is definitely a bent coin (biased). 
+
+For the case $N= 100$, $n_H = 55$, we are not sure if the coin is biased or not. The best fit to
+data is $f_H = 0.55$ we say that it is probably not bent from our intuition.
+
+For the case $N = 10000$, $n_H = 5500$ we believe that the coin is more likely to be `bent'
+
+\paragraph{Which model?}
+We know that the fair coin model fits the model less than the bent coin model, but we believe that
+the fair coin model fits the data better than the bent coin model. From ``Occam's Razor'' 
+(simplicity): Accept the simplest explanation that fits the data. We would prefer the simpler fair
+coin model since it is simpler. This is mereley a ad hoc rule of thumb. But Bayesian Calculus
+naturally implements Occam's Razor.
+
+\paragraph{Comparing hypthesis $H_o$ (fair coin) and $H_1$ (bent coin)}
+
+Warning! We should choose the hypothesis set before we see the data, otherwise it is cheating!
+
+\paragraph{Big Picture} Two levels of inference
+\begin{itemize}
+    \item Level 1: Hypothesis set ${H_o}$ with parameter $f_H$: Inferring $P(p_a)=?$
+    \item Level 1: Hypothesis set ${H_o}$ no params: no inference
+    \item Level 2: Hypothesis set ${H_o, H_1}$: Inferring both $P(H_o)$ and $P(H_1)$
+\end{itemize}
+
+\paragraph*{2.1} Coin tosses: 1-param model $H_1$ (L1 inference)
+
+Outcomes: $X = \qt{a, b}$ for heads and tails with probabilities $p_a$ and $p_b = 1 - p_a$
+
+Assumption: The prior on $p_a$ is uniform
+
+$F$ Tosses: data $=$ sequence, s = aaba\dots with $F_a = \#$ of a's and $F_b = \#$ of b's; 
+$F_a + F_b = F$
+
+The model:
+\begin{align*}
+    P(s| p_a, F, H_1) = p_a^{F_a} (1-p_a)^{F_b}
+\end{align*}
+since the tosses are are specific sequence e.g. {aaba\dots} From the definition of $H_1$
+\begin{align*}
+    p_a \in [0\dots 1]
+\end{align*}
+is equiprobable and the prior tells use that $p(p_a) = 1$
+
+\paragraph{Questions} Given a sequence $s$ of $F$ observations, with \# $a= F_a$ and \# $b = F_b$,
+\begin{enumerate}
+    \item What is my posterior belief about $p_a$? or $P(p_a)= ?$
+    \item What is the probability that next draw is $a$?
+\end{enumerate}
+As this is a inverse problem, we use Baye's theorem
+\begin{align*}
+    P(p_a|s, F, H_1) = \frac{P(s|p_a, F, H_1) P(p_a)| H_1}{P(s | F, H_1)}
+\end{align*}
+the bottom takes the full probabilty of the data no matter the value of $p_a$ and is the normalization
+\begin{align*}
+    = \frac{p_a^{F_a} (1-p_a)^{F_b}(1)}{\int_0^1 p_a^{F_a} (1-p_a)^{F_b} dp_a}
+\end{align*}
+where we use the sum rule for the denominator
+\begin{align*}
+    \sum_{p_a} P(s|p_a, F, H_1) P(p_a|H_1)
+\end{align*}
+but since it is a continuous variable, we use the integral instead of the sum. The math gives us the
+gamma function
+\begin{align*}
+    \textrm{normalization factor} = \frac{F_a! F_b!}{(F_a + F_b)!}
+\end{align*}
+
+\paragraph{Examples} $s = aba$ vs $s = bbb$
+\begin{align*}
+    P(p_a| s = aba) \propto p_a^2 (1-p_a) \quad \textrm{vs} \quad P(p_a| s = bbb) \propto (1-p_a)^3
+\end{align*}
+The first looks like a parabola and the second looks like a decaying cubic function. In each case,
+the most probable $p_a$ is 2/3 and 0 respectively which is shown by the data.
+
+\paragraph{Probability of next toss is $a$} We need to integrate over the prior to get the
+probability of the next toss being $a$.
+\begin{align*}
+    P(\textrm{next} = a) = \int \dd{p_a} P(\textrm{next} = a | p_a) P(p_a|s, F, H_1)
+    = \int \dd{p_a} P(p_a|s, F, H_1) p_a = \textrm{average of } p_a
+\end{align*}
+the average of $p_a$ for the first example is $3/5 = 0.6$ and for the second example is $1/5 = 0.2$
+
+\paragraph{Conclusion:} We found Probability of $s$ given $p_a$ and $H_1$ (Data given biased coin
+model) and the probability of $p_a$ given $s, F, H_1$ (inference), or forward and inverse
+probabilities for the biased coind model $H_1$. 
+
+\paragraph{2.2} Zero-parameter model $H_o$ (Fair coin) \& model comparison where $p_a = 1/2$. The
+forward probability is
+\begin{align*}
+    P(s|H_o) = \frac{1}{2^F}
+\end{align*}
+
+\paragraph{Question:} Given a string of $F$ observations, what comparison can we make between the
+biased coin model and the fair coin model, $H_o$ vs $H_1$?
+
+The Hypothesis space is now $\qt{H_o, H_1}$ where only models are under consideration. Using Baye's
+theorem again
+\begin{align*}
+    P(H_o|s, F) = \frac{P(s|F, H_o) P(H_o)}{P(s | F)}
+\end{align*}
+and 
+\begin{align*}
+    P(H_1|s, F) = \frac{P(s|F, H_1) P(H_1)}{P(s | F)}
+\end{align*}
+where $P(s|F) = \sum_{H \in \qt{H_o, H_1}} P(s|F, H) P(H)$. looking at the ratio of the two
+probabilities
+\begin{align*}
+    \frac{P(H_1|s, F)}{P(H_0|s, F)} = \frac{P(s|F, H_o)}{P(s|F, H_1)} \frac{P(H_1)}{P(H_0)}
+\end{align*}
+where the first fraction is what the data told us, and the second fraction is what we know before
+(prior).
+
+\pagebreak 
+\section*{Lecture 2/1/24}
+\barh \vspace{10px}
+
+\paragraph{Last time:} We discussed the zero-parameter model $H_o$ (fair coin) and the one-parameter
+model $H_1$ (biased coin). We used Baye's theorem to compare the two models to find the ratio
+of the two probabilities
+\begin{align*}
+    \mathcal{R} &= \frac{P(H_1 | s,F)}{P(H_o | s,F)} 
+        = \frac{P(H_1)}{P(H_o)} \frac{P(s|F,H_o)}{P(s|F,H_1)}
+\end{align*}
+where we set no a priori model (prior) preference, so $P(H_1) = P(H_o) = 1/2$. So the ratio is
+\begin{align*}
+    \mathcal{R} &= \frac{P(s|F,H_o)}{P(s|F,H_1)}
+        = \frac{\frac{F_a! F_b!}{(F_a + F_b + 1)!}}{\frac{1}{2^F}}
+        = \frac{2^F F_a! F_b!}{(F + 1)!}
+\end{align*}
+what does this plot look like? As the number of tosses goes to infinity, this ratio will go to the
+truth! Simulation is shown by Figure \ref{fig:bentcoin}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/bentcoin.png}
+    \caption{Ratio of the two probabilities as a function of the number of tosses}
+    \label{fig:bentcoin}
+\end{figure}
+where the the bent coin $p_a = 0.9$ probability goes to infinity as well as the slightly biased coin
+(but at a slower pace) and the fair coin goes to zero. We know this from the probability
+\begin{align*}
+    P(s|F,H_o) = \int_0^1 P(s|p_a, F, H_1) P(p_a|F, H_1) dp_a
+\end{align*} 
+\emph{NOTE: There exists a $p_a$ that fits data better than $H_o$, but this evidence term includes
+averaging over $p_a$}
+
+Bayes theorem in the context of model comparison
+\begin{align*}
+    \textrm{bayes} = \frac{\textrm{likelihood} \cdot \textrm{prior}}{\textrm{evidence}}
+\end{align*}
+
+\emph{TAKEHOME: Bayesian model comparison naturally includes Occam's Razor!}
+
+\paragraph{2.4} P-values? Why not just use p-values? e.g.
+\begin{align*}
+    F &= 250 \qquad F_a = 141, F_b = 109 \\
+\end{align*}
+Do these data suggest that the coin is biased? 
+
+\paragraph{P-value:} Probability to get data as extreme or move, assuming the null hypothesis is
+true. 
+\begin{itemize}
+    \item Null hypothesis: Coin is fair ($H_o$)
+    \item Our hypothesis: Coin is biased ($H_1$)
+    \item mean $= F/2$
+    \item $\sigma = \sqrt{F}/2$
+    \item Our observation: $\frac{F_a - F/2}{\sqrt{F}/2} = 2.02 \sigma$
+    \item p-value $= 0.0497 < 0.05$!!!!
+\end{itemize}
+Google ``a small p-value ($<0.05$) indicates strong evidence against the null hypothesis so you
+reject it''
+% insert fig
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{pvalue.png}
+    \caption{Finding p-value based on the Gaussian distribution}
+    \label{fig:pvalue}
+\end{figure}
+
+From sterling approximation
+\begin{align*}
+    ln(k!) \approx k ln(k) - k + \dots
+\end{align*}
+With uniform prior on $p_a$
+\begin{align*}
+    \mathcal{R} = \frac{2^250 141! 109!}{251!} = 0.61
+\end{align*}
+if anything, there is weak evidence \emph{against} coin being biased.
+
+\paragraph{Non-uniform priors?} For a reasonable family of priors, across the entire set of priors,
+strongest evidence for bias is $2.5:1$ (From Mackay) This differs from the p-value which is $20:1$.
+
+\section{Chapter 3: Maximum Likelihood \emph{Approximation}} (Ch 22 Mackay)
+
+\paragraph{GOAL:} Connect to the stat you may have seen before. Going back to Example 4 (Urns and
+more urns)
+
+\begin{itemize}
+    \item Unkown $u*$ selected at random
+    \item 10 draws (with replacement): 3 black
+    \item $P$(next draw $=$ black) $= ?$
+    \item Most likeley $u: 3 \to$ predicts 0.3
+    \item Correct answer: predicts 0.33
+\end{itemize}
+but the two numbers are kinda similar\dots 
+
+\emph{NOTE: Bayesian model comparison, not model selection, but complete enumeration of
+hypothesese (integration over hyp space) is computationally expensive (especially in high
+dimensions)}
+
+e.g. Comparing 2 models:
+\begin{itemize}
+    \item 1 Gaussian: 2 parameters $\mu, \sigma$
+    \item 2 Gaussian ($a_1 G_1 + a_2 G_2$): 5 parameters $\mu_1, \sigma_1, \mu_2, \sigma_2, a_1/a_2$
+\end{itemize}
+This problem of an increasing number of parameters motivates \emph{Max likelihood (ML) 
+approximation}: instead of enumeration, focus on \emph{1} hypothesis that maximized the likelihood
+function.
+
+\paragraph{Max Likelihood Estimation (MLE)} 
+\begin{align*}
+    P(\theta | D) = \frac{P(D | \theta) P(\theta)}{P(D)}
+\end{align*}
+instead of [assuming prior $\to$ compute posterior $\to$ integrate over hyp space] we just [compute 
+the likelihoood unction $\to$ maximize it] (MLE).
+
+\paragraph{3.1} A single Gaussian
+\begin{itemize}
+    \item Data: $\qt{x_n} \quad n = 1, \dots, N$
+    \item model: these observations were sampled from a gaussian with probability
+\begin{align*}
+    P(x) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+\end{align*}
+    where we have 2 parameters $\mu, \sigma$ to determine.
+\end{itemize}
+
+\paragraph{Log likelihood} (multiplying likelihoods is hard, adding log likelihoods is easier)
+\begin{align*}
+    \ln P(\{x_n\} | \mu, \sigma) &= 
+        \sum_{n=1}^N \qt(-\ln{\sqrt{2\pi \sigma^2}} - \frac{(x_n - \mu)^2}{2\sigma^2}) \\
+    &= - N \ln{\sqrt{2\pi \sigma^2}} - \frac{N}{2\sigma^2} \sum_{n=1}^N (x_n - \mu)^2
+\end{align*}
+
+\paragraph{Sufficient statistics:} Denote
+\begin{align*}
+    \hat x &\equiv \sum_n \frac{x_n}{N} \qq{empirical mean} \\
+    S &= \sum_n (x_n - \hat x)^2 \qq{sum of square deviations}
+\end{align*}
+These two numbers refer to the sufficient statistics. From these we get the log likelihood
+\begin{align*}
+    \ln P &= -N \ln{\sqrt{2\pi \sigma^2}} - \frac{N(\mu - \hat x)^2 + S}{2\sigma^2}
+\end{align*}
+Thus the max likelihood estimate of $\mu, \sigma$ are
+\begin{align*}
+    \mu_{ML} &= \hat x \\
+    \sigma_{ML} &= \sqrt{\frac{S}{N}} = \sqrt{\frac{\sum_n (x_n - \hat x)^2}{N}} 
+\end{align*}
+If $\sigma$ is known, then $P(\mu)$ is a Gaussian we know that $\sigma/\sqrt{N}$ is the width of the
+likelihood (error bars)
+
+
+
+\end{document}

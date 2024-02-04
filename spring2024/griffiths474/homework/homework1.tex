@@ -1,0 +1,200 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+
+\setcounter{section}{1}
+\begin{center}
+    \addcontentsline{toc}{section}{Homework 1}
+    \section*{Homework 1}
+    \subsection*{Due 1/24}
+\end{center}
+\hrule \vspace{10px}
+
+\paragraph{1.} Gravity vs. E\&M
+
+Given the force of gravitational attraction
+\begin{align*}
+    \vb{F}_g = -\frac{G m_1 m_2}{r^2} \vu{r}
+\end{align*}
+and the force of electrostatic repulsion
+\begin{align*}
+    \vb{F}_e = \frac{1}{4 \pi \epsilon_0} \frac{q_1 q_2}{r^2} \vu{r}
+\end{align*}
+The ratio of the two forces between two electrons is
+\begin{align*}
+    \frac{F_g}{F_e} = \frac{4 \pi \epsilon_0 G m_e^2}{q_e^2}
+\end{align*}
+Using the values for the constants
+\begin{align*}
+    G &= \qty{6.67e-11}{\N.\m^2/\kg^2}, \quad \epsilon_0 = \qty{8.85e-12}{\C^2/\N.\m^2} \\
+    m_e &= \qty{9.11e-31}{\kg}, \quad q_e = \qty{1.60e-19}{\C}
+\end{align*}
+we find
+\begin{align*}
+    \boxed{\frac{F_g}{F_e} = \num{2.40e-43}}
+\end{align*}
+this tells us that the denominator (the electrostatic force) is \emph{much} larger than the
+numerator (the gravitational force), which convinces us that gravitaional forces are negligible
+for elementary particles.
+
+
+\paragraph{2.} Mesons and Baryons
+\begin{itemize}
+\item [(a)] For mesons, you can have $n$ possible quarks and $n$ possible antiquarks, thus there are
+$\boxed{n^2}$ combinations.
+
+For baryons order does not matter we have to make sure not to double count instances such as $(uud)$
+and $(udu)$: This is essentially a combination problem with the solution
+\begin{align*}
+    \binom{n}{3} = \frac{n!}{3!(n-3)!} = \boxed{\frac{n(n-1)(n-2)}{6}}
+\end{align*}
+
+\item[(b)] Given the 6 flavors of quarks, we would expect $6^2 = 36$ mesons and $\binom{6}{3} = 20$ baryons.
+
+\item[(c)] We haven't found all of them because of energy required to observe the heavier particles. In
+the Particle Data Group website, the heaviest baryon is in the order of $\qty{6000}{\MeV}$ and the 
+LHC has a beam energy of $\qty{6.5}{\TeV}$ and the energy consumption is about $\qty{1.3}{TWh}$ per
+year compared to the global energy consumption of $\qty{20000}{TWh}$ per year 
+\href{https://home.cern/resources/faqs/facts-and-figures-about-lhc}{(source)}. In addition to the
+enourmous energy required to produce these particles, they are also very unstable and decay very
+quickly thus detecting them require us to measure at very small time scales.
+
+\end{itemize}
+
+\paragraph{3.} Global Conservation Laws
+
+\begin{itemize}
+    \item [(a)] $n \rightarrow \bar p + e^+ + \nu_e$ 
+    
+    not valid: violates Baryon number conservation
+    \item [(b)] $\nu_e + n \rightarrow p + e^-$
+    
+    valid
+    \item [(c)] $\mu^- \rightarrow e^- + \bar{\nu}_e + \nu_\mu$
+    
+    valid
+    \item [(d)] $\mu^- \rightarrow e^- + \gamma$
+    
+    not valid because it violates electron and muon lepton number conservation
+    \item [(e)] $e^+ + e^- \rightarrow \gamma$
+    
+    valid
+\end{itemize}
+
+\paragraph{4.} Nuclear $\beta$-decay
+\begin{itemize}
+    \item [(a)]
+\begin{align*}
+    _Z^A X \rightarrow _{Z+1}^A Y + e^-
+\end{align*}
+From the conservation of momentum
+\begin{align*}
+    p^\mu_X &= p^\mu_Y + p^\mu_e \qor p^\mu_Y = p^\mu_X - p^\mu_e
+\end{align*}
+squaring both sides
+\begin{align*}
+    p^2_Y &= p^2_X + p^2_e - 2p_X \cdot p_e
+\end{align*}
+and since
+\begin{align*}
+    p^2_X = m_X^2 c^2, \quad
+    p^2_Y = m_Y^2 c^2, \quad p^2_e = m_e^2 c^2
+\end{align*}
+and
+\begin{align*}
+    p_X p_e = \frac{E_X}{c} \frac{E_e}{c} - \vb{p}_X \cdot \vb{p}_e
+\end{align*}
+but we know that particle $X$ has momentum $\vb{p}_X = 0$ and rest mass $E_X = m_X c^2$ so
+\begin{align*}
+    m_Y^2 c^2 = m_X^2 c^2 + m_e^2 c^2 - 2 m_X E_e
+\end{align*}
+solving for the Energy of the outgoing particle is
+\begin{align*}
+    \boxed{E_e = \frac{m_X^2 + m_e^2 - m_Y^2}{2 m_X} c^2}
+\end{align*}
+to find the momentum of the outgoing electron we use energy-momentum relation
+\begin{align*}
+    E_e^2 = \abs{\vb{p}_e}^2 c^2 + m_e^2 c^4
+\end{align*}
+or
+\begin{align*}
+    \abs{\vb{p}_e}^2 = \frac{E_e^2}{c^2} - m_e^2 c^2
+\end{align*}
+using the energy of the outgoing electron we found earlier:
+\begin{align*}
+    \abs{\vb{p}_e}^2 &= c^2 \qt(\frac{m_X^2 + m_e^2 - m_Y^2}{2 m_X})^2 - m_e^2 c^2 \\
+    &= \frac{c^2}{4 m_X^2} (m_X^2 + m_e^2 - m_Y^2)^2 - \qt(\frac{c^2}{4m_X^2}) 4m_X^2 m_e^2 \\
+    &= \frac{c^2}{4m_X^2} (m_X^4 + m_e^4 + m_Y^4 + 2 m_X^2 m_e^2 - 2 m_X^2 m_Y^2 - 2 m_e^2 m_Y^2 -
+    \mathcolor{draculagreen}{4m_X^2 m_e^2})\\
+    &= \frac{c^2}{4m_X^2} (m_X^4 + m_e^4 + m_Y^4 - \mathcolor{draculagreen}{2 m_X^2 m_e^2}
+    - 2 m_X^2 m_Y^2 - 2 m_e^2 m_Y^2) \\
+\end{align*}
+and therefore the momentum of the outgoing electron is
+\begin{align*}
+\boxed{
+    \abs{\vb{p}_e} = \frac{c}{2m_X} \sqrt{m_X^4 + m_e^4 + m_Y^4 - 2 m_X^2 m_e^2 - 2 m_X^2 m_Y^2
+    - 2 m_e^2 m_Y^2}
+}
+\end{align*}
+
+\item[(b)] For the decay including an anti-neutrino
+\begin{align*}
+    _Z^A X \rightarrow _{Z+1}^A Y + e^- + \bar{\nu}_e
+\end{align*}
+
+%%%
+For the massless neutrino, the energy is
+\begin{align*}
+    E_\nu = \abs{\vb{p}_\nu} c
+\end{align*}
+or from planck's relation
+\begin{align*}
+    E_\nu = h \nu = \frac{h c}{\lambda}
+\end{align*}
+so the energy of the neutrino is
+\begin{align*}
+    \boxed{
+    E_\nu = \frac{\qty{6.63e-34}{\J.\s} \cdot \qty{3e8}{\m.\s^{-1}}}{\qty{e-15}{\m}}
+    = \qty{1.99e-10}{\J} = \qty{1240}{\MeV}
+    }
+\end{align*}
+and the momentum of the neutrino is
+\begin{align*}
+    \boxed{\abs{\vb{p}_\nu} = \frac{E_\nu}{c} = \frac{\qty{1.99e-10}{\J}}{\qty{3e8}{\m.\s^{-1}}}
+    = \qty{6.63e-19}{\kg.\m.\s^{-1}} \qor \qty{1240}{\frac{\MeV}{c}}
+    }
+\end{align*}
+This is much larger compared to the typical neutrino energy (keV). This means that the neutrino could
+not have come from inside the nucleus.
+
+%%%
+Using the Heisenberg uncertainty principle
+\begin{align*}
+    \Delta p \Delta x \geq \frac{h}{4\pi} \qor \Delta p \geq \frac{h}{4\pi \Delta x}
+\end{align*}
+and the typical size of a nucleus is $\Delta x \approx \qty{1e-15}{\m}$ so
+\begin{align*}
+    \Delta p \geq \frac{\qty{6.63e-34}{\J.\s}}{4\pi \cdot \qty{e-15}{\m}}
+    = \qty{0.53}{\frac{J}{m/s}}
+\end{align*}
+or in more convenient units $\qty{1}{\eV} = \qty{1.6e-19}{\J}$ and $\unit{c} = \qty{3e8}{m/s}$:
+\begin{align*}
+    &\Delta p \geq \qty{0.53}{\frac{J}{m/s}} \frac{\qty{1}{\eV}}{\qty{1.6e-19}{\J}}
+    \frac{\qty{3e8}{m/s}}{\unit{c}} \\
+    &\boxed{
+    \Delta p \geq \qty{99}{\frac{\MeV}{c}}
+    }
+\end{align*}
+and the energy of the neutrino (a massless particle) is
+\begin{align*}
+    \boxed{
+    E_\nu = \abs{\vb{p}_\nu} c \geq \qty{99}{\MeV}
+    }
+\end{align*}
+Compared to the typical neutrino energy of $\qty{1}{\keV}$, this is much larger and thus the
+neutrino could not have come from inside the nucleus.
+
+\end{itemize} 
+\end{document}

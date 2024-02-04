@@ -1,0 +1,1056 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{../images/}
+
+\begin{document}
+
+\section{Lecture (1/17/24)}
+\barh 
+
+\paragraph{Four Fundamental Forces}
+
+\begin{itemize}
+    \item Strong (gluon)
+    \item Weak (W, Z)
+    \item Electromagnetic (photon)
+    \item Gravity (graviton?)
+\end{itemize}
+
+The `Standard Model' describe the first three forces and unifies the Strong and Weak Forces known as
+the `Electroweak' force. So, the Standard Model does not include gravity.
+
+\paragraph{The Standard Model (SM)}
+\begin{itemize}
+    \item Basic building blocks: spin 1/2 particles (fermions)
+
+    \item Interaction between then are mediated by force carriers:
+    spin 1 particles (vector bosons)
+    
+    \item How particles get mass? $\rightarrow$ Higgs Boson (spin 0)
+\end{itemize}
+
+The Range of Forces:
+\begin{itemize}
+    \item Strong: $10^{-15}$ m
+    \item Weak: $10^{-18}$ ~ $10^{-16}$ m
+    \item EM: $1/r^2$
+    \item Gravity: $1/r^2$
+\end{itemize}
+
+The ranges of forces are related by
+\begin{align*}
+    R ~ \frac{e^{-r/a}}{r^2}
+\end{align*}
+where $a \approx 10^{-15}$ m for the Strong and Weak forces.
+
+\paragraph{The Rise of Quantum Field Theory (QFT)}
+
+Relativity + Quantum Mechanics $\rightarrow$ QFT
+
+% 3 x 3 table
+\begin{center}
+    \begin{tabular}{c|c|c}
+        & Macroscopic & Micro \\
+        \hline
+        SLOW & CM & Quantum Mechanics \\
+        \hline
+        FAST & Special Relativity & QFT \\
+    \end{tabular}
+\end{center}
+
+\paragraph{QFT Discoveries}
+\begin{itemize}
+    \item Existence of anti-particles
+    \item Spin-statistics theorem
+    \item CPT Theorem (Charge conjugation, Parity, Time reversal)
+\end{itemize}
+
+\subsection*{Units!}
+\begin{itemize}
+    \item Mass: (kg) $\rightarrow$ (eV) from $E = mc^2$
+\begin{align*}
+    m_e &= \qty{0.5e6}{\electronvolt/c^2} \quad E_n = \frac{\qty{-13.6}{\electronvolt}}{n^2} \\
+    m_p &= \qty{1}{\giga\electronvolt/c^2} \quad \qty{1}{\electronvolt} = \qty{1.6e-19}{\joule}
+\end{align*}
+    \item Momentum: $\frac{eV}{C} \rightarrow p = \frac{E}{c}$
+    \item Energy: eV
+\end{itemize}
+
+\paragraph{Matter Fermions} are divided into two groups:
+\begin{itemize}
+    \item Leptons (electrons, muon, tau, neutrinos): Doesn't have the strong force
+    \item Quarks (up, down, charm, strange, top, bottom): Feels the strong force 
+\end{itemize}
+e.g. the proton is made of 2 up quarks and 1 down quark (uud) and the Neurtron is (udd).
+
+\paragraph{Quarks} make up composite subparticles (Hadrons) are held together by the strong force.
+\begin{itemize}
+    \item Mesons: 1 quark + 1 anti-quark $(q\bar q)$ e.g. pion, kaon...
+    \item Baryons: 3 quarks $(qqq)$ e.g proton, neutron
+\end{itemize}
+
+Quark charges:
+\begin{itemize}
+    \item $Q = +2/3$ (up, charm, top)
+    \item $Q = -1/3$ (down, strange, bottom)
+\end{itemize}
+
+\paragraph{Leptons} are fundamental particles
+\begin{itemize}
+    \item Charged electrically (-1)
+    \begin{itemize}
+        \item electron $(\qty{0.5}{\mega\electronvolt})$
+        \item muon $(\qty{105}{\mega\electronvolt})$
+        \item tau $(\qty{1.8}{\giga\electronvolt})$
+    \end{itemize}
+    \item Neutral (neutrinos)
+    \begin{itemize}
+        \item electron neutrino $\nu_e$
+        \item mueon neutrino $\nu_\mu$
+        \item tau neutrino $\nu_\tau$
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Crossing Symmetry}
+\begin{align*}
+    A + B &\rightarrow C + D \quad \textrm{Scattering} \\
+    A &\rightarrow B + C + D \quad \textrm{Decay} \\
+    A + \bar C &\rightarrow \bar B + D
+\end{align*}
+e.g. Neutron Decay
+\begin{align*}
+    n &\rightarrow p + e^- + \bar \nu_e 
+\end{align*}
+Sum rules to think about:
+\begin{itemize}
+    \item Baryon Number Conservation
+    \item Lepton Number Conservation
+    \item Electric Charge Conservation
+\end{itemize}
+another example:
+\begin{align*}
+    n + e^+ &\rightarrow p + \bar \nu_e \\
+    p + e^- &\rightarrow n + \nu_e
+\end{align*}
+
+\href{https://phys.libretexts.org/Bookshelves/University_Physics/University_Physics_(OpenStax)/University_Physics_III_-_Optics_and_Modern_Physics_(OpenStax)/11%3A_Particle_Physics_and_Cosmology/11.03%3A_Particle_Conservation_Laws}{Particle Conservation Laws}
+
+\newpage
+\subsection*{Lecture 2: \hfill  1/22/24}
+\hrule \vspace{10px}
+\section{Relativistic Kinematics}
+\hrule \vspace{10px}
+
+\paragraph{Quiz 2 Review}
+
+\begin{enumerate}
+    \item The Baryon, Lepton, and Electric Charge are conserved in the Standard Model. 
+    \item The Baryon and Lepton number ensure the stability of the proton.
+    \item In Neutron Decay $n \rightarrow p + e^- + \bar \nu_e$, the weak force is responsible for
+    the decay.
+% 5x3 table
+\begin{center}
+    \begin{tabular}{c|c|c|c|c}
+        & Strong & EM & Weak & Gravity \\
+        \hline
+        Strength & 1 & $10^{-2}$ & $10^{-7}$ & $10^{-40}$ \\
+        \hline
+        Time scale & $10^{-23}$ sec & $10^{-16}$ & $10^{-10}$ & $>$ yr\\
+    \end{tabular}
+\end{center}
+    The decay rate is proportional to the coupling strength of the force $\Gamma \propto \alpha^2$.
+    For the time scale is $\tau$ it is inversely proportional:
+    \begin{align*}
+        \tau \propto \frac{1}{\Gamma}
+    \end{align*}
+    \item The strong force is responsible for holding the nucleus together.
+    \item 
+\end{enumerate}
+
+\paragraph{Experimental Discoveries}
+
+To discover and observe particles, there are typically three ways:
+\begin{enumerate}
+    \item Scattering (cross section) 
+    \item Decay (decay rate or lifetime)
+    \item Bound states (binding energy/mass)
+\end{enumerate}
+
+\paragraph{Relativistic Kinematics} 4-vectors
+\begin{align*}
+    x^\mu = (ct, x, y, z) \quad \textrm{space-time} \\
+    p^\mu = (E/c, p_x, p_y, p_z) \quad \textrm{momentum}
+\end{align*}
+where $x^\mu$ and $p^\mu$ are the space-time (position) four-vector and energy-momentum four-vector.
+
+\subparagraph*{NOTE:} Totak four-momentum is conserved in all interactions.
+
+Starting with the lorentz invariant
+\begin{align*}
+    p^\mu p_\mu = p^2
+\end{align*}
+using the Einstein-summation convention
+\begin{align*}
+    p^\mu p_\mu = \sum_{\mu = 0}^3 p^\mu p_\mu = p^2
+\end{align*}
+and the metric tensor
+\begin{align*}
+    g^{\mu\nu} = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1 \\
+    \end{pmatrix}
+\end{align*}
+we can write the lower momentum vector as
+\begin{align*}
+    p_\mu = p^\nu g_{\mu\nu} 
+\end{align*}
+thus
+\begin{align*}
+    p^\mu p_\mu &= p^\mu p^\nu g_{\mu\nu} \\
+    &= \qt(\frac{E}{c})^2 + \vb{p} \cdot \vb{p} (-1) \\
+    &= \qt(\frac{E}{c})^2 - \abs{\vb{p}}^2 \\
+    &= m^2 c^2
+\end{align*}
+Using
+\begin{align}
+    E = \sqrt{\abs{\vb{p}}^2 + m^2 c^4}
+\end{align}
+
+\paragraph{Lorentz Transformation} At rest $\vb{p} = 0$ and $E = mc^2$.
+
+In the Galilean transformation in the $x$ direction:
+\begin{align*}
+    x' &= x - vt \\
+    y' = y \\
+    z' = z \\
+    t' = t
+\end{align*}
+where we assume absolute time, but in the Lorentz transformation:
+\begin{align*}
+    x' &= \gamma(\beta ct + x) \quad \beta = \frac{v}{c} \\
+    ct' &= \gamma(t - \beta x) \quad \gamma = \frac{1}{\sqrt{1 - \beta^2}} \\
+    y' &= y \\
+    z' &= z
+\end{align*}
+In matrix form:
+\begin{align*}
+    \Lambda = 
+    \begin{pmatrix}
+        ct' \\
+        x' \\
+        y' \\
+        z' \\
+    \end{pmatrix}
+    &= \begin{pmatrix}
+        \gamma & -\beta\gamma & 0 & 0 \\
+        -\beta\gamma & \gamma & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        ct \\
+        x \\
+        y \\
+        z \\
+    \end{pmatrix}
+\end{align*}
+and thus $p^\mu p_\mu$ is invariant under Lorentz transformation.
+
+\paragraph{Massless particle:} From the energy momentum relation
+\begin{align*}
+    E^2 = \abs{\vb{p}}^2 c^2 + m^2 c^4
+\end{align*}
+The massless particle has energy $E = \abs{\vb{p}}c$. But we have to include the frequency (Planck)
+relation from quantum mechanics as well:
+\begin{align*}
+    E = h \nu = \hbar \omega
+\end{align*}
+And in the SM photons and neutrinos are massless thus
+\begin{align*}
+    p^2 = p^\mu p_\mu = m^2 c^2 = 0
+\end{align*}
+
+\paragraph{Collisions} Non-relativistic vs. Relativistic
+
+Non-relativistic:
+\begin{itemize}
+    \item Elastic (KE conserved)
+    \item Inelastic (KE not conserved)
+\end{itemize}
+Relativistic:
+\begin{itemize}
+    \item Elastic (KE conserved) e.g. particle splitting into two
+    \item Inelastic (KE not conserved) or Rest energy and mass e.g. colliding two particles to form
+    a new particle
+    \begin{itemize}
+        \item KE increases (Explosive)
+        \item KE decreases (Sticky)
+    \end{itemize}
+\end{itemize}
+In the extreme case:
+\begin{align*}
+    A &+ B \rightarrow C \quad \textrm{inverse decay} \\
+    A &\rightarrow B + C \quad \textrm{decay}
+\end{align*}
+
+\paragraph{Example} $\pi^+ \rightarrow \mu^+ + \nu_\mu$ (decay)
+
+The Rest energies are $m_{\pi^+} = \qty{135}{\mega\electronvolt/c^2}$,
+$m_{\mu^+} = \qty{105}{\mega\electronvolt/c^2}$, and $m_{\nu_\mu} = 0$. But this energy is lost
+through the kinetic energy of the muon and muon-neutrino.
+
+The momentum before is just the momentum of the pion
+\begin{align*}
+    p_i = p_{\pi} = 0
+\end{align*}
+since it is startionary. Afterward the momentum is split between the muon and neutrino
+\begin{align*}
+    p_f = p_{\mu} + p_{\nu_\mu}
+\end{align*}
+where energy and momentum is conserved:
+\begin{align*}
+    \vb{p}_\mu &= -\vb{p}_{\nu} \\
+    m_{\pi} c^2 &= E_{\mu} + E_{\nu_\mu} 
+\end{align*}
+
+\paragraph{4-momentum conservation}
+\begin{align*}
+    p_{before} &= p_{after} \\
+    p_{\pi} &= p_{\mu} + p_{\nu_\mu}
+\end{align*}
+since the massless particle has no momentum from the energy momentum relation
+\begin{align*}
+    p_\nu &= p_\pi - p_\mu \\
+    p_\nu^2 &= (p_\pi - p_\mu)^2 \\
+    &= p_\pi^2 - 2p_\pi p_\mu + p_\mu^2 \\
+    0 &= m_\pi^2 c^2 + m_\mu^2 c^2 - 2\frac{m_\pi c^2}{c} \frac{E_\mu}{c} \\
+    2E_\mu m_\pi &= (m_\pi^2 + m_\mu^2) c^2 \\
+    E_\mu &= \frac{m_\pi^2 + m_\mu^2 - m_\nu^2}{2m_\pi} c^2 \\
+\end{align*}
+
+Another way is finding
+\begin{align*}
+    p_\pi = p_\mu + p_\nu
+\end{align*}
+rewritten as
+\begin{align*}
+    p_\mu = p_\pi - p_\nu
+\end{align*}
+squaring both sides gives
+\begin{align*}
+    p_\mu^2 = p_\pi^2 - 2p_\pi p_\nu + p_\nu^2
+\end{align*}
+and since $p_\nu^2 = 0$ we have
+\begin{align*}
+    p_\mu^2 = p_\pi^2 - 2p_\pi p_\nu
+\end{align*}
+which implies
+\begin{align*}
+    m_\mu^2 c^2 = m_\pi^2 c^2 - 2m_\pi E_\nu
+\end{align*}
+the Planck relation tells us
+\begin{align*}
+    E_\nu = \abs{\vb{p}_\nu} c = \abs{\vb{p}_\mu} c
+\end{align*}
+thus
+\begin{align*}
+    2 m_\pi \abs{\vb{p}_\mu} c = (m_\pi^2 - m_\mu^2) c^2
+\end{align*}
+and
+\begin{align*}
+    \abs{\vb{p}_\mu} = \frac{m_\pi^2 - m_\mu^2}{2m_\pi} c
+\end{align*}
+
+\paragraph{Scattering experiments}
+
+\begin{itemize}
+    \item Head-on collision: (LHC)
+    \item Fixed target collision: Beam of protons hitting a target (e.g. Carbon) (SLAC)
+\end{itemize}  
+From momentum conservation, the head-on collision is more energy efficient as it loses the minimum
+amount of energy. The created particle is at rest, thus the energy is the rest energy. But the Fixed
+target collision has a higher energy loss since the particle loses energy since the created particle
+has kinetic energy.
+
+e.g. The Anti-proton Discovery is due to the Bevatron colliding two protons to create an anti-proton
+\begin{align*}
+    p + p \rightarrow p + p + p + \bar p
+\end{align*}
+
+HW HINT: $E_{cm} < E_{fixed}$
+
+\newpage
+\subsection*{Lecture 3: \hfill  1/24/24}
+\hrule \vspace{10px}
+\section{Symmetries}
+\hrule \vspace{10px}
+
+Quiz review:
+
+\paragraph{3.} The Energy of the large mass is 
+\begin{align*}
+    Mc^2 = E_1 + E_2 = 2\gamma m c^2
+\end{align*}
+where the energy of the smaller masses are
+\begin{align*}
+    E = \sqrt{\abs{\vb{p}}^2 c^2 + m^2 c^4} 
+\end{align*}
+where $\abs{\vb{p}} = \gamma mv$ and $\gamma = \frac{1}{\sqrt{1 - \beta^2}}$. Thus the mass $M >2m$.
+
+\paragraph{4.} Using the same thought from 3. we know that the rest mass of $M$ is greater.
+
+\paragraph{Lorentz Invariant}
+\begin{align*}
+    p^2 = m^2 c^2
+\end{align*}
+From \href{https://en.wikipedia.org/wiki/Minkowski_space}{Wikipedia}: this is the lightlike vector.
+For the timelike $p^2 > 0$ and spacelike $p^2 < 0$.
+
+\subsection*{Symmetries}
+
+Equilateral triangles are symmetric under 3 axes where we can flip the triangle and it is still the
+same. For the square, we have 4 axes, and so and so forth. All of these objects are studied in
+\href{https://en.wikipedia.org/wiki/Group_theory}{Group Theory}.
+
+\paragraph{Group Theory} Group is a set of objects satisfying certain properies under an operation.
+
+\paragraph{Properties}
+\begin{enumerate}
+    \item Closure: For $a, b \in G, \quad a \cdot b \in G$
+    \item Identity: For any $a \in G, \quad a \cdot I = I \cdot a = a$
+    \item Inverse: For each $a \in G, \quad a \cdot a^{-1} = a^{-1} \cdot a = 1$
+    \item Associativity: For $a, b, c \in G, \quad (a \cdot b) \cdot c = a \cdot (b \cdot c)$
+    \item (optional) Commutativity: For $a, b \in G, \quad a \cdot b = b \cdot a$ AKA Abelian Group.
+    Not all groups are commutatiive and thus are called non-Abelian groups.
+\end{enumerate}
+
+\paragraph{Two Types of Groups}
+\begin{enumerate}
+    \item Finite: Finite number of elements. e.g. $Z_2 = \qt{1, -1} = \qt{I, r}$ where $r^2 = I$
+    \item Infinite: Descrete or continuous. e.g. set of integers under addition (discrete), set of
+    real numbers under multiplication (continuous), $U(1)$ (continuous)
+\end{enumerate}
+
+\paragraph{Examples} For an isoscale triangle $Z_2 = \qt{1, -1}$ and for an equilateral triangle
+$Z_3 = \qt{0, 1, 2}$ or the operation mod 3. Which is isomorphic to
+\begin{align*}
+    \equiv \qt{1, \omega, \omega^2}, \quad  \omega = e^{2\pi i/3}
+\end{align*}
+For the square
+\begin{align*}
+    Z_4 = \qt{0, 1, 2, 3,} \equiv \qt{1, i, -1, -i} \qor \qt{1, \omega, \omega^2, \omega^3}
+\end{align*}
+Thus for $n$ elements.
+\begin{align*}
+    Z_n = \qt{e^{i2\pi j/n}}, \quad j = 0, 1, \dots, n-1
+\end{align*}
+where all of these groups are Abelian.
+
+\paragraph{For $n \rightarrow \infty$} We get a circle as it has an infinite number of symmetries.
+
+In addition $j \rightarrow \infty$
+\begin{align*}
+    \frac{2\pi j}{n} = \theta 
+\end{align*}
+we get
+\begin{align*}
+    U = e^{i\theta} = \cos \theta + i \sin \theta
+\end{align*}
+where $\theta \in \qt[0, 2\pi]$, and we have the $U(1)$ group.
+\begin{align*}
+    U^\dagger U = I \qquad U^\dagger = (U^*)^T
+\end{align*}
+where the dagger is the transpose of the complex conjugate (conjugate transpose).
+
+\subsection*{Standard Model}
+
+\begin{align*}
+    SU(3)_C \otimes SU(2)_L \otimes U(1)_y
+\end{align*}
+$U(N)$ set of unitary $N \times N$ matrices (non-Abelian in general except for $N>1$). Taking the 
+determinant of the matrix
+\begin{align*}
+    \det (U^\dagger U) = \det I = 1 
+\end{align*}
+and 
+\begin{align*}
+    \det (U^\dagger) \det (U) = 1 \qquad \det (U^{*T}) = \det (U^*) = (\det U)
+\end{align*}
+and
+\begin{align*}
+    \abs{\det U}^2 &= 1 \\
+    \det U &= e^{i\alpha} \quad \alpha \in [0, 2\pi]
+\end{align*}
+Choosing the phase angle $\alpha = 0$ we get
+\begin{align*}
+    \det U = 1 \qquad SU(N) C U(N)
+\end{align*}
+$\otimes$ is a direct product: Two groups $F$ and $G$. For $f \in F$ and $g \in G$ we have
+\begin{align*}
+    (f, g) \in F \otimes G
+\end{align*}
+The $U(1)$ group is related to the photon $\gamma$, the $SU(2)$ group is related to the weak force
+$W^\pm, Z^0$, and the $SU(3)$ group is related to the strong force $g$ (gluon).
+
+\paragraph{SU(2)} A set of $2 \times 2$ matrices with a determinant of 1.
+
+Given the theorem
+\begin{align*}
+    U = e^{iH}
+\end{align*}
+for the hermitian matrix $H$ where
+\begin{align*}
+    U^\dagger U = 1 \rightarrow e^{-iH^\dagger} e^{iH} = 1
+\end{align*}
+thus
+\begin{align*}
+    H^\dagger = H
+\end{align*}
+we take the determinant of $U$:
+\begin{align*}
+    \det U = \det(e^{iH}) = e^{i\Tr H} = 1 = e^0
+\end{align*}
+thus $\Tr H = 0$. This means that the Hermitian $H$ is traceless.
+
+\subsection*{Pauli Matrices} traceless matrices
+\begin{align*}
+    \sigma_1 &= \begin{pmatrix}
+        0 & 1 \\
+        1 & 0 \\
+    \end{pmatrix} \\
+    \sigma_2 &= \begin{pmatrix}
+        0 & -i \\
+        i & 0 \\
+    \end{pmatrix} \\
+    \sigma_3 &= \begin{pmatrix}
+        1 & 0 \\
+        0 & -1 \\
+    \end{pmatrix} \\
+\end{align*}
+thus we can write the Hermitian matrix as
+\begin{align*}
+    H = \frac{1}{2} \sum_i \theta_i \sigma_i = \frac{1}{2} \vb{\theta} \cdot \vb{\sigma}
+\end{align*}
+where we have the group element of $SU(2)$
+\begin{align*}
+    U = e^{i \vb\theta \cdot \vb\sigma/2}
+\end{align*}
+
+\paragraph{From QM}
+\begin{align*}
+    \vb{S} = \frac{\hbar}{2} \vb{\sigma}
+\end{align*}
+\begin{align*}
+    \qt[S_y, S_z] &= i S_x \\
+    \qt[S_z, S_x] &= i S_y \\
+    \qt[S_x, S_y] &= i S_z
+    \qt[\sigma_i, \sigma_j] = 2i \epsilon_{ijk} \sigma_k
+\end{align*}
+where $\epsilon_{ijk}$ is the Levi-Civita symbol.
+\begin{align*}
+    \epsilon_{ijk} = \begin{cases}
+        1 & \textrm{if } (i, j, k) \textrm{ is an even permutation of } (1, 2, 3) \\
+        -1 & \textrm{if } (i, j, k) \textrm{ interchange any two indices } (3, 2, 1) \\
+        0 & \textrm{otherwise any index is repeated}
+    \end{cases}
+\end{align*}
+thus
+\begin{align*}
+    [S_i, S_j] = i \epsilon_{ijk} S_k
+\end{align*}
+The Lie Algebra for $SU(2)$ is $SO(3)$ where both groups are isomorphic.
+\begin{align*}
+    [L_i, L_j] = i \epsilon_{ijk} L_k \qquad \vb{L} = \vb{r} \times \vb{p}
+\end{align*}
+the generators of $SU(2)$ is $\vb{\sigma}/2$. For $SU(3)$
+\begin{align*}
+    U = e^{i \vb\theta \cdot \vb\lambda/2}
+\end{align*}
+where we have the Gell-Mann matrices $\vb\lambda$. In general for $SU(N)$
+
+\paragraph{Addition of Angular Momenta}
+\begin{align*}
+    \vb{J} = \vb{J}_1 + \vb{J}_2
+\end{align*}
+\begin{align*}
+    [J_i, J_j] = i \epsilon_{ijk} J_k
+\end{align*}
+and
+\begin{align*}
+    [J^2, J_i] = 0 \qquad J^2 = J_x^2 + J_y^2 + J_z^2T &= 4\sqrt{\frac{l}{2g}}
+    \int_0^{\theta_o} \frac{1}{\sqrt{\cos\theta - \cos\theta_o}} \dd{\theta}
+\end{align*}
+where $J^2$ is the Casimir operator. Since we have simultaneous eigenstates of $J^2$ and $J_z$ we
+can write
+\begin{align*}
+    \ket{j,j_z}
+\end{align*}
+
+% lecture 1/29/24
+\newpage
+\subsection*{Lecture 4: \hfill  1/29/24}
+\hrule \vspace{10px}
+\section{Symmetries}
+\hrule \vspace{10px}
+
+\paragraph{Quiz 3 Review}
+SU(2) is the group of 2x2 unitary matrices with determinant 1. Using the basisc vectors
+$\mqty(1 \\ 0)$ and $\mqty(0 \\ 1)$ we can write the group element as
+\begin{align*}
+    \mqty(a \\ b) = a \mqty(1 \\ 0) + b \mqty(0 \\ 1)
+\end{align*}
+or the linear combination of the basis vectors. Thus the transformation is
+\begin{align*}
+    \mqty(a' \\ b') = U(\theta) \mqty(a \\ b) = e^{i\vb{\theta} \cdot \vb{\sigma} / 2} \mqty(a \\ b)
+\end{align*}
+THe Lie Algebra for SU(2) is
+\begin{align*}
+    [J_i, J_j] = i \epsilon_{ijk} J_k
+\end{align*}
+and
+\begin{align*}
+    [J^2, J_i] = 0
+\end{align*}
+for simultaneous eigenstates of $\ket{j,m}$.
+\begin{align*}
+    J_z \ket{j,m} = m\hbar \ket{j,m} \qquad
+    J^2 \ket{j,m} = j(j+1)\hbar^2 \ket{j,m}
+\end{align*}
+from the ladder operators
+\begin{align*}
+    J_\pm = J_x \pm i J_y
+\end{align*}
+where these are not Hermitian (does not commute). Thus
+\begin{align*}
+    J^2 &= J_x^2 + J_y^2 + J_z^2 \\
+    &= J_+ J_- + J_+ J_- J_z^2
+\end{align*}
+furthermore
+\begin{align*}
+    J_\pm \ket{j,m} = \hbar \sqrt{(j \mp m)(j \pm m)} \ket{j, m \pm 1}
+\end{align*}
+where going up the ladder $m \rightarrow m + 1$ and going down the ladder $m \rightarrow m - 1$.
+For fixed $j$ there is a maximum and minimum $m$ value
+\begin{align*}
+    m_{max} = j \qquad m_{min} = -j
+\end{align*}
+so for example
+\begin{align*}
+    J_+ \ket{j,j} = 0 \qquad J_- \ket{j,-j} = 0
+\end{align*}
+
+\subsubsection*{Spin}
+\begin{align*}
+    j \equiv s = 1/2, \qquad m \equiv m_s = \pm 1/2
+\end{align*}
+The basis states are
+\begin{align*}
+    (1/2, 1/2) &= \mqty(1 \\ 0) = \ket{\uparrow}  \qquad m_s = 1/2 \\
+    (1/2, -1/2) &= \mqty(0 \\ 1) = \ket{\downarrow} m_s = -1/2
+\end{align*}
+For the addition of spin
+\begin{align*}
+    \frac{1}{2} \otimes \frac{1}{2} = ? \qquad \vb{S} = \vb{S}_1 + \vb{S}_2 \qquad 
+    S_{tot} = (S_1 + S_2), ... , (S_1 - S_2) = 1, 0 \qquad
+    m_{s, tot} = 1, 0, -1, 0
+\end{align*}
+\subsubsection*{General Addition of Angular Momentum}
+\begin{align*}
+    \ket{1,1} = \ket{\uparrow \uparrow} \qquad \ket{1,0} = \frac{1}{\sqrt{2}} \ket{\uparrow \downarrow} + \frac{1}{\sqrt{2}} \ket{\downarrow \uparrow} \qquad \ket{1,-1} = \ket{\downarrow \downarrow}
+\end{align*}
+finding the linear combination through basis transformation by using the resolution of the identity
+\begin{align*}
+    \ket{j,m} &\to \ket{j_1, m_1} \otimes \ket{j_2, m_2} \\
+    &= \sum_{m_1, m_2} \ket{j_1, m_1, j_2, m_2} \bra{j_1, m_1, j_2, m_2} \ket{j,m}
+\end{align*}
+where the bra-ket is the Clebsch-Gordan coefficient. thus
+\begin{align*}
+    = \sum_{m_1, m_2} c_{m, m1, m2}^{j, j_1, j_2} \ket{j_1, m_1, j_2, m_2}
+\end{align*}
+where $m = m_1 + m_2$ and $c_{m, m1, m2}^{j, j_1, j_2}$ is the Clebsch-Gordan coefficient.
+\paragraph{Example} For the $S=1$ state $m = 1$
+\begin{align*}
+    \ket{1,1,} &= \ket{1/2, 1/2} \otimes \ket{1/2, 1/2} \\
+    &= \ket{1/2, 1/2, 1/2, 1/2} \\
+    &= \ket{\uparrow \uparrow}
+\end{align*}
+For $m = 0$ we have a linear combination of the basis states
+\begin{align*}
+    J_- \ket{1,1} &= \hbar \sqrt{2} \ket{1,0} \\
+    \qor \ket{1,0} &= \frac{1}{\hbar \sqrt{2}} J_- \ket{1,1}
+\end{align*}
+the sum of the basis states is
+\begin{align*}
+    J_-(\ket{1/2, 1/2} \otimes \ket{1/2, 1/2}) &= \hbar \sqrt{(1/2 + 1/2) (1/2 - 1/2 + 1)} 
+        \ket{1/2, -1/2} \otimes \ket{1/2, 1/2} \\
+        &+ \ket{1/2, 1/2} \otimes \ket{1/2, -1/2} \\
+    &= \hbar(\ket{\uparrow \downarrow} + \ket{\downarrow \uparrow})
+\end{align*}
+or 
+\begin{align*}
+    \ket{1,0} = \frac{1}{\sqrt{2}} (\ket{\uparrow \downarrow} + \ket{\downarrow \uparrow})
+\end{align*}
+for $m = -1$ we have
+\begin{align*}
+    J_- \ket{1,0} &= \hbar \sqrt{2} \ket{1,-1}
+\end{align*}
+where
+\begin{align*}
+    \ket{1,-1} &= \ket{1/2, -1/2} \otimes \ket{1/2, -1/2}
+    &= \ket{\downarrow \downarrow}
+\end{align*}
+Now for $S = 0$, $m = 0$ we have
+\begin{align*}
+    \ket{0,0} &= \frac{1}{\sqrt{2}} (\ket{\uparrow \downarrow} - \ket{\downarrow \uparrow})
+\end{align*}
+since it is the way to make it orthogonal to $\ket{1,0}$. Therefore
+\begin{align*}
+    \frac{1}{2} \otimes \frac{1}{2} = 1 \oplus 0
+\end{align*}
+Thus the there are 3 triplet states $m_s = 1, 0, -1$ and 1 singlet state $m_s = 0$.
+
+\subsection*{Isospin}
+\begin{align*}
+    m_p = 938.3 \textrm{ MeV/c}^2 \qquad m_n = 939.6 \textrm{ MeV/c}^2
+\end{align*}
+why are they so close? Heisenberg postulated an isospin state of a nucleon $N$ as
+\begin{align*}
+    N = \mqty(\alpha \\ \beta) = \alpha \ket{p} + \beta \ket{n}
+\end{align*}
+with
+\begin{align*}
+    p = \mqty(1 \\ 0) \qquad n = \mqty(0 \\ 1)
+\end{align*}
+the isospin state of the proton and neutron are
+\begin{align*}
+    \ket{p} = \ket{\frac{1}{2}, \frac{1}{2}} \qquad \ket{n} = \ket{\frac{1}{2}, -\frac{1}{2}}
+\end{align*}
+% shortcut for \frac{1}{2} to \half
+\newcommand{\half}{\frac{1}{2}}
+
+\begin{enumerate}
+    \item Strong interactions preserve isospin symmetry
+    \item EM \& Weak interactions do not preserve isospin symmetry
+\end{enumerate}
+
+\subsubsection*{Examples}
+Pions: $\pi^+$, $\pi^0$, $\pi^-$ where the approximate symmetry is a triplet state
+\begin{align*}
+    \pi^+ &= \ket{1, 1} \qquad I = 1, \quad I_3 = 1 \\
+    \pi^- &= \ket{1, 0} \qquad I = 1, \quad I_3 = 0 \\ 
+    \pi^0 &= \ket{1, -1} \qquad I = 1, \quad I_3 = -1
+\end{align*}
+$\Delta$-baryons:
+\begin{align*}
+    \Delta^{++} &= \ket{3/2, 3/2} \qquad I = 3/2, \quad I_3 = 3/2 \\
+    \Delta^{+} &= \ket{3/2, 1/2} \qquad I = 3/2, \quad I_3 = 1/2 \\
+    \Delta^{0} &= \ket{3/2, -1/2} \qquad I = 3/2, \quad I_3 = -1/2 \\
+    \Delta^{-} &= \ket{3/2, -3/2} \qquad I = 3/2, \quad I_3 = -3/2 \\
+\end{align*}
+where $\Delta^{--}$ is an antiparticle of $\Delta^{++}$. We write from the highest to lowest
+from the empirical Gellman-Nishijima formula
+\begin{align*}
+    Q = I_3 + \frac{1}{2} (B + S)
+\end{align*}
+where $Q$ is the charge, $I_3$ is the third component of isospin, $B$ is the baryon number, and $S$
+is the strangeness.
+
+\subsubsection*{Pions}
+Since a Pion is a \emph{meson} and not a baryon, it has a baryon number of 0. Thus with no
+strangeness
+\begin{align*}
+    S = 0 \qquad B = 0
+\end{align*}
+\subsubsection*{Nucleons}
+\begin{align*}
+    S = 0 \qquad B = 1
+\end{align*}
+\begin{align*}
+    Q = \begin{cases}
+        1/2 + 1/2(1 + 0)= 1 & \textrm{proton} \\
+        -1/2 + 1/2(1 + 0)= 0 & \textrm{neutron}
+    \end{cases}
+\end{align*}
+For all elementary particles there is a general formula
+\begin{align*}
+    Q = I_3 + \frac{Y}{2}
+\end{align*}
+where $Y$ is the hyper charge $U(1)_Y$.
+
+\subsubsection*{Power of Symmetry: Applications}
+\begin{enumerate}
+    \item Deuteron (neutron of deuterium): Two-Nucleon system
+\begin{align*}
+    I = 1 \qor 0 \qquad I_3 = 1, 0, -1 \qor 0 \textrm{ (singlet)}
+\end{align*}
+\begin{align*}
+    \ket{1,1} &= \ket{p, p} \\
+    \ket{1,0} &= \frac{1}{\sqrt{2}} (\ket{p, n} + \ket{n, p}) \\
+    \ket{1,-1} &= \ket{n, n} \\
+    \ket{0,0} &= \frac{1}{\sqrt{2}} (\ket{p, n} - \ket{n, p})
+\end{align*}
+experimentally, we only see the singlet state because we see only one deuteron state. Thus we can
+only see a isospin state of $I = 0$.
+
+\paragraph{Two-nucleon potential} $\propto \vb{I}_1 \cdot \vb{I}_2$ where we hae the total isospin
+\begin{align*}
+    \vb{I}^2 = (\vb{I}_1 + \vb{I}_2)^2 &= \vb{I}_1^2 + \vb{I}_2^2 + 2 \vb{I}_1 \cdot \vb{I}_2
+\end{align*}
+where the $s^2$ term is
+\begin{align*}
+    s^2 = 1/2 (1/2 + 1) \hbar^2 = \frac{3}{4} \hbar^2
+\end{align*}
+Thus
+\begin{align*}
+    \vb{I}_1^2 + \vb{I}_2^2 = \frac{3}{2}
+\end{align*}
+and
+\begin{align*}
+    \vb{I}_1 \cdot \vb{I}_2 &= \frac{1}{2} \qt(\vb{I}^2 - 3/2)^{3/2} \\
+    &= \begin{cases}
+        1/2(1(1+1) -3/2) &= 1/4 \quad \textrm{triplet} \\
+        1/2(0(0+1) -3/2) &= -3/4 \quad \textrm{singlet}
+    \end{cases}
+\end{align*}
+\end{enumerate}
+
+\pagebreak
+\subsection*{Lecture 5: \hfill  1/31/24}
+\hrule \vspace{10px}
+\section{Symmetries}
+\hrule \vspace{10px}
+
+\paragraph{Quiz 5 Review}
+For $j$
+\begin{align*}
+    \frac{1}{2} \otimes \frac{1}{2} = 1 \oplus 0
+\end{align*}
+For $2j + 1$
+\begin{align*}
+    2 \otimes 2 = 3 \oplus 1
+\end{align*}
+Isospins of particles
+\begin{enumerate}
+    \item pion: 1
+    \item deuteron: 0
+    \item $\Delta$-baryons: 3/2
+    \item nucleons: 1/2
+\end{enumerate}
+The strong ineteraction preserves $I$ and $I_3$, and the weak interactions do not preserve $I$ and
+$I_3$ (e.g. in beta decay the iso spin of the neutron (-1/2) go to an iso spin of the proton (1/2)).
+In E\&M the isospin preserves only $I$ and not $I_3$ (e.g. $\pi_o$ decay to two photons
+$\gamma \gamma$: $I_3 = 0$ for the $\pi_o$ and $I_3 = 0$ for the two photons).
+
+\paragraph{Applications of Isospin:} Nucleon-nucleon Scattering
+\begin{align*}
+    p + p &\rightarrow D + \pi^+ \\
+    p + n &\rightarrow D + \pi^0 \\
+    n + n &\rightarrow D + \pi^-
+\end{align*}
+The relative probabilities of these processes: we get this from the amplitude $A$ where the 
+probability $\abs{A}^2$ is proportional to the cross section $\sigma = \pi r^2$ (the cross section
+of a sphere, but this is not a solid sphere and rather a `fuzzy' sphere). With the fact that `strong
+interactions preserve isospin' we have the the ratio of the cross sections
+\begin{align*}
+    \sigma_a : \sigma_b : \sigma_c
+\end{align*}
+For all three processes the RHS the isospin is
+\begin{align*}
+    I_{tot} = 0 \otimes 1 = 1
+\end{align*}
+on the left hand side 
+\begin{align*}
+    I_{tot} = \frac{1}{2} \otimes \frac{1}{2} = 0 \qor 1
+\end{align*}
+(a) The ratio of getting an isospin of 1 on the left hand side for the first process
+\begin{align*}
+    \ket{pp} = \ket{11}
+\end{align*}
+(c) for the third proccess
+\begin{align*}
+    \ket{nn} = \ket{1, -1}
+\end{align*}
+(b) The second is the linear combination of $\ket{10}$ and $\ket{00}$
+\begin{align*}
+    \ket{pn} = \frac{1}{\sqrt{2}} (\ket{10} + \ket{00})
+\end{align*}
+the $\ket{00}$ does not contribute to the isospin of 1. Thus the ratio of the probability is
+\begin{align*}
+    A_a : A_b : A_c = 1 : \frac{1}{\sqrt{2}} : 1
+\end{align*}
+and the ratio of the cross sections is
+\begin{align*}
+    \sigma_a : \sigma_b : \sigma_c = 1 : \frac{1}{2} : 1
+\end{align*}
+
+\paragraph{Example 3} Pion-nucleon Scattering
+\begin{align*}
+    \mqty(\pi^+ \\ \pi^0 \\ \pi^-) \quad I = 1, \qquad
+    \mqty(p \\ n) \quad I = 1/2
+\end{align*}
+So the total isospin $j$ is 
+\begin{align*}
+    I_{tot} = 1/2 \otimes 1 = 3/2 \oplus 1/2
+\end{align*}
+and for $2j + 1$
+\begin{align*}
+    3 \otimes 2 = 4 \oplus 2
+\end{align*}
+The elastic processes are (from $a \to f$)
+\begin{align*}
+    \pi^+ + p &\rightarrow \pi^+ + p \\
+    \pi^0 + p &\rightarrow \pi^0 + p \\
+    \pi^- + p &\rightarrow \pi^- + p \\
+    \pi^+ + n &\rightarrow \pi^+ + n \\
+    \pi^0 + n &\rightarrow \pi^0 + n \\
+    \pi^- + n &\rightarrow \pi^- + n
+\end{align*}
+and the charge-exchange processes are (from $g \to j$)
+\begin{align*}
+    \pi^+ + n &\to \pi^0 + p \\
+    \pi^0 + p &\to \pi^+ + n \\
+    \pi^- + p &\to \pi^0 + n \\
+    \pi^0 + n &\to \pi^- + p \\
+\end{align*}
+The states of the $3/2$ isospin are
+\begin{align*}
+    \ket{3/2, 3/2}, \ket{3/2, 1/2}, \ket{3/2, -1/2}, \ket{3/2, -3/2}
+\end{align*}
+and the states of the $1/2$ isospin are
+\begin{align*}
+    \ket{1/2, 1/2}, \ket{1/2, -1/2}
+\end{align*}
+so we have the following states
+\begin{align*}
+    \ket{\pi^+ p} &= \ket{1,1} \otimes \ket{1/2, 1/2} = \ket{3/2, 3/2} \\
+    \ket{\pi^- n} &= \ket{1,-1} \otimes \ket{1/2, -1/2} = \ket{3/2, -3/2} \\
+\end{align*}
+for the obvious highest and lowest isospin states. Carrying on\dots
+\begin{align*}
+    \ket{\pi^+ n} &= \ket{1,1} \otimes \ket{1/2, -1/2}
+\end{align*}
+this is the linear combination of $\ket{3/2, 1/2}$ and $\ket{1/2, 1/2}$, and so on. To find the 
+proportional cross sections we know that
+\begin{align*}
+    \braket{i}{f} \propto A \qquad \abs{\braket{i}{f}}^2 \propto \sigma
+\end{align*}
+We can use the Clebsch-Gordan coefficients to find the linear combination of the states. For example
+\begin{align*}
+    \ket{\pi^+ n} &= \ket{3/2, 1/2} + \ket{1/2, 1/2}
+\end{align*}
+where the Clebsch-Gordan coefficient is
+\begin{align*}
+    \braket{3/2, 1/2, 1/2, 1/2}{3/2, 1/2} = \sqrt{\frac{2}{3}}
+\end{align*}
+e.g. for the $\pi^+ p$ state
+\begin{align*}
+    \ket{\pi^+ p} &= \ket{3/2, 3/2} \\
+    \braket{3/2, 3/2, 1/2, 1/2}{3/2, 3/2} &= 1
+\end{align*}
+using the lowering operator
+\begin{align*}
+    J_- \ket{j,m} = \hbar \sqrt{(j + m)(j - m + 1)} \ket{j, m - 1}
+\end{align*}
+so
+\begin{align*}
+    J_- \ket{3/2, 3/2} &= \hbar \sqrt{3} \ket{3/2, 1/2}
+\end{align*}
+applying the lower operator to $J_{1-} + J_{2-}$ we get
+\begin{align*}
+    J_- \qt(\ket{11} \otimes \ket{1/2, 1/2}) &= \hbar \sqrt{2} \ket{10} \otimes \ket{1/2, 1/2} 
+    + \hbar \sqrt{1} \ket{11} \otimes \ket{1/2, -1/2}  \\
+    &= \hbar \sqrt{2} \ket{10} \otimes \ket{1/2, 1/2} + \hbar \ket{11} \otimes \ket{1/2, -1/2}
+\end{align*}
+we then get
+\begin{align*}
+    \ket{3/2, 1/2} &= \sqrt{2/3} \ket{11} \otimes \ket{1/2, 1/2}
+        + \sqrt{1/3} \ket{10} \otimes \ket{1/2, 1/2} \\
+    &= \sqrt{2/3} \ket{\pi^+ p} + \sqrt{1/3} \ket{\pi^+ n}
+\end{align*}
+and the orthogonal state is
+\begin{align*}
+    \ket{1/2, 1/2} &= \sqrt{2/3} \ket{\pi^+ p} - \sqrt{1/3} \ket{\pi^+ n}
+\end{align*}
+and so on for the other states. At the end we will find that the ratio of the total cross sections
+(adding up the matching elastic and exchange processes) is 3.
+
+The amplitude has a factor
+\begin{align*}
+    \braket{\pi^+ p}{\pi^+ p} = \braket{3/2, 3/2}{3/2, 3/2} = M_3
+\end{align*}
+where for example 
+\begin{align*}
+    (\sqrt{2}{3} \bra{3/2, 1/2} - 1/\sqrt{3} \bra{1/2, 1/2})
+    &(\sqrt{2}{3} \ket{3/2, 1/2} - 1/\sqrt{3} \ket{1/2, 1/2}) = \\
+    &= 2/3 \braket{3/2, 1/2}{3/2, 1/2} - 1/3 \braket{1/2, 1/2}{1/2, 1/2} \\
+    &= 2/3 M_3 - 1/3 M_1
+\end{align*}
+for $M_3 >> M_1$ the ratio is $4/9$, and for $M_3 << M_1$ the ratio is $1/3$.
+
+\subsubsection*{$SU(3)$}
+\begin{align*}
+    \mqty(p \\ n) \quad SU(2) \textrm{doublet}
+\end{align*}
+where the spins are
+\begin{align*}
+    p&: uud \quad Q_u = 2/3 \\
+    n: udd \quad Q_d = -1/3
+\end{align*}
+For the two spins
+\begin{align*}
+    \mqty(u \\ d)
+\end{align*}
+the isospins are
+\begin{align*}
+    I = 1/2, \quad I_3 = 1/2 \qor -1/2
+\end{align*}
+for the up and down quarks respectively. In reality we have six quarks
+\begin{itemize}
+    \item Light quarks: $u, d, s$
+    \item Heavy quarks: $c, b, t$
+\end{itemize}
+For the light quaks we have a $SU(3)$ symmetry
+\begin{align*}
+    \mqty(u \\ d \\ s)
+\end{align*}
+the masses are all different:
+\begin{align*}
+    m_u \approx \qty{2}{\MeV / c^2} \qquad 
+    m_d \approx \qty{4}{\MeV / c^2} \qquad 
+    m_s \approx \qty{95}{\MeV / c^2}
+\end{align*}
+so we have to add a flavor symmetry to the $SU(2)$ isospin symmetry:
+\begin{align*}
+    \mqty(u \\ d \\ s) \to \mqty(u \\ d) \oplus s
+\end{align*}
+or the $SU(3)$ symmetry
+\begin{align*}
+    SU(3)_f \to SU(2)_I \otimes U(1)_y
+\end{align*}
+From $SU(2)$ algebra:
+\begin{align*}
+    [J_i, J_j] = i \epsilon_{ijk} I_k \qquad J_i = \sigma_i / 2
+\end{align*}
+For the three pauli matrices
+\begin{align*}
+    \sigma_1 = \mqty(0 & 1 \\ 1 & 0) \qquad 
+    \sigma_2 = \mqty(0 & -i \\ i & 0) \qquad
+    \sigma_3 = \mqty(1 & 0 \\ 0 & -1)
+\end{align*}
+Now for $SU(3)$: We know that the generators
+\begin{align*}
+    U = e^{i \vb{\theta} \cdot \vb{\lambda}/2}
+\end{align*}
+For $SU(N)$ we have $N^2 - 1$ generators. For $SU(3)$ we have 8 generators. The Gell-Mann matrices
+are 
+\begin{align*}
+    \lambda_1 &= \mqty(0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0) \qquad
+    \lambda_2 = \mqty(0 & -i & 0 \\ i & 0 & 0 \\ 0 & 0 & 0) \qquad
+    \lambda_3 = \mqty(1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 0) \\
+    \lambda_4 &= \mqty(0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0) \qquad
+    \lambda_5 = \mqty(0 & 0 & 0 \\ 0 & 0 & -i \\ 0 & i & 0) \qquad
+    \lambda_6 = \mqty(1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1)
+\end{align*}
+\end{document}

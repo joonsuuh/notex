@@ -1,0 +1,251 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+
+\setcounter{section}{1}
+\begin{center}
+    \addcontentsline{toc}{section}{Homework 1}
+    \section*{Homework 2}
+    \subsection*{Due 1/31}
+\end{center}
+\hrule \vspace{10px}
+
+\paragraph{1.} Muon Decay
+
+The minimum energy of the electron would be equivalent to the rest mass
+\begin{align*}
+    E_{\text{min}} = m_e c^2 = \qty{9.11e-31}{\kg} \cdot (\qty{3e8}{\m/\s})^2
+    = \qty{8.2e-14}{\joule} * \frac{1 \si{\eV}}{\qty{1.6e-19}{\joule}} = 
+    \boxed{\qty{0.512}{\mega\eV}}
+\end{align*}
+The maximum energy of the electron would be when the electron moves in one direction and both 
+neutrinos move together in the opposing direction. Thus we can treat this like a two body decay
+with the energy of the electron:
+\begin{align*}
+    E_e &= \frac{m_\mu^2 + m_e^2 - M^2}{2 m_u} c^2 
+\end{align*}
+where $M$ is the sum of the masses of the neutrinos $M = 0$ (neutrinos are massless lol). Using
+the mass of the muon and electron:
+\begin{align*}
+    m_e &= \qty{9.11e-31}{\kg} \cdot \frac{(\qty{3e8}{\m/\s})^2}{\qty{1.6e-19}{\joule/eV}} 
+    = \qty{0.51}{\MeV} \\
+    m_\mu &= \qty{1.88e-28}{\kg} = \qty{106}{\MeV}
+\end{align*}
+The maximum energy of the electron is then
+\begin{align*}
+    E_{\text{max}} &= \frac{m_\mu^2 + m_e^2}{2 m_\mu} c^2 = \boxed{\qty{53}{\MeV}}
+\end{align*}
+
+\paragraph{2.} (a) For the head-on collision, we know that the initial energy is the sum of the rest
+masses of the protons and the minimum energy required to produce the antiproton. Thus
+\begin{align*}
+    E_i &= E_f \\
+    2m_p c^2 + E_{\text{min}} &= 4m_p c^2 \\
+    E_{\text{min}} &= 2m_p c^2 = \boxed{\qty{1.88}{\GeV}}
+\end{align*}
+(b) For the fixed target, we first look at the total momentum four vector before the collision:
+The zeroth component of the total momentum is
+\begin{align*}
+    p^0 = \frac{E}{c} + \frac{E_{rest}}{c} = \frac{E}{c} + m_p c
+\end{align*}
+thus the four-vector before the collision is
+\begin{align*}
+    p^\mu = \qt(\frac{E}{c} + m_p c, \abs{\vb{p}})
+\end{align*}
+to find the four-vector after the collision, we can use the center of momentum frame (CM) where the
+two protons are viewed as going towards each other at the same speed like part (a), so the 
+total three-vector momentum is zero. Thus the zeroth component of the four-vector is jus the sum of
+the rest masses of the protons and the antiproton
+\begin{align*}
+    p^{\mu'} = \qt(4mc, 0)
+\end{align*}
+we can then exploit the invariant dot product of the four-vectors to find the minimum energy
+\begin{align*}
+    p^\mu p_\mu &= p^{\mu'} p_\mu' \\
+    \qt(\frac{E}{c} + m_p c)^2 - \abs{\vb{p}}^2 &= (4mc)^2
+\end{align*}
+where the can use the energy momentum relation
+\begin{align*}
+    E^2 &= \abs{\vb{p}}^2 c^2 + m^2 c^4 \\
+    \abs{\vb{p}}^2 &= \frac{1}{c^2} (E^2 - m^2 c^4)
+\end{align*}
+to solve for the minimum energy
+\begin{align*}
+    \qt(\frac{E}{c} + m_p c)^2 - \frac{1}{c^2} (E^2 - m_p^2 c^4) &= (4mc)^2 \\
+    \frac{E^2}{c^2} + 2m_p E + m_p^2 c^2 - \frac{E^2}{c^2} + m_p^2 c^2 &= 16m^2 c^2 \\
+    2m_p E &= 14m_p c^2 \\
+    E &= 7m_p c^2 = \boxed{\qty{6.6}{\GeV}}
+\end{align*}
+Thus the head-on collision requires less energy to produce the antiproton.
+
+\paragraph{3.} (a) Given
+\begin{align*}
+    s \equiv \frac{(p_A + p_B)^2}{c^2}, \quad t \equiv \frac{(p_A - p_C)^2}{c^2},
+    \quad u \equiv \frac{(p_A - p_D)^2}{c^2}
+\end{align*}
+the sums of the Mandelstroms variables are
+\begin{align*}
+    s + t + u &= \frac{1}{c^2} \qt[(p_A + p_B)^2 + (p_A - p_C)^2 + (p_A - p_D)^2]
+\end{align*}
+where we expand the squares
+\begin{align*}
+    [\;] &= p_A^2 + p_B^2 + 2p_A \cdot p_B + p_A^2 + p_C^2 - 2p_A \cdot p_C 
+        + p_A^2 + p_D^2 - 2p_A \cdot p_D \\
+    &= 3p_A^2 + p_B^2 + p_C^2 + p_D^2 - 2p_A \cdot p_B - 2p_A \cdot p_C - 2p_A \cdot p_D
+\end{align*}
+spliting the $3p_A^2$ into $p_A^2 + 2p_A^2$ we can factor out the dot products
+\begin{align*}
+    [\;] &= p_A^2 + p_B^2 + p_C^2 + p_D^2 - 2 p_A \cdot (p_A + p_B - p_C - p_D)
+\end{align*}
+and from the conservation of momentum 
+\begin{align*}
+    p_A + p_B &= p_C + p_D
+\end{align*}
+so we are left with 
+\begin{align*}
+    [\;] &= p_A^2 + p_B^2 + p_C^2 + p_D^2 \\
+    &= c^2 (m_A^2 + m_B^2 + m_C^2 + m_D^2)
+\end{align*}
+thus plugging $[\;]$ back into the sum of the Mandelstroms variables gives
+\begin{align*}
+    s + t + u = m_A^2 + m_B^2 + m_C^2 + m_D^2
+\end{align*}
+
+(b) In the CM frame, the total momentum is zero, so the four-vector of the total momentum is
+and the total energy is
+\begin{align*}
+    E_T = E_A + E_B
+\end{align*}
+we know that the momentum of the two particles are zero:
+\begin{align*}
+    \vb p_A + \vb p_B = 0
+\end{align*}
+so from the first Mandelstroms variable
+\begin{align*}
+    s = \frac{(p_A + p_B)^2}{c^2} &= \frac{1}{c^2} \qt[\qt(\frac{E_A}{c} + \frac{E_b}{c})^2 
+        + (\vb p_A + \vb p_B)^2] \\
+    s &= \frac{E_T^2}{c^4} 
+\end{align*}
+so
+\begin{align*}
+    E_T = c^2 \sqrt{s}
+\end{align*}
+(c) Since $\vb p_A + \vb p_B = 0$ and $E_A = E_B = E = \sqrt{\vb p^2 c^2 + m^2 c^4}$, the
+Mandelstroms variable $s$ is
+\begin{align*}
+    \frac{1}{c^2} (p + p)^2 &= \frac{1}{c^2} \qt[\frac{(E_A + E_B)^2}{c^2} - (\vb p_A + \vb p_B)^2] \\
+    &= \frac{1}{c^2} \qt[\frac{4E^2}{c^2}] \\
+    &= \frac{1}{c^2} \qt[\frac{\vb p^2 c^2 + m^2 c^4}{c^2}] \\
+    s &= \frac{\vb p^2 c^2 + m^2 c^4}{c^2}
+\end{align*}
+for $t$ we assume the angle between $\vb p_A$ and $\vb p_C$ is $\theta$ so
+\begin{align*}
+    t &= \frac{1}{c^2} (p_A - p_C)^2 \\
+    &= \frac{1}{c^2} \qt[\qt(\frac{E_A}{c} - \frac{E_C}{c})^2 - (\vb p_A - \vb p_C)^2]
+\end{align*}
+and we know that $E_A = E_C$ so the first term is zero and the second term is
+\begin{align*}
+    (\vb p_A - \vb p_C)^2 &= \vb p_A^2 + \vb p_C^2 - 2 \vb p_A \cdot \vb p_C 
+\end{align*}
+where $\vb p_A^2 = \vb p_C^2 = \vb p^2$ and $\vb p_A \cdot \vb p_C = \vb p^2 \cos \theta$ so
+\begin{align*}
+    (\vb p_A - \vb p_C)^2 &= 2 \vb p^2 - \vb p ^2 \cos \theta = 2 \vb p^2 (1 - \cos \theta)
+\end{align*}
+thus
+\begin{align*}
+    t &= \frac{1}{c^2} [0 - 2 \vb p^2 (1 - \cos \theta)] = \frac{-2 \vb p^2(1 - \cos \theta)}{c^2} 
+\end{align*}
+for $u$ everything is the same but $\vb p_A \cdot \vb p_D = - \vb p^2 \cos \theta$ so
+\begin{align*}
+    (\vb p_A - \vb p_D)^2 &= 2 \vb p^2 + \vb p^2 \cos \theta = 2 \vb p^2 (1 + \cos \theta)
+\end{align*}
+and thus
+\begin{align*}
+    u &= \frac{-2 \vb p^2 (1 + \cos \theta)}{c^2}
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\paragraph{4.} First we know that the energy and momentum of a photon $\gamma$ are
+\begin{align*}
+    E_\gamma = h\nu = pc \quad p = \frac{h\nu}{c}
+\end{align*}
+from the planck relation and energy-mass relation. Using conservation of energy we know that the 
+before the collision it is the energy of the photon plus the rest mass of the electron:
+\begin{align*}
+    E_i &= E_f \\
+    E_\gamma + m_e c^2 &= E_\gamma' + E_e
+\end{align*}
+and using the energy momentum relation for the electron
+\begin{align} \label{eq:1} \tag{1}
+    h\nu + m_e c^2 &= h\nu' + \sqrt{p_e^2c^2 + (m_e c^2)^2}
+\end{align}
+and from the conservation of momentum we know that 
+\begin{align*}
+    \vb p = \vb p' + \vb p_e \qor \vb p_e = \vb p - \vb p'
+\end{align*}
+where the momentum of the electron is initially zero, squaring both sides
+\begin{align*}
+    \vb p_e^2 &= (\vb p - \vb p')^2 \\
+    p_e^2 &= p^2 + p'^2 - 2 \vb p \cdot \vb p'
+\end{align*}
+where we know that the dot product of the two momenta is
+\begin{align*}
+    \vb p \cdot \vb p' = p p' \cos \theta
+\end{align*}
+so
+\begin{align} \label{eq:2} \tag{2}
+    p_e^2 &= p^2 + p^2 - 2 p p' \cos \theta
+\end{align}
+now we relate the two equations by first solving \eqref{eq:1} for $p_e^2 c^2$
+\begin{align*}
+    p_e^2 c^2 &= (h\nu^2 - h\nu'^2 + m_e c^2)^2 - (m_e c^2)^2
+\end{align*}
+and then multiplying \eqref{eq:2} by $c^2$
+\begin{align*}
+    p_e^2 c^2 &= (pc)^2 + (p' c)^2 - 2 p p' c^2 \cos \theta
+\end{align*}
+and substituting the momentum of the photon from the energy relation $p = \frac{h\nu}{c}$
+\begin{align*}
+    p_e^2 c^2 = (h\nu)^2 + (h\nu')^2 - 2 h^2 \nu \nu' \cos \theta 
+\end{align*}
+thus we can set the two equations equal to each other
+\begin{align*}
+    (h\nu^2 - h\nu'^2 + m_e c^2)^2 - (m_e c^2)^2 &= 
+        (h\nu)^2 + (h\nu')^2 - 2 h^2 \nu \nu' \cos \theta \\
+    (h\nu)^2 + (h\nu')^2 + (m_e c^2)^2 + 2(h^2 \nu \nu' - h\nu' m_e c^2 + h\nu m_e c^2) - (m_ec^2)^2
+        &= (h\nu)^2 + (h\nu')^2 - 2 h^2 \nu \nu' \cos \theta
+\end{align*}
+where the first three terms cancel out
+\begin{align*}
+    2(h^2 \nu \nu' - h\nu' m_e c^2 + h\nu m_e c^2) &= - 2 h^2 \nu \nu' \cos \theta
+\end{align*}
+dividing both sides by $2h$ and rearranging terms gives
+\begin{align*}
+    m_e c^2 (\nu - \nu') &= h \nu \nu' (1 - \cos \theta)
+\end{align*}
+dividing both sides again but by $m_e c \nu \nu'$ gives
+\begin{align*}
+    \qt(\frac{c}{\nu'} - \frac{c}{\nu}) &= \frac{h}{m_e c} (1 - \cos \theta)
+\end{align*}
+and since the wavelength is $\lambda = \frac{c}{\nu}$ we can solve for the outgoing wavelength
+\begin{align*}
+    \lambda' - \lambda = \frac{h}{m_e c} (1 - \cos \theta) \\
+    \boxed{
+        \lambda' = \lambda + \frac{h}{m_e c} (1 - \cos \theta)
+    }
+\end{align*}
+
+\end{document}
