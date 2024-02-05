@@ -491,7 +491,7 @@ and for $N$ conservative forces in a system
 \pagebreak
 \subsection*{Lecture 7: \hfill  1/31/24}
 \hrule \vspace{10px}
-\section{Energy}
+\section*{Energy Part 2}
 \hrule \vspace{10px}
 
 \paragraph{Conservative Force: Potential Energy} The mechanical energy
@@ -691,4 +691,150 @@ and for $N$ particles
 \begin{align*}
     \vb{F}_i = - \grad_i U \qquad U = \sum_{i,j} U_{ij} + \sum_i U_i^{\text{ext}}
 \end{align*}
+
+\newpage
+\subsection*{Lecture 9: \hfill  2/5/24}
+\hrule \vspace{10px}
+\section{Oscillations}
+
+\& Simple Harmonic Oscillators For the simple case of a mas on a spring, the spring force is
+$F_{s} = -k(x - x_o)$
+where the force is conservative and the (elastic) potential energy is
+$U_s = \frac{1}{2} k (x - x_o)^2$.
+
+\paragraph*{Aribtrary Potential energy} 
+% insert fig
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{5_1.png}
+    \caption{Arbitrary Potential Energy: $\vb{F} = - \grad U$}
+    \label{fig:fig1}
+\end{figure}
+
+FOr a equilibrium positon $x_o$ we can take the taylor expansion of the potential energy
+\begin{align*}
+    U(x) = U(x_o) + U' (x_o) \Delta x + \frac{1}{2} U''(x_o) \Delta x^2 + \dots
+\end{align*}
+where $\Delta x = x - x_o$. Setting $x_o$ to the reference point of $U$ cancels the first term and
+the conservative nature tells us that the second term is also zero thus we are left with the third
+term where the spring constant is
+\begin{align*}
+    k = U'' (x_o)
+\end{align*}
+To find the equations of motion, using N2L
+\begin{align*}
+    m\ddot x &= F = - k (x - x_o) \\
+    \ddot x &= - \frac{k}{m} (x - x_o)
+\end{align*}
+where we have a constant of angular frequency
+\begin{align*}
+    \omega_o = \sqrt{\frac{k}{m}}
+\end{align*}
+the solution could be a sinusoidal function
+\begin{align*}
+    x(t) \approx \sin \omega_o t 
+\end{align*}
+but we are missing the initial value, so
+\begin{align*}
+    x(t) \approx \sin \omega_o t + x_o
+\end{align*}
+the general solution is linear combinations of the sine and cosine functions
+\begin{align*}
+    x(t) &= A \sin \omega_o t + B \cos \omega_o t + x_o \\
+    \dot x(t) &= \omega_o A \cos \omega_o t - \omega_o B \sin \omega_o t
+\end{align*}
+where we need 2 initial conditions to solve for $A$ and $B$. e.g. $x(0)$ and $\dot x(0)$.
+\begin{align*}
+    B &= x(0) - x_o = \Delta x(0), \qquad A = \frac{\dot x(0)}{\omega_o}
+\end{align*}
+
+\paragraph*{Euler's Solution} We can also use a general solution of the form
+\begin{align*}
+    e^{i \theta} = \cos \theta + i \sin \theta
+\end{align*}
+where
+\begin{align*}
+    \abs {e^{i \theta}} = \cos^2 \theta + \sin^2 \theta = 1
+\end{align*}
+taking the derivatives
+\begin{align*}
+    \dv{t} e^{i \omega_o t} &= i \omega_o e^{i \omega_o t} \\
+    \dv[2]{t} e^{i \omega_o t} &= - \omega_o^2 e^{i \omega_o t}
+\end{align*}
+and the general solution is
+\begin{align*}
+    x(t) &= A e^{i \omega_o t} + B e^{-i \omega_o t} + x_o
+\end{align*}
+this does not mean that we have an imaginary solution, but rather we are using the geomtric 
+nature of the solution. 
+
+\paragraph*{Third Way} We can also use a method where we introduce the phase
+\begin{align*}
+    x(t) &= A \cos(\omega_o t - \delta) + x_o \\
+    \dot x(t) &= -A \omega_o \sin(\omega_o t - \delta)
+\end{align*}
+for $t = 0$ we have
+\begin{align*}
+    x(0) &= A \cos(-\delta) + x_o = A \cos \delta + x_o \\
+    \dot x(0) &= -A \omega_o \sin(-\delta) = A \omega_o \sin \delta
+\end{align*}
+and the constants are found by squaring and adding the two equations
+\begin{align*}
+    A^2 &= (x(0) - x_o)^2 + \frac{\dot x(0)^2}{\omega_o^2}
+        = \Delta x(0)^2 + \frac{\dot x(0)^2}{\omega_o^2}\\
+    \delta &= \arctan \frac{\dot x(0)}{\omega_o (x(0) - x_o)}
+        = \arctan \frac{\dot x(0)}{\omega_o \Delta x(0)}
+\end{align*}
+
+\paragraph*{Energy of the Oscillator} The mechanical energy is $E = T + U$
+\begin{align*}
+    T &= \frac{1}{2} m \dot x^2 = \frac{1}{2} m \omega_o^2 A^2 \sin^2(\omega_o t - \delta) \\
+    U &= \frac{1}{2} k (x - x_o)^2 = \frac{1}{2} k A^2 \cos^2(\omega_o t - \delta)
+\end{align*}
+setting $x_o = 0$ we can work with a much simple case
+\begin{align*}
+    U &= \frac{1}{2} k x^2 \\  
+    T &= \frac{1}{2} k x^2
+\end{align*}
+using the third way where
+\begin{align*}
+    x(t) &= A \cos(\omega_o t - \delta) \\
+    \dot x(t) &= -A \omega_o \sin(\omega_o t - \delta)
+\end{align*}
+we have
+\begin{align*}
+    U &= \frac{1}{2} k x^2 = \frac{1}{2} k A^2 \cos^2(\omega_o t - \delta) \\
+    T &= \frac{1}{2} m \dot x^2 = \frac{1}{2} m A^2 \omega_o^2 \sin^2(\omega_o t - \delta)
+    &= \frac{1}{2} k A^2 \sin^2(\omega_o t - \delta)
+\end{align*}
+thus the total mechanical energy is
+\begin{align*}
+    E = T + U = \frac{1}{2} k A^2
+\end{align*}
+where this is the maximum potential energy of the system, or the potential energy at the maximum 
+amplitude. This is also the classical turning point $E = U$. As time goes on, we can see that the
+energy oscillates betweeen being completely kinetic $(T)$ and completely potential $(U)$.
+
+\paragraph*{2D Oscillator} We can have two cases of oscillation:
+\begin{align*}
+    \vb{F} = -k (\vb{r} - \vb{r}_o) \quad \textrm{isotropic oscillator}
+\end{align*}
+this is where each component share the same frequency, but different amplitudes and/or initial
+conditions
+\begin{align*}
+    x(t) &= A_x \cos(\omega_o t - \delta_x) + x_o \\
+    y(t) &= A_y \cos(\omega_o t - \delta_y) + y_o
+\end{align*}
+for the anisotropic oscillator
+\begin{align*}
+    F_x &= -k_x (x - x_o) \quad F_y = -k_y (y - y_o)
+\end{align*}
+the frequency is decoupled thus
+\begin{align*}
+    x(t) &= A_x \cos(\omega_{ox} t - \delta_x) + x_o \\
+    y(t) &= A_y \cos(\omega_{oy} t - \delta_y) + y_o
+\end{align*}
+and if the ratio between the angular frequencies $\omega_{ox} / \omega_{oy}$ are rational, the
+motion is periodic and the figure will be closed. But for irrational ratios, the motion is
+\emph{quasiperiodic} and the figure is not closed (chaotic).
 \end{document}

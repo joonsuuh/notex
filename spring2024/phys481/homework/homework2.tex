@@ -1,0 +1,62 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+% sum commands
+
+\begin{document}
+
+\setcounter{section}{1}
+\begin{center}
+    \addcontentsline{toc}{section}{Homework 2}
+    \section*{Homework 2}
+    \subsection*{Due 2/6 12pm}
+\end{center}
+\hrule \vspace{10px}
+
+\paragraph*{1.}
+\begin{align*}
+    P(r | \lambda) = \exp(-\lambda) \frac{\lambda^r}{r!}
+\end{align*}
+(a) Taking the log of the likelihood function:
+\begin{align*}
+    L(\lambda) = \ln P(r | \lambda) = -\lambda + r \ln \lambda - \ln r!
+\end{align*}
+finding the maximum by taking the derivative with respect to $\lambda$ and setting it to zero:
+\begin{align*}
+    \frac{dL}{d\lambda} = -1 + \frac{r}{\lambda} = 0 \implies \hat \lambda = r
+\end{align*}
+so the maximum likelihood estimate for $\lambda$ is $\hat{\lambda} = r$.
+
+(b) Given the derivative with respect to the function $\ln \lambda$:
+\begin{align*}
+    \dv{(\ln{\lambda})} u^n = nu^n, \qquad \dv{(\ln{\lambda})} \ln \lambda = 1
+\end{align*}
+we can find the curvature of the log likelihood function:
+\begin{align*}
+    \dv{(\ln \lambda)} L(\lambda) &= -\lambda + r = 0 \implies \hat \lambda = r \\
+    \dv[2]{(\ln \lambda)} L(\lambda) &= -\lambda = k
+\end{align*}
+For a normal distribution with width $\sigma$, the curvature is $k = -1/\sigma^2$. So the width is
+approximately
+\begin{align*}
+    \sigma \propto \frac{1}{\sqrt{-k}} = \frac{1}{\sqrt{\lambda}}
+\end{align*}
+and the 95\% confidence interval at the MLE is approximately
+\begin{align*}
+    \hat \lambda \pm 2\sigma = r \pm \frac{2}{\sqrt{\hat \lambda}}
+\end{align*}
+(c) Given the new Poisson distribution
+\begin{align*}
+    P(r | \lambda) = \exp(-(\lambda + b)) \frac{(\lambda + b)^r}{r!}
+\end{align*}
+the log likelihood function is
+\begin{align*}
+    L(\lambda) = -(\lambda + b) + r \ln(\lambda + b) - \ln r!
+\end{align*}
+and the maximum likelihood estimate for $\lambda$ is
+\begin{align*}
+    \frac{dL}{d\lambda} = -1 + \frac{r}{\lambda + b} = 0 \implies \hat \lambda = r - b
+\end{align*}
+
+\end{document}
