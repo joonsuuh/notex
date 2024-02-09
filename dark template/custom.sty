@@ -27,11 +27,12 @@
   citecolor    = draculared      % Colour of citations "Red"
 }
 \usepackage{graphicx}
-\graphicspath{{images/}} % set image path for graphicx
+\graphicspath{{./images/}} % set image path for graphicx
 \usepackage{caption}
 \usepackage{subcaption}
 
 \usepackage{subfiles} 
+\usepackage{pdfpages}
 
 % custom formatting
 \numberwithin{figure}{section}
@@ -51,11 +52,11 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
+    backgroundcolor=\color{draculabg},   
+    commentstyle=\color{draculacomment},
+    keywordstyle=\color{draculacyan},
+    numberstyle=\tiny\color{draculagreen},
+    stringstyle=\color{draculaorange},
     basicstyle=\ttfamily\footnotesize,
     breakatwhitespace=false,         
     breaklines=true,                 

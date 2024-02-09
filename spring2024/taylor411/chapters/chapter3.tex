@@ -1,0 +1,86 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{../images/}}
+
+\begin{document}
+% lecture 1/26/24
+\pagebreak
+\subsection*{Lecture 5: \hfill  1/26/24}
+\hrule \vspace{10px}
+\section{Center of Mass \& Conservation of Momentum}
+\hrule \vspace{10px}
+
+For $N$ particles, the center of mass is
+\begin{align*}
+    \vb{R} = \frac{1}{M} \sum_i m_i \vb{r}_i
+\end{align*}
+where $M = \sum_i m_i$ is the total mass of the system. This is similar to the `weighted' average!
+Taking the time derivative of $\vb{R}$ gives the total momentum
+\begin{align*}
+    \dot{\vb{R}} = \frac{1}{M} \sum_i m_i \dot{\vb{r}}_i = \frac{1}{M} \sum_i \vb{p}_i = \vb{P}
+\end{align*}
+From Newton's 3rd Law
+\begin{align*}
+    \sum \dot{\vb{p}}_i = \vb{F}_{ext}
+\end{align*}
+and from the second Law
+\begin{align*}
+    M \ddot{\vb{R}} = \vb{F}_{ext}
+\end{align*}
+in integral form 
+\begin{align*}
+    \vb{R} = \frac{1}{M} \int \vb{r} \dd{m}
+\end{align*}
+and using the mass density $\dd{m} = \rho \dd{V}$ we can write
+\begin{align*}
+    \vb{R} = \frac{1}{M} \int \vb{r} \rho \dd{V} = \frac{1}{M} \int \vb{r} \rho \dd{x} \dd{y} \dd{z}
+\end{align*}
+For a uniform solid semisphere lying on the $xy$ plane with radius $R=1$ and mass $M = 2\pi/3$, the
+CM is 
+\begin{align*}
+    z &= \frac{1}{M} \int \rho z \dd{m} \\
+    &= \frac{1}{M} \int z\pi r^2 \dd{z} \\
+    &= \frac{1}{M} \int_0^1 \pi z (1 - z^2) \dd{z} \\
+    &= \frac{\pi}{M} \qt[\frac{1}{2} - \frac{1}{4}] = \frac{3}{8}
+\end{align*}
+\subsubsection*{Angular Momentum}
+For the singular particle, the angular momentum is
+\begin{align*}
+    \vb{l} = \vb{r} \cross \vb{p}
+\end{align*}
+and the total angular momentum of an multi particle system is
+\begin{align*}
+    \vb{L} = \sum_i \vb*{\ell}_i = \sum_i \vb{r}_i \cross \vb{p}_i
+\end{align*}
+and the time derivative of $\vb{L}$ is
+\begin{align*}
+    \dot{\vb{L}} = \sum_i \dot{\vb{r}}_i \cross \vb{p}_i + \vb{r}_i \cross \dot{\vb{p}}_i
+    = \sum_i \vb{r}_i \cross \dot{\vb{p}}_i = \sum_i \vb{r}_i \cross \vb{F}_i = \sum_i \vb{\Gamma}_i
+\end{align*}
+where $\dot{\vb{r}}_i \cross \vb{p}_i = 0$ since $\dot{\vb{r}}_i$ is parallel to $\vb{p}_i$. Since
+$\vb{F}_i$ is the force on the $i$th particle,
+\begin{align*}
+    \vb{F}_i = \sum_{j\neq i} \vb{F}_{ij} + \vb{F}_i^{ext}
+\end{align*}
+Plugging into the time derivative of angular momentum
+\begin{align*}
+    \dot{\vb L} = \sum_i \sum_{j\neq i} \vb{r}_i \cross \vb{F}_{ij} + \sum_i \vb{F}_i^{ext}
+\end{align*}
+In terms of a matrix, the double sum skips the diagonal elements and thus we can pair the indices
+that are reflected on the diagonal
+\begin{align*}
+    \sum_i \sum_{j > i} (\vb r_i \cross \vb F_{ij} + \vb r_j \cross \vb F_{ji}) = \sum_i \sum_{j > i}
+    (\vb r_i - \vb r_j) \cross \vb F_{ij}
+\end{align*}
+where we use the associativity of the cross product and N3L $\vb{F}_{ij} = -\vb{F}_{ji}$. In
+addition the force must be central along the line connecting the two particles. Thus we get
+\begin{align*}
+    \dot{\vb L} = \sum_i \Gamma_i^{ext}
+\end{align*}
+The direction of the angular momentum is along the axis of rotation. 
+
+\paragraph{A car} To move a car forward, you exert a torque clockwise on the wheels, and from the 
+conservation of angular momentum the car will typically want to rotate counter clockwise which feels
+like the weight is being pushed back. The torque on the car will increase the friction on the rear
+wheel (increasing traction) and thus RWD are better at high accelerations.
+
+\end{document}

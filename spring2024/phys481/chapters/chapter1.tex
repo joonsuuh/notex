@@ -352,7 +352,7 @@ where we use the sum rule for the denominator
 but since it is a continuous variable, we use the integral instead of the sum. The math gives us the
 gamma function
 \begin{align*}
-    \textrm{normalization factor} = \frac{F_a! F_b!}{(F_a + F_b)!}
+    \textrm{normalization factor} = \frac{F_a! F_b!}{(F_a + F_b + 1)!}
 \end{align*}
 
 \paragraph{Examples} $s = aba$ vs $s = bbb$
@@ -413,7 +413,7 @@ of the two probabilities
 \end{align*}
 where we set no a priori model (prior) preference, so $P(H_1) = P(H_o) = 1/2$. So the ratio is
 \begin{align*}
-    \mathcal{R} &= \frac{P(s|F,H_o)}{P(s|F,H_1)}
+    \mathcal{R} &= \frac{P(s|F,H_1)}{P(s|F,H_o)}
         = \frac{\frac{F_a! F_b!}{(F_a + F_b + 1)!}}{\frac{1}{2^F}}
         = \frac{2^F F_a! F_b!}{(F + 1)!}
 \end{align*}
@@ -547,6 +547,184 @@ Thus the max likelihood estimate of $\mu, \sigma$ are
 If $\sigma$ is known, then $P(\mu)$ is a Gaussian we know that $\sigma/\sqrt{N}$ is the width of the
 likelihood (error bars)
 
+\newpage
+\section*{Lecture 2/6/24}
+\barh \vspace{10px}
+
+\paragraph{Last time:} We discussed familiar stats.
+\begin{itemize}
+    \item Bayes Calculus in terms of $P(\theta)$ (params). Predictions of $x$
+    \begin{align*}
+        P(x) = P(x| \theta) P(\theta) d\theta \qqtext{is computationally hard}
+    \end{align*}
+    \item MLE: instead of full enumeration, focus on 1 hypothesis and its max likelihood
+\end{itemize}
+\paragraph*{3.1} Fitting a single Gaussian
+\begin{align*}
+    \theta = \qt{\sigma, \mu} \quad P(D|\theta) = \prod_n^N \frac{1}{\sqrt{2\pi \sigma^2}}
+    \exp(-\frac{(x_n - \mu)^2}{2\sigma^2})
+\end{align*}
+we get the sufficient stats
+\begin{align*}
+    \mu_{ML} &= \hat x = \frac{\sum_i x_i}{N} \\
+    \sigma_{ML} &= \sqrt{\frac{\sum_i (x_i - \hat x)^2}{N}}
+\end{align*}
+Beyond the MLE: we can get the error bars on $\mu$ AKA ``Standard error of the mean'': $\sigma/\sqrt{N}$
 
 
+\subsubsection*{HW 2 HINTS}
+\begin{itemize}
+    \item MAX LIKELIHOOD WORKS (WELL) FOR PREDICTIONS/ ESTIMATES WHEN MOST OF THE PROB WEIGH IS NEAR
+    THE ML ESTIMATE
+
+    THIS IS NOT ALWAYS THE CASE! (most of the prob weight can be located not near the ML, Most
+    of the prob weight is around the center)
+
+    e.g. For two gaussian with 2 clusters, fitting the model with 1 gaussian may have a super narrow
+    but the MLE will tend to that narrow peak even though the data is not near that peak.
+
+    \item MOST LIKELY $\neq$ TYPICAL / REPRESENTATIVE (Mackay 22)
+\end{itemize}
+
+\paragraph{3.2} Least square fitting: e.g. linear fit
+\begin{itemize}
+    \item Dat: $\qt{y_n}$ for each $\qt{x_n}$
+    \item Model: $y_n = a x_n + b +$ Gaussian noise of width $\sigma$
+    \item Given $x_n, \sigma$, the params are $a, b$
+\end{itemize}
+
+\paragraph*{Model (more formally):}
+\begin{align*}
+    P(y_n | x_n, a, b, \sigma) = \prod_{n=1}^N \frac{1}{\sqrt{2\pi \sigma^2}}
+    \exp(-\frac{(y_n - (a x_n + b))^2}{2\sigma^2})
+\end{align*} 
+How do I infer $a, b$ using the MLE: Log likelihood!
+\begin{align*}
+    \ln P = C - \sum_{n=1}^N \frac{(y_n - (a x_n + b))^2}{2\sigma^2}
+\end{align*}
+where $C$ is a constant, and we must maximize over $a, b$. Maximing $\ln P$ over $a, b$ is
+equivalent to minimizing sum of squares of residuals (deviation of $y_n$ from the $a,b$). 
+
+\begin{itemize}
+    \item[!] (a) Not magic or ad hoc
+    \item[!] (b) This is For Gaussian errors \emph{only} (of same magnitude).
+    LSQ $\leftrightarrow$ Gaussian
+\end{itemize}
+\paragraph*{Takehome:} MLE is widely use \& often very sensible, but MLE $\neq$ not a silver bullet
+especially in high dimensions! (e.g. HW2) 
+
+\paragraph{Real world Example!} How sensitive are our eyes? 
+\begin{itemize}
+    \item Participants look at dim flashes in a dark room overa time $t$ with a height of the flash
+    $A$ (brightness)
+    \item How low can $A$ be for the flash to be detected?
+    \item Experiemnt $E_1$: Flashes arrive randomly at some average rate. e.g. a flash but no response
+    is a false negative while a false positive is a response but no flash (1 per 10 sec on average).
+    \item Experiment $E_2$: First a bright pulse $A_o$ (or beep of possible oncoming flash) that is easy to see, then $1$ sec later, the 
+    there is either a flash of heigh $A$ or no flash at all with prob $p$. 
+\end{itemize}
+In both cases, both make $A$ dimmer and measure for accuracy. We would expect that $E_2$ would allow
+us to detect dimmer flashes since we can expect. 
+
+\paragraph*{Ground truth} For $E_2$ when we know when to expect we let $f = 0$ as no flash
+and $f = 1$ a flash. For the perfect detector and noisy detector we have Figure \ref{fig:flash}. 
+There also exista abackground noise $b$ that is always present. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/sense.png}
+    \caption{From top to bottom we have a no light $f=0$, and two cases of $f = 1$ for a bright
+    light and dim light. The Pefect detector (left) sees and appropriates with the correct response
+    while the noisy (Gaussian) detector may have a incorrect response (especially for the dimmer
+    signal).}
+    \label{fig:flash}
+\end{figure}
+
+\paragraph*{Data} For a noise time trace $I(t)$ over 5 seconds, we have a probability of a flash
+$P(f) \approx  0.5$. 
+\begin{align*}
+    P(D | A, f, \eta, E_2) 
+\end{align*}
+with parameters $A; f, \eta$ and the simplest version: $A, \eta$ given an inference of $f$
+
+\paragraph*{$E_2$} The hypothesis space we have either `Flash' or `No Flash'. The expected model is
+a flash or no flash with Gaussian noise. We know the $A$
+and $\eta$. The parameters to infer are $f = 0, 1$ and the inference questions is $f=?$
+
+\paragraph*{$E_1$} The hypothesis: $H_1$ flash at $t$, $H_o$ no flash. The model has known: $A, \eta, b$.
+Parameters: $f=0, 1$ and $t$. Inference question: $H_1$ or $H_o$? Figure \ref{fig:flash2} shows the 
+expectation of the model. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{visionmodel.png}
+    \caption{The expectation of the models given experiment $E_1$ and $E_2$. The top is for 
+    an expected model of a flash and no flash for bottom. NOTE that there also
+    is Gaussian noise $\eta$ added to both scenerios.}
+    \label{fig:flash2}
+\end{figure}
+
+\paragraph*{Approach} we have $P(D|\text{param}) \to$ Bayes' Theorem
+\begin{itemize}
+    \item $E_2$: Bayes' Theorem $\to P(f|D, \eta, A, b)$. If $f=1$ we are more likely to say we
+    \emph{saw it} with an error probability: (average of the probability of making a mistake over
+    all data including False Positives and False Negatives)
+    \begin{align*}
+        \langle P(\textrm{wrong f}|D, \eta, A, b) \rangle \qqtext{data}
+    \end{align*}
+    the error rate is a complicated integral (an average is a sum/trace/integral!): 
+    \begin{align*}
+        \textrm{Error rate}(A, \eta, b) = \int \dd{\text{data}} P(f=1|D) P(D|f=0,A,\eta)
+    \end{align*}
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{vmodel1.png}
+    \caption{The error rate as a function of the brightness of the flash.}
+    \label{fig:flash3}
+\end{figure}
+
+\paragraph*{Simpler approach?} We define $I^*$ as a mean intensity over a window of interest. 
+For $E_2$ we can easily find the window of interst, but for $E_1$ we could discriminate the window
+by finding the brightest flash and comparing it some threshold. Here lies two questions: how does a
+computer that computes whether or not there is a flash versus a human that is looking for a flash
+after 5 seconds.
+
+\paragraph*{} If $\eta$ is known, $P(D|f,A,b)$ depends only on $I^*$ (sufficient statistics).
+
+\paragraph*{Version 2:} Data: $I^*$ is just \emph{one} number. The probability given no flash or 
+flash. Redefining noise $\eta$ as expected noise of measurement over window length. As shown in
+Figure . 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{vision_v2.png}
+    \caption{There is a shift in the no flash model in $E_1$}
+    \label{fig:flash4}
+\end{figure}
+
+In $E_2$ we have a Gaussian distribution of the flash and no flash models, but in the $E_1$
+the flash model is the same as we take the same window length of interest, but for the no flash model
+the model moves to the right as we have a likelihood of measuring a window length with MORE noise. 
+The error probability for $E_2$ is: Looking at the midpoint of the two models, we can find the error
+as a sum of tail distribution (finding the weight of the outliers).
+\begin{align*}
+    \text{error} = \int_{A/2}^\infty \frac{1}{\sqrt{2\pi\eta^2} \exp(-\frac{x^2}{2\eta^2})} 
+\end{align*}
+the error is shown in Figure .
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{v_error.png}
+    \caption{The error rate as a function of amplitude $A$.}
+    \label{fig:flash5}
+\end{figure}
+If human interaction is close to Bayesian $\to$ specific \emph{quant}
+prediction for perfomance, effect of having the cue, rate of $P$.
+
+\paragraph*{Takehomes}
+\begin{itemize}
+    \item What is data? (non-trivial question)
+    \item What is hyp? (not unique)
+    \item Most straightforward method can be impossible
+    \item Under the hood: Still Bayesian calculus.
+\end{itemize}
 \end{document}

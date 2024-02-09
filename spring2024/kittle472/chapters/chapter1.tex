@@ -464,7 +464,7 @@ of ions with alternating charges as.
 \end{align*}
 Remember these numbers
 \begin{itemize}
-    \item Bohr radius $a_o = 0.529 \unit{\angstrom}$
+    \item Bohr radius $a_o = 0.529 {A}$
     \item fine structure constant $\alpha = \frac{e^2}{\hbar c} = \frac{1}{137}$
 \end{itemize}
 For the covalent bond, we have to use QM because the electron distribution is homogenous like
@@ -635,4 +635,250 @@ incoming and outgoing light shift by the energy of the phonon.
 
 \paragraph{3D Case:} $N$ atoms per unit cell. We have $3N$ branches of phonons. 3 acoustic and
 $3N - 3$ optical phonon.
+
+\newpage
+\section{Lecture 2/6/24}
+\hrule \vspace{10px}
+
+\subsection*{Chapter 4: cont'd}
+
+\paragraph*{Raman Scattering \& Infrared} (THz) $\sim$ 100 meV.
+For the 3D case, we have 3 acoustic modes and $3N - 3$ optical modes. FOr the acoustic mode.
+\begin{align*}
+    k \to 0, \quad \omega \to 0
+\end{align*}
+and for the optical modes
+\begin{align*}
+    k \to 0, \quad \omega \to \infty
+\end{align*}
+
+\subsection*{Chapter 5: Phonon properties} 
+
+The heat capacity is in general
+\begin{align*}
+    C_v = \qt(\pdv{U}{T})_v
+\end{align*}
+The proportionaly of heat capacity in different materials
+\begin{itemize}
+    \item Metal: $C_v \propto I + Q T^3$
+    \item Insulator: $C_v \propto T^3$
+\end{itemize}
+
+The Energy of an $N$ particle system is $E = N k_B T$. and the heat capacity is
+\begin{align*}
+    C_v = \pdv{E}{T} = \omega k_B
+\end{align*}
+The total energy is
+\begin{align*}
+    U_{tot} = \sum{k, p} \hbar \omega_{k,p} \langle n_{k,p} \rangle
+\end{align*}
+where $\langle n_{k,p} \rangle$ is the Bose-Einstein distribution
+\begin{align*}
+    \langle n_\omega \rangle = \frac{1}{\exp(\frac{\hbar \omega}{k_B T}) - 1}
+\end{align*}
+where there is no chemical potential. At low temperatures the constant goes to
+\begin{align*}
+    \exp(\frac{\hbar \omega}{k_B T})
+\end{align*}
+or a boltzmann distribution.
+\begin{align*}
+    U_{tot} \sum_{k,p} \frac{\hbar \omega_{k,p}}{\exp(\frac{\hbar \omega_{k,p}}{k_B T}) - 1}
+\end{align*}
+or into an integral
+\begin{align*}
+    \int \dd{k} f(\omega)  \to \int \dd{\omega} f(\omega) \frac{1}{\dv{\omega}{k}}
+\end{align*}
+We can compute this numerically from the phonon dispersion relation. For the Heat capacity of a
+solid, this $T^3$ term is in the order of 3 meV. We only need to take the acoustic modes into 
+account for finding $\dv{\omega}{k}$ which approximately a constant $C$, so
+\begin{align*}
+    \int_0^{a} \dd{\omega} \frac{\hbar\omega^2}{\exp(\frac{\hbar \omega}{k_B T}) - 1}
+\end{align*}
+where we can simplify using the substitution 
+\begin{align*}
+    x = \frac{\hbar \omega }{k_B T}
+\end{align*}
+to change the integral from $k$ space to $\omega$ space and the integral becomes
+\begin{align*}
+    T^2 \int_0^\infty \dd{x} \frac{x}{\exp(x) - 1}
+\end{align*}
+where the $T^2$ term comes from substituting for $\omega$ twice. So the total energy is
+\begin{align*}
+    U_{tot} = \sum_{p} \int \dd{\omega} D_p(\omega) \frac{\hbar \omega}{\exp(\frac{\hbar \omega}{k_B T}) - 1}
+\end{align*}
+where $D_p(\omega)$ is the density of states. Using the substition for $x$ we get
+\begin{align*}
+    U_{tot} = \sum_p \int \omega \dd{\omega} D_p(\omega) \frac{x}{e^x - 1}
+\end{align*}
+and the heat capacity is
+\begin{align*}
+    C_v = \pdv{U_{tot}}{T}
+    = k_B \sum_p \int \dd{\omega} D_p(\omega) \frac{x^2 e^x}{(e^x - 1)^2}
+\end{align*}
+The density of states (DOS) is given by
+\begin{align*}
+    D(\omega) = \dv{N}{\omega}
+\end{align*}
+where $N$ is the number of states. For a 3D phonon gas, the total allowed states is
+\begin{align*}
+    N = \frac{\frac{4}{3} \pi k^3}{\qt(\frac{2\pi}{L})^3}
+\end{align*}
+Which is equivalent to the volume of a sphere for each unit volume. So the DOS is 
+\begin{align*}
+    D(\omega) = \dv{N}{\omega} = \dv{N}{k} \dv{k}{\omega} = \frac{V}{2\pi^2} \frac{k^2}{1}
+\end{align*}
+and the heat capacity is
+\begin{align*}
+    C_v \propto k_B \sum_p \in \dd{\omega} \frac{k^2V}{2\pi^2} \frac{1}{\dv{\omega}{k}} \frac{x^2 e^x}{(e^x - 1)^2}
+\end{align*}
+and since $\omega = v k$ and $\dv{\omega}{k} = v$ we get
+\begin{align*}
+    C_v \propto \sum_p \int_0^{\omega_D} \dd{\omega} \frac{V}{1} \frac{\omega^2}{v^3} \frac{x^2 e^x}{(e^x - 1)^2}
+\end{align*}
+so we get the number of states
+\begin{align*}
+    N = \int_0^{\omega_D} \dd{\omega} D(\omega)
+\end{align*}
+where
+\begin{align*}
+    \omega_D^2 = \frac{6\pi^2 N}{V}
+\end{align*}
+the total energy is
+\begin{align*}
+    U_{tot} = \int_0^{\omega_D} \dd{\omega} \frac{V\omega^2}{2 T^2 v^3} \frac{\hbar \omega}{\exp(\frac{\hbar \omega}{k_B T}) - 1}
+\end{align*}
+and substituting for $x$ we get
+\begin{align*}
+    \propto T^4 \int_0^{x_D} \dd{x} x^2 \frac{x}{e^x - 1}
+\end{align*}
+where we have four $x$ terms that are substituted thus the $T^4$ term. We get Debye's law for the
+heat capacity
+\begin{align*}
+    U_{tot} \propto T^4 f(x_D) \qquad C_v = \pdv{U}{T} \propto T^3
+\end{align*}
+for low temperature $T \to 0$, $x_D \to \infty$ so the $f(x_D) \to 1$ which will give us Debye's
+law. Some constants: $\omega_D$ is the Debye frequency and the Debye temperature is
+\begin{align*}
+    \theta_D = \frac{\hbar \omega_D}{k_B}
+\end{align*}
+
+\paragraph*{Einstein Model}
+\begin{align*}
+  D(\omega) = N \delta(\omega - \omega_0)
+\end{align*}
+so we get a simple expression for the total energy
+\begin{align*}
+    U_{tot} \propto \frac{\hbar \omega_o}{\exp(\frac{\hbar \omega_o}{k_B T}) - 1}
+\end{align*}
+and the heat capacity is
+\begin{align*}
+    C_v = \pdv{U}{T}\eval_{T \to 0}
+    \propto \frac{1}{T} \frac{\exp(\frac{\hbar \omega_o}{k_B T})}{\qt(\exp(\frac{\hbar \omega_o}{k_B T}) - 1)^2} 
+    \to T\exp(\frac{\hbar\omega}{k_B T})
+\end{align*}
+For the einstein model we get a wrong number because we assumed the density of states is a delta functions
+,but it reality it is a constant.
+
+\newpage
+\section{Lecture 2/8/24}
+\hrule \vspace{10px}
+
+\subsection*{Chapter 6: Free Electron Fremi Gas} Read
+\href{https://en.wikipedia.org/wiki/Slater_determinant}{Slater Determinant}:
+We typically use an approximation of the wavefunction for $N$ fermions as
+\begin{align*}
+    E\psi_N = \qt[\frac{-\hbar}{2m} \laplacian + V(\vb{r})] \psi_N
+\end{align*}
+found using the \href{https://en.wikipedia.org/wiki/Hartree%E2%80%93Fock_method}{Hartree-Fock method}
+where we use the Slater determinant to find the energy of the system. For a system of $N$ fermions
+we have a periodic potential and we can approximate this $N$ fermions to one mean-field. Also 
+related: \href{https://en.wikipedia.org/wiki/Schwinger%E2%80%93Dyson_equation}{Dyson Equation}. When
+we treat the group of particles as one \emph{mean-field} we call them \emph{quasiparticles}. The 
+quasiparticle must obey the charge conservation e.g. a bare electron drags a positive cloud which
+also drags nearby electrons as a quasi electron and the total charge of the dragged cloud is still
+-1. We desire small mass quasi particles for semiconductors due to a faster acceleration. For the
+free-electron case we assume that the electrons do not interact with each other thus, we can 
+quanitize the single electron states.
+
+\paragraph*{Energy} The quantized energies are related to the quantized standing waves of the 
+particle in a box. The Hamiltonian is
+\begin{align*}
+    -\frac{\hbar^2}{2m} \dv[2]{x} \psi_n = E_n \psi_n
+\end{align*}
+which has a sinosoidal solution of the wavefunction
+\begin{align*}
+    \psi_n = A \sin(\frac{2\pi}{\lambda_n} x) 
+\end{align*}
+and the boundary condition determines the wavelength
+\begin{align*}
+    n \lambda_n = 2L
+\end{align*}
+and thus the energy of a state is
+\begin{align*}
+    E_n = \frac{\hbar^2 k^2}{2m} = \frac{\hbar^2}{2m} \qt(\frac{n\pi}{L})^2
+\end{align*}
+
+\paragraph*{Fermi (level) energy} is pretty much the highest occupied state (energy). For the 1D 
+case the wave number can only be satisfied at the states for the standing waves:
+\begin{align*}
+    k_0 = 0, \quad k_2 = \pm \frac{2\pi}{L}, \quad k_4 = \pm \frac{4\pi}{L}, \quad \dots
+\end{align*}
+the fermi level at $N$ is
+\begin{align*}
+    k = \frac{N\pi}{2L} \to \epsilon_f = \frac{\hbar^2}{2m} \qt(\frac{N\pi}{2L})^2
+\end{align*}
+
+For the 3D case, we have a cube with a small box of volume $(\qt\frac{2\pi}{L}^3)$ and for the
+large number $10^{23}$ we get a rough estimate of a spherical shell. The fermi energy is
+\begin{align*}
+    \frac{\frac{4}{3} \pi k_f^3}{\qt(\frac{2\pi}{L})^3} = \frac{N}{2}
+\end{align*}
+where the $N/2$ comes from the denegeracy of the spin states. This is equivalent to the ratio of the
+volume of the sphere to the volume element. The fermi momentum is
+\begin{align*}
+    k_f = \qt(\frac{3}{8} \sqrt{(2\pi)^3}{L^3} \frac{1}{\pi})^{1/3}
+\end{align*}
+or 
+\begin{align*}
+    K_f = \qt(\frac{3\pi^2N}{V})^{1/3}
+\end{align*}
+and the fermi energy is
+\begin{align*}
+    \epsilon_f = \frac{\hbar^2}{2m} k_f^2 
+    = \frac{\hbar^2}{2m} \qt(\frac{3\pi^2N}{V})^{2/3}
+\end{align*}
+and the electron velocity is
+\begin{align*}
+    v_f = \frac{\hbar k_f}{m} = \frac{\hbar}{m} \qt(\frac{3\pi^2N}{V})^{1/3}
+\end{align*}
+much like the phonon example, we can find the density of states for the free electron gas:
+\begin{align*}
+    D(\epsilon) = \dv{N}{\epsilon}
+\end{align*}
+we can solve the fermi energy equation as a function of energy
+\begin{align*}
+    N = \qt(\frac{2\epsilon m}{\hbar^2})^{3/2} \frac{V}{3\pi^2}
+\end{align*}
+we also have a relation between $N$ and $k_f$ so we can write the volume in $k$ space:
+\begin{align*}
+    V_k = \frac{4}{3} \pi k^3
+\end{align*}
+and since the energy is quantized as
+\begin{align*}
+    E = \frac{\hbar^2 k^2}{2m} \to k = \frac{\sqrt{2mE}}{\hbar}
+\end{align*}
+thus
+\begin{align*}
+    V_k = \frac{4}{3} \pi \frac{(2mE)^{3/2}}{\hbar^3}
+\end{align*}
+and since the number of states is
+\begin{align*}
+    N = \frac{V_k}{\qt(\frac{2\pi}{L})^3} \cdot 2 \\
+    = \frac{V}{3\pi^2} \qt(\frac{2mE}{\hbar^2})^{3/2}
+\end{align*}
+thus the density of states is
+\begin{align*}
+    D(\epsilon) = \dv{N}{\epsilon} = \frac{V}{2\pi^2} \qt(\frac{2m}{\hbar^2})^{3/2} \sqrt{E}
+\end{align*}
+so the DOS is proportional to $\sqrt{E}$. Also it is proportional to the mass!
 \end{document}

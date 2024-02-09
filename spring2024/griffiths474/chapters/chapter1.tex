@@ -1,7 +1,7 @@
 \documentclass[../main.tex]{subfiles}
 
-\graphicspath{../images/}
-
+\graphicspath{{../images/}}
+\usepackage{ytableau}
 \begin{document}
 
 \section{Lecture (1/17/24)}
@@ -1053,4 +1053,426 @@ are
     \lambda_5 = \mqty(0 & 0 & 0 \\ 0 & 0 & -i \\ 0 & i & 0) \qquad
     \lambda_6 = \mqty(1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1)
 \end{align*}
+
+\newpage
+\subsection*{Lecture 6: \hfill  2/3/24}
+\hrule \vspace{10px}
+\section*{Symmetries??}
+
+\paragraph{Quiz 6 Review}
+\begin{itemize}
+    \item [(1)] With respect to the QCD scale ($\approx 200$ MeV) the masses of the quarks are
+    divided into light and heavy quarks.
+    \item [(2)] (2) The effective mass mass is much larger than the mass of the light quark.
+    \item [(3)] $SU(2)$ is a subgroup of $SU(3)$.
+\end{itemize}
+
+For the $SU(3)$: a 3x3 unitary matrix with determinant 1. There are $n^2 - 1 = 8$ generators where
+\begin{align*}
+    U = e^{iH}
+\end{align*}
+where $H$ is the Hermitian matrix:
+\begin{align*}
+    U^\dagger U &= 1 \qquad H^\dagger = H \\
+    \det U &= 1 \qquad \trace H = 0 \\
+    \det M = e^{\trace \ln M}
+\end{align*}
+or Hermitian matrices are traceless. 
+\paragraph*{Gell-Mann Matrices}  Starting with the Pauli matrices but in 3x3 form
+\begin{align*}
+    \lambda_1 &= \mqty(0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0) \qquad
+    \lambda_2 = \mqty(0 & -i & 0 \\ i & 0 & 0 \\ 0 & 0 & 0) \qquad
+    \lambda_3 = \mqty(1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 0)
+\end{align*}
+and moving the sectors of the matrices we also get
+\begin{align*}
+    \lambda_4 &= \mqty(0 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0) \qquad
+    \lambda_5 = \mqty(0 & 0 & -i \\ 0 & 0 & 0 \\ i & 0 & 0) \qquad
+    \cancel{\lambda_9 = \mqty(1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1)}
+\end{align*}
+and
+\begin{align*}
+    \lambda_6 &= \mqty(0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0) \qquad
+    \lambda_7 =  \mqty(1 & 0 & 0 \\ 0 & 0 & -i \\ 0 & i & 0) \qquad
+    \lambda_8 =  \mqty(1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -2) \frac{1}{\sqrt{3}}
+\end{align*}
+but $\lambda_9$ is not linearly independent since it can be written as a linear combination of
+$\lambda_3 + \lambda_8$. 
+\paragraph*{Commutation Relation} For $SU(2)$ we know
+\begin{align*}
+    [J_i, J_j] = i \epsilon_{ijk} J_k
+\end{align*}
+and for $SU(3)$ we have
+\begin{align*}
+    [J_i, J_j] = i f_{ijk} J_k
+\end{align*}
+where $f_{ijk}$ are the structure constants.
+
+\paragraph*{Subgroup} We know that $SU(2) \leq SU(3)$ (where $\leq$ means `is a subgroup of'). So
+$\qt{\lambda_1, \lambda_2, \lambda_3}$ forms an $SU(2)$ sub-algebra. Also
+\begin{align*}
+    \qt{\lambda_4, \lambda_5, a \lambda_3 + b \lambda_8} \\
+    \qt{\lambda_6, \lambda_7, a \lambda_3 + b \lambda_8}
+\end{align*}
+are also $SU(2)$ sub-algebras. NOTE that
+\begin{align*}
+    SU(3) \neq SU(2) \otimes SU(2) \otimes SU(2)
+\end{align*}
+\paragraph*{Isospin and Strangeness}
+\begin{align*}
+    \lambda_3/2 = \mqty(1/2 & 0 & 0 \\ 0 & -1/2 & 0 \\ 0 & 0 & 0) \qquad I = 1/2
+\end{align*}
+and the isospins are
+\begin{align*}
+    \mqty(u \\ d) \quad I_3 = 1/2 \qor -1/2
+\end{align*}
+and the strangeness is
+\begin{align*}
+    S: I = 0
+\end{align*}
+For $\lambda_8$ we define a hypercharge $y$ such that
+\begin{align*}
+    \lambda_8 /2 = \mqty(1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -2) \frac{1}{\sqrt{3}} \frac{2}{\sqrt{3}}
+\end{align*}
+and
+\begin{align*}
+    \mqty(u \\ d) \quad y = 1/3
+\end{align*}
+and for the strangeness $S: y = -2/3$. This is because the Gell-Mann-Nishijima formula
+\begin{align*}
+    Q = I_3 + \frac{y}{2} \\
+    2/3 = 1/2 + 1/2 (1/3) \qquad -1/3 = 0 - 1/2 (2/3)
+\end{align*}
+For the triplet
+\begin{align*}
+    \mqty(u \\ d \\ s) \quad I = 1/2, \quad I_3 = 1/2, -1/2, 0
+\end{align*}
+and the anti-triplet
+\begin{align*}
+    \mqty(\bar{u} \\ \bar{d} \\ \bar{s}) \quad I = 1/2, \quad I_3 = 1/2, -1/2, 0
+\end{align*}
+Mesons $(q, \bar q)$ in $SU(3)$ is
+\begin{align*}
+    3 \otimes \bar 3 = 8 \oplus 1
+\end{align*}
+where the 8 is the octet and the 1 is the singlet. We can do this using the Young Tableaux. 
+For $SU(3)$ we have a 3 fundamental and $\bar 3$ anti-fundamental.
+% young tableux using ytableux package
+\begin{align*}
+    \begin{ytableau}
+        N & \scriptstyle N+1  \\
+        \scriptstyle N - 1 & N \\
+        \scriptstyle N-2
+    \end{ytableau}
+\end{align*}
+Using Hook Law:
+\begin{align*}
+    \text{dim} = \frac{\Pi_i N_i}{\Pi_i h_i}
+\end{align*}
+\begin{align*}
+    \frac{N(N+1)(N-1)N (N-2)}{1 \cdot 3 \cdot 4 \cdot 1 \cdot 2}
+\end{align*}
+so
+\begin{align*}
+    3 \otimes \bar 3 = \begin{ytableau}
+        3 
+    \end{ytableau} \otimes \begin{ytableau}
+        3 \\
+        2
+    \end{ytableau} =
+\end{align*}
+or
+\begin{align*}
+    \begin{ytableau}
+        a
+    \end{ytableau}
+    \otimes
+    \begin{ytableau}
+        b \\
+        c
+    \end{ytableau}
+    = 
+    \begin{ytableau}
+        3 & 4 \\
+        2
+    \end{ytableau}
+    \oplus
+    \begin{ytableau}
+        3 \\
+        2 \\
+        1
+    \end{ytableau}
+    = \frac{3 \cdot 4 \cdot 2}{1 \cdot 3 \cdot 1} \oplus \frac{3 \cdot 2 \cdot 1}{1 \cdot 2 \cdot 3}
+\end{align*}
+
+Goin from $SU(3)$ to $SU(2)$ we have
+\begin{align*}
+    \mqty(u \\ d \\ s) \to \mqty(u \\ d) + s
+\end{align*}
+or
+\begin{align*}
+    3 \to 2_1 + 1_{-2}
+\end{align*}
+where the hypercharges are subscripts. So the octet is
+\begin{align*}
+    3 \otimes \bar 3 &= (2_1 + 1_{-2}) \otimes (2_{-1} + 1_2) \\
+    &= (2_1 \otimes 2_{-1}) \oplus (2_1 \otimes 1_2)
+        \oplus (1_{-2} \otimes 2_{-1}) \oplus (1_{-2} \otimes 1_2) \\
+    &= (3_0 \oplus 1_0) \oplus 2_3 \oplus 2_{-3} \oplus 1_0 \\
+    &= 8 \oplus 1
+\end{align*}
+This is called the eightfold way.
+\paragraph*{Eightfold way}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{mesons.png}
+    \caption{The eightfold way}
+    \label{fig:eightfold_way}
+\end{figure}
+Where $\eta$ is a $SU(2)$ singlet but a $SU(3)$ octet. and $\eta'$ is a $SU(3)$ singlet.
+
+If $SU(3)_f$ was a good symmetry, expet all these 8 mesons to have similar mass. All of these obey
+up to a factor of 2.
+
+\paragraph*{Baryons} (222) or $3 \otimes 3 \otimes 3 = 10 \oplus 8 \oplus 8 \oplus 1$. The baryons
+are antisymmetric as each quark is a fermion. Using the Young Tablauex
+\begin{align*}
+    3\otimes 3 = \begin{ytableau}
+        a
+    \end{ytableau} \otimes
+    \begin{ytableau}
+        b
+    \end{ytableau}
+    = 
+    \begin{ytableau}
+        3 & 4
+    \end{ytableau}
+    \oplus
+    \begin{ytableau}
+        3 \\
+        2
+    \end{ytableau}
+    = \frac{3 \cdot 4}{1 \cdot 3} \oplus \frac{3 \cdot 2}{1 \cdot 2}
+    = 6
+\end{align*}
+so
+\begin{align*}
+    6 \otimes 3 = 
+    \begin{ytableau}
+        a & b
+    \end{ytableau}
+    \otimes
+    \begin{ytableau}
+        c
+    \end{ytableau}
+    =
+    \begin{ytableau}
+        3 & 4 & 5
+    \end{ytableau}
+    \oplus
+    \begin{ytableau}
+        3 & 4 \\
+        2
+    \end{ytableau}
+    =  \frac{3 \cdot 4 \cdot 5}{3 \cdot 2 \cdot 1} \oplus \frac{3 \cdot 4 \cdot 2}{1 \cdot 3 \cdot 1}
+    = 10 \oplus 8
+\end{align*}
+This is a 10-plet as shown in the figure.
+\begin{figure}[ht ]
+    \centering
+    \includegraphics[width=0.5\textwidth]{baryons.png}
+    \caption{The 10-plet of baryons}
+    \label{fig:baryons}
+\end{figure} 
+
+\newpage
+\subsection*{Lecture 7: \hfill  2/7/24}
+\hrule \vspace{10px}
+
+\paragraph*{Parity} (Discrete Symmetry) For a simple reflection on a $z$ axis
+the point $A=(x, y, z)$ goes to $A' = (x, -y, z)$. But for parity operation we go to
+$P(A) = (-x, -y, -z)$ or in the general form
+\begin{align*}
+    P(\vb{a}) = -\vb{a}
+\end{align*}
+also known as inversion. Taking the parity again we get
+\begin{align*}
+    P^2(\vb{a}) = P(-\vb{a}) = \vb{a}
+\end{align*}
+Thus it has a discrete $Z_2$ symmetry.
+
+\paragraph*{Pseudo-vector} (axial vector) for a pseudo vector $\vb{c}$
+\begin{align*}
+    P(\vb{c}) = \vb{c}
+\end{align*}
+where cross products (of two vectors) are pseudo-vectors. For example
+\begin{align*}
+    \vb{c} = \vb{a} \cross \vb{b}
+\end{align*}
+and
+\begin{align*}
+    P(\vb{c}) = P(\vb{a} \cross \vb{b}) = (-\vb{a}) \cross (-\vb{b}) = \vb{c}
+\end{align*}
+e.g. of pseudo-vectors:
+\begin{itemize}
+    \item Torque: $\vb{\tau} = \vb{r} \cross \vb{F}$
+    \item Angular momentum: $\vb{L} = \vb{r} \cross \vb{p}$
+    \item Magnetic field: $\vb{B} = \vb{E} \cross \vb{v}$
+\end{itemize}
+But for the lorentz force 
+\begin{align*}
+    \vb{F} = q \qt(\vb{E} + \frac{1}{c} \vb{v} \cross \vb{B})
+\end{align*}
+the cross product of a vector and a pseudo-vector is a vector, so the lorentz force is a vector. 
+Also from the general definition
+\begin{align*}
+    P(\vb{F}) = \frac{q}{c} P(\vb{v}) \cross P(\vb{B}) = \frac{q}{c} (-\vb{v}) \cross (-\vb{B}) = - \vb{F}
+\end{align*}
+
+The weak interaction violates parity\dots
+
+\paragraph*{Scalar} For a scalar $s = \vb{a} \cdot \vb{b}$ is invariant under parity:
+\begin{align*}
+    P(s) = P(\vb{a} \cdot \vb{b}) = (-\vb{a}) \cdot (-\vb{b}) = \vb{a} \cdot \vb{b} = s
+\end{align*} 
+for a pseudo-scalar $p$ (a dot product of a vector and pseudo-vector):
+\begin{align*}
+    P(p) = P(\vb{a} \cdot (\vb{b} \cross \vb{c})) = P(\vb{a}) P(\vb{b} \cross \vb{c})
+    = -\vb{a} (\vb{b} \cross \vb{c}) = -p
+\end{align*}
+So the partities of the four types of quantities:
+\begin{itemize}
+    \item Scalar: $P(s) = s$
+    \item Pseudo-scalar: $P(p) = -p$
+    \item Vector: $P(\vb{v}) = -\vb{v}$
+    \item Pseudo-vector: $P(\vb{c}) = \vb{c}$
+\end{itemize}
+
+\paragraph*{Intrinsic Parity} The parity of a fermion is
+\begin{align*}
+    P(\text{fermion}) = - P(\text{anti-fermion})
+\end{align*}
+for bosons
+\begin{align*}
+    P(\text{boson}) = P(\text{anti-boson})
+\end{align*}
+For composite particles i.e. mesons $q\bar q$ and baryons $qqq$:
+\begin{align*}
+    P(\text{meson}) = -1 \qor (+1)(-1) = -1
+\end{align*}
+Since mesons are two pairs (particle, antiparticle) the parity is always negative. For baryons we 
+can only have a positive parity:
+\begin{align*}
+    P(\text{baryon}) = (+1)^3 = +1
+\end{align*}
+For spherical harmonics $Y_l^m(\theta,\phi)$
+under parity of each term:
+\begin{align*}
+    \vb{r} \to -\vb{r} \qquad \theta \to - \theta \qquad \phi \to \pi + \phi
+\end{align*}
+so
+\begin{align*}
+    P(Y_l^m(\theta, \phi)) = (-1)^l Y_l^m(\theta, \phi)
+\end{align*}
+and for excited states
+\begin{align*}
+    P = (-1)^l \times P(\text{ground state})
+\end{align*}
+where $l$ is the orbital angular momentum.
+
+\paragraph*{Parity Violation} THe $\theta-\tau$ puzzle: given two particles
+\begin{align*}
+    \theta^+ \to \pi^+ + \pi^0 \qquad P = +1 \\
+    \tau^+ \to \pi^+ + \pi^0 + \pi^0 \qquad P = -1
+\end{align*}
+the same two particles are found to be the same particle $K^+$ having the same mass and lifetime, 
+but this violates the parity. To solve this puzzle came from the Colmbia University known as 
+Wu's experiment \href{https://en.wikipedia.org/wiki/Wu_experiment}{(wikipedia)}:
+\begin{align*}
+    _{27}^{60} \text{Co} \to _{28}^{60} \text{Ni} + e^- + \bar \nu_e
+\end{align*}
+The Cobalt has a spin state of $J = 5$, the Nickel has spin $J = 4$ and the spin states of the 
+electron-antielectron pair is $J = 1$. The electron is always emitted in the direction opposite of
+the Cobalt spin, and when the magnetic field was inverted, the electrons were emitted in the
+opposite direction of nuclear spin. This breaks parity, because in the mirror world, the spin of the
+electron would be in the same direction as the nuclear spin.
+
+\paragraph*{Helicity} From spin $\vb s$ and momentum $\vb p$ we can define the helicity
+\begin{align*}
+    \lambda = \frac{\vb{s} \cdot \vb{p}}{\abs{\vb{s}} \abs{\vb p}} \\
+    =\begin{cases}
+        +1 & \text{right-handed} \\
+        -1 & \text{left-handed}
+    \end{cases}
+\end{align*}
+But this depends on the reference frame. e.g. for a case where $\vb p$ is faster and in the same
+direction of $\vb s$ the helicity is $\lambda = +1$, but in the reference frame faster that $\vb p$
+the helicity is $\lambda = -1$.
+
+\paragraph*{Massless Particles} For massless particles the helicity is the same in all reference
+frames because the speed is always $c$ and thus the helicity is well-defined. For an electron, we
+can get a frame where the momentum is different for changes in reference frames.
+
+\paragraph*{Back to Wu's experiment} The spin of the electron and neutrino are in the same direction 
+as the spin of the Cobalt and Ni. 
+
+\paragraph*{Note:}In the SM 
+\begin{itemize}
+    \item neutrinos are always left-handed; $\lambda = -1$
+    \item anti-neutrinos are always right-handed; $\lambda = +1$
+\end{itemize}
+
+Thus the electron momentum is in the opposite direction of spin as shown in Figure \ref{fig:helicity}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.2\linewidth]{helicity.png}
+    \caption{Wu's experiment}
+    \label{fig:helicity}
+\end{figure}
+
+\paragraph*{Another Example} Pions and muons
+\begin{align*}
+    \pi^+ \to \mu^+ + \nu_\mu \qor  \to e^+ + \nu_e
+\end{align*}
+From the comparison of masses
+\begin{align*}
+    m_\pi = \qty{140}{\MeV} \qquad m_\mu = \qty{105}{\MeV} \qquad m_e = \qty{0.511}{\MeV}
+\end{align*}
+we would think the small mass reaction would be more likely due to the higher velocity, but this
+is not the case. For the pion the spin is 0, so the combination of spin will be in opposite directions.
+From Figure \ref{fig:pion_eg} we can see that the anti-leption(anti particle) must be left-handed
+and thus the lepton must also be left-handed. This is a parity violation.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{pion_eg.png}
+    \caption{Pion decay}
+    \label{fig:pion_eg}
+\end{figure}
+Thus the less favored reaction $u^+ + \nu_\mu$ is seen 99.7\% of the time.
+\paragraph*{} Anti-charged lepton has to be left-handed in this process of appoximate
+\begin{align*}
+    \Gamma \propto m_\ell^\beta
+\end{align*}
+where $\Gamma$ is the decay rate.
+
+\paragraph*{Muon decay}
+\begin{align*}
+    \mu^- \to e^- + \bar \nu_e + \nu_\mu
+\end{align*}
+This 3 body decay for a polarized muon (choosing the handedness of the muon) we have the following
+possiblities:
+\begin{enumerate}
+    \item LH
+    \item RH
+\end{enumerate}
+For maximum energy to the electron, the electron goes in one direction while the neutrinos go in the
+opposite direction as shown in Figure \ref{fig:muon_decay}. From this the RH case is less favored
+than the LH case because of the helicity of the neutrinos.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{muon_decay.png}
+    \caption{Muon decay}
+    \label{fig:muon_decay}
+\end{figure}
 \end{document}

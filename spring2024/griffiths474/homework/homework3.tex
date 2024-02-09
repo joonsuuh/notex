@@ -1,0 +1,113 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+% shortcut command for fraction 3/2
+\newcommand{\thf}{\frac{3}{2}}
+\newcommand{\ohf}{\frac{1}{2}}
+\begin{document}
+
+\setcounter{section}{1}
+\begin{center}
+    \addcontentsline{toc}{section}{Homework 1}
+    \section*{Homework 2}
+    \subsection*{Due 2/7}
+\end{center}
+\hrule \vspace{10px}
+
+\section*{1} 
+(a) An electron has spin $s = \frac{1}{2}$ so
+\begin{align*}
+    j = \frac{3}{2}, \ohf
+\end{align*}
+for the 6 possible states of $\ket {j, j_z}$, the $1 \otimes \ohf$ C-B coefficients are
+\begin{align*}
+    \ket{\thf, \thf} &=  1 \ket {1,\ohf} = \ket{m_l, m_s} \\
+    \ket{\thf, \ohf} &= \frac{1}{\sqrt{3}} \ket {1,-\ohf} + \sqrt{\frac{2}{3}} \ket {0,\ohf} \\
+    \ket{\thf, -\ohf} &= \sqrt{\frac{2}{3}} \ket {0,-\ohf} - \frac{1}{\sqrt{3}} \ket {-1,\ohf} \\
+    \ket{\thf, -\thf} &= 1 \ket {-1,-\ohf}
+\end{align*}
+and
+\begin{align*}
+    \ket{\ohf, \ohf} &= \sqrt{\frac{2}{3}} \ket {1,-\ohf} - \frac{1}{\sqrt{3}} \ket {0,\ohf} \\
+    \ket{\ohf, -\ohf} &= \frac{1}{\sqrt{3}} \ket {0,-\ohf} + \sqrt{\frac{2}{3}} \ket {-1,\ohf}
+\end{align*}
+(b) We can see for the $\ket{j=\thf, j_z = \ohf}$ state, the probability of measuring a spin
+$s_z = \ohf$ is proportional to the coefficient squared
+\begin{align*}
+    P = \frac{2}{3}
+\end{align*}
+
+\section*{2}
+(a) For the following processes
+\begin{itemize}
+    \item The elastic processes are (from $a \to f$)
+    \begin{align*}
+        \pi^+ + p &\rightarrow \pi^+ + p \quad (a) \\
+        \pi^0 + p &\rightarrow \pi^0 + p \quad (b) \\
+        \pi^- + p &\rightarrow \pi^- + p \quad (c) \\
+        \pi^+ + n &\rightarrow \pi^+ + n \quad (d) \\
+        \pi^0 + n &\rightarrow \pi^0 + n \quad (e) \\
+        \pi^- + n &\rightarrow \pi^- + n \quad (f)
+    \end{align*}
+    \item The inelastic processes are (from $g \to j$)
+    \begin{align*}
+        \pi^+ + n &\to \pi^0 + p \quad (g) \\
+        \pi^0 + p &\to \pi^+ + n \quad (h) \\
+        \pi^- + p &\to \pi^0 + n \quad (i) \\
+        \pi^0 + n &\to \pi^- + p \quad (j) \\
+    \end{align*}
+\end{itemize}
+The states are linear combinations of the states from Problem 1
+% command for sqrt 2/3 and sqrt 1/3
+\newcommand{\stwo}{\sqrt{\frac{2}{3}}}
+\newcommand{\sthree}{\frac{1}{\sqrt{3}}}
+\begin{align*}
+    (a) &\rightarrow \ket{1,\ohf} = \ket{\thf, \thf}\\
+    (b) &\rightarrow \ket{0,\ohf} = \stwo \ket {\thf, \ohf} - \sthree  \ket{\ohf, \ohf} \\
+    (c) &\rightarrow \ket{-1,\ohf} = \sthree \ket{\thf, -\ohf} - \stwo \ket{\ohf, -\ohf} \\
+    (d) &\rightarrow \ket{1,-\ohf} = \sthree \ket{\thf, \ohf} + \stwo \ket{\ohf, \ohf} \\
+    (e) &\rightarrow \ket{0,-\ohf} = \stwo \ket{\thf, -\ohf} + \sthree \ket{\ohf, -\ohf} \\
+    (f) &\rightarrow \ket{-1,-\ohf} = \ket{-1,-\ohf} = \ket{\thf, -\thf}
+\end{align*}
+Looking at the coefficients and the Isospin states, we can see the amplitudes as
+\begin{align*}
+    M_a = M_f = M_3 \\
+    M_b = M_e = \frac{2}{3} M_3 + \frac{1}{3} M_1 \\
+    M_c = M_d = \frac{1}{3} M_3 + \frac{2}{3} M_1 \\
+    M_g = M_h = M_i = M_j = \frac{\sqrt{2}}{3} (M_3 - M_1)
+\end{align*}
+and the cross sections are proportional to the square of the amplitudes (coefficient square) or 
+$\sigma \propto |M|^2$, but\dots
+\begin{align*}
+    \sigma_a : \sigma_c = |M_3|^2 : \abs{\frac{1}{3}M_3 + \frac{2}{3} M_1}^2 \\
+    9 |M_3|^2 : |M_3 + 2 M_1|^2
+\end{align*}
+so the total ratios are
+\begin{align*}
+    \sigma_a : \sigma_b : \sigma_c : \sigma_d : \sigma_e :
+        \sigma_f : \sigma_g : \sigma_h : \sigma_i : \sigma_j = \\
+    9|M_3|^2 : |2M_3 + M_1|^2 : |M_3 + 2M_1|^2 : |M_3 + 2M_1|^2 : |2M_3 + M_1|^2 \\
+    :  9|M_3|^2 : 2|M_3 - M_1|^2 : 2|M_3 - M_1|^2 : 2|M_3 - M_1|^2 : 2|M_3 - M_1|^2
+\end{align*}
+and for $M_3 \gg M_1$ the ratios are
+\begin{align*}
+    \boxed{9 : 4 : 1 : 1 : 4 : 9 : 2 : 2 : 2 : 2}
+\end{align*}
+(b) For $M_3 \ll M_1$ the ratios are
+\begin{align*}
+    \boxed{0 : 1 : 4 : 4 : 1 : 0 : 2 : 2 : 2 : 2}
+\end{align*}
+where (a) and (f) are very, very small cross sections in comparison.
+\section*{3}
+(a) for protons $I = \ohf$ and neutrons, $I = -\ohf$ so the isospin of the $\alpha$ particle is
+$I = 0$.
+
+(b) On the LHS the isospin of the deuteron is $I = 0$, and on the RHS the isospin of the $\alpha$
+particle is $I = 0$ so the isospin of the pion is $I = 1$. Since the isospin is not conserved $0 \cancel \to 1$ 
+the reaction is not allowed.
+
+(c) The 4-proton state has isospin $I = 2$ and this is \emph{does not exist} since the isospin $I=1$ of the
+$^4$Li does not exist. The 4-neutron state with isospin $I = -2$ \emph{does not exist} as well due 
+since the $^4$H isotope of $I = -1$ does not exist. There can only be one possible 4-nucleon state:
+$^4$He with isospin $I = 0$.
+\end{document}
