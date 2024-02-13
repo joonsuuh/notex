@@ -1475,4 +1475,168 @@ than the LH case because of the helicity of the neutrinos.
     \caption{Muon decay}
     \label{fig:muon_decay}
 \end{figure}
+
+\newpage
+\subsection*{Lecture 8: \hfill  2/9/24}
+\hrule \vspace{10px}
+
+\paragraph*{Quiz Review}:
+\begin{enumerate}
+    \item The neutrino is an eigenstate of partity (neutrino has handedness)
+    \begin{align*}
+        P \ket{\nu}_L = \pm \ket{\nu}_L x \qquad A\ket \psi = \lambda \ket \psi
+        \qquad P^2 = 1
+    \end{align*}
+    but $\ket \nu_R$ does not exists!
+    \item Charge Conjugation ($C$)
+    \begin{align*}
+        C \ket m = \ket{\bar m}
+    \end{align*}
+    taking the charge conjugation twice
+    \begin{align*}
+        C^2 \ket m = C(C\ket m) = C\ket{\bar m} = \ket m \\
+        \implies C^2 = 1 \implies C = \pm 1 \qqtext{$Z_z$-symmetry}
+    \end{align*}
+    So if $\ket m$ is an eigenstate of $C$ then
+    \begin{align*}
+        C \ket m = \pm \ket m = \ket{\bar m} \implies \ket m = \pm \ket{\bar m}
+    \end{align*}
+    e.g. For charged particles:
+    \begin{align*}
+        C \ket{\pi^+} = \ket{\pi^-}
+    \end{align*}
+    and for some neutral particles the charge conjugation is the same as the particle.
+    One exception is the neutron
+    \begin{align*}
+        C\ket n = \ket{\bar n}
+    \end{align*}
+    and for the violation of Charge conjugation: the neutrino
+    \begin{align*}
+        C \ket \nu_L = \ket{\nu_L} \times
+    \end{align*}
+    here $C$ must be violated (in weak interactions) but preserved in strong \& EM interactions.
+    \item G-parity: defined as
+    \begin{align*}
+        G = C R
+    \end{align*}
+    where $R$ is a rotation. From the 8-fold way, we can get from $\pi^+$ to $\pi^-$ by reflecting 
+    it about the hypercharge axis or rotation by $2\pi$ in the $I_2$ axis and then taking its 
+    charge conjugation:
+    \begin{align*}
+        G = C e^{i\pi I_2}
+    \end{align*}
+    so
+    \begin{align*}
+        G\ket{\pi^+} = C e^{i\pi I_2} \ket{\pi^+} = C \ket{\pi^-} = \ket{\pi^+}
+    \end{align*}
+    finding the G-parity of $K^+$: from the 8-fold way(Figure \ref{fig:eightfold_way}) we know that
+    rotating $K^+$ actually gives us $K^0$ so
+    \begin{align*}
+        G \ket{K^+} = C e^{i\pi I_2} \ket{K^+} = C \ket{K^0} = \ket{\bar K^0}
+    \end{align*}
+    \paragraph*{Neutral Pion Decay} $\pi^0 \to \gamma + \gamma$ is a EM interaction (particle
+    antiparticle pair: $(u\bar u - d \bar d)/\sqrt{2}$).
+    \begin{align*}
+        \pi^0 \to \gamma + \gamma
+    \end{align*}
+    The partity on the LHS is $P = -1$ and on the RHS $P = (-1)^2 = +1$. For the photon
+    of spin:
+    \begin{align*}
+        S = 1, \qquad S_z = +1, \cancel{0}, -1 
+    \end{align*}
+    there is no longitudinal polarization $S_z = 0$, and the transverse polatization of the EM wave
+    $S_z = \pm 1$ is the helicity. So the helicity of the photons must be the same; either
+    $\lambda = \ket {++}$ or $\lambda = \ket{--}$. This is not an eigenstate of partity. The two 
+    photons must have aligned polarizations. We also need to find $p$ in
+    \begin{align*}
+        \lambda = \frac{\vb{S} \cdot \vb{p}}{\abs{\vb{S}} \abs{\vb{p}}}
+    \end{align*}
+    where we know
+    \begin{align*}
+        p\ket + = \ket - \quad p\ket - = \ket + \quad p\ket{++} = \ket{--}
+    \end{align*}
+    we can write a linear combination of the two states
+    \begin{align*}
+        \ket{\psi_1} = \frac{1}{\sqrt{2}} \qt(\ket{++} + \ket{--}) \\
+        \ket{\psi_2} = \frac{1}{\sqrt{2}} \qt(\ket{++} - \ket{--})
+    \end{align*}
+    for
+    \begin{align*}
+        P\ket{\psi_1} = \ket{\psi_1} \qqtext{(even parity)} \\
+        P\ket{\psi_2} = -\ket{\psi_2} \qqtext{(odd parity)}
+    \end{align*}
+    This is similar to quantum optics where polarization is used:
+    \begin{align*}
+        \ket{+} = \frac{1}{\sqrt{2}} \qt(\ket{x} + i\ket{y}) \qquad
+        \ket{-} = \frac{1}{\sqrt{2}} \qt(\ket x - i\ket y)
+    \end{align*}
+    we know the G parity is 
+    \begin{align*}
+        G = (-1)^I
+    \end{align*}
+    \item Pion decay to muon and neutrino: For the mesons
+    \begin{align*}
+        C = (-1)^{l+s}
+    \end{align*}
+    where we have two types: Pseudoscalars ($s = 0$) e.g $\pi, K$ with $C = (-1)^l$ and 
+    vector mesons ($s = 1$) e.g. $\rho, K^*$ with $C = (-1)^{l+1}$. For $\rho$ we know that 
+    $I(\rho) = 1$ from the 8-fold way, as well as $I(\eta) = 0$ so $\rho \to 3\pi$ and 
+    $\eta \to 2\pi$ are allowed. 
+    \paragraph*{CP} 
+    \begin{align*}
+        P\ket{\nu_L} = \ket{\nu_R} \times \\
+        CP \ket{\nu_L} = C\ket{\nu_L} = \ket{\bar \nu_R}
+    \end{align*} 
+    where the P is violated due to the handedness of the neutrino, but the CP is conserved. applying
+    CP on to the charged pion decay:
+    \begin{align*}
+        \pi^+ \to \mu^+ + \nu_\mu
+    \end{align*}
+\end{enumerate}
+\subsection*{CP Violation}
+For an oscillation of a neutral kaon $K^0(d\bar s$) and $\bar K^0 (\bar d s)$. Because K's are 
+pseudoscalars:
+\begin{align*}
+    P\ket{K^0} = -\ket{\bar K^0} \qquad P\ket{\bar K^0} = \ket{\bar K^0}
+\end{align*}
+and the charge conjugation is
+\begin{align*}
+    C\ket{K^0} = \ket{\bar K^0} \qquad C\ket{\bar K^0} = \ket{K^0}
+\end{align*}
+and the CP is
+\begin{align*}
+    CP\ket{K^0} = -\ket{\bar K^0} \qquad CP\ket{\bar K^0} = -\ket{K^0}
+\end{align*}
+which are not eigenstates of CP, so taking a linear combination of the two states
+\begin{align*}
+    \ket{K_1} = \frac{1}{\sqrt{2}} \qt(\ket{K^0} - \ket{\bar K^0}) \qquad
+    \ket{K_2} = \frac{1}{\sqrt{2}} \qt(\ket{K^0} + \ket{\bar K^0})
+\end{align*}
+the CP of the two states are
+\begin{align*}
+    CP\ket{K_1} = \ket{K_1} \qquad CP\ket{K_2} = -\ket{K_2}
+\end{align*}
+which are eigenstates of CP. Karons decay to pions(lightest meson): to either 2 or 3 pions. From the
+phase space, the 2 pion decay is more likely than the 3 pion decay because faster particles are
+more likely to decay: A kaon with 490 MeV to 2$\times$140 = 280 MeV is more likely than 3$\times$140
+= 420 MeV. The 2 pion decay has CP
+\begin{align*}
+    CP\ket{\pi^+\pi^-} = (-1)^2 \ket{\pi^+\pi^-} = \ket{\pi^+ \pi^-} \\
+    CP\ket{\pi^+\pi^-\pi^0} =  (-1)^3 \ket{\pi^+\pi^-\pi^0} = -\ket{\pi^+\pi^-\pi^0}
+\end{align*}
+so the 2 pion decay is CP even and the 3 pion decay is CP odd. If CP were conserved,
+\begin{align*}
+    \ket{K_1} \to \ket{2\pi} \qquad \ket{K_2} \to \ket{3\pi}
+\end{align*}
+so we call this fast decay $K_S$ meaning short ($\num{9e-11}{sec}$) and the slow decay $K_L$ meaning
+long ($\num{5e-8}{sec}$) or
+\begin{align*}
+    \ket{K_1} \equiv \ket{K_S^0} \qquad \ket{K_2} \equiv \ket{K_L^0}
+\end{align*}
+from a nobel prize winning experiment, a detector far away would be expected to see mostly $K_L$ but
+the experiment showed that we saw some amount to the 2 pion decay:
+\begin{align*}
+    \ket{K_L^0} = \frac{1}{\sqrt{1 + \epsilon^2}} \qt(\ket{K_S^0} + \epsilon \ket{K_L^0})
+\end{align*}
+where $\epsilon = \num{2.3e-3}$ characterizes CP violation.
 \end{document}

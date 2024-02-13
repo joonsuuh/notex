@@ -1,0 +1,117 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{../images/}}
+
+\begin{document}
+\subsection*{Lecture 9: \hfill  2/5/24}
+\hrule \vspace{10px}
+\section{Calculus of Variations}
+
+\paragraph*{Why do we care?}
+\begin{itemize}
+    \item What is the shortest distance between two points in a 2D plane?
+    \item What is the shortest path between two points on a sphere?
+    \item What is the fastest path for a ball to roll down a hill?
+    \item For a car driving on a flat path $A \to B$, what shape of a pot hole will minimize
+    the time it takes to get from $A \to B$?
+\end{itemize}
+
+For some path $a \to b$, we have a path defined as an integral
+\begin{align*}
+    S = \int_a^b f(x, y, y') \dd x
+\end{align*}
+with a \emph{Goal}: find $y(x)$ that minimizes $S$ (path).
+
+\paragraph*{Path Length:}
+\begin{align*}
+    l = \int_a^b \sqrt{\dd x^2 + \dd y^2} = \int_a^b \sqrt{1 + y'^2} \dd x
+\end{align*}
+where $y' = \frac{\dd y}{\dd x}$. To minimize $y = f(x)$ it is equivalent to finding where
+\begin{align*}
+    f'(x) = 0
+\end{align*}
+where we note that this could be a maximium point, but it is usually a minimum in these cases.
+Another look at this function:
+\begin{align*}
+    f'(x) = \frac{\dd y}{\dd x} = \lim_{\Delta x \to 0} \frac{y(x + \Delta x) - y(x)}{\Delta x}
+\end{align*}
+we can define a small change in the path $y(x)$ as
+\begin{align*}
+    y(x) + \delta y(x)
+\end{align*}
+where 
+\begin{align*}
+    \delta y(x_2) = 0 \quad \delta y(x_2) = 0
+\end{align*}
+so the change in the path is
+\begin{align*}
+    \delta S = \int_a^b \delta f \dd x
+\end{align*}
+and from the change of variables
+\begin{align*}
+    \delta f = \pdv{f}{y} \delta y + \pdv{f}{y'} \delta y' \qquad \delta y' = \dv{x} \delta y
+\end{align*}
+thus we have
+\begin{align*}
+    \delta S = \int_a^b \qt( \pdv{f}{y} \delta y + \pdv{f}{y'} \dv{x} \delta y) \dd x
+\end{align*}
+this is the line integral of the change in the new path
+\begin{align*}
+    \delta S = S_{new} - S_{old}
+\end{align*}
+looking at the second term: using integration by parts
+\begin{align*}
+    \int_a^b \qt(\pdv{f}{y} \dv{x} \delta y) \dd x = \qt[\pdv{f}{y'} \delta y]\eval_a^b
+        - \int_a^b \qt(\dv{x} \pdv{f}{y'}) \delta y \dd x 
+\end{align*}
+the first term is zero because $\delta y(a) = \delta y(b) = 0$. Thus we have
+\begin{align*}
+    \delta S = \int_a^b \qt[\pdv{f}{y} - \qt(\dv{x} \pdv{f}{y'})] \delta y \dd x
+\end{align*}
+Near a minimum, $\delta S = 0$ for any small $\delta y$. So the the terms in the brackets must be
+zero as well! This gives us the \textbf{Euler-Lagrange Equation}:
+\begin{align*}
+    \pdv{f}{y} - \dv{x} \pdv{f}{y'} = 0
+\end{align*}
+\paragraph*{NOTE:} $\delta S$ is the variation of $S$(some number) under $\delta y$(a function).
+
+\paragraph*{Example:} Shortest path between two points $a \to b$ in a 2D cartesian plane.
+
+\subparagraph*{} Goal: find $y(x)$ tha minimzes the path length $l = \int_a^b \sqrt{1 + y'^2} \dd x$
+where $f(x, y, y') = \sqrt{1 + y'^2}$.
+\begin{align*}
+    \pdv{f}{y} &= 0 \\
+    \pdv{f}{y'} &= \frac{2y'}{2\sqrt{1 + y'^2}} = \frac{y'}{\sqrt{1 + y'^2}} \\
+\end{align*}
+From the EL:
+\begin{align*}
+    \dv{x}(\frac{y'}{\sqrt{1 + y'^2}}) = \pdv{f}{y} =  0 \\
+\end{align*}
+and
+\begin{align*}
+    \frac{y'}{\sqrt{1 + y'^2}} &= Const = C \\
+    y'^2 &= C (1 + y'^2) \\
+    y'^2 &= \frac{C}{1 - C} \\
+    y' &= \pm \sqrt{\frac{C}{1 - C}} = \pm k \\
+    y &= \pm kx + b
+\end{align*}
+which is just a straight line as we expected. 
+
+\paragraph*{Example:} The Brachistochrone. 
+\subparagraph*{} Goal: Find $y(x)$ that minimizes $t = \int_a^b \dd t$ where 
+\begin{align*}
+    t = \frac{s}{v} \to \dd t = \frac{\dd s}{v}
+\end{align*}
+where $v$ is the velocity which can be found using the conservation of energy:
+\begin{align*}
+    \frac{1}{2} m v^2 = mg(y_o - y) \to v = \sqrt{2g(y_o - y)}
+\end{align*}
+thus we have
+\begin{align*}
+    \dd t = \frac{\dd s}{v} = \frac{\sqrt{1 + y'^2}}{\sqrt{2g(y_o - y)}} \dd x
+\end{align*}
+where $f(x, y, y') = \frac{\sqrt{1 + y'^2}}{\sqrt{2g(y_o - y)}}$. Using EL:
+\begin{align*}
+    \pdv{f}{y'} &= \frac{y'}{\sqrt{1 + y'^2}\sqrt{2g(y_o - y)}} \\
+    \pdv{f}{y} &= \frac{\sqrt{1 + y^2} \sqrt{2g}}{(2g(y_o - y))^{3/2}} 
+\end{align*}
+\end{document}
