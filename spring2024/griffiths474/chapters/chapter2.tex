@@ -1,0 +1,253 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\hrule
+\section{Relativistic Kinematics}
+\hrule \vspace{10px}
+
+\lhead{Lecture 2: 1/22/24}
+\chead{Relativistic Kinematics}
+\rhead{PHYS 474}
+
+\paragraph{Quiz 2 Review}
+
+\begin{enumerate}
+    \item The Baryon, Lepton, and Electric Charge are conserved in the Standard Model. 
+    \item The Baryon and Lepton number ensure the stability of the proton.
+    \item In Neutron Decay $n \rightarrow p + e^- + \bar \nu_e$, the weak force is responsible for
+    the decay.
+% 5x3 table
+\begin{center}
+    \begin{tabular}{c|c|c|c|c}
+        & Strong & EM & Weak & Gravity \\
+        \hline
+        Strength & 1 & $10^{-2}$ & $10^{-7}$ & $10^{-40}$ \\
+        \hline
+        Time scale & $10^{-23}$ sec & $10^{-16}$ & $10^{-10}$ & $>$ yr\\
+    \end{tabular}
+\end{center}
+    The decay rate is proportional to the coupling strength of the force $\Gamma \propto \alpha^2$.
+    For the time scale is $\tau$ it is inversely proportional:
+    \begin{align*}
+        \tau \propto \frac{1}{\Gamma}
+    \end{align*}
+    \item The strong force is responsible for holding the nucleus together.
+    \item 
+\end{enumerate}
+
+\paragraph{Experimental Discoveries}
+
+To discover and observe particles, there are typically three ways:
+\begin{enumerate}
+    \item Scattering (cross section) 
+    \item Decay (decay rate or lifetime)
+    \item Bound states (binding energy/mass)
+\end{enumerate}
+
+\paragraph{Relativistic Kinematics} 4-vectors
+\begin{align*}
+    x^\mu = (ct, x, y, z) \quad \textrm{space-time} \\
+    p^\mu = (E/c, p_x, p_y, p_z) \quad \textrm{momentum}
+\end{align*}
+where $x^\mu$ and $p^\mu$ are the space-time (position) four-vector and energy-momentum four-vector.
+
+\subparagraph*{NOTE:} Totak four-momentum is conserved in all interactions.
+
+Starting with the lorentz invariant
+\begin{align*}
+    p^\mu p_\mu = p^2
+\end{align*}
+using the Einstein-summation convention
+\begin{align*}
+    p^\mu p_\mu = \sum_{\mu = 0}^3 p^\mu p_\mu = p^2
+\end{align*}
+and the metric tensor
+\begin{align*}
+    g^{\mu\nu} = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1 \\
+    \end{pmatrix}
+\end{align*}
+we can write the lower momentum vector as
+\begin{align*}
+    p_\mu = p^\nu g_{\mu\nu} 
+\end{align*}
+thus
+\begin{align*}
+    p^\mu p_\mu &= p^\mu p^\nu g_{\mu\nu} \\
+    &= \qt(\frac{E}{c})^2 + \vb{p} \cdot \vb{p} (-1) \\
+    &= \qt(\frac{E}{c})^2 - \abs{\vb{p}}^2 \\
+    &= m^2 c^2
+\end{align*}
+Using
+\begin{align}
+    E = \sqrt{\abs{\vb{p}}^2 + m^2 c^4}
+\end{align}
+
+\paragraph{Lorentz Transformation} At rest $\vb{p} = 0$ and $E = mc^2$.
+
+In the Galilean transformation in the $x$ direction:
+\begin{align*}
+    x' &= x - vt \\
+    y' = y \\
+    z' = z \\
+    t' = t
+\end{align*}
+where we assume absolute time, but in the Lorentz transformation:
+\begin{align*}
+    x' &= \gamma(\beta ct + x) \quad \beta = \frac{v}{c} \\
+    ct' &= \gamma(t - \beta x) \quad \gamma = \frac{1}{\sqrt{1 - \beta^2}} \\
+    y' &= y \\
+    z' &= z
+\end{align*}
+In matrix form:
+\begin{align*}
+    \Lambda = 
+    \begin{pmatrix}
+        ct' \\
+        x' \\
+        y' \\
+        z' \\
+    \end{pmatrix}
+    &= \begin{pmatrix}
+        \gamma & -\beta\gamma & 0 & 0 \\
+        -\beta\gamma & \gamma & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        ct \\
+        x \\
+        y \\
+        z \\
+    \end{pmatrix}
+\end{align*}
+and thus $p^\mu p_\mu$ is invariant under Lorentz transformation.
+
+\paragraph{Massless particle:} From the energy momentum relation
+\begin{align*}
+    E^2 = \abs{\vb{p}}^2 c^2 + m^2 c^4
+\end{align*}
+The massless particle has energy $E = \abs{\vb{p}}c$. But we have to include the frequency (Planck)
+relation from quantum mechanics as well:
+\begin{align*}
+    E = h \nu = \hbar \omega
+\end{align*}
+And in the SM photons and neutrinos are massless thus
+\begin{align*}
+    p^2 = p^\mu p_\mu = m^2 c^2 = 0
+\end{align*}
+
+\paragraph{Collisions} Non-relativistic vs. Relativistic
+
+Non-relativistic:
+\begin{itemize}
+    \item Elastic (KE conserved)
+    \item Inelastic (KE not conserved)
+\end{itemize}
+Relativistic:
+\begin{itemize}
+    \item Elastic (KE conserved) e.g. particle splitting into two
+    \item Inelastic (KE not conserved) or Rest energy and mass e.g. colliding two particles to form
+    a new particle
+    \begin{itemize}
+        \item KE increases (Explosive)
+        \item KE decreases (Sticky)
+    \end{itemize}
+\end{itemize}
+In the extreme case:
+\begin{align*}
+    A &+ B \rightarrow C \quad \textrm{inverse decay} \\
+    A &\rightarrow B + C \quad \textrm{decay}
+\end{align*}
+
+\paragraph{Example} $\pi^+ \rightarrow \mu^+ + \nu_\mu$ (decay)
+
+The Rest energies are $m_{\pi^+} = \qty{135}{\mega\electronvolt/c^2}$,
+$m_{\mu^+} = \qty{105}{\mega\electronvolt/c^2}$, and $m_{\nu_\mu} = 0$. But this energy is lost
+through the kinetic energy of the muon and muon-neutrino.
+
+The momentum before is just the momentum of the pion
+\begin{align*}
+    p_i = p_{\pi} = 0
+\end{align*}
+since it is startionary. Afterward the momentum is split between the muon and neutrino
+\begin{align*}
+    p_f = p_{\mu} + p_{\nu_\mu}
+\end{align*}
+where energy and momentum is conserved:
+\begin{align*}
+    \vb{p}_\mu &= -\vb{p}_{\nu} \\
+    m_{\pi} c^2 &= E_{\mu} + E_{\nu_\mu} 
+\end{align*}
+
+\paragraph{4-momentum conservation}
+\begin{align*}
+    p_{before} &= p_{after} \\
+    p_{\pi} &= p_{\mu} + p_{\nu_\mu}
+\end{align*}
+since the massless particle has no momentum from the energy momentum relation
+\begin{align*}
+    p_\nu &= p_\pi - p_\mu \\
+    p_\nu^2 &= (p_\pi - p_\mu)^2 \\
+    &= p_\pi^2 - 2p_\pi p_\mu + p_\mu^2 \\
+    0 &= m_\pi^2 c^2 + m_\mu^2 c^2 - 2\frac{m_\pi c^2}{c} \frac{E_\mu}{c} \\
+    2E_\mu m_\pi &= (m_\pi^2 + m_\mu^2) c^2 \\
+    E_\mu &= \frac{m_\pi^2 + m_\mu^2 - m_\nu^2}{2m_\pi} c^2 \\
+\end{align*}
+
+Another way is finding
+\begin{align*}
+    p_\pi = p_\mu + p_\nu
+\end{align*}
+rewritten as
+\begin{align*}
+    p_\mu = p_\pi - p_\nu
+\end{align*}
+squaring both sides gives
+\begin{align*}
+    p_\mu^2 = p_\pi^2 - 2p_\pi p_\nu + p_\nu^2
+\end{align*}
+and since $p_\nu^2 = 0$ we have
+\begin{align*}
+    p_\mu^2 = p_\pi^2 - 2p_\pi p_\nu
+\end{align*}
+which implies
+\begin{align*}
+    m_\mu^2 c^2 = m_\pi^2 c^2 - 2m_\pi E_\nu
+\end{align*}
+the Planck relation tells us
+\begin{align*}
+    E_\nu = \abs{\vb{p}_\nu} c = \abs{\vb{p}_\mu} c
+\end{align*}
+thus
+\begin{align*}
+    2 m_\pi \abs{\vb{p}_\mu} c = (m_\pi^2 - m_\mu^2) c^2
+\end{align*}
+and
+\begin{align*}
+    \abs{\vb{p}_\mu} = \frac{m_\pi^2 - m_\mu^2}{2m_\pi} c
+\end{align*}
+
+\paragraph{Scattering experiments}
+
+\begin{itemize}
+    \item Head-on collision: (LHC)
+    \item Fixed target collision: Beam of protons hitting a target (e.g. Carbon) (SLAC)
+\end{itemize}  
+From momentum conservation, the head-on collision is more energy efficient as it loses the minimum
+amount of energy. The created particle is at rest, thus the energy is the rest energy. But the Fixed
+target collision has a higher energy loss since the particle loses energy since the created particle
+has kinetic energy.
+
+e.g. The Anti-proton Discovery is due to the Bevatron colliding two protons to create an anti-proton
+\begin{align*}
+    p + p \rightarrow p + p + p + \bar p
+\end{align*}
+
+HW HINT: $E_{cm} < E_{fixed}$
+\end{document}

@@ -1,0 +1,139 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Lecture 7: 2/6}
+\chead{Chapter 5}
+\rhead{PHYS 472}
+
+\section*{Chapter 5: Phonon properties} 
+\addcontentsline{toc}{section}{Chapter 5: Phonon properties}
+
+The heat capacity is in general
+\begin{align*}
+    C_v = \qt(\pdv{U}{T})_v
+\end{align*}
+The proportionaly of heat capacity in different materials
+\begin{itemize}
+    \item Metal: $C_v \propto I + Q T^3$
+    \item Insulator: $C_v \propto T^3$
+\end{itemize}
+
+The Energy of an $N$ particle system is $E = N k_B T$. and the heat capacity is
+\begin{align*}
+    C_v = \pdv{E}{T} = \omega k_B
+\end{align*}
+The total energy is
+\begin{align*}
+    U_{tot} = \sum{k, p} \hbar \omega_{k,p} \langle n_{k,p} \rangle
+\end{align*}
+where $\langle n_{k,p} \rangle$ is the Bose-Einstein distribution
+\begin{align*}
+    \langle n_\omega \rangle = \frac{1}{\exp(\frac{\hbar \omega}{k_B T}) - 1}
+\end{align*}
+where there is no chemical potential. At low temperatures the constant goes to
+\begin{align*}
+    \exp(\frac{\hbar \omega}{k_B T})
+\end{align*}
+or a boltzmann distribution.
+\begin{align*}
+    U_{tot} \sum_{k,p} \frac{\hbar \omega_{k,p}}{\exp(\frac{\hbar \omega_{k,p}}{k_B T}) - 1}
+\end{align*}
+or into an integral
+\begin{align*}
+    \int \dd{k} f(\omega)  \to \int \dd{\omega} f(\omega) \frac{1}{\dv{\omega}{k}}
+\end{align*}
+We can compute this numerically from the phonon dispersion relation. For the Heat capacity of a
+solid, this $T^3$ term is in the order of 3 meV. We only need to take the acoustic modes into 
+account for finding $\dv{\omega}{k}$ which approximately a constant $C$, so
+\begin{align*}
+    \int_0^{a} \dd{\omega} \frac{\hbar\omega^2}{\exp(\frac{\hbar \omega}{k_B T}) - 1}
+\end{align*}
+where we can simplify using the substitution 
+\begin{align*}
+    x = \frac{\hbar \omega }{k_B T}
+\end{align*}
+to change the integral from $k$ space to $\omega$ space and the integral becomes
+\begin{align*}
+    T^2 \int_0^\infty \dd{x} \frac{x}{\exp(x) - 1}
+\end{align*}
+where the $T^2$ term comes from substituting for $\omega$ twice. So the total energy is
+\begin{align*}
+    U_{tot} = \sum_{p} \int \dd{\omega} D_p(\omega) \frac{\hbar \omega}{\exp(\frac{\hbar \omega}{k_B T}) - 1}
+\end{align*}
+where $D_p(\omega)$ is the density of states. Using the substition for $x$ we get
+\begin{align*}
+    U_{tot} = \sum_p \int \omega \dd{\omega} D_p(\omega) \frac{x}{e^x - 1}
+\end{align*}
+and the heat capacity is
+\begin{align*}
+    C_v = \pdv{U_{tot}}{T}
+    = k_B \sum_p \int \dd{\omega} D_p(\omega) \frac{x^2 e^x}{(e^x - 1)^2}
+\end{align*}
+The density of states (DOS) is given by
+\begin{align*}
+    D(\omega) = \dv{N}{\omega}
+\end{align*}
+where $N$ is the number of states. For a 3D phonon gas, the total allowed states is
+\begin{align*}
+    N = \frac{\frac{4}{3} \pi k^3}{\qt(\frac{2\pi}{L})^3}
+\end{align*}
+Which is equivalent to the volume of a sphere for each unit volume. So the DOS is 
+\begin{align*}
+    D(\omega) = \dv{N}{\omega} = \dv{N}{k} \dv{k}{\omega} = \frac{V}{2\pi^2} \frac{k^2}{1}
+\end{align*}
+and the heat capacity is
+\begin{align*}
+    C_v \propto k_B \sum_p \in \dd{\omega} \frac{k^2V}{2\pi^2} \frac{1}{\dv{\omega}{k}} \frac{x^2 e^x}{(e^x - 1)^2}
+\end{align*}
+and since $\omega = v k$ and $\dv{\omega}{k} = v$ we get
+\begin{align*}
+    C_v \propto \sum_p \int_0^{\omega_D} \dd{\omega} \frac{V}{1} \frac{\omega^2}{v^3} \frac{x^2 e^x}{(e^x - 1)^2}
+\end{align*}
+so we get the number of states
+\begin{align*}
+    N = \int_0^{\omega_D} \dd{\omega} D(\omega)
+\end{align*}
+where
+\begin{align*}
+    \omega_D^2 = \frac{6\pi^2 N}{V}
+\end{align*}
+the total energy is
+\begin{align*}
+    U_{tot} = \int_0^{\omega_D} \dd{\omega} \frac{V\omega^2}{2 T^2 v^3} \frac{\hbar \omega}{\exp(\frac{\hbar \omega}{k_B T}) - 1}
+\end{align*}
+and substituting for $x$ we get
+\begin{align*}
+    \propto T^4 \int_0^{x_D} \dd{x} x^2 \frac{x}{e^x - 1}
+\end{align*}
+where we have four $x$ terms that are substituted thus the $T^4$ term. We get Debye's law for the
+heat capacity
+\begin{align*}
+    U_{tot} \propto T^4 f(x_D) \qquad C_v = \pdv{U}{T} \propto T^3
+\end{align*}
+for low temperature $T \to 0$, $x_D \to \infty$ so the $f(x_D) \to 1$ which will give us Debye's
+law. Some constants: $\omega_D$ is the Debye frequency and the Debye temperature is
+\begin{align*}
+    \theta_D = \frac{\hbar \omega_D}{k_B}
+\end{align*}
+
+\paragraph*{Einstein Model}
+\begin{align*}
+  D(\omega) = N \delta(\omega - \omega_0)
+\end{align*}
+so we get a simple expression for the total energy
+\begin{align*}
+    U_{tot} \propto \frac{\hbar \omega_o}{\exp(\frac{\hbar \omega_o}{k_B T}) - 1}
+\end{align*}
+and the heat capacity is
+\begin{align*}
+    C_v = \pdv{U}{T}\eval_{T \to 0}
+    \propto \frac{1}{T} \frac{\exp(\frac{\hbar \omega_o}{k_B T})}{\qt(\exp(\frac{\hbar \omega_o}{k_B T}) - 1)^2} 
+    \to T\exp(\frac{\hbar\omega}{k_B T})
+\end{align*}
+For the einstein model we get a wrong number because we assumed the density of states is a delta functions
+,but it reality it is a constant.
+
+\end{document}

@@ -1,0 +1,99 @@
+\documentclass[../hw.tex]{subfiles}
+\begin{document}
+\setcounter{section}{6}
+\begin{center}
+  \section*{Homework 6} \label{sec:homework5}
+  \subsection*{Due 2/28}
+\end{center}
+\addcontentsline{toc}{section}{\nameref{sec:homework6}}
+\hrule \vspace{10px}
+
+\paragraph*{1.} (a) Geometrically we find a constraint
+\begin{align*}
+    \tan \alpha = \frac{r}{z} \qor z = r \cot \alpha; \qquad \dot z  = \dot r \cot \alpha
+\end{align*}
+where $z$ is the vertical position of the bead. The position vector of the bead is a linear
+combination of this $z$ position and polar position:
+\begin{align*}
+    \vb r = r \vu r + z \vu z; \quad \vb v = \dot r \vu r + r\dot \phi \vu*\phi + \dot z \vu z
+\end{align*}
+so the kinetic energy is
+\begin{align*}
+    T &= \frac{1}{2} m (\dot r^2 + r^2 \dot \phi^2 + \dot z^2)
+        = \frac{1}{2} m (\dot r^2 + r^2 \dot \phi^2 + \dot r^2 \cot^2 \alpha) \\
+    \qusing &1 + \tan^2 \alpha = \sec^2 \alpha \implies \cot^2 \alpha = \csc^2 \alpha - 1 \\
+    T &= \frac{1}{2} m (\dot r^2 + r^2 \dot \phi^2 + \dot r^2 (\csc^2 \alpha - 1))
+        = \frac{1}{2} m (r^2 \dot \phi^2 + \dot r^2 \csc^2 \alpha) \\
+\end{align*}
+and the potential energy is
+\begin{align*}
+    U &= mgz = mgr \cot \alpha
+\end{align*}
+so the Lagrangian is
+\begin{align*}
+    \lagr &= T - U = \frac{1}{2} m (r^2 \dot \phi^2 + \dot r^2 \csc^2 \alpha) - mgr \cot \alpha
+\end{align*}
+(b) The EL eqn for $\phi$ is
+\begin{align*}
+    \pdv{\lagr}{\phi} &= \dv{t} \pdv{\lagr}{\dot \phi} \\
+    0 &= \dv{t}(mr^2 \dot \phi) \implies mr^2 \dot \phi = \text{constant} = \ell
+\end{align*}
+which states the conservation of angular momentum. The EL eqn for $r$ is
+\begin{align*}
+    \pdv{\lagr}{r} &= \dv{t} \pdv{\lagr}{\dot r} \\
+    mr\dot\phi^2 - mgr \cot\alpha &= \dv{t}(m\dot r \csc^2\alpha) \\
+    &= m\ddot r \csc^2\alpha
+\end{align*}
+where the mass cancels out so we can simplify to
+\begin{align*}
+    r\dot\phi^2 - gr \cot\alpha &= \ddot r \csc^2\alpha \\
+    0 &= \ddot r - r \dot\phi^2 \sin^2\alpha + g \frac{\cos\alpha}{\sin\alpha} \sin^2\alpha \\
+    0 &= \ddot r - r \dot\phi^2 \sin^2\alpha + g \cos\alpha \sin\alpha
+\end{align*}
+from the conservation of angular momentum
+\begin{align*}
+    m r^2 \dot \phi = \ell \implies \dot \phi = \frac{\ell}{mr^2}
+\end{align*}
+so
+\begin{align*}
+    0 &= \ddot r - \frac{\ell^2}{m^2 r^3} \sin^2\alpha + g \cos\alpha \sin\alpha 
+\end{align*}
+and solving for when $r = r_o \implies \ddot r = 0$:
+\begin{align*}
+    0 &= 0 - \frac{\ell^2}{m^2 r_o^3} \sin^2\alpha + g \cos\alpha \sin\alpha \\
+    \frac{\ell^2}{m^2 r_o^3} \sin^2\alpha &= g \cos\alpha \sin\alpha \\
+    r_o^3 &= \frac{\ell^2}{m^2 g} \frac{\sin\alpha}{\cos\alpha} = \frac{\ell^2}{m^2 g} \tan\alpha \\
+    r_o &= \qt(\frac{\ell^2}{m^2 g} \tan\alpha)^{1/3}
+\end{align*}
+we can analyze the stability of this solution by assuming a small deviation from the eq point:
+\begin{align*}
+    r = r_o + \eta 
+\end{align*}
+and looking at how the second derivative behaves: rewriting the EL eqn,
+\begin{align*}
+    \ddot r &= \frac{\ell^2}{m^2 r^3} \sin^2\alpha - g \cos\alpha \sin\alpha
+\end{align*}
+and we find a substitution to directly compare the two terms:
+\begin{align*}
+    \frac{\ell^2}{m^2 r_o^3} \sin^2\alpha &= \frac{\ell^2}{m^2 \frac{\ell^2}{m^2 g} \tan\alpha} \sin^2\alpha
+        = \frac{g}{\tan\alpha} \sin^2\alpha = g \cos\alpha \sin\alpha
+\end{align*}
+so
+\begin{align*}
+    \ddot r &= \frac{\ell^2}{m^2 r^3} \sin^2\alpha - \frac{\ell^2}{m^2 r_o^3} \sin^2\alpha \\
+    &= \frac{\ell^2}{m^2} \sin^2\alpha \qt(\frac{1}{(r_o + \eta)^3} - \frac{1}{r_o^3})
+\end{align*}
+where
+\begin{align*}
+    \frac{1}{(r_o + \eta)^3} < \frac{1}{r_o^3}
+\end{align*}
+so when $r$ slightly increases ($\eta > 0$), the bead tends back toward the eq point ($\ddot r < 0$)
+and when $r$ slightly decreases ($\eta < 0$), the bead tends back toward the eq point i.e.
+\begin{align*}
+    \frac{1}{(r_o - \eta)^3} > \frac{1}{r_o^3}
+\end{align*}
+thus $r_o$ is a stable equilibrium point.
+
+\newpage 
+\paragraph*{2.} From the 
+\end{document}

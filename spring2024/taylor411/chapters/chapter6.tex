@@ -101,7 +101,7 @@ which is just a straight line as we expected.
 \begin{align*}
     t = \frac{s}{v} \to \dd t = \frac{\dd s}{v}
 \end{align*}
-where $v$ is the velocity which can be found using the conservation of energy:
+and $v$ is the velocity which can be found using the conservation of energy:
 \begin{align*}
     \frac{1}{2} m v^2 = mg(y_o - y) \to v = \sqrt{2g(y_o - y)}
 \end{align*}
@@ -114,4 +114,93 @@ where $f(x, y, y') = \frac{\sqrt{1 + y'^2}}{\sqrt{2g(y_o - y)}}$. Using EL:
     \pdv{f}{y'} &= \frac{y'}{\sqrt{1 + y'^2}\sqrt{2g(y_o - y)}} \\
     \pdv{f}{y} &= \frac{\sqrt{1 + y^2} \sqrt{2g}}{(2g(y_o - y))^{3/2}} 
 \end{align*}
+From the initial conditions: $x = y = 0, \quad \dot x = \dot y = 0$ (assuming no friction). So
+\begin{align*}
+    f = \frac{\sqrt{1 + y'^2}}{\sqrt{2gy}} \to \pdv{f}{y} = \frac{\sqrt{1 + y'^2}}{\sqrt{2gy^3}}
+\end{align*} 
+and if $y(x)$ satisfies EL, then we have a conserved quantity (prove in HW):
+\begin{align*}
+    f - y' \pdv{f}{y'} = const
+\end{align*}
+we will soon find out that this is the energy of the system\dots
+we can solve for $y(x)$ using the conserved quantity:
+\begin{align*}
+    \pdv{f}{y'} = \frac{1}{\sqrt{2gy}} \frac{y'}{\sqrt{1 + y'^2}}
+\end{align*}
+so 
+\begin{align*}
+    f - y' \pdv{f}{y'} &= C \\
+    \frac{1}{\sqrt{2gy}}\qt(\sqrt{1 + y'^2} - \frac{y'^2}{\sqrt{1 + y'^2}}) &= C  \\
+    \frac{1}{\sqrt{2gy}\sqrt{1 + y'^2}} (1 + y'^2 - y'^2) &= \sqrt{\frac{1}{4ga}}
+\end{align*}
+using
+\begin{align*}
+    \frac{1}{y(1 + y'^2)} &= \frac{1}{2a} \implies 1 + y'^2 = \frac{2a}{y} \implies y'^2 = \frac{2a}{y} - 1
+\end{align*}
+this can be solved using separation of variables:
+\begin{align*}
+    \dv{y}{x} = \sqrt{\frac{2a}{y} - 1} \implies \dd x = \dd y \sqrt{\frac{y}{2a - y}}
+\end{align*}
+and integration both sides:
+\begin{align*}
+    \int_a^b \dd y \sqrt{\frac{y}{2a - y}} = x - x_a = x
+\end{align*}
+using a change of variables $y = a (1 - \cos \theta); \quad \dd y = a \sin \theta \dd \theta$ and 
+a substitution $\sin\theta = \sqrt{1 - \cos^2 \theta} = \sqrt{(1 - \cos\theta)(1 + \cos\theta)}$:
+\begin{align*}
+    \int_a^b a \sin \theta \dd \theta \sqrt{\frac{a(1 - \cos \theta)}{a (1 + \cos \theta)}}
+    = \int_a^b a(1 - \cos \theta) \dd \theta = a \theta - a \sin \theta
+\end{align*}
+this is a parametric equation:
+\begin{align*}
+    x &= a(\theta - \sin \theta) = x(\theta)\\
+    y &= a(1 - \cos \theta) = y(\theta)
+\end{align*}
+where $\theta = \omega t$. This is a curve traced by a point on a wheel AKA cycloid. When we choose
+a variable time we get
+\begin{align*}
+    x(t) &= a(\omega t - \sin \omega t) \\
+    y(t) &= a(1 - \cos \omega t)
+\end{align*}
+and thus we get $\omega = \sqrt{\frac{g}{a}}$. To find $a$ we use the coordiate of the lower second point to find
+the curve that goes through the two points.
+
+\paragraph*{Example:} Find two functions $x(u)$, $y(u)$ where the path
+\begin{align*}
+    S = \int_a^b f(x, x', y, y', u) \dd u 
+\end{align*}
+is minimized/stationary. We will get two EL equations:
+\begin{align*}
+    \pdv{f}{x} - \dv{u} \pdv{f}{x'} &= 0 \\
+    \pdv{f}{y} - \dv{u} \pdv{f}{y'} &= 0
+\end{align*}
+e.g. for a distance between two points:
+\begin{align*}
+    L = \int_a^b \sqrt{\dd x^2 + \dd y^2} = \int_a^b \sqrt{x'^2 + y'^2} \dd u
+    \qusing \dd y = \dv{y}{u} \dd u = y' \dd u
+\end{align*}
+and from the EL equations:
+\begin{align*}
+    \dv{u} \pdv{f}{x'} = 0 = \dv{u}(\frac{x'}{\sqrt{x'^2 + y'^2}}) \\
+    \implies C_1 = \frac{x'}{\sqrt{x'^2 + y'^2}} \quad C_2 = \frac{y'}{\sqrt{x'^2 + y'^2}}
+\end{align*}
+this also tells us that 
+\begin{align*}
+    \frac{y'}{x'} = const = \dv{y}{x}
+\end{align*}
+For $N$ unknown functions in time $t$:
+\begin{align*}
+    S = \int_a^b f(x_1, x_1', \dots, x_N, x_N', u) \dd u
+\end{align*}
+where $f$ has $2N + 1$ variables.
+
+\paragraph*{Generalized Coordinates:} $q_1, q_2, \dots, q_N$ we would define the Lagrangian
+\begin{align*}
+    \mathcal{L} (q_1, \dots, q_N, \dot q_1, \dots, \dot q_N, t)
+\end{align*}
+and minimize the action
+\begin{align*}
+    S = \int \mathcal{L} \dd t
+\end{align*}
+and $N$ EL equations gives the trajectory for the path of minimal action.
 \end{document}

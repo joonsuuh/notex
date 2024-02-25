@@ -1,0 +1,109 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+% shortcut command for fraction 3/2
+
+\begin{document}
+\lhead{Homework 5}
+\rhead{Due 2/21}
+\setcounter{section}{5}
+
+\paragraph*{1.} (a) From the Gell-Mann-Nishijima formula
+\begin{align*}
+    Q = I_3 + \frac{1}{2}(A + S)
+\end{align*}
+For the $uds$ quarks, the isospin is $I_3 = \ohf, -\ohf, 0$, the baryon number is $A = \frac{1}{3}$
+and the strangeness is $S = 0, 0, -1$ respectively. The charges are then
+\begin{align*}
+    Q_u &= \ohf + \frac{1}{2}\qt(\frac{1}{3} + 0)= \frac{2}{3} \\
+    Q_d &= -\ohf + \frac{1}{2}\qt(\frac{1}{3} + 0)= -\frac{1}{3} \\
+    Q_s &= 0 + \frac{1}{2}\qt(\frac{1}{3} - 1)= -\frac{1}{3}
+\end{align*}
+(b) The antiparticle will have the opposite charge $Q_{\bar{q}} = -Q_q$, baryon number
+$A_{\bar q} = -\frac{1}{3}$ and strangeness $S_{\bar q} = 0, 0, 1$, so the isospin states are
+\begin{align*}
+    Q_{\bar{u}} &= -\frac{2}{3} = I_3 + \frac{1}{2}\qt(-\frac{1}{3} + 0)
+        \implies I_3 = -\ohf \\
+    Q_{\bar{d}} &= \frac{1}{3} = I_3 + \frac{1}{2}\qt(-\frac{1}{3} + 0)
+        \implies I_3 = \ohf \\
+    Q_{\bar{s}} &= \frac{1}{3} = I_3 + \frac{1}{2}\qt(-\frac{1}{3} + 1)
+        \implies I_3 = 0
+\end{align*}
+so the isospin assignments $\ket{I, I_3}$ are
+\begin{align*}
+    \bar u = \ket{\ohf, -\ohf}, \quad \bar d = \ket{\ohf, \ohf}, \quad \bar s = \ket{0, 0}
+\end{align*}
+
+\paragraph*{2.} (a) For a the charged kaon
+\begin{align*}
+    K^- \Leftrightarrow K^+
+\end{align*}
+the charge is not conserved, so they cannot interconvert, so only the neutral mesons can mix.
+(b) We don't observe baryon-antibaryon interconversion because it violates baryon number conservation.
+(c) There is no mixing of neutral strange vector mesons because the $K^{*0}$ and $\bar{K}^{*0}$ have
+different strangeness $S= +1, -1$, so they cannot mix due to strangeness conservation.
+
+\paragraph*{3.} From the Schr\"odinger equation
+\begin{align*}
+    i\hbar\pdv{t}\ket{\psi(t)} &= H \ket{\psi(t)}
+\end{align*}
+and the time reversal operator $\ket{\psi(t)} = T \ket{\psi(-t)}$, so the equation is
+\begin{align*}
+    i\hbar\pdv{(t)}T\ket{\psi(-t)} &= H T\ket{\psi(-t)}
+\end{align*}
+and the time derivative of the time-reversed state using chain rule
+\begin{align*}
+    i\hbar\pdv{(t)}\ket{\psi(-t)} &= -i\hbar\pdv{t}\ket{\psi(-t)}
+\end{align*}
+for the right side, since $T$ and $H$ commute
+\begin{align*}
+    -i\hbar\pdv{t}\ket{\psi(-t)} &= T H\ket{\psi(-t)} \\
+    -i\hbar\pdv{t}T\ket{\psi(t)} &= T HT\ket{\psi(t)} = T T H \ket{\psi(t)}
+\end{align*}
+and since $T^2 = 1$
+\begin{align*}
+    -i\hbar\pdv{t}T\ket{\psi(t)} &= H \ket{\psi(t)}
+\end{align*}
+or
+\begin{align*}
+    T c = c^* T
+\end{align*}
+
+\paragraph*{4.} Given the Hamiltonian
+\begin{align*}
+    H = - \frac{1}{\abs{\vb J}} (\mu \vb J \cdot \vb B + d \vb J \cdot \vb E)
+\end{align*}
+(a) From Maxwells equations
+\begin{align*}
+    \div \vb E &= 4\pi \rho \\
+    \curl \vb E &= -\pdv{\vb B}{t}
+\end{align*}
+under time reversal $t \to -t$ the electric field is T-even $E \to E$ and the magnetic field is T-odd
+$B \to -B$. From angular momentum
+\begin{align*}
+    \vb L = \vb r \times \vb p = \vb r \times m \dv{\vb r}{t}
+\end{align*}
+so under time reversal $t \to -t$ angular momentum is T-odd $\vb L \to -\vb L$, and since spin 
+angular momentum is T-odd by the right hand rule, the total angular momentum is T-odd $\vb J \to -\vb J$.
+
+\paragraph*{}For the parity, the magnetic field and angular momentum are even under parity since 
+they are pseudovectors, and the electric field is odd under parity as a vector.
+
+\paragraph*{} The charge conjugation of the electric field is $E \to -E$ and the magnetic field is
+$B \to -B$ since the antiparticle will have the opposite charge. The total angular momentum is
+invariant under charge conjugation $\vb J \to \vb J$ since the antiparticle will have the same spin.
+\begin{align*}
+    C&: \vb E \to -\vb E, \quad \vb B \to -\vb B, \quad \vb J \to \vb J \\
+    P&: \vb E \to -\vb E, \quad \vb B \to \vb B, \quad \vb J \to \vb J \\
+    T&: \vb E \to \vb E, \quad \vb B \to -\vb B, \quad \vb J \to -\vb J
+\end{align*}
+(b) Since the Hamiltonian is invariant under time reversal so $\mu$ is T-even (odd times odd is even
+and even times even is even) and $d$ is T-odd. The Hamiltonian is also invariant under parity so
+$\mu$ is P-even and $d$ is P-odd. For charge conjugation, the Hamiltonian is invariant so $\mu$ is
+C-odd and $d$ is C-odd.
+\begin{align*}
+    C&: \mu \to \mu, \quad d \to -d \\
+    P&: \mu \to \mu, \quad d \to -d \\
+    T&: \mu \to -\mu, \quad d \to -d
+\end{align*}
+\end{document}

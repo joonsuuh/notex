@@ -727,4 +727,158 @@ prediction for perfomance, effect of having the cue, rate of $P$.
     \item Most straightforward method can be impossible
     \item Under the hood: Still Bayesian calculus.
 \end{itemize}
+
+\newpage
+\section*{Lecture 2/8/24}
+\barh \vspace{10px}
+
+\paragraph*{Is Science Solved?}
+The steps of science:
+\begin{enumerate}
+    \item Gather Data + Build Model
+    \item Fit each model to data
+    \item Assign preferences to different models
+    \item Either Method 1: Choose which data to gather next, gather more data, and back to step (2),or
+    Method 2: Decide whether to create new model, create new model, and back to step (2)
+\end{enumerate}
+
+\paragraph*{The not 'just math' part:} Data $\to$ clever choice of features $\to$ model the
+features/ model the noise.
+
+\paragraph*{Takehomes:}
+\begin{itemize}
+    \item Choices in dataprocessing, Feature definitions, choice of data acquisition
+    \item Depends on scieniic question: you need to know you subjective. Depends on the measurement:
+    you need to know you experiment
+\end{itemize}
+Fly embyro patterning $=$ perfec example; astonishingly precise, thus the precision of data anaylsis
+is the limiting factor
+
+\paragraph*{Role:} Carries `positional information'
+
+If I konw Hb (hunchback protein concentration), I know somthing about where I am; Hb and $x$ are not
+independent. Nature (funnel shaped) vs. Cell (narrow tube shaped) article arguments.
+
+\newpage
+\section*{Lecture 2/15/24}
+\barh \vspace{10px}
+\paragraph*{Presentation: Entropy \& Mutual Info}
+\paragraph*{takehome:} Information content in a random variable $X \rightleftharpoons$ Entropy
+$H(X)$
+\paragraph*{!} Not arbitrayry, but natural \& unique: Info content $H(X)$ has a \emph{discrete 
+distribution}
+\begin{itemize}
+    \item[i] $H(\qt{p_i}) \geq 0$
+    \item[ii] $H(\qt{p_i}) = 0$ iff $p_i = 1$ and others are 0
+    \item[iii] If $X,Y$ are independent $Z=(X,Y)$ and $H(Z) = H(X) + H(Y)$
+    \item[iv] $p_i = \qt{1/N, 1/N, \dots, 1/N}$, $H(X)$ should be monotonic in $N$
+\end{itemize}
+\paragraph*{Strengths of MI:} Not arbitrary: $X,Y$ are not independent, so $P(X) \neq P(X|Y)$
+\begin{itemize}
+    \item[i] $I(X;Y) = I(Y;X)$
+    \item[ii] $I(X;Y) \leq H(X)$
+    \item[iii] $I(X;Y) = 0$ iff $X,Y$ are independent
+    \item[iv] If $X,Y$ are related deterministically, then $I(X;Y) = H(X) = H(Y)$
+\end{itemize}
+If we know that they are not indepenent $H(X,Y) = H(X|Y) + I(X,Y) + H(Y|X)$ and
+$H(X,Y) \neq H(X) + H(Y)$ (there is overlap for dependent variables)
+\paragraph*{MOST IMPORTANT THING:} Data processing inequality: ``Data processing can only destroy
+information''. $X$ only knows about $Y$ and $Z$ only knows about $X$,
+\begin{align*}
+    X \to Y \to Z; \quad P(X,Y,Z) = P_x(X) P_y(Y|X) P_z(Z|Y)
+\end{align*}
+thus
+\begin{align*}
+    I(X;Y) \geq I(X;Z)
+\end{align*}
+\paragraph*{Weaknesses:}
+\begin{itemize}
+    \item[!] Estimating from data can require a lot of data.
+    \item[!] Information $\neq$ Useful Information. i.e. pure noise can have a \emph{lot} of
+    information
+\end{itemize}
+
+\newpage 
+\section*{Lecture 2/20/24}
+\barh \vspace{10px}
+
+\paragraph*{Personal Thoughts:} When we make a decision we have to consider what happens to the
+data explicitly. Normalizing does not make the data directly comparable to other data. Its easy to
+identify noise, so we should think twice when we compare it to other things
+
+\begin{itemize}
+    \item Houchmandzadeh et al.: 
+    Limitations of data $\to$ Data analysis (had a subtle flaw) $\to$ one Conclusion
+    \item Gregor et al.
+    Better data (very careful exp) $\to$ extrene careful data analysis $\to$ opposite conclusion.
+\end{itemize}
+\paragraph*{Takehomes:} 
+\begin{itemize}
+    \item Smart people make mistakes
+    \item If it's too good to be true, it might be???
+    \item Data is never what you think it is
+    \item Details matter
+\end{itemize}
+
+\newpage
+\section*{Lecture 2/22/24}
+\barh \vspace{10px}
+
+\paragraph*{Methods:} How did we collect the data?
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c c c}
+        & Nature & Cell \\
+        \hline 
+        Microscope & Scanning Confocal & Scanning Two Photon \\
+        Embryo & Fixed (dead) & Live \\
+        Labeling & Immunostaining & ``Bcd-GFP'' fusion protein \\
+    \end{tabular}
+\end{table}
+\paragraph*{}
+How to attach fluorophores 101:
+\paragraph*{Immunostaining:} Washing off too much could wash off the pertinant proteins. It is
+washed multiple times to get rid of the background fluorescence. When we wash with the neutral
+buffer saline. First the Primary antibody (Ab) is washed off, then the second Ab, anti-rabbit, is
+washed off. TLDR; Fix, label, wash
+\begin{itemize}
+    \item Strengths: Multiple washes leads to more(amplify) signal
+    ; Not genetic engineering (easier); more colors!; dead sometimes an advantage for
+    storage
+
+    \item Weaknesses: Multiple washes leads to more background fluorescence; The wash may dilute?;
+    amplifies unevenly; both random and systematic (place in cell); dead; fixation leads to
+    deformation, shrinking, etc.
+\end{itemize}
+\paragraph*{Protein fusion} Genetically modify the fly to have GFP (Green Fluorescent Protein) fused
+to the protein of interest. TLDR; Engineer, add to protein of interest + GFP.
+\begin{itemize}
+    \item Strengths: we're not adding wash; it's alive!; direct readout
+    \item Weaknesses: GFP not bright? Limited Fluorophores (The fly has to make the bright stuff), 
+    ,so less bright less photostable; does the fusion protein still work the same?
+\end{itemize}
+Fluorescescing too much can lead to bleaching (death) of the protein. What kind of fluorophore is
+being used?
+
+\paragraph*{Errors \& Noise:} Fixed: Variable age at collection, mechanical deform, labeling efficiency
+(targets or not targets are labeled). Live: GFP can alter function, Impact by details of cell
+environment (maturation time of fluoresce). 
+
+\paragraph*{Microscope \& Imaging:} Laser shoots stuff to scanning (moving mirrors) and a
+fluorescence detector collects data. 
+
+\paragraph*{Confocal:} Only stuff in the focal plane is collected (closer and further stuff is out
+of focus). Everything in the laser is fluorescing and fluorophores have a limited lifetime(can 
+bleach quicker).
+
+\paragraph*{Two Photon:} Infrared laser only excites the fluorophores in the place we want. In the
+image, the outside part has an exact concentration, so we can compare this to the inside part.
+
+\paragraph*{Takehomes:} Expression of Protein vs Position in Embryo (the canonical example): Is
+15 embryos enought? Is 1000 embryos enough? Looking at this picture: here is a plot, but is this
+the position in the embryo? no, it's the position in the image. Is it a picture of the image? no,
+its a picutre of 1D projection of the image. Is this expression? no, its tagged ptoteins... no its
+fluorescences... no its pixel values! More steps, more noise, more errors, there is complexity! 
+The subject expert has the role to give us the answers to these questions. I don't know what the
+microscope is doing is bad!
 \end{document}

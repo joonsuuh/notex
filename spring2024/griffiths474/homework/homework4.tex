@@ -1,0 +1,131 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+% shortcut command for fraction 3/2
+
+\begin{document}
+
+\setcounter{section}{1}
+\begin{center}
+    \addcontentsline{toc}{section}{Homework 1}
+    \section*{Homework 4}
+    \subsection*{Due 2/14}
+\end{center}
+\hrule \vspace{10px}
+
+\paragraph*{1.} (a) Imagining the electron as solid sphere, the moment of inertia is 
+$I = \frac{2}{5}m_e r^2$. The speed at a point on its `equator' is given by the tangential
+velocity $v = \omega r \implies \omega = \frac{v}{r}$. And if this electron is spinning with angular
+momentum $\ell = \hbar / 2$, the speed of this point is
+\begin{align*}
+    \ell &= I \omega \\
+    \frac{\hbar}{2} &= \frac{2}{5}m_e r^2 \frac{v}{r} \\
+    v &= \frac{5\hbar}{4m_e r}
+\end{align*}
+(b) If we have probed down to $\num{e-18}$ and still haven't found any structure, then we would 
+think that the radius of this electron solid sphere is $r < \num{e-18}$. Then the speed of the
+point on the equator is roughly
+\begin{align*}
+    v > \frac{\num{5e-34}}{4\times \num{9e-31} \times \num{e-18}} \approx \qty{e14}{m/s}
+\end{align*}
+which is much faster than the speed of light $c = \qty{3e8}{m/s}$. So an electron is probably not
+spinning.
+
+\paragraph*{2.} Given that the neutron, proton, and electron are all spin $S=1/2$ particles, the 
+total spin of the beta decay
+\begin{align*}
+    n \to p + e^-
+\end{align*}
+on the left side is $S_L = 1/2$ and on the right side we have $S_R = \ohf \otimes \ohf = 0 \oplus 1$.
+So the angular momentum is not conserved in this process. For the correct
+conservation of angular momentum, we need to include the neutrino in the decay
+\begin{align*}
+    n \to p + e^- + \bar{\nu}_e
+\end{align*}
+if we were to suppose the electron antineutrino had spin $S=1/2$, then the total spin states could
+be $1/2$ or $3/2$ and the angular momentum would be conserved. We could also suppose it has spin
+$S=3/2$ and the possible total spin states could be $1/2, 3/2$ or, $5/2$ which also conserves angular
+momentum. This means that any half integer spin would conserve angular momentum in the beta decay.
+
+\paragraph*{3.} If the $J_i$'s are Hermitian, then
+\begin{align*}
+    J_i^\dagger = J_i, \quad J_j^\dagger= J_i, \quad J_k^\dagger = J_k
+\end{align*}
+and the commutator is defined as
+\begin{align*}
+    [J_i, J_j] = J_i J_j - J_j J_i
+\end{align*}
+taking the Hermitian conjugate of the commutator
+\begin{align*}
+    [J_i, J_j]^\dagger &= (J_i J_j - J_j J_i)^\dagger \\
+    &= (J_i J_j)^\dagger - (J_j J_i)^\dagger \\
+    &= J_j^\dagger J_i^\dagger - J_i^\dagger J_j^\dagger \\
+    &= J_j J_i - J_i J_j \\
+    &= -(J_i J_j - J_j J_i) = -[J_i, J_j]
+\end{align*}
+where on the 3rd step we know that the Hermitian adjoint (conjugate \emph{transpose}) of a product of
+matrices is the product of the Hermitian adjoints in reverse order i.e.
+$(AB)^\dagger = B^\dagger A^\dagger$ because transposes do this. taking the Hermitian adjoint of the
+right hand side:
+\begin{align*}
+    (if_{ijk} J_k)^\dagger = -i f_{ijk}^\dagger J_k
+\end{align*}
+so
+\begin{align*}
+    -[J_i, J_j] = -i f_{ijk}^\dagger J_k \to [J_i, J_j] = i f_{ijk}^\dagger J_k
+\end{align*}
+and in order for the commutator relation to be true, the structure constants must be real i.e.
+$f_{ijk} = f_{ijk}^\dagger$ (real numbers are Hermitian).
+
+\paragraph*{4.} $f$ as a sum:
+\begin{align*}
+    f(x, y, z) = f_+(x, y, z) + f_-(x, y, z)
+\end{align*}
+Parities are:
+\begin{align*}
+    P(f_+) = + f_+, \quad P(f_-) = -f_- \quad P(f(x,y,z)) = f(-x,-y,-z)
+\end{align*}
+where the parity of $f$ is just the inversion(reflection + 180 degree rotation). Thus the parity of
+the RHS:
+\begin{align*}
+    P(f(x,y,z)) &= P(f_+(x,y,z)) + P(f_-(x,y,z)) \\
+    f(-x,-y,z) &= (+f_+(x,y,z)) + (-f_-(x,y,z))
+\end{align*}
+solving for $f_+$ and substituting $f_- = f - f_+$:
+\begin{align*}
+    f_+(x,y,z) &= f(-x,-y,z) + f_-(x,y,z) \\
+    &= f(-x,-y,z) + f(x,y,z) - f_+(x,y,z) \\
+    2f_+(x,y,z) &= f(-x,-y,z) + f(x,y,z) \\
+    f_+(x,y,z) &= \frac{1}{2} \qt(f(x,y,z) + f(-x,-y,z))
+\end{align*}
+and similarly by substituting the result back into $f_- = f - f_+$:
+\begin{align*}
+    f_-(x,y,z) &= \frac{1}{2} \qt(f(x,y,z) - f(-x,-y,z))
+\end{align*}
+we can see that
+\begin{align*}
+    f_+(x,y,z) + f_-(x,y,z) = f(x,y,z)
+\end{align*}
+where $f_+$ and $f_-$ is an eigenfunction of the parity operator with eigenvalues $+ 1$ and $-1$
+respectively.
+
+\paragraph*{5.} (a) Given  that for EM \& Strong interactions, the parity must be conserved. For the
+decay
+\begin{align*}
+    \eta \to 2\pi
+\end{align*}
+the parity of $\eta$ is $P(\eta) = -1$ and the parity of $2\pi$ is $P_{tot} = (P(\pi))^2 = (-1)^2 = 1$.
+So the parity is not conserved in this decay and thus forbidden for EM \& Strong interactions. 
+
+(b) For the decay
+\begin{align*}
+    \eta \to 3\pi
+\end{align*}
+we can see that the parity is conserved: $P(\eta) = P_{tot} = (P(\pi))^3 = -1$. Since a G-parity 
+violation forbids decay under Strong interactions, the G-parity of the two sides are:
+\begin{align*}
+    G(\eta) = (-1)^0 C = 1(+1) = +1, \quad G(3\pi) = (-1)^3 = -1
+\end{align*}
+so G-parity conservation is violated and the decay is forbidden under Strong interactions, but
+allowed for EM interactions due  to Parity conservation.
+\end{document}
