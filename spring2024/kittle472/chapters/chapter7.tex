@@ -327,5 +327,110 @@ so
     I \implies \frac{a^2\sin(Ka)}{4Ka[\cos(ka) - \cos(Ka)]} \\
     \implies \frac{mAa^2}{2\hbar^2} \cdot \frac{1}{Ka} \sin(Ka) + \cos(Ka) = \cos(ka)
 \end{align*}
-
+ 
+\newpage
+\lhead{Lecture 13: 2/27}
+From the cental equation:
+\begin{align*}
+    (\lambda_k - \epsilon) C_k + \sum_G U_G C_{k-G} = 0
+\end{align*}
+where
+\begin{align*}
+    \epsilon = \frac{\hbar^2 k^2}{2m}
+\end{align*}
+where at the zone boundary $k = \pm \pi/a$, there is a strong resonance and the potential attenuates
+dispersion. The reciprocal lattice vector is $G = 2\pi n/a$ and we have a dispersion relation at the
+point $U(\pm G/2)$ or in other words
+\begin{align*}
+    U = U_{G/2} = U_{-G/2}
+\end{align*} 
+so we need to find the wave function at the zone boundary: A linear combination of the first 
+boundary conditions
+\begin{align*}
+    \psi_k = C_{G/2} e^{iGx/2} + C_{-G/2} e^{-iGx/2}
+\end{align*}
+this gives the central equation
+\begin{align*}
+    \begin{cases}
+        (\lambda - \epsilon)C_{G/2} + U C_{-G/2} = 0 \\
+        (\lambda - \epsilon)C_{-G/2} + U C_{G/2} = 0
+    \end{cases}
+\end{align*}
+where we can solve this eigenvalue problem by finding where the determinat is zero:
+\begin{align*}
+    \begin{vmatrix}
+        \lambda - \epsilon & U \\
+        U & \lambda - \epsilon
+    \end{vmatrix} = 0
+\end{align*}
+The two solutions are
+\begin{align*}
+    \epsilon = \lambda \pm U = \frac{\hbar^2}{2m} (G/2)^2 \pm U \\
+    \implies \epsilon_G \sim 2U
+\end{align*}
+so the wavefunction is
+\begin{align*}
+    \psi = e^{iGx/2} + e^{-iGx/2} = \begin{cases}
+        \cos(Gx/2) \\
+        \sin(Gx/2)
+    \end{cases}
+\end{align*}
+the derivative of energy (slope) roughly relates to the velocity, and the curvatue
+is proportional to the mass:
+\begin{align*}
+    \pdv[2]{(\frac{\hbar^2 k^2}{2m})}{k} \propto \frac{1}{m}
+\end{align*}
+so around $G/2$, $-G/2$ the wavefunction is
+\begin{align*}
+    \implies \psi(x) = C_k e^{ikx} + C_{k-g} e^{i(k-g)x}
+\end{align*}
+and we get a pair of central equations:
+\begin{align*}
+    \begin{cases}
+        (\lambda_k - \epsilon) C_k + U C_{k-G} = 0 \\
+        (\lambda_{k-G} - \epsilon) C_{k-G} + U C_k = 0
+    \end{cases}
+\end{align*}
+and we solve the eigenvalues by finding the determinant resulting in the solutions:
+\begin{align*}
+    \epsilon = \frac{1}{2} (\lambda_{k-g} + \lambda_k) \pm \qt[\frac{1}{4}(\lambda_{k-g} = \lambda_k)^2 + U^2]^{1/2}
+\end{align*}
+we define the value
+\begin{align*}
+    K = k - \frac{G}{2} \qquad \abs{k} \ll 1
+\end{align*}
+so the dispersion relation is
+\begin{align*}
+    \epsilon_{k} &= \frac{\hbar^2}{2m} (G^2/4 + K^2) \pm \qt[4\lambda(\frac{\hbar^2K^2}{2m}) + U^2]^{1/2} \\
+    &= \frac{\hbar^2}{2m} (G^2/4 + K^2) \pm \qt[1 + \frac{\lambda}{U^2} \frac{\hbar^2K^2}{2m} ]^{1/2} \\
+    &= C \pm \frac{\hbar^2K^2}{2m} \qt[1 + \frac{2\lambda}{U}] \\
+    &= \frac{\hbar^2K^2}{2m^*}
+\end{align*}
+where 
+\begin{align*}
+    m^* = \frac{mU}{\lambda}
+\end{align*}
+is the effective mass. So if the curvature is large, the effective mass is approaches zero. We want
+the curvature to be smooth so the kinetic energy is large. Holes in semiconductors have a effective
+mass. 
+\paragraph*{Filling the Bands} Due to the Pauli exclusion principle, we can only occupy a finite
+space within a band of energy. Each electron will occupy
+\begin{align*}
+    n = \frac{2\pi/a}{2\pi/N} = N
+\end{align*}
+$N$ is the number of unit cells... But there is spin degeneracy, so the electrons will actually occupy
+\begin{align*}
+    n = 2N
+\end{align*}
+So one band can hold 2 electrons from a unit cell. Silicon (fcc hexigonal holds 4 atoms )has 2 atoms(2 Primitive cells)
+of valence 4, so we have 8 valence electrons filling the 4 bands in full hence an insulator. 
+For alkali metals, the band is only half filled, and thus a metal:
+\begin{itemize}
+    \item Even number of electrons: insulator
+    \item Odd number of electrons: metal
+\end{itemize}
+Gallium Arsenide (GaAs) is a semiconductor with a band gap of 1.4 eV. It is highly mobile structure,
+and for example Gallium Nitride which has a band gap of 3.4 eV is used in blue LED's, as it can
+carry higher voltage with less current(less heat). But its not used very much because it is hard to
+grow. Compounds are harder to grow than elements, so it is more expensive than using Silicon. 
 \end{document}

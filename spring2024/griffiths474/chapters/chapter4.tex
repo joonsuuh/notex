@@ -219,4 +219,446 @@ We can do this for Muonium ($\mu^+ e^-$ bound state) and Pionic Hydrogen($\pi^+ 
         \omega = \frac{1}{\sqrt{2}} (u \bar u + d \bar d) \qquad \phi = s \bar s
     \end{align*}
 \end{itemize}
+
+\newpage
+\lhead{Lecture 12: 2/26/24}
+\paragraph*{Quiz Review:}
+For the kinetic energy of a particle
+\begin{align*}
+    T &= E - mc^2 \\
+    &= \sqrt{\abs{\vb p}^2c^2 + m^2c^4} - mc^2 \\
+    &= mc^2\qt(1 + \frac{\vb p^2}{m^2c^2})^{1/2} - mc^2 \\
+\end{align*}
+and using the binomial expansion
+\begin{align*}
+    (1 + x)^n \approx 1 + nx + \frac{1}{2} \frac{n(n-1)}{2} x^2 \dots \qqtext{for} x \ll 1
+\end{align*}
+so
+\begin{align*}
+    T &= mc^2 \qt(\cancel 1 + \frac{\vb p^2}{2m^2c^2} - \frac{\vb p^4}{8m^4c^4} + \dots) - \cancel {mc^2} \\
+    &= \frac{\vb p^2}{2m} - \frac{1}{8} \frac{\vb p^4}{m^3c^2} + \dots
+\end{align*}
+From last time: Light mesons $(u, d, s)$ with $q\bar q$ bound states and spin
+\begin{align*}
+    \ohf \otimes \ohf = 1 \oplus 0
+\end{align*}
+where we for the spin-0 pseudoscalar mesons: $\pi, K, \eta$ we have 9 states. And for the spin-1
+vector mesons: $\rho, K^*, \omega, \phi$ we have 9 states. The flavor states of $K$ mesons:
+\begin{align*}
+    K^+: (u\bar s) \quad K^-:(\bar u s) \quad K^0: (d\bar s) \quad \bar K^0: (\bar d s)
+\end{align*}
+and for vector $K$ mesons
+\begin{align*}
+    K^{*+}: (u \bar s) \qqtext{etc.}
+\end{align*}
+so the Isospin states
+\begin{align*}
+    \mqty(u \\ d) \otimes \mqty(\bar d \\ \bar u) = 1 \oplus 0
+\end{align*}
+so 
+\begin{itemize}
+    \item spin-0: $1\sim \pi^+, \pi^-, \pi^0$, $0 \sim \eta$
+    \item spin-1: $1 \sim \rho^+, \rho^0, \rho^-$, $0 \sim \omega$
+\end{itemize}
+and in $SU(3)$: 
+\begin{align*}
+    3 \otimes \bar 3 = 8 \oplus 1
+\end{align*}
+where $\eta'$ is the spin-0 singlet (1). We can break down the spin algebra to isospin
+\begin{align*}
+    \mqty(\uparrow \\ \downarrow) \otimes \mqty(\uparrow \\ \downarrow)
+        = \mqty(u \\ d) \otimes \mqty(\bar d \\ \bar u) = 1 \oplus 0
+\end{align*}
+where
+\newcommand{\ua}{\uparrow}
+\newcommand{\da}{\downarrow}
+\begin{align*}
+    \ket{1,1} &= \ket{\ua \ua} \\
+    \ket{1,0} &= \frac{1}{\sqrt{2}} (\ket{\ua \da} + \ket{\da \ua}) \\
+    \ket{1,-1} &= \ket{\da \da} \\
+    \ket{0,0} &= \frac{1}{\sqrt{2}} (\ket{\ua \da} - \ket{\da \ua})
+\end{align*}
+and the charge conjugation operator
+\begin{align*}
+    C u \to \bar u \qquad C d \to \bar d \\
+    C = i \sigma^2 = i \mqty(0 & -i \\ i & 0) = \mqty(0 & 1 \\ -1 & 0) \\
+    C\mqty(u \\ d) \to \mqty(-\bar d \\ \bar u)
+\end{align*}
+so
+\begin{align*}
+    \ket{1,1} = -u \bar d = \ket{\pi^+}, \ket{\rho^+} \\
+    \ket{1,0} = \frac{1}{\sqrt{2}} (u \bar u - d \bar d) = \ket{\pi^0}, \ket{\rho^0} \\
+    \ket{1,-1} = \bar u  d = \ket{\pi^-}, \ket{\rho^-} \\
+    \ket{0,0} = \frac{1}{\sqrt{2}} (u \bar u + d \bar d) = \cancel{\ket{\eta}}, \ket{\omega}
+\end{align*}
+where the $\eta$ is not correct. We know that $\psi$ is orthgonal to $\omega$ so
+\begin{align*}
+    \ket{\psi} = \ket{s \bar s}
+\end{align*}
+we know that $\eta'$ is an $SU(3)$ singlet so
+\begin{align*}
+    \ket{\eta'} = \frac{1}{\sqrt{3}} (u \bar u + d \bar d + s \bar s)
+\end{align*}
+and since $\eta$ is orthogonal to $\eta'$ and all other states:
+\begin{align*}
+    \ket{\eta} = \frac{1}{\sqrt{6}} (u \bar u + d \bar d - 2s \bar s)
+\end{align*}
+this is a special case for the pseudoscalar light mesons. Even though the spin-0 and spin-1
+particles are made of the same quarks, their masses are very different! So the true meson mass is
+\begin{align*}
+    M = m_1 + m_2 + A \frac{\vb S_1 \cdot \vb S_2}{m_1 m_2}
+\end{align*}
+this third term is the spin-spin interaction from the Hydrogen Atom ($n^2$ degeneracry) 
+hyperfine splitting. The spin-spin interaction breaks the degeneracy of the $n^2$ states. Finding
+\begin{align*}
+    \vb S_T &= \vb S_1 + \vb S_2 \\
+    \vb S^2 &= (\vb S_1 + \vb S_2)^2 \\
+    &= \vb S_1^2 + \vb S_2^2 + 2\vb S_1 \cdot \vb S_2
+\end{align*}
+Where from the operator
+\begin{align*}
+    [J^2, J_z] = 0 \qquad \ket{j, m} \\
+    J_z \ket{j,m} + \hbar m \ket{j,m} \\
+    J^2 \ket{j,m} = \hbar^2 j(j+1) \ket{j,m}
+\end{align*}
+so the eigenvalues of $\vb S$ are $\ohf(\ohf + 1)\hbar^2$:
+\begin{align*}
+    \vb S^2 &= \thf \hbar^2 + \thf \hbar^2 + 2\vb S_1 \cdot \vb S_2 \\
+    &= \frac{3}{2}\hbar^2 + 2\vb S_1 \cdot \vb S_2
+\end{align*}
+so for the scalar case $s =0$, $\vb S^2 = 0$:
+\begin{align*}
+    \vb S_1 \cdot \vb S_2 = -\frac{3}{4}\hbar^2
+\end{align*}
+and for the vector case $s = 1$, $\vb S^2 = 2\hbar^2$:
+\begin{align*}
+    \vb S_1 \cdot \vb S_2 = \ohf \qt(2 - \thf \hbar^2)
+\end{align*}
+So
+\begin{align*}
+    \vb S_1 \cdot \vb S_2 = \begin{cases}
+        -\frac{3}{4}\hbar^2 & \text{spin-0} \\
+        \frac{1}{4} \hbar^2 & \text{spin-1}
+    \end{cases}
+\end{align*}
+e.g. we have meson masses
+\begin{itemize}
+    \item $(u,d): m_\rho = \qty{775}{MeV/c^2}$
+    \item $(u,d): m_\pi = \qty{140}{MeV/c^2}$
+\end{itemize}
+And we have an effective mass (MIT bag model):
+\begin{align*}
+    m_{eff} \geq \Lambda_{QCD} \sim \qty{200}{MeV/c^2}
+\end{align*}
+Quarks are always in bound states, and do not feel the strong interaction. And the bare mass is 
+different from the effective mass. Some bare masses:
+\begin{align*}
+    m_{u,d} \sim \qty{300}{MeV/c^2} \\
+    m_s \sim \qty{400}{MeV/c^2}
+\end{align*}
+\paragraph*{Baryons\dots} (light): $qqq$ bound states. We can treat the 3 body system as a 2 body
+system(CM of 2 quarks plus the third quark). For the ground state, $l = l' = 0$ for simplicity.
+\paragraph*{Spin configurations}
+\begin{align*}
+    \ohf \otimes \ohf \otimes \ohf &= (1 \oplus 0) \otimes \ohf \\
+    &= (1 \otimes \ohf) \oplus (0 \otimes \ohf) \\
+    &= (\thf \oplus \ohf) \oplus (\ohf) \\
+    &= 4 \oplus 2 \oplus 2
+\end{align*}
+(the 3/2 spin has 4 states: $3/2, 1/2, -1/2, -3/2$) where
+\begin{align*}
+    j_1 \otimes j_2 = (j_1 + j_2), \dots, \abs{j_1 - j_2}
+\end{align*}
+we also have 8 spin states for the 3 quarks:
+\begin{align*}
+    \ua \ua \ua \\
+    \ua \ua \da, \ua \da \ua, \da \ua \ua \\
+    \ua \da \da, \da \ua \da, \da \da \ua \\
+    \da \da \da
+\end{align*}
+so
+\begin{align*}
+    \ket{\thf,\thf} &= \ket{\ua\ua\ua} \\
+    \ket{\thf,\ohf} &= \frac{1}{\sqrt{3}} (\ket{\ua\ua\da} + \ket{\ua\da\ua} + \ket{\da\ua\ua}) \\
+    \ket{\thf,-\ohf} &= \frac{1}{\sqrt{3}} (\ket{\ua\da\da} + \ket{\da\ua\da} + \ket{\da\da\ua}) \\
+    \ket{\thf,-\thf} &= \ket{\da\da\da}
+\end{align*}
+which are all symmetric states! But Baryons are fermions so the wavefunction must be antisymmetric!
+And from 3 spins, we cant make an antisymmetric state, but we can make a partically antisymmetric
+state
+\begin{align*}
+    \ket{\ohf, \ohf}_{12} = \frac{1}{\sqrt 2} (\ua\da - \da\ua) \ua \\
+    \ket{\ohf, -\ohf}_{12} = \frac{1}{\sqrt 2} (\ua\da - \da\ua) \da \\
+\end{align*}
+where the subscript 12 denotes that the first two spins are antisymmetric and the third spin is free. 
+So we can also get
+\begin{align*}
+    \ket{\ohf, \ohf}_{23} = \ua \frac{1}{\sqrt 2} (\ua\da - \da\ua) \\
+    \ket{\ohf, -\ohf}_{23} = \da \frac{1}{\sqrt 2} (\ua\da - \da\ua)
+\end{align*}
+but we cant get an antisymmetric state for the first and third spins:
+\begin{align*}
+    \ket{\ohf, \ohf}_{13} = \frac{1}{\sqrt 2} (\ua\ua\da - \da\ua\ua) \\
+    \ket{\ohf, -\ohf}_{13} = \frac{1}{\sqrt 2} (\ua\ua\da - \da\ua\ua)
+\end{align*}
+this is just a linear combination of the other states:
+\begin{align*}
+    \ket{\;}_{13} = \ket{\;}_{12} + \ket{\;}_{23}
+\end{align*}
+\paragraph*{Pauli Exclusion Principle:} For probability of wavefunction to be the same
+\begin{align*}
+    \psi(1, 2) &\to \psi(2,1) \\
+    \abs{\psi(1,2)}^2 &= \abs{\psi(2,1)}^2\\
+    \implies \psi(1,2) &= e^{i\phi} \psi(2,1)\\
+    \psi(1,2) \to \psi(2,1) e^{i\phi} \to \psi(1,2) e^{2i\phi} \\
+    \implies e^{2i\phi} = 1 \implies e^{i\phi} = \pm 1
+\end{align*}
+so
+\begin{align*}
+    \psi(1,2) = \begin{cases}
+        +\psi(2,1) & \text{even} \\
+        -\psi(2,1) & \text{odd}
+    \end{cases}
+\end{align*}
+And distinguishable particles
+\begin{align*}
+    \psi_\alpha(1) \psi_\beta(2)
+\end{align*}
+and for indistinguishable particles
+\begin{align*}
+    \psi(1,2) = \frac{1}{\sqrt 2} [\psi_\alpha(1) \psi_\beta(2) \pm \psi_\alpha(2) \psi_\beta(1)]
+\end{align*}
+and from the \emph{Spin-Statistics Theorem}:
+\begin{itemize}
+    \item Bosons $\to$ Even wavefunctions(+)
+    \item Fermions $\to$ Odd wavefunctions(-)
+\end{itemize}
+where if $\alpha = \beta$ we then know $\psi(1,2) = 0$ for fermions.
+
+\newpage
+\lhead{Lecture 13: 2/28/24}
+\paragraph*{Quiz Review:}
+\begin{itemize}
+    \item For the baryon wavefunction its a little more complicated:
+    \begin{itemize}
+        \item Fermion $\to$ Pauli Exclusion Principle
+        \item Three body system
+        \item Color Quantum Number
+    \end{itemize}
+    *The baryon wavefunction must be antisymmetric under the inerchange of any two constituent quarks.
+    So the baryon wavefunction is a combination of 4 parts:
+    \begin{align*}
+        \psi(baryon) = \psi(space) \psi(spin) \psi(flavor) \psi(color)
+    \end{align*}
+    So for total antisymmetry
+    \begin{itemize}
+        \item For the space part, we can assume a ground state where $\ell = 0$ thus sphericaly symmetric.
+        \item The spin part can be symmetric (3/2) or partially antisymmetric (1/2).
+        \item For the flavor part we have $n^3=27$ states, or from group theory we have a SU(3):
+        \begin{align*}
+            3 \otimes 3 \otimes 3 = 10 \oplus 8 \oplus 8 \oplus 1
+        \end{align*}
+        or from Young Tableux for mesons 
+        \begin{align*}
+            \begin{ytableau}
+                \;
+            \end{ytableau}
+            \otimes
+            \begin{ytableau}
+                \; & \;
+            \end{ytableau}
+            &= 
+            \begin{ytableau}
+                3 & 4 \\
+                2
+            \end{ytableau}
+            \oplus
+            \begin{ytableau}
+                3 \\
+                2 \\
+                1
+            \end{ytableau} \\
+            &= \frac{3*4*2}{1*3*1} \oplus \frac{3*2*1}{1*2*3} = 8 \oplus 1
+        \end{align*}
+        but for the Bosons
+        \begin{align*}
+            \begin{ytableau}
+                \;
+            \end{ytableau}
+            \otimes
+            \begin{ytableau}
+                \;
+            \end{ytableau}
+            &= 
+            \begin{ytableau}
+                3 & 4
+            \end{ytableau}
+            \oplus
+            \begin{ytableau}
+                3 \\
+                2
+            \end{ytableau} \\
+            &= \frac{3*4}{1*2} \oplus \frac{3*2}{1*2} = 6 \oplus \bar 3
+        \end{align*}
+        where the $\bar 3$ comes from the antisymmetric part of now expanding again
+        \begin{align*}
+            6 \otimes 3 = \begin{ytableau}
+                3 & 4 
+            \end{ytableau}
+            \otimes 
+            \begin{ytableau}
+                3
+            \end{ytableau}
+            =
+            10 \oplus 8
+        \end{align*}
+        thus
+        \begin{align*}
+            3 \otimes 3 \otimes 3 = 10 \oplus 8 \oplus 8 \oplus 1
+        \end{align*}
+        How do we arrange this 10 states? From the mesons we know that the octet splits like
+        \begin{align*}
+            8 \to 2 + 3 + 2 + 1
+        \end{align*}
+        and we are told that the decuplet splits to
+        \begin{align*}
+            10 \to 4 + 3 + 2 + 1
+        \end{align*}
+        % figure with inverted color
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=0.5\textwidth]{decuplet.png}
+            \caption{Decuplet}
+            \label{fig:invertedcolor}
+        \end{figure}
+        The figure has isospin $I_3$ on the x-axis and spin $S$ on the y-axis.
+        We know that the quark charges are
+        \begin{align*}
+            u = \frac{2}{3} \qquad d = -\frac{1}{3} \qquad s = -\frac{1}{3}
+        \end{align*}
+        So the top right is (uuu) and etc. for the other corners. But these states are symmetric and
+        the spin is also symmetric so we need something else that needs to be antisymmetric. Thus
+        we have colors in $SU(3)_c$:
+        \begin{align*}
+            q = \mqty(r \\ g \\ b)
+        \end{align*}
+        this also by $SU(3)$ algebra has 27 states of color:
+        \begin{align*}
+            3 \otimes 3 \otimes 3 = 10 \oplus 8 \oplus 8 \oplus 1
+        \end{align*}
+        but....
+        \begin{quote}
+            \textbf{Every Naturally Occuring Particle is a Color Singlet - Griffiths}
+        \end{quote}
+        AKA the \emph{Color Confinement} principle. So the singlet is always antisymmetric:
+        \begin{align*}
+            \psi = \frac{1}{\sqrt{6}} (rgb - rbg + gbr - grb + brg - bgr)
+        \end{align*}
+    \end{itemize}
+    So since everything except color is must be symmetric for the total to be antisymmetric i.e.
+    \begin{align*}
+        \psi(spin) \psi(flavor) = \text{symmetric}
+    \end{align*}
+    So how do we get from $\Delta^{++}$ to $\Delta^+$? We use the $I_-$ operator:
+    From the lowering operator
+    \begin{align*}
+        J_- \ket{j, m} = \hbar \sqrt{(j + m)(j - m + 1)} \ket{j, m-1}
+    \end{align*}
+    so in isospin-space
+    \begin{align*}
+        u = \ket{\ohf, \ohf}
+    \end{align*}
+    thus
+    \begin{align*}
+        I_- u = I_- \ket{\ohf, \ohf} = \hbar \sqrt{\ohf(\ohf + 1) - \ohf(\ohf - 1)} \ket{\ohf, -\ohf}
+            = \hbar \sqrt{1} \ket{\ohf, -\ohf} = d
+    \end{align*}
+    and we also get
+    \begin{align*}
+        I_- d = 0 \qqtext{lowest $I_3$ state} \\
+        I_- s = 0 \qqtext{singlet}
+    \end{align*}
+    SO 
+    \begin{align*}
+        I_- \Delta^{++} &= I_- (uuu) =  (uud + udu + duu) \\
+        I_- \ket{\thf, \thf} &= \sqrt{3} \ket{\thf, \ohf} \\
+        &= \sqrt{3} \Delta^+ \\
+        \implies \Delta^+ &= \frac{1}{\sqrt{3}} (uud + udu + duu)
+    \end{align*}
+    applying the lowering operator again we get
+    \begin{align*}
+        \Delta^0 &= \frac{1}{\sqrt{3}} (udd + dud + ddu) \\
+    \end{align*}
+    and again
+    \begin{align*}
+        \Delta^- = ddd
+    \end{align*}
+    and for the $\Sigma$ (strangeness $S = -1$) states we have the following:
+    \begin{align*}
+        \Sigma^{*+} &= \frac{1}{\sqrt{3}} (uus + usu + suu) \\
+        \Sigma^{*0} &= \frac{1}{\sqrt{3}} (uds + dus + dsu + sud + sdu + uds) \\
+        \Sigma^{*-} &= \frac{1}{\sqrt{3}} (dds + dsd + sdd)
+    \end{align*}
+    for $S = -2$ we have the 2 $\Xi$ states:
+    \begin{align*}
+        \Xi^{*0} &= \frac{1}{\sqrt{3}} (uss + sus + ssu) \\
+        \Xi^{*-} &= \frac{1}{\sqrt{3}} (dss + sds + ssd)
+    \end{align*}
+    and a singlet 
+    \begin{align*}
+        \Omega^- = sss
+    \end{align*}
+    so the flavor is symmetric for the decuplet states
+    \paragraph*{Octet States} 
+    \begin{figure*}[ht]
+        \centering
+        \includegraphics[width=0.5\textwidth]{2octets.png}
+        \caption{1st and 2nd Octets}
+        \label{fig:octet}
+    \end{figure*}
+    In the first octet we have 8 states
+    \begin{itemize}
+        \item n, p 
+        \item $\Sigma^+, \Sigma^0, \Sigma^-$
+        \item $\Xi^0, \Xi^-$
+        \item $\Lambda^0$
+    \end{itemize}
+    now we need to do the same partial antisymmetry thing we did for spins onto the flavor states:
+    \begin{align*}
+        \psi(flavor) = \ket{\;}_{12} \qor \ket{\;}_{23} \qor \ket{\;}_{13}
+    \end{align*}
+    since the proton is a quark made of $uud$ we know that
+    \begin{align*}
+        \ket{\;}_{12} &= \frac{1}{\sqrt{2}} (ud - du)u \\
+        \ket{p(s_z = \ohf)} &= \frac{1}{\sqrt{2}} (ud - du)u \otimes \frac{1}{\sqrt{2}} (\ua\da - \da\ua)\ua \\
+        &= \frac{1}{2} [u(\ua) d(\da) u(\ua) \\
+        &\qquad - u(\da) d(\ua) u(\ua) \\
+        &\qquad - d(\ua) u(\da) u(\ua) \\
+        &\qquad + d(\da) u(\ua) u(\ua)] \\
+    \end{align*}
+    and we can do this for the flavor and spin wavefunctions:
+    \begin{align*}
+        \psi(flavor) \psi(spin) &= \frac{\sqrt{2}}{3} [\psi_{12}(f)\psi_{12}(s) \\
+        &\qquad + \psi_{23}(f)\psi_{23}(s) \\
+        &\qquad + \psi_{13}(f)\psi_{13}(s)]
+    \end{align*}
+where the will have to find this constant in HW. Thus the proton is
+\begin{align*}
+    \ket{p(\text{spin up})} &= \frac{1}{2 }\sqrt{2}{3} [(ud -du)u (\ua\da - \da\ua)\ua \\
+    &\qquad + u(ud - da) \ua(\ua\da - \da\ua) \\
+    &\qquad + (uud - duu) (\ua\ua\da - \da\ua\ua)] \\
+    &= \frac{1}{3\sqrt{2}} [uud(2\ua\ua\da - \ua\da\ua - \da\ua\ua) \\
+    &\qquad + udu(2\ua\da\ua - \da\ua\ua - \ua\ua\da) \\
+    &\qquad + duu(-\ua\da\ua + 2\da\ua\ua - \ua\ua\da)]
+\end{align*}
+so for $n$ we have
+\begin{align*}
+    \ket{n}_{12} = \frac{1}{\sqrt{2}} (ud -du)d 
+\end{align*}
+and for sigma
+\begin{align*}
+    \ket{\Sigma^+}_{12} &= \frac{1}{\sqrt{2}} (us -su)u \\
+    \ket{\Xi^0}_{12} &= \frac{1}{\sqrt{2}} (us -su)s
+\end{align*}
+\end{itemize}
 \end{document}

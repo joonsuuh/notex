@@ -1,0 +1,38 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+% sum commands
+
+\begin{document}
+
+\setcounter{section}{6}
+\begin{center}
+    \addcontentsline{toc}{section}{Homework 6}
+    \section*{Homework 6}
+    \subsection*{Due 3/5}
+\end{center}
+\hrule \vspace{10px}
+
+\paragraph*{1.} (a) The joint entropy is (where $\log = \log_2$)
+\begin{align*}
+    H(V,T) &= \sum_{V,T} p(V,T) \log(\frac{1}{p(V,T)}) \\
+    &= \qt[\frac{6}{16}\log(16) + \frac{4}{32}\log(32) 
+        + \frac{2}{8}\log(8) + \frac{1}{4} \log(4)] \\
+    &= 3.38 \text{ bits}
+\end{align*}
+(b) Given the marginal probability
+\begin{align*}
+    p(V=\text{Sunny}) &= \frac{1}{16} + \frac{1}{16} + \frac{1}{16} + \frac{1}{16} = \frac{4}{16} = \frac{1}{4} \\
+    p(V=\text{Cloudy \& dry}) &= \frac{1}{16} + \frac{1}{8} + \frac{1}{32} + \frac{1}{32} = \frac{8}{32} = \frac{1}{4} \\
+    p(V=\text{Cloudy \& rain}) &= \frac{1}{4} \\
+    p(V=\text{Cloudy \& snow}) &= \frac{1}{4}
+\end{align*}
+marginal entropy of $V$ is
+\begin{align*}
+    H(V) &= \sum_V p(V) \log(\frac{1}{p(V)}) \\
+    &= \frac{1}{4}\log(4) + \frac{1}{4}\log(4) + \frac{1}{4}\log(4) + \frac{1}{4}\log(4) \\
+    &= 2 \text{bits}
+\end{align*}
+
+\end{document}

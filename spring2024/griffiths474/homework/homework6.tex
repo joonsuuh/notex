@@ -1,0 +1,280 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+% shortcut command for fraction 3/2
+
+\begin{document}
+\lhead{Homework 6}
+\rhead{Due 2/28}
+\setcounter{section}{6}
+
+\paragraph*{1.} From the Lagrangian
+\begin{align*}
+    \lagr = \frac{1}{m} (\vb L \times \vb p) + \frac{\kappa \vb r}{r} 
+        = \frac{1}{2m} (\vb L \times \vb p - \vb p \times \vb L) + \frac{\kappa \vb r}{r}
+\end{align*}
+taking the derivative of a cross product is given by the product rule
+\begin{align*}
+    \dv{t}(\vb L \times \vb p) &= \dv{\vb L}{t} \times \vb p + \vb L \times \dv{\vb p}{t}
+\end{align*}
+so
+\begin{align*}
+    \dv{\lagr}{t} &= \frac{1}{m} \qt(\dv{\vb L}{t} \times \vb p + \vb L \times \dv{\vb p}{t})
+        + \dv{t}( \frac{\kappa \vb r}{r} ) 
+\end{align*} 
+where
+\begin{align*}
+    \dv{t}( \frac{\kappa \vb r}{r} ) &= \kappa \qt(\frac{\dot{\vb r}}{r} - \frac{\dot r \vb r}{r^2})
+\end{align*}
+and since the angular momentum is $\vb L = \vb r \times \vb p$ we have
+\begin{align*}
+    \dv{t}(\vb L \cross \vb p) &= \dv{t}(\vb r \cross \vb p)\cross \vb p + (\vb r \cross \vb p) \cross \dv{\vb p}{t}
+\end{align*}
+and since 
+\begin{align*}
+    \dv{\vb p}{t} = \vb F = -\grad V = - \frac{\kappa}{r^2} = -\frac{\kappa\vb r}{r^3} \\
+    \dv{L}{t} = 0
+\end{align*}
+we have
+\begin{align*}
+    \dv{t}(\vb L \cross \vb p) &= -m\frac{\kappa}{r^3} (r \cross \dot{\vb r}) \cross \vb r \\
+    &= -m\frac{\kappa}{r^3} [\dot{\vb r}r^2 - \vb r (\vb r \cdot \dot{\vb r})] 
+\end{align*}
+where 
+\begin{align*}
+    \vb r \cdot \dot{\vb r} = \frac{1}{2} \dv{t}(\vb r \cdot \vb r) = \frac{1}{2} \dv{t}(r^2) = r\dot r
+\end{align*}
+so 
+\begin{align*}
+    \dv{\lagr}{t} &= \frac{1}{m} \qt[-m \frac{\kappa}{r^3} \qt(\dot{\vb r}r^2 - \vb r(r \dot r))] + 
+        \kappa \qt(\frac{\dot{\vb r}}{r} - \frac{\dot r \vb r}{r^2}) \\
+        &= -\kappa \qt(\frac{\dot{\vb r}}{r} - \frac{\dot r \vb r}{r^2}) + \kappa \qt(\frac{\dot{\vb r}}{r} - \frac{\dot r \vb r}{r^2}) \\
+        &= 0
+\end{align*}
+
+\newpage
+\paragraph*{2.} (a) Given 
+\begin{align*}
+    M_{\text{meson}} = m_1 + m_2 + A\frac{\vb S_1 \cdot \vb S_2}{m_1m_2}
+\end{align*}
+and 
+\begin{align*}
+    A = \qt(\frac{2m_u}{\hbar})^2 \qty{159}{\MeV/c^2}, \quad m_u = m_d = \qty{308}{\MeV/c^2}, \quad m_s = \qty{483}{\MeV/c^2}
+\end{align*}
+Finding $S_1 \cdot S_2$:
+\begin{align*}
+    \vb S_T &= \vb S_1 + \vb S_2 \\
+    \vb S^2 &= (\vb S_1 + \vb S_2)^2 \\
+    &= \vb S_1^2 + \vb S_2^2 + 2\vb S_1 \cdot \vb S_2
+\end{align*}
+Where from the operator
+\begin{align*}
+    [J^2, J_z] = 0 \qquad \ket{j, m} \\
+    J_z \ket{j,m} + \hbar m \ket{j,m} \\
+    J^2 \ket{j,m} = \hbar^2 j(j+1) \ket{j,m}
+\end{align*}
+so the eigenvalues of $\vb S$ are $\ohf(\ohf + 1)\hbar^2$:
+\begin{align*}
+    \vb S^2 &= \thf \hbar^2 + \thf \hbar^2 + 2\vb S_1 \cdot \vb S_2 \\
+    &= \frac{3}{2}\hbar^2 + 2\vb S_1 \cdot \vb S_2
+\end{align*}
+so for the scalar case $s =0$, $\vb S^2 = 0$:
+\begin{align*}
+    \vb S_1 \cdot \vb S_2 = -\frac{3}{4}\hbar^2
+\end{align*}
+and for the vector case $s = 1$, $\vb S^2 = 2\hbar^2$:
+\begin{align*}
+    \vb S_1 \cdot \vb S_2 = \ohf \qt(2 - \thf \hbar^2) = \frac{1}{4}\hbar^2
+\end{align*}
+So
+\begin{align*}
+    \vb S_1 \cdot \vb S_2 = \begin{cases}
+        -\frac{3}{4}\hbar^2 & \text{spin-0} \\
+        \frac{1}{4} \hbar^2 & \text{spin-1}
+    \end{cases}
+\end{align*}
+So for pseudoscalar cases $\vb S_1 \cdot \vb S_2 = -\frac{3}{4}\hbar^2$:
+\begin{itemize}
+    \item $\pi$ (ud)
+    \begin{align*}
+        M_{\pi} &= 2m_u + A\frac{-3}{4m_um_d} = 2(308) + 4(308)^2 159\frac{-3}{4(308)(308)} \\
+        &= \qty{139}{\MeV/c^2}
+    \end{align*}
+    \item $K+$ (us)
+    \begin{align*}
+        M_{K^+} &= (308) + 483 - (308)^2 159 \frac{3}{308(483)} \\
+        &= \qty{487}{\MeV/c^2}
+    \end{align*}
+    \item $K^0$ (ds)
+    \begin{align*}
+        M_{K^0} &= (308) + 483 - (308)^2 159 \frac{3}{308(483)} \\
+        &= \qty{487}{\MeV/c^2}
+    \end{align*}
+    \item $\eta$ The masses of constituent parts:
+    \begin{itemize}
+        \item $u\bar u$ and $d\bar d$:
+        \begin{align*}
+            M_{u\bar u} &= M_{d\bar d} = \qty{139}{\MeV/c^2}
+        \end{align*}
+        \item $s\bar s$:
+        \begin{align*}
+            M_{s\bar s} &= 2(483) - (308)^2 159 \frac{3}{483^2} \\
+            &= \qty{772}{\MeV/c^2}
+        \end{align*}
+    \end{itemize}
+    so
+    \begin{align*}
+        M_{\eta} &= \frac{1}{6}(139) + \frac{1}{6}(139) + \frac{4}{6}(772) \\
+        &= \qty{561}{\MeV/c^2}
+    \end{align*}
+    \item $\eta'$ 
+    \begin{align*}
+        M_{\eta'} &= \frac{1}{3}(139) + \frac{1}{3}(139) + \frac{1}{3}(772) \\
+        &= \qty{350}{\MeV/c^2}
+    \end{align*}
+\end{itemize}
+And for vector cases $\vb S_1 \cdot \vb S_2 = \frac{1}{4}\hbar^2$:
+\begin{itemize}
+    \item $\rho$ (ud):
+    \begin{align*}
+        M_{\rho} &= 2(308) + 4(308)^2 159\frac{1}{4(308)(308)} \\
+        &= \qty{775}{\MeV/c^2}
+    \end{align*}
+    \item $K^{*+}$ (us):
+    \begin{align*}
+        M_{K^{*+}} &= (308) + 483 + (308)^2 159 \frac{1}{308(483)} \\
+        &= \qty{892}{\MeV/c^2}
+    \end{align*}
+    \item $K^{*0}$ (ds):
+    \begin{align*}
+        M_{K^{*0}} &= \qty{892}{\MeV/c^2}
+    \end{align*}
+    \item $\omega = \frac{1}{\sqrt{2}}(u\bar u + d \bar d)$ :
+    \begin{align*}
+        M_{\omega} &= \frac{1}{2}(775) + \frac{1}{2}(775) \\
+        &= \qty{775}{\MeV/c^2}
+    \end{align*}
+    \item $\phi = s\bar s$:
+    \begin{align*}
+        M_{\phi} &= 2(483) + 308^2 159 \frac{1}{483^2} \\
+        &= \qty{1031}{\MeV/c^2}
+    \end{align*}
+\end{itemize}
+(b) With $m_c = \qty{1250}{\MeV/C^2}$ and the same stuff from part (a) the pseudoscalars are:
+\begin{itemize}
+    \item $\eta_c(c\bar c)$:
+    \begin{align*}
+        M_{\eta_c} &= 2(1250) - (308)^2 159 \frac{3}{1250^2} \\
+        &= \qty{2471}{\MeV/c^2}
+    \end{align*}
+    \item $D^0(c\bar u)$:
+    \begin{align*}
+        M_{D^0} &= 1250 + 308 - (308)^2 159 \frac{3}{308(1250)} \\
+        &= \qty{1440}{\MeV/c^2}
+    \end{align*}
+    \item $D_s^+(c \bar s)$:
+    \begin{align*}
+        M_{D_s^+} &= 1250 + 483 - (308)^2 159 \frac{3}{483(1250)} \\
+        &= \qty{1658}{\MeV/c^2}
+    \end{align*}
+\end{itemize}
+and the vector mesons are:
+\begin{itemize}
+    \item $J/\psi(c\bar c)$:
+    \begin{align*}
+        M_{J/\psi} &= 2(1250) + (308)^2 159 \frac{1}{1250^2} \\
+        &= \qty{2510}{\MeV/c^2}
+    \end{align*}
+    \item $D^{*0}(c\bar u)$:
+    \begin{align*}
+        M_{D^{*0}} &= 1250 + 308 + (308)^2 159 \frac{1}{308(1250)} \\
+        &= \qty{1597}{\MeV/c^2}
+    \end{align*}
+    \item $D_s^{*+}(c \bar s)$:
+    \begin{align*}
+        M_{D_s^{*+}} &= 1250 + 483 + (308)^2 159 \frac{1}{483(1250)} \\
+        &= \qty{1758}{\MeV/c^2}
+    \end{align*}
+\end{itemize}
+(c) Now the beauty mesons with $m_b = \qty{4.5}{GeV/c^2} = \qty{4500}{MeV/c^2}$: Pseudoscalars
+\begin{itemize}
+    \item $\eta_b(b\bar b)$:
+    \begin{align*}
+        M_{\eta_b} &= 2(4500) - (308)^2 159 \frac{3}{4500^2} \\
+        &= \qty{8998}{\MeV/c^2}
+    \end{align*}
+    \item $B^+(u \bar b)$:
+    \begin{align*}
+        M_{B^+} &= 308 + 4500 - (308)^2 159 \frac{3}{308(4500)} \\
+        &= \qty{4775}{\MeV/c^2}
+    \end{align*}
+    \item $B^0(d \bar d)$:
+    \begin{align*}
+        M_{B^0} &= \qty{4775}{\MeV/c^2}
+    \end{align*}
+    \item $B_c^+(c \bar b)$:
+    \begin{align*}
+        M_{B_c^+} &= 1250 + 4500 - (308)^2 159 \frac{3}{1250(4500)} \\
+        &= \qty{5742}{\MeV/c^2}
+    \end{align*}
+\end{itemize}
+and vector mesons are:
+\begin{itemize}
+    \item $\Upsilon(b\bar b)$:
+    \begin{align*}
+        M_{\Upsilon} &= 2(4500) + (308)^2 159 \frac{1}{4500^2} \\
+        &= \qty{9001}{\MeV/c^2}
+    \end{align*}
+    \item $B^{*+}(u \bar b)$:
+    \begin{align*}
+        M_{B^{*+}} &= 308 + 4500 + (308)^2 159 \frac{1}{308(4500)} \\
+        &= \qty{4819}{\MeV/c^2}
+    \end{align*}
+    \item $B^{*0}(d \bar b)$:
+    \begin{align*}
+        M_{B^{*0}} &= \qty{4819}{\MeV/c^2}
+    \end{align*}
+    \item $B_c^{*+}(c \bar b)$:
+    \begin{align*}
+        M_{B_c^{*+}} &= 1250 + 4500 + (308)^2 159 \frac{1}{1250(4500)} \\
+        &= \qty{5752}{\MeV/c^2}
+    \end{align*}
+\end{itemize}
+(d) Comparing all these masses compared to the PDB
+% table of meson masses
+\begin{center}
+    \begin{tabular}{c c c}
+        \hline
+        Meson & Calculated Mass & PDB Mass \\
+        \hline
+        $\pi$ & \qty{139}{\MeV/c^2} & \qty{139.57061}{\MeV/c^2} \\
+        $K^+$ & \qty{487}{\MeV/c^2} & \qty{493.677}{\MeV/c^2} \\
+        $K^0$ & \qty{487}{\MeV/c^2} & \qty{497.614}{\MeV/c^2} \\
+        $\eta$ & \qty{561}{\MeV/c^2} & \qty{547.862}{\MeV/c^2} \\
+        $\eta'$ & \qty{350}{\MeV/c^2} & \qty{957.78}{\MeV/c^2} \\
+        $\rho$ & \qty{775}{\MeV/c^2} & \qty{775.26}{\MeV/c^2} \\
+        $K^{*+}$ & \qty{892}{\MeV/c^2} & \qty{891.66}{\MeV/c^2} \\
+        $K^{*0}$ & \qty{892}{\MeV/c^2} & \qty{895.55}{\MeV/c^2} \\
+        $\omega$ & \qty{775}{\MeV/c^2} & \qty{782.65}{\MeV/c^2} \\
+        $\phi$ & \qty{1031}{\MeV/c^2} & \qty{1019}{\MeV/c^2} \\
+        $\eta_c$ & \qty{2471}{\MeV/c^2} & \qty{2980}{\MeV/c^2} \\
+        $D^0$ & \qty{1440}{\MeV/c^2} & \qty{1864}{\MeV/c^2} \\
+        $D_s^+$ & \qty{1658}{\MeV/c^2} & \qty{1968}{\MeV/c^2} \\
+        $J/\psi$ & \qty{2510}{\MeV/c^2} & \qty{3096}{\MeV/c^2} \\
+        $D^{*0}$ & \qty{1597}{\MeV/c^2} & \qty{2006}{\MeV/c^2} \\
+        $D_s^{*+}$ & \qty{1758}{\MeV/c^2} & \qty{2112}{\MeV/c^2} \\
+        $\eta_b$ & \qty{8998}{\MeV/c^2} & \qty{9398}{\MeV/c^2} \\
+        $B^+$ & \qty{4775}{\MeV/c^2} & \qty{5279}{\MeV/c^2} \\
+        $B^0$ & \qty{4775}{\MeV/c^2} & \qty{5279}{\MeV/c^2} \\
+        $B_c^+$ & \qty{5742}{\MeV/c^2} & \qty{6274}{\MeV/c^2} \\
+        $\Upsilon$ & \qty{9001}{\MeV/c^2} & \qty{9460}{\MeV/c^2} \\
+        $B^{*+}$ & \qty{4819}{\MeV/c^2} & \qty{5325}{\MeV/c^2} \\
+        $B^{*0}$ & \qty{4819}{\MeV/c^2} & \qty{5324}{\MeV/c^2} \\
+        $B_c^{*+}$ & \qty{5752}{\MeV/c^2} & - \\
+        \hline
+    \end{tabular}
+\end{center}
+The light mesons are all pretty good estimates except for $\eta'$\dots For heavier mesons the
+estimates are not as good, but they are within the ballpark of the actual masses. Why is the $\eta'$
+so far off? 
+\end{document}

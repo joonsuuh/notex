@@ -1,0 +1,90 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Lecture 14: 2/29}
+\chead{Chapter 8}
+\rhead{PHYS 472}
+
+\section*{Chapter 8: Semiconductor Crystals}
+\addcontentsline{toc}{section}{Chapter 8: Semiconductor Crystals}
+
+Orders of Magnitude:
+\begin{itemize}
+    \item $\rho \sim \qty{e14}{\ohm\cm}$: Insulator resistivity
+    \item $\rho \approx \num{e-2} \sim \qty{e9}{ohm*\cm}$: Semiconductor resistivity
+    \item $v_g = \pdv{E}{k}$ is the group velocity
+    \item The intrinsic carrier concentration is dependent on
+    \begin{align*}
+        \frac{E_g}{k_B T}
+    \end{align*}
+    or the number of carriers
+    \begin{align*}
+        n_e \propto e^{\frac{-E_g}{k_B T}}
+    \end{align*}
+    so for a gap energy of $E_g = \qty{0.5}{eV}$ at room temperature $k_B T \approx \qty{0.03}{eV}$
+    \item $\num{e-19} \sim \qty{e-20}{e/cm^3}$ is the roughly the number of carriers in a semiconductor.
+\end{itemize}
+\paragraph*{Doping} Doping silicon with phosphorus (V)--- or n doping--- introduces an extra electron
+while doping with boron (III)--- or p doping--- introduces a hole.
+
+\paragraph*{Defect level} Finding this level where the effective mass is almost infinite thus
+zero curvature. For Phosphorus doped silicon, the defect level is close to the conduction band
+because the extra electron is weakly bound to the phosphorus atom(donor level). The electron is freely moving
+in the conduction band which relates to the bound state of the hydrogen atom. The rydberg energy
+is roughly
+\begin{align*}
+    \Delta E \propto \frac{m}{\epsilon^2}
+\end{align*}
+for the hydrogen atom this energy is roughly $\qty{10}{eV}$, and for silicon the effective mass is
+\begin{align*}
+    m_e^* \approx 0.1 m_e
+\end{align*}
+and the dielectric constant is roughly
+\begin{align*}
+    \epsilon \approx 10
+\end{align*}
+so 
+\begin{align*}
+    \Delta E \approx \frac{1}{1000} E_{\text{Ryd}} \approx \qty{10}{meV}
+\end{align*}
+which is much smaller than the boltzmann factor at room temperature $\qty{25}{meV}$. This allows for
+self-doping where the electron can be thermally excited to the conduction band. For a (III)
+doped silicon, the defect level is closer to the lower band and the electron jumps up to the level
+—or hole jumps down—otherwise known as shallow doping (acceptor level). If the state is closer to
+the middle of the band gap, it is called deep.
+
+\paragraph*{Hole} The group velocity for the electron in the conduction band is the slope or 
+\begin{align*}
+    \pdv{E}{k} < 0
+\end{align*}
+and for the hole the slope is positive on the left:
+\begin{align*}
+    \text{hole} > 0
+\end{align*}
+so the hole has a negative sign in the energy $-E_h$ so the lower hole will move upward like a
+bubble in a liquid.
+\paragraph*{Motion of electron under electric field} The equation is
+\begin{align*}
+    v_g = \pdv{\omega}{k} = \frac{1}{\hbar} \grad_{\vb k} \omega (\vb k) \qquad E(k) = \hbar \omega k
+\end{align*}
+and phase velocity
+\begin{align*}
+    v_p = \frac{\omega}{k} 
+\end{align*}
+so a small change in energy is
+\begin{align*}
+    \delta \epsilon = \dv{\epsilon}{k} \delta k \\
+    V_g = \frac{1}{\hbar} \dv{\epsilon}{k}
+\end{align*}
+so
+\begin{align*}
+    \delta \epsilon &= - e E V_g \delta t \\
+    &= \hbar v_g \delta k \\
+    \implies \hbar \dv{k}{\epsilon} &= -e E \\
+    \implies \dv{\hbar k}{t} &= -e E = F = -e E - \frac{e}{c} \vb c \cross \vb B
+\end{align*}
+where $\hbar k$ is the crystal momentum. 
+\end{document}

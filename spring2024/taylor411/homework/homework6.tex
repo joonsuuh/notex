@@ -2,7 +2,7 @@
 \begin{document}
 \setcounter{section}{6}
 \begin{center}
-  \section*{Homework 6} \label{sec:homework5}
+  \section*{Homework 6} \label{sec:homework6}
   \subsection*{Due 2/28}
 \end{center}
 \addcontentsline{toc}{section}{\nameref{sec:homework6}}
@@ -12,7 +12,7 @@
 \begin{align*}
     \tan \alpha = \frac{r}{z} \qor z = r \cot \alpha; \qquad \dot z  = \dot r \cot \alpha
 \end{align*}
-where $z$ is the vertical position of the bead. The position vector of the bead is a linear
+where $z$ is the vertical position. The position vector is a linear
 combination of this $z$ position and polar position:
 \begin{align*}
     \vb r = r \vu r + z \vu z; \quad \vb v = \dot r \vu r + r\dot \phi \vu*\phi + \dot z \vu z
@@ -95,5 +95,256 @@ and when $r$ slightly decreases ($\eta < 0$), the bead tends back toward the eq 
 thus $r_o$ is a stable equilibrium point.
 
 \newpage 
-\paragraph*{2.} From the 
+\paragraph*{2.} (a) Setting the origin at the circle of radius $R$, the position vector of the bead is
+\begin{align*}
+    \vb r &= (R\cos(\omega t) + r\cos(\theta + \omega t))\vu x + (R\sin(\omega t) + r\sin(\theta + \omega t))\vu y \\
+    \vb v &= (-R\omega\sin(\omega t) - r(\dot \theta + \omega)\sin(\theta + \omega t))\vu x
+        + (R\omega\cos(\omega t) + r(\dot \theta + \omega)\cos(\theta + \omega t))\vu y \\
+    v^2 &= \color{draculagreen}
+                R^2 \omega^2 \sin^2(\omega t) 
+        \color{draculapurple} 
+            + r^2 (\dot \theta + \omega)^2 \sin^2(\theta + \omega t)
+        \color{draculafg} 
+            - 2Rr\omega(\dot \theta + \omega)\sin(\omega t)\sin(\theta + \omega t) \\
+    &\quad \color{draculagreen} 
+                + R^2\omega^2\cos^2(\omega t) 
+        \color{draculapurple} 
+            + r^2(\dot \theta + \omega)^2 \cos^2(\theta + \omega t)
+        \color{draculafg}
+            + 2Rr\omega(\dot \theta + \omega)\cos(\omega t)\cos(\theta + \omega t) \\
+    &= \color{draculagreen}
+            R^2 \omega^2
+        \color{draculapurple}
+            + r^2 (\dot \theta + \omega)^2 
+        \color{draculafg}
+            + 2Rr\omega(\dot \theta + \omega)
+                (\cos(\omega t) \cos(\theta + \omega t) + \sin(\omega t) \sin(\theta + \omega t))
+\end{align*}
+where we use the sum identity:
+\begin{align*}
+    \cos(\alpha + \beta) &= \cos\alpha\cos\beta - \sin\alpha\sin\beta
+\end{align*}
+so 
+\begin{align*}
+    \cos(\omega t) \cos(\theta + \omega t) + \sin(\omega t) \sin(\theta + \omega t) &= 
+        \cos(\omega t - (\theta + \omega t)) = \cos(-\theta) = \cos\theta
+\end{align*}
+thus the velocity squared is
+\begin{align*}
+    v^2 &= R^2 \omega^2 + r^2 (\dot \theta + \omega)^2 + 2R\omega r(\dot \theta + \omega)\cos\theta
+\end{align*}
+which is equivalent to the square of the sum of vectors:
+\begin{align*}
+    (\vb a + \vb b)^2 &= a^2 + b^2 + 2\vb a \cdot \vb b = a^2 + b^2 + 2ab\cos\theta
+\end{align*}
+where $\vb a = (R\omega) \vu a$ and $\vb b = (r(\dot \theta + \omega)) \vu b$ is the velocity 
+of the hoop and the bead respectively. The kinetic energy is
+\begin{align*}
+    T &= \frac{1}{2} m v^2 = \frac{1}{2} m
+        (R^2 \omega^2 + r^2 (\dot \theta + \omega)^2 + 2R\omega r(\dot \theta + \omega)\cos\theta)
+\end{align*}
+where we can assume there is no potential energy i.e. $U = 0$. So the Lagrangian is
+\begin{align*}
+    \lagr &= \frac{1}{2} m (R^2 \omega^2 + r^2 (\dot \theta + \omega)^2 + 2R\omega r(\dot \theta + \omega)\cos\theta)
+\end{align*}
+(b) from which we can find the EL eqn for $\theta$:
+\begin{align*}
+    \pdv{\lagr}{\theta} &= -mR\omega r(\dot \theta + \omega) \sin\theta \\
+    \dv{t}(\pdv{\lagr}{\dot \theta}) &= \dv{t} [mr^2(\dot \theta + \omega) + mR\omega r\cos\theta] \\
+    &= mr^2 \ddot \theta - mR\omega r \dot \theta \sin\theta
+\end{align*}
+so 
+\begin{align*}
+    -mR\omega r(\dot \theta + \omega) \sin\theta &= mr^2 \ddot \theta - mR\omega r \dot \theta \sin\theta \\
+    0 &= mr^2 \ddot \theta + mR\omega^2 r \sin\theta 
+\end{align*}
+and dividing by $mr^2$:
+\begin{align*}
+    \ddot \theta + \frac{R}{r} \omega^2 \sin\theta = 0
+\end{align*}
+which is the EOM for a simple pendulum when $R = r$. Finding the eq point(s):
+\begin{align*}
+    \theta = \theta_0 \implies \ddot \theta = 0
+\end{align*}
+so
+\begin{align*}
+    0 + \omega^2 \sin\theta_0 = 0 \implies \sin\theta_0 = 0 \implies \theta_0 = n\pi
+\end{align*}
+which gives us two eq points: $\theta_0 = 0, \pi$($2\pi \equiv 0$ in this context). 
+We can analyze the stability of these eq points by assuming a small deviation from the eq point:
+\begin{align*}
+    \theta = \theta_0 + \eta
+\end{align*}
+\paragraph*{}For the case $\theta_0 = 0$: We can use the simple approximation
+\begin{align*}
+    \sin(0 + \eta) \approx \eta
+\end{align*}
+and we look at the characteristic of the second derivative:
+\begin{align*}
+    \ddot \theta &= - \frac{R}{r} \omega^2 \sin\theta \qusing \frac{R}{r} \omega^2 = C_1 \\
+    \ddot \theta &= -C_1 \eta
+\end{align*}
+so when the bead moves slightly counter-clockwise(CCW) i.e. $\eta > 0$, it accelerates clockwise(CW) 
+i.e. $\ddot \theta < 0$ and vice versa. When the bead deviates from the eq point $\theta_0 = 0$, it
+tends back toward equilibrium thus a stable equilibrium point.
+\paragraph*{} For $\theta_0 = \pi$: We will be more careful with the approximation by using Taylor
+expansion:
+\begin{align*}
+    \sin(\pi + \eta) \approx \sin\pi + \eta \cos\pi = -\eta
+\end{align*}
+so the second derivative is
+\begin{align*}
+    \ddot \theta &= -C_1 (-\eta) = C_1 \eta
+\end{align*}
+so when the bead moves slightly CCW($\eta > 0$), it accelerates CCW($\ddot \theta > 0$) and vice
+versa. Thus $\theta_0 = \pi$ is an unstable equilibrium point.
+
+\newpage 
+\paragraph*{3.} (a) The position and velocity of mass $M$ is
+\begin{align*}
+    \vb r_M &= (x + L \sin\phi) \vu x + (L\cos\phi) \vu y \\
+    \vb v_M &= (\dot x + L\dot \phi \cos\phi) \vu x + (-L\dot \phi \sin\theta) \vu y \\ 
+\end{align*}
+and the velocity squared is
+\begin{align*}
+    v_M^2 &= \dot x^2 + 2L\dot x \dot \phi \cos\phi + L^2 \dot \phi^2 \cos^2\phi
+        + L^2 \dot \phi^2 \sin^2\phi \\
+    &= \dot x^2 + 2L\dot x \dot \phi \cos\phi + L^2 \dot \phi^2
+\end{align*}
+The kinetic energy is
+\begin{align*}
+    T &= \frac{1}{2} (Mv_M^2 + mv_m^2) \qquad v_m^2 = \dot x^2 \\
+    &= \frac{1}{2} [M(\dot x^2 + 2L\dot x \dot \phi \cos\phi + L^2 \dot \phi^2) + m\dot x^2] \\
+    T &= \frac{1}{2} (M + m) \dot x^2 + \frac{1}{2}M(2L\dot x \dot\phi \cos\phi + L^2 \dot\phi^2)
+\end{align*}
+and the potential energy is the gravitational potential energy + the spring potential energy:
+\begin{align*}
+    U &= Mgy + \frac{1}{2}kx^2 = -MgL\cos\phi + \frac{1}{2}kx^2
+\end{align*}
+so the Lagrangian is
+\begin{align*}
+    \lagr &= T - U \\
+    &= \frac{1}{2} (M + m) \dot x^2 + \frac{1}{2}M(2L\dot x \dot\phi \cos\phi + L^2 \dot\phi^2)
+        + MgL\cos\phi - \frac{1}{2}kx^2
+\end{align*}
+The EL eqn for $x$:
+\begin{align*}
+    \pdv{\lagr}{x} &= \dv{t}(\pdv{\lagr}{\dot x})\\
+    - kx &= \dv{t}((M + m)\dot x + ML\dot \phi \cos\phi) \\
+    -kx &= (M + m) \ddot x + ML \ddot \phi \cos\phi - ML\dot\phi^2 \sin\phi
+\end{align*}
+The EL eqn for $\phi$:
+\begin{align*}
+    \pdv{\lagr}{\phi} &= \dv{t}(\pdv{\lagr}{\dot \phi}) \\
+    -ML\dot x \dot\phi \sin\phi - MgL\sin\phi &= ML \dv{t}(\dot x \cos\phi + L \dot \phi) \\
+    -\dot x \dot\phi \sin\phi - g \sin\phi &= \ddot x \cos\phi - \dot x \dot\phi \sin\phi + L\ddot \phi \\
+    -g\sin\phi &= \ddot x \cos\phi + L\ddot \phi
+\end{align*}
+(b) For small $\phi$ we can approximate
+\begin{align*}
+    \cos\phi &\approx 1,\qquad \sin\phi \approx \phi 
+\end{align*}
+which simplfies the two EL eqns to
+\begin{align*}
+    -kx &= (M + m) \ddot x + ML(\ddot \phi - \dot\phi^2 \phi)\\
+    -g\phi &= \ddot x + L\ddot \phi
+\end{align*}
+and throwing away some terms
+\begin{align*}
+    -kx &= (M + m)\ddot x \implies \ddot x = -\frac{k}{M + m} x \\
+    -g\phi &= L\ddot \phi \implies \ddot \phi = -\frac{g}{L}\phi
+\end{align*}
+
+\newpage
+\paragraph*{4.} (a) From HW 3:
+\begin{align*}
+    \vb r &= (r\cos\phi) \vu x + (r\sin\phi) \vu y \\
+    \vb v &= (\dot r \cos\phi - r\dot\phi\sin\phi) \vu x + (\dot r \sin\phi + r\dot\phi\cos\phi) \vu y
+\end{align*}
+so the kinetic energy is
+\begin{align*}
+    T &= \frac{1}{2} m v^2 = \frac{1}{2} m (\dot r^2 + r^2 \dot\phi^2)
+\end{align*}
+and the potential energy is
+\begin{align*}
+    U &= \frac{1}{2} k(r - a)^2
+\end{align*}
+So the Lagrangian is
+\begin{align*}
+    \lagr &= T - U = \frac{1}{2} m (\dot r^2 + r^2 \dot\phi^2) - \frac{1}{2} k(r - a)^2
+\end{align*}
+The EL eqn for $r$:
+\begin{align*}
+    \pdv{\lagr}{r} &= \dv{t}(\pdv{\lagr}{\dot r}) \\
+    mr\dot\phi^2 - k(r - a) &= \dv{t}(m\dot r) \\
+    mr\dot\phi^2 - k(r - a) &= m\ddot r \\
+    \implies -k(r - a) &= m\ddot r - mr\dot\phi^2
+\end{align*}
+The EL eqn for $\phi$:
+\begin{align*}
+    \pdv{\lagr}{\phi} &= \dv{t}(\pdv{\lagr}{\dot \phi}) \\
+    0 &= \dv{t}(m r^2\dot\phi) = m(2r \dot r \dot\phi + r^2 \ddot\phi) \\
+    \implies 0 &= m(r\ddot \phi + 2 \dot r \dot\phi)
+\end{align*}
+which is what we found in HW 3.
+
+\paragraph*{}(b) The kinetic eqn is the same as before:
+\begin{align*}
+    T &= \frac{1}{2} m (\dot r^2 + r^2 \dot\phi^2)
+\end{align*}
+but the potential energy is adds gravitational potential energy:
+\begin{align*}
+    U &= \frac{1}{2} k(r - a)^2 - mgr\cos\phi
+\end{align*}
+so the Lagrangian is
+\begin{align*}
+    \lagr &= T - U = \frac{1}{2} m (\dot r^2 + r^2 \dot\phi^2) - \frac{1}{2} k(r - a)^2 + mgr\cos\phi
+\end{align*}
+(c) The EL eqn for $r$:
+\begin{align*}
+    \pdv{\lagr}{r} &= \dv{t}(\pdv{\lagr}{\dot r}) \\
+    mr\dot\phi^2 -k(r - a) + mg\cos\phi &= \dv{t}(m\dot r) \\
+    r\dot\phi^2 -\frac{k}{m}(r - a) + g\cos\phi &= \ddot r \\
+\end{align*}
+so
+\begin{align*}
+    \ddot r - r \dot\phi^2 + \frac{k}{m}(r - a) - g\cos\phi = 0
+\end{align*}
+and the EL eqn for $\phi$:
+\begin{align*}
+    \pdv{\lagr}{\phi} &= \dv{t}(\pdv{\lagr}{\dot \phi}) \\
+    -mgr\sin\phi &= \dv{t}(m r^2\dot\phi) \\
+    &= m(2r \dot r \dot\phi + r^2 \ddot\phi) \\
+    -g \sin\phi &= 2 \dot r \dot\phi + r \ddot\phi
+\end{align*}
+so \begin{align*}
+    \ddot \phi + \frac{2}{r} \dot r \dot\phi + \frac{g}{r}\sin\phi = 0
+\end{align*}
+assuming $\phi$ and $(r - a) = \epsilon$ are small, we can use the approximation around the 
+angular eq point $\phi = 0$:
+\begin{align*}
+    \sin\phi &\approx \phi, \qquad \cos\phi \approx 1
+\end{align*}
+and getting rid of some higher order terms:
+\begin{align*}
+    \ddot r - \cancel{r \dot\phi^2} + \frac{k}{m}(r - a ) - g(1) = 0 \\
+    \ddot r = g - \frac{k}{m}(r - a) \\
+    \ddot \phi + \cancel{\frac{2}{r} \dot r \dot\phi} + \frac{g}{r}\phi = 0 \\
+    \ddot \phi =- \frac{g}{r}\phi
+\end{align*}
+the eq point for $r$ is when $\ddot r = 0$:
+\begin{align*}
+    0 = g - \frac{k}{m}(r - a) \implies r_o = a + \frac{mg}{k}
+\end{align*}
+and expanding for small values around eqn point $r = r_o + \epsilon$ where we define $\epsilon = r - a$:
+\begin{align*}
+    \ddot \epsilon &= g - \frac{k}{m}(r_o + \epsilon - a) \\
+    &= g - \frac{k}{m}(\frac{mg}{k} + \epsilon) \\
+    &= g - g - \frac{k}{m}\epsilon \\
+\end{align*}
+thus we get the two simple harmonics oscillators
+\begin{align*}
+    \ddot \epsilon &= -\frac{k}{m}\epsilon \qquad \omega_1^2 = \frac{k}{m} \\
+    \ddot \phi &= -\frac{g}{r_o}\phi \qquad \omega_2^2 = \frac{g}{r_o}
+\end{align*}
 \end{document}

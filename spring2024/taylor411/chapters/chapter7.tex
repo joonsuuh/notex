@@ -491,4 +491,280 @@ and we get
     \tilde y = \pm \cosh(\tilde x - \tilde x_0)
 \end{align*}
 we could have also used the Lagrange Multiplier for the Maximum Area Fixed Perimeter problem.
+
+\newpage
+\subsection*{Lecture 16: \hfill 2/26/24}
+\hrule \vspace{10px}
+
+\paragraph*{Review} Constraint -- holonomic $\quad f(q,\dots, q_n) = 0 \to$ Lagrange Multiplier
+\paragraph*{Example} Simple pendulum spinning on its vertical axis. We have the Lagrangian
+\begin{align*}
+    T &= \frac{1}{2} m(L^2 \dot\theta^2 + L^2 \sin^2\theta \omega^2) \\
+    U &= mgy = mgL(1 - \cos\theta) \\
+    \lagr &= T - U \\
+    &= \frac{1}{2} m L^2 \dot \theta^2 + \frac{1}{2} m L^2 \sin^2\theta \omega^2 + mgL(1 - \cos\theta)
+\end{align*}
+but we can see the derivatives are also conserved:
+\begin{align*}
+    T' &= \frac{1}{2} m L^2\dot\theta^2, \quad U' = -\frac{1}{2} mL^2 \omega^2 \sin^2\theta + mg(1 - \cos\theta) \\
+    \lagr &= T' - U'
+\end{align*}
+where $U'$ is called the effective potential. $E'$ is conserved, so
+\begin{align*}
+    \pdv{\lagr}{\dot\theta} &= ml^2 \dot\theta \qqtext{angular momentum} \\
+    \dot\theta\pdv{\lagr}{\dot\theta} - \lagr &= E' \\
+    &= \frac{1}{2} mL^2 \dot\theta^2 - \frac{1}{2} mL^2\omega^2 \sin^2\theta + mgL(1 - \cos\theta) = T' + U' \\
+    T + U &= \frac{1}{2}mL^2\dot\theta^2 + \frac{1}{2} mL^2\omega^2 \sin^2\theta + mgL(1 - \cos\theta)
+\end{align*}
+we can see that the conserved quantity is different the mechanical energy $E = T + U$. We should be
+careful with finding what is the conserved quantity in noninertial frames (mechanical energy is not
+always conserved). In order to study the the function, we should look at the $E'$ term.
+\paragraph*{} Equilibrium points:
+\begin{align*}
+    \dv{U'}{\theta} = 0 \\
+    (g - L \omega^2 \cos\theta) \sin\theta = 0
+\end{align*}
+\begin{itemize}
+    \item if $\omega^2 < \frac{g}{L}$ then only 1 equilibrium point 
+    \item if $\omega^2 > \frac{g}{L}$ then 2 equilibrium points
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{mexicanhat.png}
+    \caption{Red shows 1 eq point, green shows 2 eq points}
+    \label{fig:mexicanhat}
+\end{figure}
+Figure \ref{fig:mexicanhat} shows the effective potential $U'(\theta)$ for the two cases. Sidenote:
+spinning the green curve around the $E'$ axis gives rise to the Mexican Hat potential in particle
+physics(Higgs Boson!). 
+
+\paragraph*{Lagrangian for a charged particle} $\vb E, \vb B$: we have a Lorentz force
+\begin{align*}
+    m\vb a = F  = q(\vb E + \vb v \times \vb B)
+\end{align*}
+where we can define a vector potential $\vb A$ such that
+\begin{align*}
+    \vb E = -\grad \phi - \pdv{\vb A}{t}, \quad \vb B = \curl \vb A
+\end{align*}
+Goal: to find $\lagr$ that gives
+\begin{align*}
+    \pdv{\lagr}{q} &= \dv{t}(\pdv{\lagr}{\dot q})
+\end{align*}
+so
+\begin{align*}
+    \lagr = \frac{1}{2} m \vb v^2 - q(\phi - \vb v \cdot \vb A)
+\end{align*}
+the generalized coordinate is $q(x, y, z)$ and we just look at $x$:
+\begin{align*}
+    \pdv{\lagr}{x} &= -q\dv{\phi}{x} + q \vb v \cdot \pdv{\vb A}{x} \\
+       &= -q\qt(\dv{\phi}{x} + v_x \pdv{A_x}{x} + v_y \pdv{A_y}{x} + v_z \pdv{A_z}{x})  \\
+    \pdv{\lagr}{\dot x} &= m v_x + q A_x
+\end{align*}
+so from the total derivative
+\begin{align*}
+    \dv{t} = \pdv{t} + \dv{x}{t} \pdv{x} + \dv{y}{t} \pdv{y} + \dv{z}{t} \pdv{z}
+\end{align*}
+we get
+\begin{align*}
+    \dv{t}(\pdv{\lagr}{\dot x}) &= m \dot v_x + q(\cancel{v_x \pdv{A_x}{x}} + v_y \pdv{A_x}{y} + v_z \pdv{A_x}{z} + \pdv{A_x}{t}) \\
+\end{align*}
+so 
+\begin{align*}
+    m \dot v_x = ma_x &= -q\qt(\pdv{\phi}{x} - \pdv{A_x}{t}) \qquad \equiv qE_x \\
+    &\quad + qv_y \qt(\pdv{A_y}{x} - \pdv{A_x}{y}) \qquad \equiv B_z \\
+    &\quad - qv_z \qt(\pdv{A_x}{z} - \pdv{A_z}{x}) \qquad \equiv B_y \\
+    &= qE_x + qv_y B_z - qv_z B_y
+\end{align*}
+which is the Lorentz force. We can think of the momentum as
+\begin{align*}
+    \pdv{\lagr}{\dot q_i} = p_i \qquad \vb p = m \vb v + q \vb A
+\end{align*}
+and from QM we know
+\begin{align*}
+    \vb p \to -i\hbar \grad - q \vb A
+\end{align*}
+And reviewing from Chapter 2, the linear drag force
+\begin{align*}
+    \vb f = -b \vb v
+\end{align*}
+is obviously nonconservative. So can get the EL eqn quickly by adding this force to the generalized
+force
+\begin{align*}
+    \dv{t}(\pdv{\lagr}{\dot q_i}) &= \pdv{\lagr}{q_i} + f \\
+    p_i = F + f
+\end{align*}
+this comes from Rayliegh dissipation function.
+\begin{align*}
+    R(\dot q) = \frac{1}{2} b \dot q^2 \qquad f = - \pdv{R}{\dot q}
+\end{align*}
+so the EL eqn is
+\begin{align*}
+    \dv{t}(\pdv{\lagr}{\dot q}) - \pdv{\lagr}{q} = - \pdv{R}{\dot q}
+\end{align*}
+where we have functions 
+\begin{align*}
+    T(\dot q), U(q), R(\dot q)
+\end{align*}
+so
+\begin{align*}
+    \dv{t}(\pdv{T}{\dot q}) + \pdv{R}{\dot q} + \pdv{U}{q} = 0
+\end{align*}
+
+\newpage
+\subsection*{Lecture 17: \hfill 2/28/24}
+\hrule \vspace{10px}
+
+\paragraph{Midterm Review} 
+\begin{itemize}
+    \item Newton's Laws
+    \begin{itemize}
+        \item 1. Inertial: Keep on going and it won't stop coming, so much to do so much to see. 
+        \item 2. $\vb F =m \vb a = m \ddot{\vb r}$
+        \item 3. $\vb F_{12} = -\vb F_{21}$
+    \end{itemize}
+    \item Polar Coordinates $(r, \phi)$
+    \begin{align*}
+        \begin{cases}
+            x = r\cos\phi \\
+            y = r\sin\phi
+        \end{cases}
+    \end{align*}
+    and unit vectors are orthogonal
+    \begin{align*}
+        \begin{cases}
+            \hat r = \cos\phi \hat x + \sin\phi \hat y \\
+            \hat \phi = -\sin\phi \hat x + \cos\phi \hat y
+        \end{cases}
+        \to \vu r \cdot \vu*\phi = 0
+    \end{align*}
+    such that the unit vector time derivatives are
+    \begin{align*}
+        \dot{\vu r} = \dot \phi \vu*\phi \\
+        \dot{\vu*\phi} = -\dot\phi \vu r
+    \end{align*}
+    so the velocity and acceleration is actually
+    \begin{align*}
+        \vb v = \dot{\vb r} &= \dot r \vu r + r \dot\phi \vu*\phi \\
+        &= v_r \vu r + v_\phi \vu*\phi \\
+        \vb a &= (\ddot r - r \dot\phi^2) \vu r + (2\dot r \dot\phi + r \ddot\phi) \vu*\phi \\
+        &= a_r \vu r + a_\phi \vu*\phi
+    \end{align*}
+    where the forces are
+    \begin{align*}
+        F_r = ma_r \qquad F_\phi = ma_\phi
+    \end{align*}
+    \item Momentum $\vb p = m \vb v$ and in relation to force $\vb F = \dv{\vb p}{t}$. For a
+    collection of particles, the total external force is
+    \begin{align*}
+        \dv{t} \sum_i \vb p_i = \vb F_{ext}
+    \end{align*}
+    \item Angular momentum
+    \begin{align*}
+        \vb \ell = \vb r \times \vb p
+    \end{align*}
+    \item Center of mass
+    \begin{align*}
+        \vb R &= \frac{1}{M} \sum m_i \vb r_i \qquad M = \sum m_i \\
+        \vb R &= \frac{1}{M} \int \vb r \dd m
+    \end{align*}
+    \item Energy: Kinetic energy is
+    \begin{align*}
+        T = \frac{1}{2} mv^2 = \frac{1}{2} m \vb v \cdot \vb v
+    \end{align*}
+    and for the two coordinate systems:
+    \begin{align*}
+        v^2 = v_x^2 + v_y^2 = v_r^2 + v_\phi^2
+    \end{align*}
+    \item Work-KE Theorem: 
+    \begin{align*}
+        T_2 - T_1 = \int_1^2 \vb F \cdot \dd \vb r = W(1 \to 2)
+    \end{align*}
+    and if $\vb F$ is conservative---only depends on position: $\vb F(\vb r)$ \& $\curl \vb F = 0$
+    thus $\vb F = -\grad U$---then
+    \begin{align*}
+        W(1 \to 2) = -\Delta U = U_1 - U_2 \\
+        E = T_1 + U_1 = T_2 + U_2
+    \end{align*} 
+    and more closely finding the critical points of $U$ i.e.
+    \begin{align*}
+        \pdv{U}{x} = 0 \qor \grad{U} = 0
+    \end{align*}
+    we also have classical turning points when $E = U$. (Not too important) For the case
+    \begin{align*}
+        \frac{1}{2} m \dot x^2 = E - U(x) \\
+        \implies \dot x = \dv{x}{t} = \sqrt{\frac{2}{m}} \sqrt{E - U(x)}
+    \end{align*}
+    \item Oscillators
+    \begin{align*}
+        \ddot x = -\frac{k}{m} x = -\omega_o^2 x \qquad \omega_o = \sqrt{\frac{k}{m}}
+    \end{align*}
+    the solution is written in several forms:
+    \begin{align*}
+        x(t) &= B_1 \cos(\omega_o t) + B_2 \sin(\omega_o t) \\
+        &= \Re [C_1 e^{i\omega_o t} + C_2 e^{-i\omega_o t}] \\
+        &= A \cos(\omega_o t - \delta)
+    \end{align*}
+    where we solve for the constants using the initial conditions $x(0) = x_o, \quad \dot x(0) = v_o$
+    \item Damped Oscillators:
+    \begin{align*}
+        \ddot x + 2\beta \dot x + \omega_o^2 x = 0
+    \end{align*}
+    where we have a homogeneous solution for the three cases:
+    \begin{itemize}
+        \item $\beta = \omega_o$: Critical damping
+        \begin{align*}
+            x_h(t) = e^{-\beta t}(C_1 + C_2 t)
+        \end{align*}
+        \item $\beta > \omega_o$: Overdamping
+        \begin{align*}
+            x_h(t) = e^{-(\beta - \sqrt{\beta^2 - \omega_o^2})t}
+                \qt( C_1 + C_2 e^{-2\sqrt{\beta^2 - \omega_o^2}t})
+        \end{align*}
+        \item $\beta < \omega_o$: Underdamping (weak damping)
+        \begin{align*}
+            x_h(t) = e^{-\beta t} A \cos(\omega t - \delta) \qquad \omega = \sqrt{\omega_o^2 - \beta^2}
+        \end{align*}
+    \end{itemize}
+    \item Driven Damped Oscillators:
+    \begin{align*}
+        \ddot x + 2\beta \dot x + \omega_o^2 x = f_0 \cos(\omega t)
+    \end{align*}
+    where $f_o$ has units of acceleration and $\beta$ has units of frequency. The solution is always
+    \begin{align*}
+        x(t) = A \cos(\omega t - \delta) + x_h(t)
+    \end{align*}
+    where $x_h(t)$ is the transient solution and the constants are
+    \begin{align*}
+        A^2 = \frac{f_0^2}{(\omega_o^2 - \omega^2)^2 + 4\beta^2 \omega^2} \qquad 
+        \delta = \arctan(\frac{2\beta \omega}{\omega_o^2 - \omega^2})
+    \end{align*}
+    where we have a resonance frequency around $\omega = \omega_o$.
+    \item Calculus of Variations: minimizing the action
+    \begin{align*}
+        S = \int f(x, y, y') \dd x
+    \end{align*}
+    to find $y(x)$ from the EL eqn
+    \begin{align*}
+        \pdv{f}{y} = \dv{x}(\pdv{f}{y'})
+    \end{align*}
+    \item Lagrangian (Application of CoV)
+    \begin{align*}
+        \lagr = T - U
+    \end{align*}
+    where the EL eqns are
+    \begin{align*}
+        \pdv{\lagr}{q_i} = \dv{t}(\pdv{\lagr}{\dot q_i})
+    \end{align*}
+    \item Conservation: Two special cases
+    \begin{itemize}
+        \item If $\lagr$ is independent of $q_i \Leftrightarrow \pdv{\lagr}{q_i} = 0$
+        \begin{align*}
+            p_i \equiv \pdv{\lagr}{\dot q_i} = \text{is conserved}
+        \end{align*}
+        \item If $\lagr$ is independent of $t$
+        \begin{align*}
+            \mathcal H = \sum_i \dot q_i p_i - \lagr = \text{constant}
+        \end{align*}
+    \end{itemize}
+\end{itemize}
 \end{document}

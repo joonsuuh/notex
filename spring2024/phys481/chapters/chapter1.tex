@@ -881,4 +881,120 @@ its a picutre of 1D projection of the image. Is this expression? no, its tagged 
 fluorescences... no its pixel values! More steps, more noise, more errors, there is complexity! 
 The subject expert has the role to give us the answers to these questions. I don't know what the
 microscope is doing is bad!
+
+\newpage
+\section*{Lecture 2/27/24}
+\barh \vspace{10px}
+
+\paragraph*{New Experiment!} mRNA expression 101: We design a probe that take a mRNA sequence
+and attaches \emph{several} fluorophores per mRNA strand. Some image info: The bright spots are
+transcription sites i.e. lots of mRNA in one place. Advantage of spot counting over intensity:
+\begin{itemize}
+    \item If indeed single molecules*, robust to variations in intensity.
+    \item Robust to background uncertainty 
+    \item Spatial Positioning
+    \item Absolute units
+\end{itemize}
+Disadvantages:
+\begin{itemize}
+    \item Undercounting if close together
+    \item Detection threshold (if too dim, false positive: if too bright, false negative)
+    \item single molecules?
+\end{itemize}
+The undercounting problem. Beyond what density? Resolution of your microscope i.e. point spread 
+function \href{https://en.wikipedia.org/wiki/Point_spread_function}{PSF}. $\sim$ 1 spot per
+$\si{\micro m^3}$. 
+
+\paragraph*{Recorded count vs. Tot fluorescence:} Some questions to think about:
+\begin{itemize}
+    \item Intercepts? Y-axis due to background fluorescence (non-zero intensity at zero mRNA)
+    \item Scatter? Variance increases as number of independent variables increases
+    \item Shape? Goes up,
+\end{itemize}
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{countvsfluor.png}
+    \caption{Recorded count vs. Tot fluorescence}
+    \label{fig:mRNA}
+\end{figure*}
+Fitting a line gives us the slope and the intercept. The slope is the fluorescence per count. The
+intercept is the background fluorescence. At higher counts the slope is less linear, and gets a
+litter steeper due to the saturation of the fluorophores. How to pick a threshold? Bayesian
+Inference! If this model deviates up, we are increasingly undercounting. 
+\paragraph*{False Postives \& False Negatives\dots} Some unanswered questions within Experimental
+detail and data analysis.
+\begin{itemize}
+    \item What percent of mRNA are detected? How do we get this?
+    \begin{itemize}
+        \item Count the total mRNA in the embryo: Double stain; stain the same thing twice e.g.
+        what we want to count is red and what we dont count is green. 
+        \item Compare with sample where we know exact mRNA count
+        \item Maybe there are multiple ways to label mRNA, compare those
+        \item Bayesian: method \& number of mRNA detected?
+    \end{itemize}
+    \item Are they single molecules?
+    \begin{itemize}
+        \item Double stain again
+    \end{itemize}
+    \item Fluctuations of the Hb and Kr are anticorrelated!
+\end{itemize}
+each nucleus has a $\delta$Hb and $\delta$Kr above or below. Claim: The anticorrelation thus Fancy
+theory of repression etc.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{2channel.png}
+    \caption{Fluctuations of the Hb and Kr are anticorrelated}
+    \label{fig:fluct}
+\end{figure}
+
+\newpage
+\section*{Lecture 2/29/24}
+\barh \vspace{10px}
+\paragraph*{Last time:} Single-molecule imaging:
+\begin{itemize}
+    \item Spot counting vs total fluorescence
+    \item Advantage \& Issues of each
+\end{itemize}
+\paragraph*{} Quantitative assesment of method performance:
+\begin{itemize}
+    \item If two methods, plot against each other
+    \begin{itemize}
+        \item discussed expectatinons
+        \item info encoded in different features (and what we learned)
+    \end{itemize}
+    \item leveraging a sample as its own control:
+    \begin{itemize}
+        \item 2-color labeling (double stain)
+        \item inject extra known signal into an image: 
+    \end{itemize}
+\end{itemize}
+\paragraph*{Takehomes:} Alot of similar issues within completely different fields(From imaging to 
+sequencing coming soon).
+\begin{itemize}
+    \item My thoughts: Know what physical tools you are working with(we can't just blindly trust a machine does
+    exactly what we want it to do), without knowing how a microscope works within the two methods---
+    confocal vs two photon---we wouldn't have known about which data is possibly better or accurate.
+    The basic knowledge of physical tools is important! But the more you know, the better
+    assesment you can make. Try to connect the data to the actual thing we are studying. 
+    \item You don't need to be a subject expert to ask good questions(we are novices in biology);
+    Research papers are not textbook
+    \item If you are the one doing this(you can't know everything within the data pipeline) i.e.
+    in your \emph{own} area, you \emph{must} be an expert on details (``Oh, I'm not sure exxactly 
+    how X was done\dots'' red flag) 
+    \item False positives and negatives: a tradeoff
+    \item Assign weight of evidence to data points thoughtfully (least square fitting assume every
+    data point is equal in weight and error bars) i.e. Bayesian!
+    \item Cannot understand signal without first understanding noise i.e. your instrument, analysis,
+    etc. what can we trust more than others? The physicist spends their first year measuring zero.
+    \item Put error bars on error bars!
+    \item Careful experiment goes hand in hand with careful data analysis: From the picture of the
+    spots on a black background, the signal to noise ratio is quite high, but we must still be
+    careful. Be even more precise!
+    \item This is all usually in the supplementary material, so read it!
+\end{itemize}
+
+\paragraph*{Mutual information}
+\begin{itemize}
+    \item $I(X;Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)$
+\end{itemize}
 \end{document}
