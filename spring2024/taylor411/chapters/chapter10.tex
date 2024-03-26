@@ -1,0 +1,136 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{../images/}}
+
+\begin{document}
+\subsection*{Lecture 24: \hfill  3/25/24}
+\hrule \vspace{10px}
+\section*{Solid Body Rotation}
+
+Last Week: Non-inertial Frames
+\begin{enumerate}
+    \item Just linear acceleration $\vb A$, N2L 
+    \begin{align*}
+        m \ddot{\vb r} = \vb F - m \vb A
+    \end{align*}
+    \item Rotating frame: 
+    \begin{align*}
+        m\ddot{\vb r} = \vb F + 2m\dot{\vb r} \times \Omega + m(\Omega \times \vb r) \times \Omega
+    \end{align*}
+\end{enumerate}
+
+\subsection*{Solid body} $N$ particles on a continuous distribution
+\begin{align*}
+    m_\alpha, \qquad \alpha = 1, 2, \dots, N \\
+    \vb r_\alpha, \qquad \vb r_\alpha - \vb r_\beta = \text{constant}
+\end{align*}
+With a center of mass (COM/CM)
+\begin{align*}
+    \vb R = \frac{1}{M} \sum_\alpha m_\alpha \vb r_\alpha, \qquad M = \sum_\alpha m_\alpha \\
+    \vb P = \sum_\alpha m_\alpha \vb v_\alpha = \sum_\alpha m\alpha \dot{\vb r}_\alpha = M \dot{\vb R} \\
+    \dot{\vb P} = M \ddot{\vb R} = \vb F_{\text{ext}} 
+\end{align*}
+\paragraph*{Angular Momentum}
+\begin{align*}
+    \vb \ell_\alpha &= \vb r_\alpha \times \vb p_\alpha \\
+    &= \vb r_\alpha \times m_\alpha \dot{\vb r}_\alpha
+\end{align*}
+and the total angular momentum
+\begin{align*}
+    \vb L = \sum_\alpha \vb \ell_\alpha = \sum_\alpha \vb r_\alpha \times m_\alpha \dot{\vb r}_\alpha
+\end{align*}
+Defining a position $\vb r_\alpha'$ relative to the CM
+\begin{align*}
+    \vb r_\alpha' = \vb r_\alpha - \vb R, \quad \vb r_\alpha = \vb R + \vb r_\alpha'
+\end{align*}
+we can rewrite the total angular momentum as
+\begin{align*}
+    \vb L &= \sum_\alpha m_\alpha(\vb R + \vb r_\alpha') \times (\dot{\vb R} + \dot{\vb r}_\alpha') \\
+    &= \sum_\alpha m_\alpha \vb R \times \dot{\vb R} + \sum_\alpha m_\alpha \vb r_\alpha' \times \dot{\vb R} 
+    + \sum_\alpha m_\alpha \vb R \times \dot{\vb r}_\alpha' + \sum_\alpha m_\alpha \vb r_\alpha' \times \dot{\vb r}_\alpha' \\
+\end{align*}
+but since we know that
+\begin{align*}
+    \vb R &= \frac{1}{M} \sum_\alpha m_\alpha (\vb R + \vb r_\alpha') \\
+    &= \frac{1}{M} \sum_\alpha m_\alpha \vb R + \frac{1}{M} \sum_\alpha m_\alpha \vb r_\alpha' \\
+    \implies &\sum_\alpha m_\alpha \vb r_\alpha' = 0 \\
+    &\sum_\alpha m_\alpha \dot{\vb r}_\alpha' = 0
+\end{align*}
+so the middle terms of the total angular momentum are zero:
+\begin{align*}
+    \vb L = M \vb R \times \dot{\vb R} + \sum_\alpha m_\alpha \vb r_\alpha' \times \dot{\vb r}_\alpha'
+\end{align*}
+which can be re-expressed as
+\begin{align*}
+    \vb L &= \vb L_{\text{cm}} + \vb L_{\text{rel}} \\
+    \vb L_{\text{cm}} &= M \vb R \times \dot{\vb R} \\
+    \vb L_{\text{rel}} &= \sum_\alpha m_\alpha \vb r_\alpha' \times \dot{\vb r}_\alpha'
+\end{align*}
+For example we can consider the earth as a rigid body with angular momentum
+\begin{align*}
+    \vb L_E = \vb L_{\text{spin}} + \vb L_{\text{orb}}
+\end{align*}
+\paragraph*{Time derivative of angular momentum} we have two parts
+\begin{align*}
+    \dot{\vb L}_{\text{cm}} &= M \dot{\vb R} \times \dot{\vb R} + M \vb R \times \ddot{\vb R} \\
+    &= M \vb R \times \ext = \vb \Gamma_{\text{cm}} 
+\end{align*}
+and
+\begin{align*}
+    \dot{\vb L}_{\text{rel}} &= \sum_\alpha m_\alpha \vb r_\alpha' \times \ddot{\vb r}_\alpha', 
+    \quad \ddot{\vb r}_\alpha' = \ddot{\vb r}_\alpha - \ddot{\vb R} \\
+    &= \vb \Gamma_{\text{rel}}
+\end{align*}
+\paragraph*{Energy} The kinetic energy of the system is
+\begin{align*}
+    T &= \frac{1}{2} \sum_\alpha m_\alpha \dot{\vb r}_\alpha^2 = \frac{1}{2} \sum_\alpha m_\alpha(\dot{\vb R} + \dot{\vb r}_\alpha')^2 \\
+    &= \frac{1}{2} \sum_\alpha m_\alpha (\dot{\vb R}^2 + 2\dot{\vb R} \dot{\vb r}_\alpha' + \dot{\vb r}_\alpha'^2) \\
+    &= \frac{1}{2} M \dot{\vb R}^2 + \frac{1}{2} \sum_\alpha m_\alpha \dot{\vb r}_\alpha'^2
+\end{align*}
+and the potential energy is
+\begin{align*}
+    U = U_{\text{ext}} + U_{\text{int}} = U_{\text{ext}}
+\end{align*}
+where there is no relative motion between the particles, the internal potential energy is a constant
+which can be ignored. 
+\paragraph*{Example: Rotating disk} We consider a disk rotating about the $z$-axis with angular velocity
+\begin{align*}
+    \vb \omega = (0, 0, \omega)
+\end{align*}
+with a particle with position and velocity
+\begin{align*}
+    \vb r_\alpha = (x_\alpha, y_\alpha, z_\alpha) \\
+    \dot{\vb r}_\alpha = (\dot{x}_\alpha, \dot{y}_\alpha, \dot{z}_\alpha)
+\end{align*}
+the time derivative of the position vector is
+\begin{align*}
+    \dot{\vb r}_\alpha = \vb \omega \times \vb r_\alpha = (-\omega y_\alpha, \omega x_\alpha, 0)
+\end{align*}
+and the angular momentum is
+\begin{align*}
+    \vb \ell_\alpha &= m_\alpha \vb r_\alpha \times \dot{\vb r}_\alpha = m_\alpha \vb r_\alpha \times (\vb \omega \times \vb r_\alpha) \\
+    &= m_\alpha(-\omega x_\alpha z_\alpha, -\omega y_\alpha z_\alpha, \omega (x_\alpha^2 + y_\alpha^2))
+\end{align*}
+thus the $z$ component of total angular momentum is
+\begin{align*}
+    L_z = \sum_\alpha m_\alpha \ell_{\alpha, z} = \sum_\alpha m_\alpha \omega(x_\alpha^2 + y_\alpha^2)
+    = \omega \sum_\alpha m_\alpha \rho_\alpha^2 = \omega I_z
+\end{align*}
+where $\rho$ is radius in cylindrical coordinates and $I_z$ is the moment of inertia about the $z$-axis (parallel axis theorem).
+The other two components of angular momentum are
+\begin{align*}
+    L_x = -\sum_\alpha m_\alpha \omega x_\alpha z_\alpha \\
+    L_y = -\sum_\alpha m_\alpha \omega y_\alpha z_\alpha
+\end{align*}
+and since $L_x$ and $L_y$ can be nonzero, that means that $\vb L$ can be in any direction! If we define
+the products of inertia 
+\begin{align*}
+    I_{xz} = -\sum_\alpha m_\alpha x_\alpha z_\alpha \\
+    I_{yz} = -\sum_\alpha m_\alpha y_\alpha z_\alpha \\
+    I_{zz} = \sum_\alpha m_\alpha (x_\alpha + y_\alpha)^2
+\end{align*}
+we define the total angular momentum as
+\begin{align*}
+    \vb L &= I \cdot \vb \omega \\
+    &= (I_{xz} \cdot \omega_z, I_{yz} \cdot \omega_z, I_{zz} \cdot \omega_z)
+\end{align*}
+\end{document}

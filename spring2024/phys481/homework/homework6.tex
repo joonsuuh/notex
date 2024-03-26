@@ -10,29 +10,301 @@
 \begin{center}
     \addcontentsline{toc}{section}{Homework 6}
     \section*{Homework 6}
-    \subsection*{Due 3/5}
+    \subsection*{Due 3/7}
 \end{center}
 \hrule \vspace{10px}
 
 \paragraph*{1.} (a) The joint entropy is (where $\log = \log_2$)
 \begin{align*}
-    H(V,T) &= \sum_{V,T} p(V,T) \log(\frac{1}{p(V,T)}) \\
+    H(V,T) &= \sum_{V,T} P(V,T) \log(\frac{1}{P(V,T)}) \\
     &= \qt[\frac{6}{16}\log(16) + \frac{4}{32}\log(32) 
-        + \frac{2}{8}\log(8) + \frac{1}{4} \log(4)] \\
-    &= 3.38 \text{ bits}
+        + \frac{2}{8}\log(8) + \frac{1}{4} \log(4)] = \frac{54}{16} \\
+    H(V,T) &= \boxed{3.38 \text{ bits}}
 \end{align*}
-(b) Given the marginal probability
+Given the marginal probability 
 \begin{align*}
-    p(V=\text{Sunny}) &= \frac{1}{16} + \frac{1}{16} + \frac{1}{16} + \frac{1}{16} = \frac{4}{16} = \frac{1}{4} \\
-    p(V=\text{Cloudy \& dry}) &= \frac{1}{16} + \frac{1}{8} + \frac{1}{32} + \frac{1}{32} = \frac{8}{32} = \frac{1}{4} \\
-    p(V=\text{Cloudy \& rain}) &= \frac{1}{4} \\
-    p(V=\text{Cloudy \& snow}) &= \frac{1}{4}
+    P(V=\text{Sunny}) &= \frac{1}{16} + \frac{1}{16} + \frac{1}{16} + \frac{1}{16} = \frac{4}{16} = \frac{1}{4} \\
+    P(V=\text{Cloudy \& dry}) &= \frac{1}{16} + \frac{1}{8} + \frac{1}{32} + \frac{1}{32} = \frac{8}{32} = \frac{1}{4} \\
+    P(V=\text{Cloudy \& rain}) &= \frac{1}{4} \\
+    P(V=\text{Cloudy \& snow}) &= \frac{1}{4}
 \end{align*}
 marginal entropy of $V$ is
 \begin{align*}
-    H(V) &= \sum_V p(V) \log(\frac{1}{p(V)}) \\
+    H(V) &= \sum_V P(V) \log(\frac{1}{P(V)}) \\
     &= \frac{1}{4}\log(4) + \frac{1}{4}\log(4) + \frac{1}{4}\log(4) + \frac{1}{4}\log(4) \\
-    &= 2 \text{bits}
+    H(V) &= \boxed{2 \text{ bits}}
+\end{align*}
+And given the marginal probability 
+\begin{align*}
+    P(T=\text{Miserably Cold}) &= \frac{1}{16} + \frac{1}{16} + \frac{1}{8} + \frac{1}{4} = \frac{1}{2} \\
+    P(T=\text{Very Cold}) &= \frac{1}{4} \\
+    P(T=\text{Cold}) &= \frac{1}{8} \\
+    P(T=\text{Chilly}) &= \frac{1}{8}
+\end{align*}
+marginal entropy of $T$ is
+\begin{align*}
+    H(T) &= \sum_T P(T) \log(\frac{1}{P(T)}) \\
+    &= \frac{1}{2}\log(2) + \frac{1}{4}\log(4) + \frac{1}{8}\log(8) + \frac{1}{8}\log(8) \\
+    H(T) &= \boxed{1.75 \text{ bits}}
+\end{align*}
+(b) The conditional entropy of $T$ given $V = v$ is
+\begin{align*}
+    H(T|V = v) &= \sum_T P(T|V = v) \log(\frac{1}{P(T|V = v)})
+\end{align*}
+and from Bayes' theorem
+\begin{align*}
+    P(T|V = v) &= \frac{P(V=v,T)}{P(V = v)}
+\end{align*}
+So for $v =$ Sunny:
+\begin{align*}
+    H(T|V = \text{Sunny}) &= \frac{1}{4}\log(4) + \frac{1}{4}\log(4) 
+        + \frac{1}{4}\log(4) + \frac{1}{4}\log(4) = 
+        \boxed{2 \text{ bits}}
+\end{align*}
+For $v =$ Cloudy \& dry: 
+\begin{align*}
+    H(T|V = \text{Cloudy \& dry}) &= \frac{1}{4} \log(4) + \frac{1}{2} \log(2) 
+        + \frac{1}{8} \log(8) + \frac{1}{8} \log(8) = 
+        \boxed{1.75 \text{ bits}}
+\end{align*}
+For $v =$ Cloudy \& rain:
+\begin{align*}
+    H(T|V = \text{Cloudy \& rain}) &= \frac{1}{2} \log(2) + \frac{1}{4} \log(4) 
+        + \frac{1}{8} \log(8) + \frac{1}{8} \log(8) = 
+        \boxed{1.75 \text{ bits}}
+\end{align*}
+For $v =$ Cloudy \& snow:
+\begin{align*}
+    H(T|V = \text{Cloudy \& snow}) &= \log(1) = \boxed{0 \text{ bits}} 
+\end{align*}
+this makes sense since its \emph{always} miserably cold given it is Cloudy \& snowing. \\
+(c) The conditional entropy as an average
+\begin{align*}
+    H(T|V) &= \sum_V P(V) \qt[H(T|V = v)] \\
+    &= \frac{1}{4} H(T|V = v) \\
+    H(T|V) &= \frac{1}{4} (2 + 1.75 + 1.75 + 0) = 
+    \boxed{1.38 \text{ bits}}
+\end{align*}
+(d) Using product rule on the joint entropy:
+\begin{align*}
+    H(V,T) &= \sum_{V,T} P(V,T) \log(\frac{1}{P(T|V) P(T)}) \\
+    &= \sum_{V,T} P(V,T) \log(\frac{1}{P(T|V)}) + \sum_{V,T} P(V,T) \log(\frac{1}{P(T)})
+\end{align*}
+and from sum the sum rule:
+\begin{align*}
+    P(T) &= \sum_V P(V,T) \\
+    &= \sum_V P(T|V) P(V) 
+\end{align*}
+so
+\begin{align*}
+    H(V,T) &= H(T|V) + H(T) \implies H(T|V) = H(V,T) - H(T) = 3.38 - 2 = 1.38 \text{ bits}
+\end{align*}
+which confirms the result from part (c), and we can also see that
+\begin{align*}
+    H(V,T) &= H(T) + H(V|T) \\
+\implies H(V|T) &= H(V,T) - H(T) = 3.38 - 1.75 = \boxed{1.63 \text{ bits}}
+\end{align*}
+(e) The mutual information is 
+\begin{align*}
+    I(V;T) &= H(V) - H(V|T) \qor H(T) - H(T|V) \\
+    &= 2 - 1.63 = \boxed{0.37 \text{ bits}}
 \end{align*}
 
+\paragraph*{2.} (a) For a Gaussian defined by the PDF(Probability Density Function)
+\begin{align*}
+    P(X) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{x^2}{2\sigma^2}}
+\end{align*}
+the entropy is (here $\log$ is the natural logarithm $\log_e = \ln$ i.e. unit of nats)
+\begin{align*}
+    H(P) &= -\int_{-\infty}^\infty P(x) \log(P(x)) \dd{x} \\
+    &= -\frac{1}{\sqrt{2\pi\sigma^2}} \int_{-\infty}^\infty e^{-\frac{x^2}{2\sigma^2}} 
+        \qt(\frac{-x^2}{2\sigma^2} - \log(\sqrt{2\pi\sigma^2})) \dd{x} \\
+    &= \frac{1}{\sqrt{8\pi\sigma^6}} \int_{-\infty}^\infty x^2 e^{-\frac{x^2}{2\sigma^2}} \dd{x} 
+        + \frac{\log(\sqrt{2\pi\sigma^2})}{\sqrt{2\pi\sigma^2}} \int_{-\infty}^\infty e^{-\frac{x^2}{2\sigma^2}} \dd{x} \\
+\end{align*}
+and using some useful Gaussian integrals:
+\begin{align*}
+    \int_{-\infty}^\infty e^{-ax^2} \dd{x} &= \sqrt{\frac{\pi}{a}} \\
+    \int_{-\infty}^\infty x^2 e^{-ax^2} \dd{x} &= \frac{1}{2} \sqrt{\frac{\pi}{a^3}}
+\end{align*}
+where $a = \frac{1}{2\sigma^2}$, so
+\begin{align*}
+    H(P) &= \frac{1}{\sqrt{8\pi\sigma^6}} \qt[\frac{1}{2} \sqrt{8\pi\sigma^6}] 
+        + \frac{\log(\sqrt{2\pi\sigma^2})}{\sqrt{2\pi\sigma^2}} \sqrt{2\pi\sigma^2} \\
+    &= \frac{1}{2} + \frac{1}{2} \log(2\pi\sigma^2) \\
+    &= \frac{1}{2} \qt[1 + \log(2\pi\sigma^2)]
+\end{align*}
+and $H(P)$ can be negative when
+\begin{align*}
+    1 + \log(2\pi\sigma^2) < 0 \\
+    \implies \sigma^2 < \frac{1}{2\pi e} \qor \sigma < \frac{1}{\sqrt{2\pi e}}
+\end{align*}
+(b) Since $\xi$ and $X$ are independent, the variance of $Y = \xi + X$ is the sum of the variances
+\begin{align*}
+    \Var(Y) &= \Var(\xi) + \Var(X) = \sigma_\xi^2 + \sigma_X^2
+\end{align*}
+(c) From the Sum rule
+\begin{align*}
+    P_Y(y) &= \sum_{Z=z} P_\xi(\xi = z) P_X(X)
+\end{align*} 
+we can change the discrete case to a continuous one by integrating over all 
+possible values of $\xi = z$ to find the probability density function $P_Y(y)$:
+\begin{align*}
+    P_Y(y) &= \int_{-\infty}^\infty P_\xi(\xi = z) P_X(X|\xi = z) \dd{z} \\
+    &= \int_{-\infty}^\infty P_{X,\xi}(X, \xi = z) \dd{z}
+\end{align*}
+Since $\xi$ and $X$ are independent, $P_{X,\xi}(X, \xi) = P_X(X) P_\xi(\xi)$, and $X = Y - \xi$:
+\begin{align*}
+    P_Y(y) &= \int_{-\infty}^\infty P_X(X = y - z) P_\xi(\xi = z) \dd{z} \\
+    &= \int_{-\infty}^\infty P_X(y - z) P_\xi(z) \dd{z}
+\end{align*}
+(d) We can just plug in the Gaussian PDFs for $P_X$ and $P_\xi$ where we assume the means are zero:
+\begin{align*}
+    P_Y(y) &= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi\sigma_X^2}} e^{-\frac{(y - z)^2}{2\sigma_X^2}} 
+        \frac{1}{\sqrt{2\pi\sigma_\xi^2}} e^{-\frac{z^2}{2\sigma_\xi^2}} \dd{z} \\
+    &= \frac{1}{2\pi\sigma_X\sigma_\xi} \int_{-\infty}^\infty e^{-\frac{y^2 - 2yz + z^2}{2\sigma_X^2} - \frac{z^2}{2\sigma_\xi^2}} \dd{z} \\
+    &= \frac{1}{2\pi\sigma_X \sigma_\xi} e^{-\frac{y^2}{2\sigma_X^2}} \int_{-\infty}^\infty e^{-\frac{z^2}{2\sigma_X^2} - \frac{z^2}{2\sigma_\xi^2} + \frac{yz}{\sigma_X^2}} \dd{z} \\
+    &= \frac{1}{2\pi\sigma_X \sigma_\xi} \qt(\frac{2\pi\sigma_X^2\sigma_\xi^2}{\sigma_X^2 + \sigma_\xi^2})^{1/2}
+        e^{-\frac{y}{2(\sigma_X^2 + \sigma_\xi^2)}} \\
+    &= \frac{1}{\sqrt{2\pi(\sigma_X^2 + \sigma_\xi^2)}} e^{-\frac{y^2}{2(\sigma_X^2 + \sigma_\xi^2)}}
+\end{align*}
+which is also a Gaussian with our expected variance (add variances)!
+
+(e) The mutual information is
+\begin{align*}
+    I(X,Y) &= H(X) - H(X|Y) = H(Y) - H(Y|X) \\
+\end{align*}
+so
+\begin{align*}
+    H(Y) &= -\int_{-\infty}^\infty P_Y(y) \log(P(y)) \dd{y} \\
+        &= -\frac{1}{\sqrt{2\pi(\sigma_X^2 + \sigma_\xi^2)}} \int_{-\infty}^\infty e^{-\frac{y^2}{2(\sigma_X^2 + \sigma_\xi^2)}} 
+            \log\qt(\frac{1}{\sqrt{2\pi(\sigma_X^2 + \sigma_\xi^2)}} e^{-\frac{y^2}{2(\sigma_X^2 + \sigma_\xi^2)}}) \dd{y} \\
+        &= -\frac{1}{\sqrt{2\pi(\sigma_X^2 + \sigma_\xi^2)}} \int_{-\infty}^\infty e^{-\frac{y^2}{2(\sigma_X^2 + \sigma_\xi^2)}} 
+            \qt[-\frac{y^2}{2(\sigma_X^2 + \sigma_\xi^2)} - \log(\sqrt{2\pi(\sigma_X^2 + \sigma_\xi^2)})] \dd{y} \\
+        &= \frac{1}{\sqrt{8\pi(\sigma_X^2 + \sigma_\xi^2)^3}} \int_{-\infty}^\infty y^2 e^{-\frac{y^2}{2(\sigma_X^2 + \sigma_\xi^2)}} \dd{y}
+            + \frac{\log(\sqrt{2\pi(\sigma_X^2 + \sigma_\xi^2)})}{\sqrt{2\pi(\sigma_X^2 + \sigma_\xi^2)}} 
+            \int_{-\infty}^\infty e^{-\frac{y^2}{2(\sigma_X^2 + \sigma_\xi^2)}}
+\end{align*}
+using 
+\begin{align*}
+    \int_{-\infty}^\infty e^{-ay^2} \dd{x} &= \sqrt{\frac{\pi}{a}} = \sqrt{2\pi(\sigma_X^2 + \sigma_\xi^2)}\\
+    \int_{-\infty}^\infty y^2 e^{-ay^2} \dd{x} &= \frac{1}{2} \sqrt{\frac{\pi}{a^3}} = \frac{1}{2} \sqrt{8\pi(\sigma_X^2 + \sigma_\xi^2)^3}
+\end{align*}
+where $a = \frac{1}{2(\sigma_X^2 + \sigma_\xi^2)}$, so
+\begin{align*}
+    H(Y) &= \frac{1}{2} + \frac{1}{2} \log(2\pi(\sigma_X^2 + \sigma_\xi^2)) 
+\end{align*}
+and 
+\begin{align*}
+    -H(Y|X) &= -\int_{-\infty}^\infty P_X(x) H(Y|X = x) \dd{x} \\
+    &= \int_{-\infty}^\infty P_X(x) \qt[\int_{-\infty}^\infty P_Y(y|X = x) \log(P_Y(y|X = x)) \dd{y}] \dd{x}
+\end{align*}
+in the second integral we can use $y = x + \xi$ so
+\begin{align*}
+    P_Y(y|X = x) &= P_\xi(\xi = y - x | X = x)
+\end{align*}
+and since $\xi$ and $X$ are independent
+\begin{align*}
+    P_\xi(\xi = y - x | X = x) &= P_\xi(\xi)
+\end{align*}
+so
+\begin{align*}
+    -H(Y|X) &= \int_{-\infty}^\infty P_X(x) \qt[\int_{-\infty}^\infty P_\xi(\xi) \log(P_\xi(\xi)) \dd{\xi}] \dd{x} \\
+    &= -\int_{-\infty}^\infty P_X(x) H(\xi) \dd{x} = -H(\xi)
+\end{align*}
+and from part (a) we know that $H(\xi) = \frac{1}{2} \qt[1 + \log(2\pi\sigma_\xi^2)]$, so
+\begin{align*}
+    I(X,Y) &= H(Y) - H(Y|X) \\
+    &= \frac{1}{2} \log\qt(\frac{2\pi(\sigma_X^2 + \sigma_\xi^2)}{2\pi\sigma_\xi^2}) \\
+    &= \frac{1}{2} \log\qt(\frac{\sigma_X^2 + \sigma_\xi^2}{\sigma_\xi^2}) \\
+    &= \frac{1}{2} \log\qt(1 + \frac{\sigma_X^2}{\sigma_\xi^2})
+\end{align*}
+\begin{itemize}
+    \item If $\sigma_X$ is large and $\sigma_\xi$ is small, then $I(X,Y)$ is large.
+    \item If $\sigma_X$ is small and $\sigma_\xi$ is large, then $I(X,Y)$ is small or zero
+\end{itemize}
+\paragraph*{4} (a) Given
+\begin{align*}
+    m(n) = \frac{m(n+1)}{N b_i} \implies m(n - 1) = \frac{m(n)}{N b_i}
+\end{align*}
+the expected value of $x = \log(m(n))$ is
+\begin{align*}
+    \E[x] &= \sum_i x_i p_i
+\end{align*}
+where the probability of horse $i$ wins is $p_i$, so 
+\begin{align*}
+    \E[x] &= \sum_i (\log(m(n - 1)) + \log(N b_i)) p_i \\
+    &= \sum_i \log(m(n - 1)) p_i +  \sum_i \log N p_i + \sum_i \log(b_i) p_i \\
+    &= \sum_i \log(m(n - 2) N b_i) p_i + \sum_i \log N p_i + \sum_i \log(b_i) p_i
+\end{align*}
+which is a recursive structure so we get
+\begin{align*}
+    &= \log(m(0)) + n (\E[\log N] + \E[\log b_i]) \\
+    &= \log(m(0)) + n \log N + n \E[\log b_i] 
+\end{align*}
+(b) Finding where the derivative is zero and since we only care about the case of maximizing
+\begin{align*}
+    \E[\log b_i] = \sum_i p_i \log(b_i)
+\end{align*}
+and since $b_i$ is a normalized vector:
+\begin{align*}
+    \sum_i b_i = 1
+\end{align*}
+we can use the method of Lagrange multipliers to find the maximum of $\E[\log b_i]$
+(from Cover \& Thomas Chapter 6):
+\begin{align*}
+    \lagr = \sum_i p_i \log(b_i) + \lambda \sum_i b_i
+\end{align*}
+and differentiating with respect to $b_i$:
+\begin{align*}
+    \pdv{\lagr}{b_i} = \frac{p_i}{b_i} + \lambda = 0 \implies b_i = -\frac{p_i}{\lambda}
+\end{align*}
+and from the constraint:
+\begin{align*}
+    \sum_i b_i = -\frac{\sum_i p_i}{\lambda} \implies \lambda = -1 \implies b_i = p_i
+\end{align*}
+and to find the growth rate we can use
+\begin{align*}
+    \E[x] &= \log(m(0)) + \lambda_{\text{max}}
+\end{align*}
+where $n = 1$ is the expected growth rate after one race:
+\begin{align*}
+    \lambda_{\text{max}} &= \log N + \sum_i p_i \log(p_i) \\
+    &= \log N - \sum_i p_i \log(\frac{1}{p_i}) \\
+    &= \log N - H(p)
+\end{align*}
+(c) The max capital minus our capital based on our bet $b_i = q_i$ is
+\begin{align*}
+    \log(m(n)) &= \log(m(0)) + n \log N + n \sum_i p_i \log(p_i \frac{q_i}{p_i}) \\
+    &= \log(m(0)) + n \log N + n \sum_i p_i \log(p_i) + n \sum_i p_i \log(\frac{q_i}{p_i}) \\
+    &= \log(m(0)) + n \log N - n H(p) - n D_{KL}(p||q)
+\end{align*}
+and since the maximimum capital is
+\begin{align*}
+    m_{\text{max}}(n) &= m(0) e^{n \log N - n H(p)}
+\end{align*}
+we can see the capital falls off exponentially
+\begin{align*}
+    m(n) &= m(0) e^{n \log N - n H(p) - n D_{KL}(p||q)} \\
+    &= m_{\text{max}}(n) e^{-n D_{KL}(p||q)}
+\end{align*}
+(d) Given
+\begin{align*}
+    m(n + 1) = \frac{1}{p_i} b_i m(n) \implies m(n) = \frac{1}{p_i} b_i m(n - 1)
+\end{align*}
+so the expected value of $\log(m(n))$:
+\begin{align*}
+    \E[\log(m(n))] &= \sum_i p_i \qt(\log(m(n - 1)) + \log(\frac{b_i}{p_i}))
+\end{align*}
+and since $b_i = p_i$ for the optimal strategy:
+\begin{align*}
+    \E[\log(m(n))] &= \E[\log(m(n - 1))] + \sum_i p_i \log(1) \\
+    &= \E[\log(m(n - 2))] + \sum_i p_i \log(1) + \sum_i p_i \log(1) \\
+    \dots \\
+    &= \log(m(0)) + n \log(1) \\
+    &= \log(m(0))
+\end{align*}
+so we end up with the same money we started with! Therefore the long term capital growth is 0.
+
+(e) (f) :(
 \end{document}

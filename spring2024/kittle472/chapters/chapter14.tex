@@ -1,0 +1,184 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Lecture 15: 3/26}
+\chead{Chapter 8}
+\rhead{PHYS 472}
+
+\section*{Chapter 14: Plasmons, Polaritons, and Polarons}
+\addcontentsline{toc}{section}{Chapter 14: Plasmons, Polaritons, and Polarons}
+
+\subsection*{E\&M Stuff} 
+In E\&M, we extensively study two fields: the electric field $\vb E$ and the magnetic field $\vb B$.
+We also have a vector
+\begin{align*}
+    \vb D = \vb E + 4\pi \vb P
+\end{align*} 
+where $\vb P$ is the polarization vector, and $\vb D$ is the displacement vector. In a static field,
+we see that the divergence of the electric field
+\begin{align*}
+    \div \vb E = \frac{\rho}{\epsilon_0}
+\end{align*}
+is equivalent to the ratio of the charge density $\rho$ and the permittivity of free space
+$\epsilon_0$. We also know that the curl
+\begin{align*}
+    \curl \vb E = 0
+\end{align*}
+is zero as the electric field can be expressed as the gradient of a scalar(Hemholtz) potential. 
+Looking at the displacement vector,
+\begin{align*}
+    \div \vb D = 4\pi \rho_f
+\end{align*}
+where in CGS units we define
+\begin{align*}
+    \vb D = \epsilon \vb E
+\end{align*}
+where the dielectric function $\epsilon(\omega, \vb K)$ has a dependence on frequency and wave
+vector which makes it a difficult problem to solve. 
+\paragraph*{Plasmon} 
+The total charge density
+\begin{align*}
+    \rho = \rho_{\text{ext}} + \rho_{\text{ind}}
+\end{align*}
+is the sum of the external charge density and the induced charge density. In CGS units, the 
+divergence of the two fields are
+\begin{align*}
+    \div \vb D &= \rho_{\text{ext}} \\
+    \div \vb E &= 4\pi(\rho_{\text{ext}} + \rho_{\text{ind}})\\
+        &= 4\pi \rho
+\end{align*}
+We define the following
+\begin{align*}
+    D(\vb K) &= \epsilon(\vb K) \vb E(\vb K)
+\end{align*}
+so the divergence of the electric field and displacement vector are
+\begin{align*}
+    \div \vb E &= \div [\sum \vb E(\vb K) e^{i\vb K \cdot \vb r}] 
+    = 4\pi \sum_K \rho(\vb K) e^{i\vb K \cdot \vb r} 
+\end{align*}
+and
+\begin{align*}
+    \div \vb D &= \div[\sum_K \epsilon(\vb K) \vb E(\vb K) e^{i\vb K \cdot \vb r}]
+    = 4\pi \sum_K \rho_{\text{ext}}(\vb K) e^{i\vb K \cdot \vb r}
+\end{align*}
+diving the two equations we find
+\begin{align*}
+    \epsilon(\vb K) &= \frac{\rho_{\text{ext}}(\vb K)}{\rho(\vb K)}
+     = 1 - \frac{\rho_{\text{ind}}}{\rho(\vb K)}
+\end{align*}
+\paragraph*{Free Electron} In 1D, the EOM of an electron in an electric field is
+\begin{align*}
+    m \dv[2]{x}{t} = - eE
+\end{align*}
+where time dependence is harmonic i.e.
+\begin{align*}
+    x &= x_0 e^{-i\omega t} \\
+    \implies -\omega^2 m x_0 &= -eE;\qquad x_0 = \frac{eE}{m\omega^2}
+\end{align*}
+The polarization, or dipole moment per unit volume of the electron, is
+\begin{align*}
+    P = -nex_0 = \frac{ne^2E}{m\omega^2}
+\end{align*}
+where $n$ is the electron density. So the dielectric function is
+\begin{align*}
+    \epsilon(\omega) = \frac{D}{E} = \frac{E + 4\pi P}{E} = 1 - \frac{4\pi ne^2}{m\omega^2}
+\end{align*}
+We define the plasma frequency as
+\begin{align*}
+    \omega_p^2 = \frac{4\pi ne^2}{m} 
+\end{align*}
+so
+\begin{align*}
+    \epsilon(\omega) = 1 - \frac{\omega_p^2}{\omega^2}
+\end{align*}
+\paragraph*{Example} In the background the dielectric constant $\epsilon(\infty)$ then
+\begin{align*}
+    \epsilon(\omega) &= \epsilon(\infty)\qt[1 - \frac{\bar{\omega}_p^2}{\omega^2}]
+\end{align*}
+where
+\begin{align*}
+    \bar{\omega}_p^2 = \frac{4\pi ne^2}{m\epsilon(\infty)}
+\end{align*}
+\subsection*{Electromagnetic wave} 
+From the Poynting vector
+\begin{align*}
+    \vb S = \vb E \cross \vb B
+\end{align*} 
+\paragraph*{Aside: 3 Types of Differential Equations}
+\begin{itemize}
+    \item The wave equation 
+    \begin{align*}
+        A\laplacian f = \pdv[2]{f}{t}
+    \end{align*}
+    \item The diffusion equation
+    \begin{align*}
+        D \laplacian f = \pdv{f}{t}
+    \end{align*}
+    \item The Poisson equation
+    \begin{align*}
+        \laplacian f = A
+    \end{align*}
+\end{itemize}
+For EM waves, the wave equation is
+\begin{align*}
+    \dv[2]{D}{t} = c^2 \laplacian \vb E
+\end{align*}
+where we have a solution
+\begin{align*}
+    E \propto e^{i\omega t} e^{i\vb K \cdot \vb r}\qand \vb D = \epsilon \vb E
+\end{align*}
+so the wave equation tells us the dispersion relation
+\begin{align*}
+    \omega^2 \epsilon(\omega, \vb K) = c^2 K^2
+\end{align*}
+This tells us some intersting things
+\begin{itemize}
+    \item $\epsilon$ is real, $\epsilon > 0$, and for real $K$ and $\omega$ the wave propogates 
+    transversely with phase velocity 
+    \begin{align*}
+        v_p = \frac{c}{\sqrt{\epsilon}}
+    \end{align*}
+    \item If $\epsilon$ is real and $\epsilon < 0$, then $K$ is imaginary and the wave is damped.
+    \item If $\epsilon$ is complex and $\omega$ is real, $\vb K$ is complex and is damped.
+\end{itemize}
+From the dispersion relation
+\begin{align*}
+    \epsilon(\omega, \vb K) = 1 - \frac{\omega_p^2}{\omega^2}
+\end{align*}
+if $\omega < \omega_p$ there is total reflection, and if $\omega > \omega_p$ the material is 
+transparent. 
+\paragraph*{Metal} In a metal with positve charge density, we apply an electric field to slighlty
+displace the electrons and cause them to oscillate. The EOM is
+\begin{align*}
+    n m \dv[2]{x}{t} = -neE
+\end{align*}
+This displaces the surface charge density $\sigma = \pm neu$ or a capacitor. Using a gaussian pillbox at the 
+two surfaces of the capacitor, we know that
+\begin{align*}
+    E \cdot S = \frac{\sigma \cdot s}{\epsilon_0} = \frac{\sigma}{\epsilon_0}
+\end{align*}
+and from Gauss's law
+\begin{align*}
+    E = 4\pi n u e
+\end{align*}
+so the wave equation is
+\begin{align*}
+    nm\dv[2]{u}{t} = -neE = -4\pi ne^2 u \\
+    \implies \dv[2]{u}{t} + \omega_p^2 u = 0
+\end{align*}
+where the frequency is
+\begin{align*}
+    \omega_p = \sqrt{\frac{4\pi ne^2}{m}}
+\end{align*}
+We can approximately find that for $10^{23}$ electrons per cubic centimeter(Avogadro's number) we 
+get a frequency of roughly $10^{16}$ Hz, and the energy is roughly
+\begin{align*}
+    \hbar \omega_p \approx \frac{10^{-34} \cdot 10^{16}}{10^{-19}} = \qty{1}{eV}
+\end{align*}
+Experimentally we find that the plasmon energy is roughly $\qty{10}{eV}$ since the frequency is
+$10^{16}$ Hz. 
+
+\end{document}

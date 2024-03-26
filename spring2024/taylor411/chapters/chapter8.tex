@@ -1,0 +1,245 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{../images/}}
+
+\begin{document}
+\subsection*{Lecture 18: \hfill  3/4/24}
+\hrule \vspace{10px}
+\section{Central Force Problems}
+
+\paragraph*{Two-Body} Considering a two-body system of masses $m_1, m_2$ we know that under the
+influence of gravitational potential
+\begin{align*}
+    U = -\frac{G m_1 m_2}{\abs{\vb r_1 - \vb r_2}} = -\frac{G m_1 m_2}{\scriptr}
+\end{align*}
+so the force on each mass is
+\begin{align*}
+    \vb F_{12} &= -\frac{G m_1 m_2}{\abs{\vb r_1 - \vb r_2}^2} (\vb r_1 - \vb r_2) = -\grad_1 U \\
+    \vb F_{21} &= +\frac{G m_1 m_2}{\abs{\vb r_1 - \vb r_2}^2} (\vb r_1 - \vb r_2) = -\grad_2 U
+\end{align*}
+computing the Lagrangian:
+\begin{align*}
+    T = \frac{1}{2} m_1 \dot {\vb r}_1^2 + \frac{1}{2} m_2 \dot {\vb r}_2^2 \\
+    U = -\frac{G m_1 m_2}{\abs{\vb r_1 - \vb r_2}}
+\end{align*}
+in 3D we have 6 degrees of freedom, so we have 6 generalized coordinates:
+\begin{align*}
+    \vb r_1 = (x_1, y_1, z_2) \quad \vb r_2 = (x_2, y_2, z_2)
+\end{align*}
+and from the separation vector
+\begin{align*}
+    \boldscriptr = \vb r_1 - \vb r_2
+\end{align*}
+the center of mass is
+\begin{align*}
+    \vb R = \frac{m_1 \vb r_1 + m_2 \vb r_2}{m_1 + m_2} = \frac{1}{M} (m_1 \vb r_1 + m_2 \vb r_2) 
+    \qquad M = m_1 + m_2
+\end{align*}
+we can rewrite the position vectors in terms of the COM and separation vector:
+\begin{align*}
+    \vb r_1 &= \vb R + \frac{m_2}{M} \boldscriptr \\
+    \vb r_2 &= \vb R - \frac{m_1}{M} \boldscriptr
+\end{align*}
+and thus the derivatives are
+\begin{align*}
+    \dot {\vb r}_1 &= \dot {\vb R} + \frac{m_2}{M} \dot {\boldscriptr} \\
+    \dot {\vb r}_2 &= \dot {\vb R} - \frac{m_1}{M} \dot {\boldscriptr}
+\end{align*}
+so the Lagrangian is rewritten as
+\begin{align*}
+    \lagr &= \frac{1}{2} m_1 \qt(\dot{\vb R} + \frac{m_2}{M} \dot{\boldscriptr})^2 
+        + \frac{1}{2} m_2 \qt(\dot{\vb R} - \frac{m_1}{M} \dot{\boldscriptr})^2 - U \\
+    &= \frac{1}{2} M \dot{\vb R}^2 + \frac{1}{2} \frac{m_1 m_2}{M} \dot{\boldscriptr}^2 - U
+\end{align*}
+where we have the reduced mass
+\begin{align*}
+    \mu = \frac{m_1 m_2}{M} = \frac{m_1 m_2}{m_1 + m_2}
+\end{align*}
+here we can see that $\lagr$ does not depend on $\vb R$
+\begin{align*}
+    \implies \pdv{\lagr}{\dot{\vb R}_i} = \text{const} \implies M\dot{\vb R} = \text{const} \qor 
+    M \ddot{\vb R} = 0
+\end{align*}
+this is the igorable coordinate, so Transforming into the COM frame
+\begin{align*}
+    \vb r_1' &= \vb r_1 - \vb R = \frac{m_2}{M} \boldscriptr \\
+    \vb r_2' &= \vb r_2 - \vb R = -\frac{m_1}{M} \boldscriptr
+\end{align*}
+and the Lagrangian becomes
+\begin{align*}
+    \lagr &= \frac{1}{2} \mu \dot{\boldscriptr}^2 - U(\boldscriptr)
+\end{align*}
+which is basically a single particle leaving us with 3 coordinates(Degrees of freedom).
+\paragraph*{} Angular momentum in the COM frame is
+\begin{align*}
+    L &= \sum_i \boldscriptr'_i \cross \vb p'_i \\
+    &= \boldscriptr' \cross m_i \dot{\boldscriptr}' \\
+    &= m_1 \boldscriptr'_1 \cross \dot{\boldscriptr}'_1 + m_2 \boldscriptr'_2 \cross \dot{\boldscriptr}'_2 \\
+    &= \frac{m_1 m_2^2}{M} \boldscriptr \cross \dot{\boldscriptr} + \frac{m_1^2 m_2}{M} \boldscriptr \cross \dot{\boldscriptr} \\
+    &= \frac{m_1 m_2}{M} \boldscriptr \cross \dot {\boldscriptr} = \mu \boldscriptr \cross \dot{\boldscriptr}
+\end{align*}
+which is the same as the angular momentum of a single particle with reduced mass $\mu$.
+\begin{itemize}
+    \item If $m_2 \gg m_1$ then $\vb R \approx \vb r_2$ and $\mu \approx m_2$. 
+    \item If $m_1 \gg m_2$ then $\vb R \approx \vb r_1$ and $\mu \approx m_1$.
+    \item If $m_1 = m_2$ then $\vb R$ is directly in the middle of the two particles and $\mu = \frac{m_1}{2} = \frac{m_2}{2}$.
+\end{itemize}
+We can see that for two vectors, any linear combination will result in a vector on a plane, so we 
+can turn this into a 2D problem. Using polar coordinates we can write the Lagrangian as
+\begin{align*}
+    \lagr &= \frac{1}{2} \mu (\dot\scriptr^2 + \scriptr^2 \dot\phi^2) - U(r) 
+\end{align*}
+where we can see that it does not depend on $\phi$, so we have the conserved quantity
+\begin{align*}
+    \implies \pdv{\lagr}{\dot\phi} = \text{const} = \mu \scriptr \dot\phi = \ell
+\end{align*}
+and the EL equation is only needed for $r$:
+\begin{align*}
+    \pdv{\lagr}{r} &= \mu \scriptr \dot\phi^2 - \pdv{U}{\scriptr} \\
+    \dv{t}(\pdv{\lagr}{\dot\scriptr}) &= \mu \ddot\scriptr \\
+    \implies \mu \ddot\scriptr &= \mu \scriptr \dot\phi^2 - \pdv{U}{\scriptr} 
+        \qquad U = -\frac{G m_1 m_2}{\scriptr} \\
+    &= \frac{l^2}{\mu \scriptr^3} - \pdv{U}{\scriptr} \\
+    &= \frac{l^2}{\mu \scriptr^3} - \frac{G m_1 m_2}{\scriptr^2}
+\end{align*}
+\paragraph*{Solving the 1D Problem} First we note the first term is equivalent to the minus
+gradient of the centrifugal potential:
+\begin{align*}
+    m \ddot\scriptr &= -\pdv{U_{cf}}{\scriptr} - \pdv{U}{\scriptr} \\
+    &= -\pdv{\scriptr}(\frac{\ell^2}{2\mu \scriptr^2}) - \pdv{U}{\scriptr} \\
+    &= -\pdv{\scriptr}(U_{cf} + U)
+\end{align*}
+where $U_{cf} = \frac{\ell^2}{2\mu \scriptr^2}$ is the centrifugal potential. We can see that the
+effective potential is
+\begin{align*}
+    U_{eff} = \frac{\ell^2}{2\mu \scriptr^2} - \frac{G m_1 m_2}{\scriptr}
+\end{align*}
+
+\newpage
+\subsection*{Lecture 19: \hfill  3/6/24}
+\hrule \vspace{10px}
+
+\paragraph*{From Last Time} For a 2-Body problem where $M = m_1 + m_2$ and the COM
+\begin{align*}
+    \vb R &= \frac{1}{M} (m_1 \vb r_1 + m_2 \vb r_2) \\
+    \vb r &= \vb r_1 - \vb r_2 \qquad \mu = \frac{m_1 m_2}{M}
+\end{align*}
+we found the Lagrangian
+\begin{align*}
+    \lagr &= \frac{1}{2} \mu \dot{\vb r}^2 - U(r) \\
+        &= \frac{1}{2} \mu (\dot r^2 + r^2 \dot\phi^2) - U(r)
+\end{align*}
+where $\lagr$ is independent of $\phi$, so we have the conserved quantity
+\begin{align*}
+    \pdv{\lagr}{\dot \phi} = \mu r^2 \dot\phi = \ell \implies \dot\phi = \frac{l}{mr^2}
+\end{align*}
+so the EL equation for $r$ is
+\begin{align*}
+    \mu \ddot r &= \frac{\ell^2}{\mu r^3} - \pdv{U}{r}
+\end{align*}
+where the centrifugual force is
+\begin{align*}
+    F_{cf} = \frac{\ell^2}{\mu r^3}
+\end{align*}
+and the effective potential is
+\begin{align*}
+    U_{eff} = \frac{\ell^2}{2\mu r^2} - \frac{G m_1 m_2}{r} = U_{cf} + U
+\end{align*}
+From the graph of this effective potential, there is a centrifugal barrier for finite $\ell$ for
+$\vb \ell = \vb r \cross \vb p$ and for $r \to 0$ the potential is dominated by the centrifugal term.
+
+\paragraph*{Conservation of Energy} If this problem is independent of time we know that
+\begin{align*}
+    E &= \sum_i \dot q_i p_i - \lagr \\
+    &= \dot r \pdv{\lagr}{\dot r} + \dot\phi \pdv{\lagr}{\dot\phi} - \lagr \\
+    &= \mu \dot r^2 + \frac{\ell^2}{\mu r^2} - \frac{1}{2} \mu \dot r^2 
+        - \frac{1}{2} \frac{\ell^2}{\mu r^2} + U(r) \\
+    &= \frac{1}{2} \mu \dot r^2 + \frac{\ell^2}{2\mu r^2} + U(r) = T + U
+\end{align*}
+we can find the equilibrium point at
+\begin{align*}
+    \pdv{U_{eff}}{r} &= 0  \\
+    &= - \frac{\ell^2}{\mu r^3} + \frac{\gamma}{r^2} \qquad \gamma = G m_1 m_2 \\
+    \implies r_o &= \frac{\ell^2}{\gamma \mu}
+\end{align*}
+this radius is related to a perfectly circular \emph{orbit}. and at
+\begin{align*}
+    r = r_o,\qquad \dot\phi = \frac{\ell \mu^2 \gamma^2}{\mu \ell^4} = \frac{\mu \gamma^2}{\ell^3}
+\end{align*}
+so
+\begin{align*}
+    \phi(t) = \int_0^t \dot\phi(t') \dd{t'}
+\end{align*}
+For $E<0$ we have a bound (bounded) orbit, and for $E>0$ we have an unbounded orbit. For $E=0$ we
+also have an unbounded orbit. 
+\paragraph*{} What does the orbit look like? Find $r(\phi)$ using a differential equation 
+(For a circular orbit we know $r = r_o$). First we introduce a variable transformation
+\begin{align*}
+    q &= \frac{1}{r}, \qquad r = \frac{1}{q}, 
+        \qquad \dv{r}{\phi} = \dv{\phi}(\frac{1}{q}) = - \frac{1}{q^2} \dv{q}{\phi},
+        \qquad q' = \dv{q}{\phi} \\
+    \dot r &= \dv{r}{t} = \dv{\phi}{t} \cdot \dv{r}{\phi} = \frac{\ell}{\mu r^2} \dv{r}{\phi}
+        = - \frac{\ell}{\mu r^2} \frac{1}{q^2} \dv{q}{\phi} = - \frac{\ell}{\mu} \dv{q}{\phi} \\
+    \ddot r &= \dv{\dot r}{t} = \dv{\phi}{t} \dv{\dot r}{\phi} = - \dot\phi \frac{\ell}{\mu} q''
+        = -\frac{\ell^2q^2}{\mu^2} q''
+\end{align*}
+and the central force is
+\begin{align*}
+    \mu \ddot r &= \frac{\ell^2}{\mu r^3} + F \\
+    -\mu \frac{\ell^2 q^2}{\mu^2} q'' &= \frac{\ell^2 q^3}{\mu r^3} + F \\
+    q'' &= -q - \frac{\mu}{q^2\ell^2} F
+\end{align*}
+and since the force is
+\begin{align*}
+    F &= -\dv{U}{r} = -\frac{\gamma}{r^2} = - \gamma q^2
+\end{align*}
+so the differential equation is just
+\begin{align*}
+    q'' = -q + \frac{\gamma \mu}{\ell^2} 
+\end{align*}
+and the RHS vanishes when
+\begin{align*}
+    q = \frac{\gamma \mu}{\ell^2} \qor r_o = \frac{\ell^2}{\gamma \mu}
+\end{align*}
+we can redefine the constant
+\begin{align*}
+    \omega = q - \frac{\gamma \mu}{\ell^2} \implies \omega'' = q'' = -\omega
+\end{align*}
+so 
+\begin{align*}
+    \omega(\phi) = A \cos(\phi - \delta) 
+\end{align*}
+and choosing initial conditions so that $\delta = 0$
+\begin{align*}
+    \omega(\phi) = A \cos(\phi) \implies q(\phi) = A \cos(\phi) + \frac{\gamma \mu}{\ell^2} = \frac{1}{r(\phi)}
+\end{align*}
+and thus
+\begin{align*}
+    r(\phi) = \frac{\ell^2/\gamma \mu}{1 + \epsilon \cos(\phi)} = \frac{C}{1 + \epsilon \cos(\phi)}
+    \qquad \epsilon = \frac{A}{C}
+\end{align*}
+we can check and see that $r$ has the unit of length and the denominator is unitless, so $C$ has
+the unit of length. We can see that $\epsilon$ only depends on the initial conditions, and at
+\begin{align*}
+    \epsilon = 0 \implies r(\phi) = C = r_o
+\end{align*}
+so
+\begin{align*}
+    r(\phi) = \frac{r_o}{1 + \epsilon \cos(\phi)}
+\end{align*}
+and $\epsilon$ is the eccentricity of the orbit.
+\begin{itemize}
+    \item If $\epsilon = 0$ then $r = r_o$ and we have a circular orbit.
+    \item If $\epsilon > 1$ then the denominator can $\to 0$ and we have $ r \to \infty$ or hyperbolic
+        orbit.
+    \item If $0 < \epsilon < 1$ then we have a bounded orbit or ellipse.
+    \item IF $\epsilon = 1$ then we have a parabolic orbit.
+\end{itemize}
+
+\newpage
+\subsection*{Lecture 20: \hfill  3/8/24}
+\hrule \vspace{10px}
+Missed Lecture:
+
+
+
+\end{document}

@@ -661,4 +661,215 @@ and for sigma
     \ket{\Xi^0}_{12} &= \frac{1}{\sqrt{2}} (us -su)s
 \end{align*}
 \end{itemize}
+
+\newpage
+\lhead{Lecture 14: 3/4/24}
+\paragraph*{Quiz Review (From last time)}
+We found for the baryon wavefunction that the space part is symmetric ($\ell = 0$), the spin \&
+flavor parts are symmetric, and the color part is antisymmetric. For the spin up proton:
+\begin{align*}
+    \psi = \frac{\sqrt 2}{3} \qt[\psi_{12}(spin) \psi_{12}(flavor) + \psi_{23}(spin) \psi_{23}(flavor) + \psi_{13}(spin) \psi_{13}(flavor)]
+\end{align*}
+where
+\begin{align*}
+    \braket{\psi_{12}}{\psi_{23}} \neq 0 \qquad \braket{\psi_{12}}{\psi_{13}} \neq 0 
+\end{align*}
+and
+\begin{align*}
+    \psi_{12}(spin) &= \frac{1}{\sqrt 2} (\ua\da- \da\ua)\ua \\
+    \psi_{12}(flavor) &= \frac{1}{\sqrt 2} (ud - du)u
+\end{align*}
+so the wavefunction of the two parts is
+\begin{align*}
+    \psi = \frac{\sqrt 2}{3} \qt[2u(\ua) u(\ua) d(\da) - u(\ua) u(\da) d(\ua) - u(\da) u(\ua) d(\ua) 
+    + \text{permuations}]
+\end{align*}
+\paragraph*{Magnetic Moment} The experimental test, the magnetic moment
+\begin{align*}
+    \vb*\mu = \frac{q}{mc} \vb S
+\end{align*}
+where the Hamiltonian is
+\begin{align*}
+    H = -\vb*\mu \cdot \vb B
+\end{align*}
+and the magnetic moment of a baryon is a vector sum of the three quarks
+\begin{align*}
+    \vb*\mu(\text{baryon}) = \vb*\mu_1 + \vb*\mu_2 + \vb*\mu_3
+\end{align*}
+so the $z$-component of the magnetic moment is
+\begin{align*}
+    \mu_z(\text{baryon}) = \sum_i \mu_{i_z} = \sum_i \frac{q_i}{mc} S_{i_z}
+\end{align*}
+where
+\begin{align*}
+    \mu_{i_z} = \frac{q_i}{mc} \frac{\hbar}{2}
+\end{align*}
+so for each quark
+\begin{align*}
+    \mu_u = \frac{2}{3} \frac{\hbar}{2m_u c} \qquad \mu_d = -\frac{1}{3} \frac{\hbar}{2m_d c} 
+    \qquad \mu_s = -\frac{1}{3} \frac{\hbar}{2m_s c}
+\end{align*}
+so the expectation value of the magnetic moment operator $\mu_z$ is
+\begin{align*}
+    \mu_{\text{baryon}, \ua} &= \bra{B(\ua)} \mu_z \ket{B(\ua)} \\
+    &= \sum_i \bra{B(\ua)} \mu_{i_z} \ket{B(\ua)} \\
+    &= \frac{2}{\hbar} \sum_i \bra{B(\ua)} \mu_i S_{i_z} \ket{B(\ua)}
+\end{align*}
+So calculating the expectation value for the proton
+\begin{align*}
+    \sum_i \mu_i S_{i_z} \ket{u(\ua) u(\ua) d(\da)} &=
+         \qt(\mu_u \frac{\hbar}{2} + \mu_u \frac{\hbar}{2} + \mu_d \frac{-\hbar}{2}) 
+         \ket{u(\ua) u(\ua) d(\da)}
+\end{align*}
+the first term is 
+\begin{align*}
+    \mu_1 &= \sum_i \bra{p(\ua)} \mu_i S_{i_z} \ket{p(\ua)} \\
+    &= \qt(\frac{2}{3\sqrt 2})^2 \frac{\hbar}{2} (2\mu_u - \mu_d) \frac{2}{\hbar}
+        \bra{u(\ua) u(\ua) d(\da)} \ket{u(\ua) u(\ua) d(\da)} \\
+    &= \frac{2}{9} (2\mu_u - \mu_d)
+\end{align*}
+the second term $-u(\ua) u(\da) d(\ua)$ is
+\begin{align*}
+    \frac{\hbar}{2} (\mu_u - \mu_u + \mu_d) = \frac{\hbar}{2} \mu_d
+\end{align*}
+so
+\begin{align*}
+    \qt(\frac{1}{3\sqrt 2})^2 \mu_d = \frac{1}{18} \mu_d
+\end{align*}
+and same for the third term. We get the magnetic moment as
+\begin{align*}
+    \mu_{p(\ua)} &= 3 \qt[\frac{2}{9} (2\mu_u - \mu_d) + \frac{1}{18} \mu_d + \frac{1}{18} \mu_d] \\
+    &= \frac{3}{18} (4(2\mu_u - \mu_d) + 2\mu_d) \\
+    &= \frac{1}{6} (8\mu_u - 2\mu_d ) \\
+    &= \frac{1}{3} (4\mu_u - \mu_d)
+\end{align*}
+and from the experimental values:
+\begin{align*}
+    m_p = 2.79 m_u = 2.79 m_d
+\end{align*}
+we get
+\begin{align*}
+    \mu_p = 2.79 \frac{e\hbar}{2m_p c} = 2.79 \mu_B
+\end{align*}
+where $\mu_B = \frac{e\hbar}{2m_p c}$ is the Bohr magneton. And for the neutron we know
+\begin{align*}
+    p: uud \qquad n: udd
+\end{align*}
+so all we have to do is replace the $u$ with $d$ and thus:
+\begin{align*}
+    \mu_n &= \frac{1}{3} (4\mu_d - \mu_u) \\
+    &= \frac{1}{3} \qt(4(-1/3) \frac{\hbar}{2m_d c} - 2/3 \frac{\hbar}{2m_u c}) \\
+    &= -\frac{2}{3} (2.79) \frac{e\hbar}{2m_p c} = -1.86 \mu_B
+\end{align*}
+experimentally, we got the proton and neutron magnetic moments to be
+\begin{align*}
+    \mu_p &= 2.793 \mu_B \qquad \mu_n = -1.913 \mu_B
+\end{align*}
+we can also take the ratio of the magnetic moments
+\begin{align*}
+    \frac{\mu_n}{\mu_p} = -\frac{2}{3}
+\end{align*}
+which is independent of the quark masses! This is a (robust) prediction of the quark model
+
+\paragraph*{If there was no color} Then the wavefunction would be
+\begin{align*}
+    \psi = \psi_{space} \psi_{spin} \psi_{flavor}
+\end{align*}
+so
+\begin{align*}
+    \psi(spin) \psi(flavor) = \text{anti-symmetric}
+\end{align*}
+and we would get the ratio of the magnetic moments to be
+\begin{align*}
+    \frac{\mu_n}{\mu_p} = -2
+\end{align*}
+
+\paragraph*{Baryon Masses} For the meson masses we had the mass as the sum of the masses and the
+spin-spin interaction:
+\begin{align*}
+    M = m_1 + m_2 + A \frac{\vb S_1 \cdot \vb S_2}{m_1 m_2}
+\end{align*}
+But for the baryons we have 3 quarks so we have
+\begin{align*}
+    M = m_1 + m_2 + m_3 + A' \qt(\frac{\vb S_1 \cdot \vb S_2}{m_1 m_2} 
+        + \frac{\vb S_1 \cdot \vb S_3}{m_1 m_3} 
+        + \frac{\vb S_2 \cdot \vb S_3}{m_2 m_3})
+\end{align*}
+For the decuplet we have the inverted triangle from Figure \ref{fig:invertedcolor} and the octet 
+from Figure \ref{fig:octet}. Taking $m_u = m_d$
+\begin{itemize}
+    \item For Baryons with no $S$,
+    \begin{align*}
+        M &= 3\mu_u + \frac{A'}{m_\mu^2}(\vb S_1 \cdot \vb S_2 + \vb S_1 \cdot \vb S_3 + \vb S_2 \cdot \vb S_3)
+    \end{align*}
+    so the total spin is
+    \begin{align*}
+        \vb S^2 &= (\vb S_1 + \vb S_2 + \vb S_3)^2 \\
+        &= \vb S_1^2 + \vb S_2^2 + \vb S_3^2 + 2(\vb S_1 \cdot \vb S_2 + \vb S_1 \cdot \vb S_3 + \vb S_2 \cdot \vb S_3) \\
+        \implies & \vb S_1 \cdot \vb S_2 + \vb S_1 \cdot \vb S_3 + \vb S_2 \cdot \vb S_3 = \frac{1}{2} (\vb S^2 - \vb S_1^2 - \vb S_2^2 - \vb S_3^2) = S'
+    \end{align*}
+    where the eigen values are
+    \begin{align*}
+        \ohf (\ohf + 1) \hbar^2 = \frac{3}{4} \hbar^2
+    \end{align*}
+    i.e.
+    \begin{align*}
+        s = 3/2: \vb S^2 = \frac{3}{2} (\frac{3}{2} + 1) \hbar^2 = \frac{15}{4} \hbar^2 \\
+        s = 1/2: \vb S^2 = \frac{1}{2} (\frac{1}{2} + 1) \hbar^2 = \frac{3}{4} \hbar^2
+    \end{align*}
+    so
+    \begin{align*}
+        &= \ohf \qt(\vb S^2 - 3 \frac{3}{4} \hbar^2) \\
+        &= \ohf \begin{cases}
+            \frac{3}{2} \hbar^2 & S = \frac{3}{2} \qqtext{(decuplet)} \\
+            -\frac{3}{2} \hbar^2 & S = \frac{1}{2} \qqtext{(octet)}
+        \end{cases}
+    \end{align*}
+    so the masses are
+    \begin{align*}
+        M_N = 3m_u - \frac{3}{4} \frac{\hbar^2}{m_u^2} A' \\
+        M_\Delta = 3m_u + \frac{3}{4} \frac{\hbar^2}{m_u^2} A'
+        M_\Omega = 3m_s + \frac{3}{4} \frac{\hbar^2}{m_s^2} A'
+    \end{align*}
+    For the decuplet case all spin are parallel so for $s = 3/2$:
+    \begin{align*}
+        \vb S_1 \cdot \vb S_2 = \vb S_1 \cdot \vb S_3 = \vb S_2 \cdot \vb S_3 = \frac{1}{4} \hbar^2
+    \end{align*}
+    and
+    \begin{align*}
+        (\vb S_1 + \vb S_2)^2 &= \vb S_1^2 + \vb S_2^2 + 2\vb S_1 \cdot \vb S_2 \\
+        \vb S_1 \cdot \vb S_2 &= \frac{1}{2} (\vb S^2 - \vb S_1^2 - \vb S_2^2) = \frac{3}{4} \hbar^2
+        &= \frac{1}{2} \qt(1(1 + 1)\hbar^2 - 2 \frac{3}{4}\hbar^2) = \frac{1}{4} \hbar^2
+    \end{align*}
+    so the maasses are calculated  by:
+    \begin{align*}
+        M = m_1 + m_2 + m_3 + \frac{A'}{4}\hbar^2 \qt(\frac{1}{m_1 m_3} + \frac{1}{m_2 m_3} + \frac{1}{m_2 m_3})
+    \end{align*}
+    For the octet case
+    \begin{align*}
+        M_\Sigma: (ud) \quad I = 1 \\
+        M_\Lambda: (ud) \quad I = 0 \\
+    \end{align*}
+    so for example the $\Sigma^+$ case:
+    \begin{align*}
+        M_{\Sigma^+} &= 2m_u + m_s + A' \qt(\frac{\vb S_u \cdot \vb S_u}{m_u^2} 
+            + \frac{\vb S_u \cdot \vb S_s}{m_u m_s} + \frac{\vb S_u \cdot \vb S_s}{m_u m_s})
+    \end{align*}
+    and since we have already calculated 
+    \begin{align*}
+        \vb S_u \cdot \vb S_u = \frac{1}{4} \hbar^2 
+    \end{align*}
+    and we know the spin for the octet is
+    \begin{align*}
+        \vb S_u \cdot \vb S_u + \vb S_{u1} \cdot \vb S_s + \vb S_{u2} \cdot \vb S_s = -\frac{3}{4} \hbar^2
+        \vb S_{u1} \cdot \vb S_s + \vb S_{u2} \cdot \vb S_s = - \hbar^2
+    \end{align*}
+    and from anti symmetry we know that
+    \begin{align*}
+        \vb S_{u1} = \vb S_{u2} = -\frac{3}{2} \hbar^2
+    \end{align*}
+    and we can do the same for the other octet states.
+\end{itemize}
+Midterm: Multiple choice 25pt, bound states(general structure why $1/n^2$) heavy masses, wavefunctions,
+relativistic kinematics. 
 \end{document}

@@ -72,7 +72,7 @@ For any assumption H
 \end{align*}
 
 \newpage
-\section{Lecture 1/18}
+\section*{Lecture 1/18}
 \hrule \vspace{10px}
 
 \paragraph{Last time:} Main point $P(y|x) \neq P(y)$
@@ -729,6 +729,7 @@ prediction for perfomance, effect of having the cue, rate of $P$.
 \end{itemize}
 
 \newpage
+\section{Module 0: Quantitative Imaging}
 \section*{Lecture 2/8/24}
 \barh \vspace{10px}
 
@@ -996,5 +997,146 @@ sequencing coming soon).
 \paragraph*{Mutual information}
 \begin{itemize}
     \item $I(X;Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)$
+\end{itemize}
+
+\newpage
+\section*{Lecture 3/19/24}
+
+\paragraph*{16S Sequencing!} Paper 1:
+What is 16S Gene?
+\begin{itemize}
+    \item the blue regions are conserved (its apart of the RNA) and adds to the function of the 
+    ribosome itself
+    \item You can't circularize the DNA, so you have to cut up parts of it and sequence it.
+\end{itemize}
+What and Why \textit{E. coli}? And What is the purpose of the first paper?
+\begin{itemize}
+    \item \textit{E. coli} is a very well understood bacteria, so it is a good way to look at how well
+    the method works.
+    \item Purpose: Find surreptitious OTUs that add error/ inflated biodiversity
+\end{itemize}
+Errors in pyrosequencing 101:
+\begin{itemize}
+    \item In long homopolymer(big problem) steteches, the peaks are hard to distinguish. If we have a lot of Cs,
+    one error is magnified. It's easier to detect which color flashes versus how much it flashes
+    \item Why do we care? We thought that the Pyrosequencing told us there is a LOT of biodiversity,
+    but it was just fake news. We can't understand signal if we don't understand noise.
+    \item We must understand the sequencing method and its errors.
+    \item There is also PCR errors! 
+    \item We have errors in the methods i.e. contamination
+    \item We have to cut out reads that are low quality
+    \item The machine anaylsis also has errors\dots errors arise at different levels.
+\end{itemize}
+What is a quality score?
+\begin{itemize}
+    \item Why is the theoretical number not 1? The DNA of \textit{E. coli} have several copies, but
+    they don't have to be exactly identical.
+    \item Percentage Identity threshold: How identical are the sequences? 97 is the standard and the
+    OTU number is around 1 because the errors make the 5 theoretical OTUs indiscernible.
+    \item What is a quality score? How sure is the machine at the sequencing? The machine doesn't
+    know about the databases and the biology, but it can accurately measure the amount of noise i.e.
+    the peaks we measure are.
+    \item The machine is doing Bayesian inference! The machine may have a peak that is not 100\%
+    sure what base it is, so the machine makes a guess while accounting for the noisy peak.
+\end{itemize} 
+Truth vs Sequncer:
+\begin{itemize}
+    \item A cartoon sequence space would have 1 point, but the sequencer has a cloud of points due
+    to the pcr \& pyrosequencing errors.
+    \item In the E. coli we have 5 theoretical sequences, but the sequencer gave us 643 sequences!
+\end{itemize}
+Clustering:
+\begin{itemize}
+    \item Even though there are 5 theoretical OTUs a clustering threshold may give us 2 OTUs since
+    some of the sequences are more similar than the other. The radius of the clustering roughly the
+    error rate of the sequencer. Lax identity theshold will lose this information.
+    \item The sequencer has 300(or \# of bp) dimensions with error in each dimension
+\end{itemize}
+Reads:
+\begin{itemize}
+    \item We are looking at why and where the erros are, so we use unfiltered set?
+    \item The binomial distribution is used to estimate errors because we expect them to be independent.
+\end{itemize}
+Chimera:
+\begin{itemize}
+    \item We have to manually seperate chimeras
+    \item chimeras come from the PCR step
+\end{itemize}
+Summary:
+\begin{itemize}
+    \item Don't trust signal without understanding noise
+\end{itemize}
+Example: Say we have 300 bp sequence, and we have a 2\% per base error for 10,000 copies of the same sequence.
+The error free sequence chance would be
+\begin{align*}
+    (0.98)^{300} 
+\end{align*}
+and for 10,000 copies we would have
+\begin{align*}
+    10,000 (0.98)^{300} \approx 20
+\end{align*}
+error free sequences within the 10,000 copies. So the average is equal to far from typical.
+\begin{itemize}
+    \item If we understand errors well, we should be able to back out the truth
+    \item Where is this happening in the 2nd paper? In the image context we can infer 2 points from
+    a noisy image, but in a high dimensional space, its much harder\dots
+    \item The 2nd paper responds to papers that think that the pyrosequencing led to inflated biodiversity.
+\end{itemize}
+
+\section*{Lecture 3/21/24}
+Paper 2: Looking at Figure 1
+\begin{itemize}
+    \item How do we get more than the expected OTUs? Noise makes more OTUs.
+    \item In the Template Samples, we have a definite understanding of the OTUs in a sample, but we
+    have a more expected OTUs theoretically and experimentally in each clustering \& linkage method.
+\end{itemize}
+Problems in clustering:
+\begin{itemize}
+    \item What is table 2 asessing? Why MS vs PW? How do we define the distance between points (before clustering)?
+    This is difficult because not only is there substitutions errors, but there are insertions and deletions
+    i.e. one insertsion will make everything after it different
+    \begin{align*}
+        &ATGCGCGC \\
+        &A\color{draculared}{GCGCGC}
+    \end{align*}
+\end{itemize}
+Takehomes:
+\begin{itemize}
+    \item Errors in both data collection and analysis is a big problem especially in each method.
+    \item Using a baseline or something that we understand very well can be good to study a new method.
+    \item Establish noise before analyzing data/signal
+\end{itemize}
+Bigger Picture from Imaging to Sequencing: My thoughts
+\begin{itemize}
+    \item Quanitifying Fluorescence as a function of mRNA count vs. Quantifying OTUs as a function
+    of sequence biodiversity. 
+    \item Data collection should be well understood 
+\end{itemize}
+Our thoughts: Conceptual
+\begin{itemize}
+    \item Choices of data analysis require understanding of exp. details i.e. the device, preprocessing
+    of data, etc.
+    \item Data is never what you think it is i.e. OTU is not as well defined as we think it is.
+    \item Can't understand signal without first understanding noise (spend the first months measuring zero)
+    \item Cool technology, but fully realizing its potential requires careful approach to analysis
+\end{itemize}
+Analogy:
+\begin{itemize}
+    \item Imagaing 
+\end{itemize}
+From Figure \ref{fig:sequencing}, in the sequeincing we have raw truth and the pcr amp adds pcr error, then the
+sequencerg adds sequencing error and the experiment leads to more OTUs than expected.
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{im_seq.png}
+    \caption{The Analogy of Imaging and Sequencing}
+    \label{fig:sequencing}
+\end{figure*}
+Questions:
+\begin{itemize}
+    \item Error model? The size of the ball with errors in the sequencer step roughly relates to the
+    amount of error/error rate. We can't just use the 3\% biological difference as a threshold.
+    \item Which two steps correspond to the clustering? A single point is not an OTU so we have to
+    cluster similar points. 
 \end{itemize}
 \end{document}

@@ -1,0 +1,541 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\hrule
+\section{Decay and Scattering}
+\hrule \vspace{10px}
+
+\lhead{Lecture 15: 3/18/24}
+\chead{Decay and Scattering}
+\rhead{PHYS 474}
+
+\paragraph*{Decay rate} $\Gamma$
+\begin{itemize}
+    \item Probability per unit time for the decay to happen
+\end{itemize}
+For a decay process the change in the number of particles (amount of stuff that decayed)
+\begin{align*}
+    -N(t) \Gamma \dd t &= \dd N
+\end{align*}
+we can solve this differential equation to find
+\begin{align*}
+    \int \frac{\dd N}{N} &= -\int \Gamma \dd t \\
+    \ln N &= -\Gamma t + C \\
+    \implies N(t) &= N_0 e^{-\Gamma t}
+\end{align*}
+we can find the mean lifetime $\tau = \frac{1}{\Gamma}$ so
+\begin{align*}
+    N(t) &= N_0 e^{-t/\tau}
+\end{align*}
+\paragraph*{Half time}
+and the half-life is when
+\begin{align*}
+    N(t_{1/2}) &= \frac{N_0}{2} = N(0) e^{-\Gamma t_{1/2}} \\
+    \implies e^{\Gamma t_{1/2}} &= 2 \\
+    \Gamma t_{1/2} &= \ln 2
+\end{align*}
+or 
+\begin{align*}
+    t_{1/2} &= \tau \ln 2
+\end{align*}
+Example
+\begin{align*}
+    \pi^+ \to &\mu^+ + \nu_\mu \qquad \Gamma_1 \gg \Gamma_2 \\
+    &e^+ + \nu_e \qquad \Gamma_2
+\end{align*}
+and
+\begin{align*}
+    \Gamma_{tot} = \sum_i \Gamma_i \qquad \tau_{tot} = \frac{1}{\Gamma_{tot}}
+\end{align*}
+we have a branching ratio (or fraction)
+\begin{align*}
+    \text{Br}_i = \frac{\Gamma_i}{\Gamma_{tot}} \qquad [0,1]
+\end{align*}
+and we find the branching ratio of the pion decay is experimentally
+\begin{align*}
+    \text{Br}_1 &= 0.999877 \\
+    \text{Br}_2 &= 0.000123
+\end{align*}
+Insert Griffiths Figure 6.1 here
+
+\paragraph*{Scattering} From the impact parameter $b$ and scattering angle $\theta$ we can find the
+cross section, or the probability of scattering. We have an infinitesimal area of
+\begin{align*}
+    \dd \sigma &= \abs{\dd b \cdot b\dd \phi}
+\end{align*}
+which is like the area of a rectangle made by the differential impact parameter. The solid angle is
+\begin{align*}
+    \dd \Omega &= \sin\theta \dd \theta \dd \phi
+\end{align*}
+like the theta and phi part of spherical coordinates. The differential cross section is
+\begin{align*}
+    \dv{\sigma}{\Omega} &= \abs{\frac{b}{\sin\theta} \cdot \dv{b}{\theta}}
+\end{align*}
+\paragraph*{Hard Sphere Scattering} We have a hard sphere of radius $R$ and we send a particle 
+toward the sphere and it scatters on the surface. Thus the cross section is expected to be
+\begin{align*}
+    \sigma &= \pi R^2
+\end{align*}
+or the area of a circle that cuts the sphere. From the law of inflection we have an inflection 
+\begin{align*}
+    2\alpha + \theta = \pi
+\end{align*}
+and the trigonometry shows that the impact parameter is
+\begin{align*}
+    b &= R \sin\alpha
+\end{align*}
+or
+\begin{align*}
+    b &= R \sin(\frac{\pi}{2} - \frac{\theta}{2}) \\
+    &= R \cos(\frac{\theta}{2})
+\end{align*}
+so the differential cross section is
+\begin{align*}
+    \dv{b}{\theta} &= - \frac{R}{2} \sin{\frac{\theta}{2}} \\
+    \dv{\sigma}{\Omega} &= \abs{\frac{R\cos\frac{\theta}{2}}{\sin\theta} \cdot \frac{R}{2} \sin\frac{\theta}{2}} 
+        \qquad \sin\theta = 2\sin\frac{\theta}{2} \cos\frac{\theta}{2}\\
+    &= \frac{R^2}{4}
+\end{align*}
+and
+\begin{align*}
+    \int \dd{\sigma} &= \int \frac{R^2}{4} \dd{\Omega} \\
+    \sigma &= \frac{R^2}{4} \cdot 4\pi = \pi R^2
+\end{align*}
+\paragraph*{Rutherford Scattering} In the experiment we can find the impact parameter
+\begin{align*}
+    b &= \frac{q_1 q_2}{2E} \cot\frac{\theta}{2}
+\end{align*}
+so
+\begin{align*}
+    \dv{b}{\theta} &= -\frac{q_1 q_2}{4E} \csc^2\frac{\theta}{2}
+\end{align*}
+and
+\begin{align*}
+    \dv{\sigma}{\Omega} &= \abs{\frac{b}{\sin\theta} \cdot \dv{b}{\theta}} \\
+    &= \abs{\frac{q_1 q_2}{2E} \cot\frac{\theta}{2} \frac{1}{2\sin\frac{\theta}{2} \cos\frac{\theta}{2}} 
+    \cdot -\frac{q_1 q_2}{4E} \csc^2\frac{\theta}{2}} \\
+    &= \frac{q_1^2 q_2^2}{16E^2} \csc^4\frac{\theta}{2}
+\end{align*}
+so the cross section is
+\begin{align*}
+    \sigma &= \int \dv{\sigma}{\Omega} \dd{\Omega} \\
+    &= \frac{q_1^2 q_2^2}{16E^2} \int \csc^4\frac{\theta}{2} \sin\theta \dd \theta \dd \phi \\
+    &= 2\pi \frac{q_1^2 q_2^2}{16E^2} \int \frac{\sin\theta}{\sin^4\frac{\theta}{2}} \dd \theta \\
+    &= 2\pi \frac{q_1^2 q_2^2}{16E^2} \int \frac{2\sin\frac{\theta}{2}\cos\frac{\theta}{2}}{\sin^4\frac{\theta}{2}} \dd \theta
+\end{align*}
+and substituting
+\begin{align*}
+    x &= \sin\frac{\theta}{2} \implies \dd x = \frac{1}{2} \cos\frac{\theta}{2} \dd \theta \\
+\end{align*}
+so
+\begin{align*}
+    2\pi \int_0^1 \frac{2x}{x^4} \dd x &= 2\pi \qt(\frac{1}{2x^2})\eval_0^1 \to \infty
+\end{align*}
+\paragraph*{Fermi Golden Rule} For nonrelativistic system
+\begin{align*}
+    \text{Transition probability} = \text{phase space} \times \abs{\text{amplitude}}^2
+\end{align*}
+or
+\begin{align*}
+    \rho \cdot \abs{\bra f 0 \ket i}^2
+\end{align*}
+where $\rho $ is the density of states.
+\subparagraph*{Relativistic System} 
+\begin{align*}
+    \dd \Gamma \propto \abs{\mathcal M}^2 \dd \Pi \\
+    \dd \sigma \propto \abs{\mathcal M}^2 \dd \Pi
+\end{align*} 
+where $\dd \Pi$ is the phase space. For the two body decay
+\begin{align*}
+    1 \to 2 + 3 \\
+    m_1 > m_2 + m_3
+\end{align*}
+\paragraph*{Wigner-Eckart Theorem} For spherically symmetric systems we can split the amplitude into
+two parts: the symmetric and dynamic parts.
+\begin{align*}
+    \bra f 0 \ket \propto \text{symmetric} \times \text{dynamic}
+\end{align*}
+
+\newpage
+\lhead{Lecture 16: 3/20/24}
+Quiz Review
+\begin{itemize}
+    \item The decay formula gives us 
+    \begin{align*}
+        N(t) = N_0 e^{-t/\tau} = 10^6 e^{-10} \approx 45
+    \end{align*}
+    \item The probability of 1 particle still being there after 10 average lifetimes is directly 
+    equal to
+    \begin{align*}
+        e^{-t/\tau} = e^{-10} \approx 4.5 \times 10^{-5}
+    \end{align*}
+    \item Dirac Delta Function
+    \begin{align*}
+        \int_{-\infty}^\infty \delta(x) \dd x = 1
+    \end{align*}
+    or
+    \begin{align*}
+        \delta (x) = \begin{cases}
+            \infty & x = 0 \\
+            0 & x \neq 0
+        \end{cases}
+    \end{align*}
+    We can also think of a rectangle with area 1 at $x = 0$ and we keep shortening the width and
+    increasing the height to keep the area 1. As the width gets infinitesimally small, the height
+    gets infinitely large. 
+    \item From the heaviside step function
+    \begin{align*}
+        \int_{-\infty}^\infty \dv{x} \theta(x) \dd x &= \theta(x) \eval_{-\infty}^\infty = 1 \\
+        &= \int_{-\infty}^\infty \delta(x) \dd x \\
+        \implies \delta(x) &= \dv{x} \theta(x)
+    \end{align*}
+\end{itemize}
+\paragraph*{Fermi Golden Rule (again)} We know that the phase space is dependent of the kinematics
+i.e. it only depends on the number of paritcles involved. The amplitude $\mathcal{M}$ is dependent
+on the dynamics or the type of interaction. 
+
+\paragraph*{Decay} $1 \to 2 + 3 + \dots + n$ 
+\begin{align*}
+    \Gamma = \frac{S}{2m_1 \hbar} \int \abs{\mathcal{M}}^2 &(2\pi)^4 \delta^4(p_1 - p_2 - p_3 - \dots - p_n) \\
+    &\times \prod_{j = 2}^n 2\pi \delta(p_j^2 - m_j^2 c^2) \theta(p_j^0) 
+    \cdot \frac{\dd^4 p_j}{(2\pi)^4}
+\end{align*}
+Is the decay rate where $S$ is the symmetry factor
+\begin{align*}
+    S = \frac{1}{\prod_i k_i!}
+\end{align*}
+e.g. $a \to b + b + c + c +c$
+\begin{align*}
+    S = \frac{1}{2!3!} = \frac{1}{12}
+\end{align*}
+and we also have the phase space part which is in a 4-dimensional component i.e.
+\begin{align*}
+    \delta^3(\vb r) = \delta(x) \delta(y) \delta(z) \\
+    \delta^4(p) = \delta(p^0) \delta^3(\vb p)
+\end{align*}
+\paragraph*{Phase space parts} 
+\begin{enumerate}
+    \item In the first part
+    \begin{align*}
+        \delta^4(p_1 - p_2 - p_3 - \dots - p_n)
+    \end{align*}
+    we have a non-zero value \emph{only} when
+    \begin{align*}
+        p_1 - p_2 - p_3 - \dots - p_n = 0 \\
+        \implies \vb p_1 = \vb p_2 + \vb p_3 + \dots + \vb p_n
+    \end{align*}
+    or the Energy-momentum conservation. 
+    \item In the second part
+    \begin{align*}
+        \delta(p_j^2 - m_j^2 c^2)
+    \end{align*}
+    we have a non-zero value \emph{only} when
+    \begin{align*}
+        p_j^2 &- m_j^2 c^2 = 0 \\
+        \implies p_j^2 &= m_j^2 c^2 \qquad \forall j = 2, 3, \dots, n
+    \end{align*}
+    which is true for all real particles (on-shell condition). If this is not true i.e.
+    $p_j^2 \neq m_j^2 c^2$ we have a virtual particle. 
+    \item In the third part
+    \begin{align*}
+        \theta(p_j^0)
+    \end{align*}
+    is non-zero \emph{only} when $p_j^0 > 0$ or $E_j >0$ (positivity of energy). So from the
+    energy momentum relation
+    \begin{align*}
+        E_j^2 &= \vb p_j^2 c^2 + m_j^2 c^4 \\
+        \implies E_j &= \pm \sqrt{\vb p_j^2 c^2 + m_j^2 c^4} > 0
+    \end{align*}
+\end{enumerate}
+\paragraph*{Evaluating the integral}
+From the delta function
+\begin{align*}
+    \int \dd{x} \delta(x^2 - a^2) &= \frac{1}{2a} [\delta(x - a) + \delta(x + a)]
+\end{align*}
+so
+\begin{align*}
+    \delta(p_j^2 - \vb p_j^2 - m_j^2 c^2) &= \delta(p_j^0 - a^2) \quad a = \sqrt{\vb p_j^2 + m_j^2 c^2} \\
+    &= \frac{1}{2a} [\delta(p_j^0 - a) + \delta(p_j^0 + a)] \\
+    &= \frac{1}{2\sqrt{\vb p_j^2 + m_j^2 c^2}} \qt[\delta \qt(p_j^0 - \sqrt{\vb p_j^2 + m_j^2 c^2}) 
+        + \delta \qt(p_j^0 + \sqrt{\vb p_j^2 + m_j^2 c^2})]
+\end{align*}
+the second term does not contribute so we are left with
+\begin{align*}
+    \int \dd{p_j^0} \frac{1}{2\sqrt{\vb p_j^2 + m_j^2 c^2}} \delta \qt(p_j^0 - \sqrt{\vb p_j^2 + m_j^2 c^2}) 
+    = \frac{\dd^3 \vb p_j}{2\sqrt{\vb p_j^2 + m_j^2 c^2}}
+\end{align*}
+so we have removed one of the integrals. Now we are left with the integral
+\begin{align*}
+    \Gamma = \frac{S}{2m_1 \hbar} \int &\abs{\mathcal{M}}^2 (2\pi)^4 
+        \delta(m_1  c - p_2^0 - p_3^0 - \dots - p_n^0) \\
+        &\delta^3 (\vb 0 - \vb p_2 - \vb p_3 - \dots - \vb p_n) \\
+        & \times \prod_{j=2}^n \frac{\dd^3 \vb p_j}{(2\pi)^3} \frac{1}{2\sqrt{\vb p_j^2 + m_j^2 c^2}}
+\end{align*}
+and from the energy-momentum relation
+\begin{align*}
+    \frac{E_j}{c} = \sqrt{\vb p_j^2 + m_j^2 c^2}
+\end{align*}
+
+\paragraph*{Example} Two-body decay $1 \to 2 + 3$
+\paragraph*{} Sidenote: we cannot have $1 \to 2$ as it would violate the conservation of 4-momentum 
+Since the delta function is even, $\delta(\vb x) = \delta(-\vb x)$, so
+\begin{align*}
+    \Gamma = \frac{S}{2m_1 \hbar} \int &\abs{\mathcal{M}}^2 (2\pi)^4 \delta(m_1 c - E_2/c - E_3/c) 
+    \delta^3 (\vb p_2 + \vb p_3) \\
+    &\times \frac{\dd^3 \vb p_2}{(2\pi)^3} \frac{1}{2\sqrt{\vb p_2^2 + m_2^2 c^2}} 
+    \frac{\dd^3 \vb p_3}{(2\pi)^3} \frac{1}{2\sqrt{\vb p_3^2 + m_3^2 c^2}}
+\end{align*}
+We have nonzero values when $\vb p_2 = -\vb p_3$ and $E_2 = E_3 = \frac{m_1 c}{2}$. We can use the
+delta function to remove the integral over $\vb p_3$ and we are left with
+\begin{align*}
+    = \frac{S}{2m_1 \hbar} \int &\abs{\mathcal{M}}^2 (2\pi)^4 \delta(m_1 c - (E_2 + E_3)/c) 
+    \frac{\dd^3 \vb p_2}{(2\pi)^6} \frac{1}{2\sqrt{\vb p_2^2 + m_2^2 c^2}}
+    \frac{1}{2\sqrt{\vb p_2^2 + m_3^2 c^2}}
+\end{align*}
+and now we can remove one more integral using
+\begin{align*}
+    \dd^3 \vb p_2 = \abs{\vb p_2}^2 \dd{p_2} \dd{\Omega} \qquad \dd{\Omega} = \sin\theta \dd{\theta} \dd{\phi}
+\end{align*}
+and we also know that
+\begin{align*}
+    E_2 = c\sqrt{\abs{\vb p_2}^2 + m_2^2 c^2} \qquad E_3 = c\sqrt{\abs{\vb p_2}^2 + m_3^2 c^2}
+\end{align*}
+so
+\begin{align*}
+    \Gamma = \frac{S}{2m_1\hbar} \frac{1}{4(2\pi)^2} \int &\abs{\mathcal{M}}^2 
+    \delta(m_1 c - (E_2 + E_3)/c) 
+    \frac{\abs{\vb p_2}^2 \dd{\abs{\vb p_2}} \dd{\Omega}}{\sqrt{\abs{\vb p_2}^2 + m_2^2 c^2} \sqrt{\abs{\vb p_2}^2 + m_3^2 c^2}}
+\end{align*}
+we know the momentums are
+\begin{align*}
+    p_1 = (m_1 c, \vb 0) \qquad p_2 = (E_2/c, \vb p_2) \qquad p_3 = (E_3/c, -\vb p_2)
+\end{align*}
+we can construct a scalar out of two vectors using the dot product which is always dependent on
+$\abs{\vb p_2}^2$ (there is no angular dependence) so
+\begin{align*}
+    \abs{\mathcal{M}}^2 (\vb p_2) = f(\abs{\vb p_2}^2)
+\end{align*}
+so we are left with one integral and one delta function
+\begin{align*}
+    \Gamma = \frac{S}{2m_1\hbar} \frac{1}{4\pi^2 4} (4\pi) \int_0^\infty \abs{\mathcal{M}}^2
+    \delta(m_1 c - (E_2 + E_3)/c) \abs{\vb p_2}^2 \frac{\dd{\abs{\vb p_2}}}
+    {\sqrt{\abs{\vb p_2}^2 + m_2^2 c^2} \sqrt{\abs{\vb p_2}^2 + m_3^2 c^2}}
+\end{align*}
+using a change of variables we can use
+\begin{align*}
+    u = \sqrt{\abs{\vb p_2}^2 + m_2^2 c^2} + \sqrt{\abs{\vb p_2}^2 + m_3^2 c^2} \\
+    \dd{u} = \frac{2\abs{\vb p_2} \dd{\abs{\vb p_2}}}{2\sqrt{\abs{\vb p_2}^2 + m_2^2 c^2}} 
+    + \frac{2\abs{\vb p_2} \dd{\abs{\vb p_2}}}{2\sqrt{\abs{\vb p_2}^2 + m_3^2 c^2}}
+\end{align*}
+and thus we get
+\begin{align*}
+    \Gamma &= \frac{S}{8m_1 \pi \hbar} \int_{(m_2 + m_3)c}^\infty \abs{\mathcal{M}}^2 \delta(m_1 c - u) \dd{u}
+    \frac{\abs{\vb p_2}^2}{u} \\
+    &= \frac{S \abs{\vb p}}{8\pi \hbar m_1^2 c} \abs{\mathcal{M}}^2
+\end{align*}
+
+\newpage
+\lhead{Lecture 17: 3/25/24}
+\paragraph*{Quiz review}
+\begin{itemize}
+    \item A simple delta function integral tells us
+    \begin{align*}
+        \int_{a - e}^{a + e} f(x) \delta(x - a) \dd{x} = f(a)
+    \end{align*}
+    \item If the the non zero term is out of bounds of the integral, then the integral is zero!
+    \item From the theta function (step function) we know that
+    \begin{align*}
+        \theta(x) = \begin{cases}
+            1 & x > 0 \\
+            0 & x < 0
+        \end{cases}
+    \end{align*}
+    and thus
+    \begin{align*}
+        \theta(2x - 4) = \begin{cases}
+            1 & x > 2 \\
+            0 & x < 2
+        \end{cases}
+    \end{align*}
+    so we can split the integral from $-1 \to 2$ and $2 \to 5$ and we get
+    \begin{align*}
+        \int_{-1}^2 0 e^{-3x} \dd{x} &= 0 \\
+        \int_2^5 \theta(2x - 4) e^{-3x} \dd{x} &= \int_2^5 e^{-3x} \dd{x} \\
+        &= -\frac{1}{3} e^{-3x} \eval_2^5
+    \end{align*}
+    \item For integration over a sphere we can just find if the magnitude of distance is less than
+    the radius of the sphere $1.5$:
+    \begin{align*}
+        \abs{(2,2,2) - (3,2,1,)} = \sqrt{2} \approx 1.4 < 1.5
+    \end{align*}
+    so we find the function
+    \begin{align*}
+        \oint \dd{V} \vb r \cdot (\vb a - \vb r) \delta^3(\vb r - \vb b) 
+        &= \int \dd{V} f(\vb r) \delta^3(\vb r - \vb b) \\
+        &= f(\vb b)
+    \end{align*}
+    which is
+    \begin{align*}
+        f(\vb b) &= \vb b \cdot (\vb a - \vb b) \\
+        &= (3,2,1) \cdot [(1,2,3) - (3,2,1)] \\
+        &= -4
+    \end{align*}
+    \item The decay rate using dimensional analysis from last time
+    \begin{align*}
+        \Gamma = \frac{1}{[\unit{J.s.kg^2.m\per s}]} \cdot \unit{kg.m\per s} \cdot \mathcal{M}
+    \end{align*}
+    and since $\unit{J} = \unit{kg.m^2\per s^2}$ we can see that the amplitude has units of
+    $\unit{kg.m\per s}$ or momentum. Thus the number of particles involved is the only thing that
+    is dependent on the number of particles involved.
+\end{itemize}
+
+\subsection*{Scattering} 
+($2 \to n$ Scattering)
+\begin{align*}
+    1 + 2 \to 3 + 4 + \dots + n
+\end{align*}
+the cross section is given by
+\begin{align*}
+    \sigma = \frac{S\hbar^2}{4\sqrt{(p_1 \cdot p_2)^2} - (m_1 m_2 c^2)^2}
+    \int \abs{\mathcal{M}}^2 (2\pi)^4 \delta^4(p_1 + p_2 - p_3 - \dots - p_n) \\
+    \times \prod_{j=3}^n \frac{\dd^4 \vb p_j}{(2\pi)^4} (2\pi) \delta(p_j^2 - m_j^2 c^2) \theta(p_j^0) 
+\end{align*}
+From momentum conservation we have
+\begin{align*}
+    p^2 = (p^0)^2 - \vb p^2
+\end{align*}
+so the delta function can be rewritten as
+\begin{align*}
+    \delta(p_j^2 - m_j^2 c^2) = \delta((p_j^0)^2 - \vb p_j^2 - m_j^2 c^2)
+\end{align*}
+and using the same trick as last time we can split
+\begin{align*}
+    \delta(x^2 - a^2) = \frac{1}{2a} [\delta(x - a) + \delta(x + a)]
+\end{align*}
+or in the general form
+\begin{align*}
+    \delta(g(x)) = \sum_i \frac{1}{\abs{g'(x_i)}} \delta(x - x_i)
+\end{align*}
+so defining =
+\begin{align*}
+    x = p_j^0 \qquad a = \sqrt{\vb p_j^2 + m_j^2 c^2}
+\end{align*}
+we can rewrite the delta function as
+\begin{align*}
+    \frac{1}{2\sqrt{\vb p_j^2 + m_j^2 c^2}} \qt[\delta \qt(p_j^0 - \sqrt{\vb p_j^2 + m_j^2 c^2})
+    + \delta \qt(p_j^0 + \sqrt{\vb p_j^2 + m_j^2 c^2})]
+\end{align*}
+and we can remove the second term becase the theta function removes negative energies! So we are left
+with
+\begin{align*}
+    \frac{1}{2\sqrt{\vb p_j^2 + m_j^2 c^2}} \delta(p_j^0 - \sqrt{\vb p_j^2 + m_j^2 c^2})
+\end{align*}
+Now we we are left with an integral
+\begin{align*}
+    \int \frac{\dd{p_j^0}}{\cancel{(2\pi)}} \cancel{(2\pi)} \delta(p_j^2 - m_j^2 c^2) \theta(p_j^0)
+    f(p_j^0) = f(\sqrt{\vb p_j^2 + m_j^2 c^2})
+\end{align*}
+which removes the zeroth component of the 4-momentum in the original integral which leaves us with
+\begin{align*}
+    \sigma = \frac{S \hbar^2}{4\sqrt{(p_1 \cdot p_2)^2 - (m_1 m_2 c^2)^2}} \int \abs{\mathcal{M}}^2
+    (2\pi)^4 \delta^4(p_1 + p_2 - p_3 - \dots - p_n) \\
+    \prod_{j=3}^n \frac{\dd^3 \vb p_j}{(2\pi)^3} \frac{1}{2\sqrt{\vb p_j^2 + m_j^2 c^2}}
+\end{align*}
+with
+\begin{align*}
+    p_j^0 = \sqrt{\vb p_j^2 + m_j^2 c^2} = \frac{E_j}{c}
+\end{align*}
+
+\newpage
+\paragraph*{2 - 2 Scattering} $1 + 2 \to 3 + 4$
+
+In the center of mass frame the total 3-momentum is zero (HW In the lab frame with one particle at rest initially i.e. $p_2 = (m_2 c, \vb 0)$). 
+We have two momenta of the \emph{beam} of particles (LHC)
+\begin{align*}
+    p_1 = (E_1/c, \vb p_1) \qquad p_2 = (m_2 c, \vb p_2)
+\end{align*}
+where
+\begin{align*}
+    p_1 + p_2 = \vb 0 \implies \vb p_1 = -\vb p_2
+\end{align*}
+which means
+\begin{align*}
+    \sqrt{(p_1 \cdot p_2)^2 - (m_1 m_2 c^2)^2} = \frac{\abs{\vb p_1}^2}{c} \sqrt{S} \qquad S = (E_1 + E_2)^2
+\end{align*}
+where $S$ is the Mandelstam variable. So the cross section is
+\begin{align*}
+    \sigma = \frac{S \hbar^2}{4\frac{\abs{\vb p_1}^2}{c} \sqrt{S}} \int \abs{\mathcal{M}}^2 (2\pi)^4
+    \delta^4(p_1 + p_2 - p_3 - p_4) \\
+    \frac{\dd^3 \vb p_3}{(2\pi)^3}
+    \frac{\dd^3 \vb p_4}{(2\pi)^3}
+    \frac{1}{2\sqrt{\vb p_3^2 + m_3^2 c^2}} 
+    \frac{1}{2\sqrt{\vb p_4^2 + m_4^2 c^2}}
+\end{align*}
+and we can remove the delta function by using the energy-momentum relation
+\begin{align*}
+\delta^4(p_1 + p_2 - p_3 - p_4) = \delta \qt(\frac{E_1 + E_2}{c} - \frac{E_3 + E_4}{c}) 
+\delta^3(\vb p_1 + \vb p_2 - \vb p_3 - \vb p_4)
+\end{align*}
+but since the total momentum is zero i.e. 
+\begin{align*}
+    \vb p_1 + \vb p_2 = 0
+\end{align*}
+we can replace the $\dd^3 \vb p_4$ with the $\dd^3{\vb p_3 + \vb p_4}$ and we are left with
+\begin{align*}
+    \sigma =  \frac{S \hbar^2}{4\frac{\abs{\vb p_1}^2}{c} \sqrt{S}} \int \abs{\mathcal{M}}^2 (2\pi)^4
+    \delta \qt(\frac{E_1 + E_2}{c} - \frac{E_3 + E_4}{c}) \\
+    \frac{\dd^3 \vb p_3}{(2\pi)^3} \frac{1}{(2\pi)^3} \frac{1}{2\sqrt{\vb p_3^2 + m_3^2 c^2}}
+    \frac{1}{2\sqrt{\vb p_3^2 + m_4^2 c^2}}
+\end{align*}
+and since
+\begin{align*}
+    \dd^3 \vb p_3 = \abs{\vb p_3}^2 \dd{\abs{\vb p_3}} \dd{\Omega} \qquad \dd{\Omega} = \sin\theta \dd{\theta} \dd{\phi}
+\end{align*}
+We know that
+\begin{align*}
+    \vb p_4 = -\vb p_3 \\
+    \implies E_4 = \sqrt{\vb p_4^2 c^2 + m_4^2 c^4} = \sqrt{\vb p_3^2 c^2 + m_4^2 c^4}
+\end{align*}
+so we can represent
+\begin{align*}
+    \abs{\mathcal{M}}^2 (p_1, p_2, p_3, p_4) &= \abs{\mathcal{M}}^2 (p_3, p_4) \\
+    &= \abs{\mathcal{M}}^2 (\vb p_3, \theta, \phi)
+\end{align*}
+which can't be written as a function of $\abs{\vb p_3}$ so we must use the differential cross section
+\begin{align*}
+    \dv{\sigma}{\Omega} = \frac{S\hbar^2}{4\abs{\vb p_1^0} \sqrt{S}} \frac{1}{(2\pi)^4} \frac{1}{4}
+    \int \abs{\mathcal{M}}^2 \delta \qt(\frac{E_1 + E_2}{c} - \frac{E_3 + E_4}{c}) \\
+    \abs{\vb p_3}^2
+    \dd{\abs{\vb p_3}} \frac{1}{\sqrt{\vb p_3^2 + m_3^2 c^2} \sqrt{\vb p_3^2 + m_4^2 c^2}}
+\end{align*}
+using the change of variables we can use
+\begin{align*}
+    u &= \frac{E_3 + E_4}{c} \\
+    &= \sqrt{\vb p_3^2 + m_3^2 c^2} + \sqrt{\vb p_3^2 + m_4^2 c^2} \\
+    \dd{u} &= \frac{2\abs{\vb p_3} \dd{\abs{\vb p_3}}}{2\sqrt{\vb p_3^2 + m_3^2 c^2}} 
+    + \frac{2\abs{\vb p_3} \dd{\abs{\vb p_3}}}{2\sqrt{\vb p_3^2 + m_4^2 c^2}} \\
+    &= \abs{\vb p_3} \dd{\abs{\vb p_3}} \frac{u}{\sqrt{\vb p_3^2 + m_3^2 c^2} \sqrt{\vb p_3^2 + m_4^2 c^2}}
+\end{align*}
+which is the last part of the integral So
+\begin{align*}
+    \dv{\sigma}{\Omega} &= \frac{S\hbar^2}{4\abs{\vb p_1^0} \sqrt{S}} \frac{1}{(2\pi)^4} \frac{1}{4}
+    \int \abs{\mathcal{M}}^2 \delta \qt(\frac{E_1 + E_2}{c} - \frac{E_3 + E_4}{c}) \dd{u} \frac{1}{u} \abs{\vb p_3} \\
+    &= \frac{S\hbar^2 c}{64 \pi^2 \abs{\vb p_1} (E_1 + E_2)} \frac{\abs{\mathcal{M}}^2 \abs{\vb p_3}}{\frac{E_1 + E_2}{c}} \\
+    &= \qt(\frac{hc}{8\pi})^2 \frac{S \abs{\mathcal{M}}^2}{(E_1 + E_2)^2} \frac{\abs{\vb p_3}}{\abs{\vb p_1}}
+\end{align*}
+We find that this cross section is proportional to many things:
+\begin{align*}
+    \sigma \propto \frac{1}{S}, \qquad
+    \sigma \propto \frac{\abs{p_f}}{{\abs{p_i}}}
+\end{align*}
+But why use the collider like this? 
+\begin{itemize}
+    \item In the past we used $\sqrt{S} = \qty{91}{GeV}$ (LEP)
+    \item $\sqrt{S} = \qty{1.96}{TeV}$ (Tevatron) 
+    \item $\sqrt{S} = \qty{13.6}{TeV}$ (LHC)
+    \item $\sqrt{S} = \qty{100}{TeV}$ (FCC/SPPC)
+\end{itemize}
+But we can only find the cross section to grow with $S$ if $\abs{\mathcal{M}}^2$ is independent of $S$.`'
+\end{document}
