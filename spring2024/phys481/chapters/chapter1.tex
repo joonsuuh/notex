@@ -1139,4 +1139,220 @@ Questions:
     \item Which two steps correspond to the clustering? A single point is not an OTU so we have to
     cluster similar points. 
 \end{itemize}
+
+\newpage
+\section*{Lecture 3/26/24}
+Presentation Part 3: Question and more questions, and some answers
+\begin{itemize}
+    \item Why use RNA? It expressive functional genes so we can amplify this unique part of the genome rather
+    than the DNA itself. 
+    \item All our cells are same DNA, but different tissues will express
+    different genes via RNA which is what we are measuring. 
+    \item RNA circularizes and is reverse transcibed, so DNA can be tagged differently and thus you
+    can sequence them in parallel(machine will two different RNA sequences).
+    \item UMAP: Take high dimensional data and project on to 2D space. It's an algorithm. And Default
+    parameters are bad
+    \item Expression not equal function:
+\end{itemize}
+Pros and Cons 
+\begin{itemize}
+    \item No one reads the documentation, so all the tools can be used with default values etc.
+\end{itemize}
+
+\newpage
+\section*{Lecture 4/2/24}
+\paragraph*{Presentation: Neuron map of the retina}
+\begin{itemize}
+    \item Hidden Truth in retina to electrod arrays: Goal is to identify presence of neurons; when
+    and where they spike. 
+    \item which of the sea of soup of stuff is truly the neuron firing. The spiking of neuron spike
+    is representative of the signal we see in F. But in the image we have more than just one 
+    electrode firing. We see that there is a cloud of point spread functions.
+    \item What is on F is a point spread function of neuron F. Another neuron may fire differently
+    as shown in G. 
+    \item First extract the error of the machine, which is a challenge. 
+\end{itemize}
+
+\section*{Lecture 4/4/24}
+\begin{itemize}
+    \item Why point-wise median and not mean? The mean is sensitive to outliers, so the median is
+    more robust to outliers. If you have a lot of noise in the array with mean zero, the mean will
+    not account for the peak at neuron 47. If we have neuron 47 fire and a millisecond later neuron
+    57 fires, the mean will take the middle value, and the median will stick to the mean.
+    \item $a_ij$ has a combination of the neurons that fire together.
+    \item Fitting problem for amplitude, we can have an infinite number of points in time
+    \item Refractory period violation: either the electrode is not dense enough to catch the neuron
+    firing or the neuron is not firing (multiple neuron is caught by the same electrode)
+    \item Artifical Template: Compare with a signal with fake spikes to see if it distinguished the
+    artificial waveforms. We don't have a ground truth yet (where we know which exact neuron fires
+    at what time).
+    \item To templates that are spatially close but slightly different. The correlation vs. time
+    interval.
+    \item Two neurons close together may have a similar waveform. But a slight difference in the 
+    electrode body sometimes the algorithm can't distinguish, but it only happens 0.2\% of the time
+    (weird trough at 0ms).
+    \item Time derivative of the template lines up with PCA 1 with lines up with the discrete smapling.
+    \item Completeness: The distribution of the template is very similar to the distribution of the 
+    epifluorescence imaging. A very heterogenous system will give a better comparison: a homogenous
+    system will not give much information. 
+\end{itemize}
+
+\newpage
+\section*{Lecture 4/9/24}
+Data (High Dimensional) $\to$ Chosen features (simplified cluster) 
+\begin{itemize}
+    \item Equivalent to choice of similarity metric in data space (some similarity metrics are
+    utterly useless, e.g. euclidean distance does not say anything about retinal map of movie)
+    \item Non-trivial, non-unique, question specific $\to$ "Data = signal + noise", but also we must
+    figure out what counts as signal and noise
+\end{itemize}
+
+% Insert table of data and the "part that matters" to binary zeros and ones.
+Most informative representation \underline{appropriate for your question} 
+
+Precise timing of spikes: Does it matter?
+\begin{itemize}
+    \item No: ``rate coding" (how active and frequent something spikes can't distinguished) 
+    \item Yes: ``time coding" 
+\end{itemize}
+Data anaylsis choies $\leftrightarrow$ Scientific choices.
+
+\paragraph*{Every Operation that discards data $\leftrightarrow$ Implicitly, multiple assumptions
+about your data}
+\begin{itemize}
+    \item about ``what matters'' 
+    \item about nature of data
+\end{itemize}
+\paragraph*{Have you checked those assumptions?}
+before discarding info, even if sure, always look at what you discarded.
+\begin{itemize}
+    \item Looks: as you expected: good data
+    \item Not as expected: even better! We know that this data we were about to discard changes things.
+\end{itemize}
+
+\paragraph*{HW9}
+160 neurons, 297 iterations of same movie. operations:
+\begin{itemize}
+    \item For each neuron compute fraction of of times (e.g. 270 0f 297) is was active in a given 
+    time bin. This discards information where we Implicitly assume that the time bin is exactly
+    lined up with the movie frame.
+\end{itemize}
+
+\newpage
+\section*{Lecture 4/11/24}
+\paragraph*{Floating Point}
+Two concrete ways in which you COULD say it is connected to the subject of the class:
+\begin{itemize}
+    \item The error in floating point is a form of ``noise'' in the data.
+    \item The computer automatically ``preprocesses" the data in a way that is not always what you
+    want. 
+\end{itemize}
+
+\paragraph*{160 Cats}
+Repeat a game w/owner 297 times. Record if cat moved a paw.
+
+\begin{itemize}
+    \item Different cat, different game(stimuli) 
+    \item If given a different stimuli, we don't know the behavior of all the cats.
+    \item HW 9: Different neurons, different stimuli.
+    \item ! Dot product of spike trains is meaningless
+    \item Main source of info: repeatability across 297 trials
+    \item Neuron 72: As we go further in each iteration 1 to 257 we see that the retina has ``learned'':
+    To extract the effect: Ideas
+    \begin{itemize}
+        \item Average over horizontal window and loook at d/dy. Global Activity
+        \item First 50 vs last 50 replicates: Compare \# of spikes is region of interest
+        \item 
+    \end{itemize}
+\end{itemize}
+
+\newpage
+\section*{Lecture 4/16/24}
+\paragraph*{Designing a Metric}
+
+Desired Criteria: When 
+\begin{itemize}
+    \item Range from 0 to 1
+    \item Test examples: should score high or low
+    \item Look at ambiguous examples yourself
+\end{itemize}
+Its not guaranteed the metric will satisfy all things.
+
+\paragraph*{} Extent of non-independence between $X$ and $Y$: Mutual Information!
+\begin{align*}
+    I(X,Y) = I(f(x), g(x))
+\end{align*}
+for any deterministic $f(x)$ adn $g(x)$.
+
+\paragraph*{Firing Streaks?} How do you find them?
+\begin{itemize}
+    \item Look at the average length of the streaks?
+    \item The number of streaks in a given time window(frequency)?
+\end{itemize}
+But first we need to look at the data more, i.e., the individual Neuron data shows some streaks\dots
+and the original data with averages is not actually a streak, but bands of activity that are close
+together.
+
+\paragraph*{!} ``Metric is supposed to telle me if phenomenon is real''\dots NO! The metric is to
+convince a reasonable reviewer that your effect is real. 
+\begin{itemize}
+    \item The metric is always less biased than you are, so you must know (or be reasonably convinced) 
+    that the observation is a real effect.
+\end{itemize}
+
+\paragraph*{Bayesian Optimal are we?}
+
+\newpage
+\section*{Lecture 4/18/24}
+Takehomes: What's interesting? Climate change denial 
+and its effect on the scientific community, Lewandowsky et al.
+\begin{itemize}
+    \item Maybe even despite the uncertainty of scientific discussion, we should warrant
+\end{itemize}
+Scientists are supposed 
+
+\begin{itemize}
+    \item Science is not occuring outised societal context
+    \item Ask good questions includes recognizing framing
+    \item Rather than being universally skeptical
+\end{itemize}
+Class response:
+\begin{itemize}
+    \item Pressure to succeed \& overvalued dissenting opinions 
+    \item How do we assess attention given to a scientific topic/issue?
+    \item Even when we are working in good faith (data is real and worked on), we can still be
+    wrong in the analysis.
+\end{itemize}
+
+\paragraph*{Paper 1: Possible Artifacts of data biases in the recent global surface warming hiatus, Karl et al.} 
+\begin{itemize}
+    \item Define an estimae of global temperature
+    \item Determine the trend of global temp over the past 100 years
+\end{itemize}
+Challenges:
+\begin{itemize}
+    \item Instrument observation at a specifc location changes over time: They must correct data 
+    collected: Differneces in technology over the decades e.g. buckets vs engine intake
+    \begin{itemize}
+        \item Number of data points per time
+        \item Change in coverage: much denser now vs 1940s
+    \end{itemize}
+    \item The taks itself is challenging/ ill-defined. What is ``global temp'' 
+\end{itemize}
+\paragraph*{Approaching Data}
+Noise before signal and Opening black boxes: How do we ask good questions? Details vs Big Picture:
+$\to$ which detials matter?
+\begin{itemize}
+    \item Presentations: Communicating your science
+    \begin{itemize}
+        \item Define the usecases and limitations: Try to draw a line at the amount of truth your
+        presentation/ research has revealed, e.g. this explains that but not another thing.
+        \item Understand  the background knowledge of the scientific audience.
+        \item Features of a bad presentation: 
+        \item Anticipating questions and answering them when they arise and not much later or before.
+        \begin{itemize}
+            \item too detailed $\leftrightarrow$ not detailed enough
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
 \end{document}

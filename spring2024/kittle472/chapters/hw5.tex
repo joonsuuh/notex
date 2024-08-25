@@ -1,0 +1,107 @@
+\documentclass[../main.tex]{subfiles}
+\usepackage{fancyhdr}
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Physics 472: Li Yang}
+\chead{Homework 5}
+\rhead{Junseo Shin}
+
+\renewcommand\thefigure{\arabic{figure}} 
+\paragraph*{Problem 1.} (a)  In the vacuum $\varphi_0 (x,z) = A \cos(kx) e^{kz}$, and the electric 
+field is the negative gradient of the electrostatic potential, so
+\begin{align*}
+    \vb E_0 &= -\grad \varphi_0 = \qt(-\pdv{\varphi_0}{x}, - \pdv{\varphi_0}{z})\\
+    &= (k A \sin(kx) e^{kz}, k A \cos(kx) e^{kz})
+\end{align*}
+and the tangential component of the electric field $\vb E_{x0} = A k \sin(kx) e^{kz}$ satisfies the
+boundary condition $\vb E_{xi} = k A \sin(kx) e^{-kz} = \vb E_{x0}$ for $z < 0$. 
+\paragraph*{} (b) The normal (or $z$) component of the Displacement field at the boundary is
+given as
+\begin{align*}
+    D_{zi} = \epsilon(\vb*\omega) E_{zi} = \epsilon(\vb*\omega) k A \cos(kx) e^{0} 
+    = \epsilon(\vb*\omega) k A \cos(kx)
+\end{align*}
+for a vacuum we have
+\begin{align*}
+    D_{z0} = E_{z0} = -\pdv{\varphi_0}{z} = -k A \cos(kx) e^{0} = -k A \cos(kx)
+\end{align*}
+So for
+\begin{align*}
+    \epsilon(\vb*\omega) k A \cos(kx) = -k A \cos(kx) \implies \epsilon(\vb*\omega) = -1
+\end{align*}
+And the dielectric function for a plasma is
+\begin{align*}
+    \epsilon(\vb* \omega) &= 1 - \frac{\omega_p^2}{\omega^2} \\
+    -1 &= 1 - \frac{\omega_p^2}{\omega^2} \implies \omega^2 = \frac{1}{2} \omega_p^2
+\end{align*}
+
+\paragraph*{Problem 2.} Metal 1 on the positive side of the interface can be treated as the plasma
+from Problem 1, and vice versa for Metal 2, so the dielectric functions are
+\begin{align*}
+    \epsilon_1(\vb* \omega) &= 1 - \frac{\omega_{p1}^2}{\omega^2} \\
+    \epsilon_2(\vb* \omega) &= 1 - \frac{\omega_{p2}^2}{\omega^2}
+\end{align*}
+And the boundary conditions require the Displacement field to be continuous across the interface:
+\begin{align*}
+    D_{z01} &= D_{z02} \\
+    \epsilon_1(\vb*\omega) \qt[-\pdv{\varphi_{01}}{z}] &= \epsilon_2(\vb*\omega) \qt[-\pdv{\varphi_{02}}{z}] \\
+    \epsilon_1(\vb*\omega) \qt[- \pdv{z}(A \cos(kx) e^{-kz})] &=
+    \epsilon_2(\vb*\omega) \qt[- \pdv{z}(A \cos(kx) e^{kz})] \\
+    \epsilon_1(\vb*\omega) &= -\epsilon_2(\vb*\omega)
+\end{align*}
+So the frequency associated with the interface is
+\begin{align*}
+    1 - \frac{\omega_{p1}^2}{\omega^2} &= -\qt(1 - \frac{\omega_{p2}^2}{\omega^2}) \\
+    2 &= \frac{\omega_{p2}^2 + \omega_{p1}^2}{\omega^2} \\
+    \implies \omega &= \qt[\frac{1}{2}(\omega_{p1}^2 + \omega_{p2}^2)]^{1/2}
+\end{align*}
+
+\paragraph*{Problem 3.} (a) Starting with the electromagnetic wave equation (53) from Kittel becomes
+\begin{align*}
+    c^2 K^2 E^2 &= \omega^2 (E + 4\pi P) \to c^2 K^2 E^2 = \omega^2(\epsilon(\infty)E + 4\pi P)
+\end{align*}
+or
+\begin{align*}
+    E(\omega^2 \epsilon(\infty) - c^2 K^2) + P(4\pi \omega^2) = 0
+\end{align*}
+and (54) remains 
+\begin{align*}
+    - \omega^2 P + \omega_T^2 P = (Nq^2/M) E \\
+    \qor 
+    E(Nq^2/M) + P(\omega^2 - \omega_T^2) = 0
+\end{align*}
+The two equations have a solution when the determinant of the matrix is zero:
+\begin{align*}
+    \begin{vmatrix}
+        \omega^2 \epsilon(\infty) - c^2 K^2 & 4\pi\omega^2 \\
+        Nq^2/M & \omega^2 - \omega_T^2
+    \end{vmatrix} = 0
+\end{align*}
+so 
+\begin{align*}
+    [\omega^2 \epsilon(\infty) - c^2 K^2] [\omega^2 - \omega_T^2]  - 4\pi \omega^2 \frac{Nq^2}{M} &= 0 \\
+    \omega^2[ \omega^2 \epsilon(\infty)  - \omega_T^2 \epsilon(\infty) - c^2 K^2 ] + c^2 K^2 \omega_T^2 - 4\pi \omega^2 \frac{Nq^2}{M} &= 0
+\end{align*}
+at $K = 0$ we have a two roots for $\omega^2$:
+\begin{align*}
+    \omega^2 \qt[ \omega^2 \epsilon(\infty) - \omega_T^2 \epsilon(\infty) - 4\pi  \frac{Nq^2}{M}] &= 0 \\
+    \implies \omega^2 = \omega_T^2 + \frac{4\pi Nq^2}{M \epsilon(\infty)}
+\end{align*}
+(b) For low $\omega$ we can neglect the $\omega^4$ and $\omega^2c^2 k^2$ which leaves us with
+\begin{align*}
+    -\omega^2[\omega_T^2 \epsilon(\infty) + 4\pi Nq^2/M] + c^2 k^2 \omega_T^2 &= 0 \\
+    \implies \omega^2 &= \frac{c^2 k^2 \omega_T^2}{\omega_T^2 \epsilon(\infty) + 4\pi Nq^2/M} \\
+    &= \frac{c^2 k^2}{\epsilon(\infty) + 4\pi Nq^2/M\omega_T^2}
+\end{align*}
+where we know the dielectric function at $\omega = 0$ is from Kittel is
+\begin{align*} \tag{59}
+    \epsilon(0) = \epsilon(\infty) + \frac{4\pi Nq^2}{M \omega_T^2}
+\end{align*}
+so
+\begin{align*}
+    \omega^2 = \frac{c^2 k^2}{\epsilon(0)} \implies \omega =  \frac{c k}{\sqrt{\epsilon(0)}}
+\end{align*}
+
+\end{document}

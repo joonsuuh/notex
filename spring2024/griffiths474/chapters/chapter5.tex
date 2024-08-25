@@ -1,5 +1,5 @@
 \documentclass[../main.tex]{subfiles}
-
+\usepackage[compat=1.1.0]{tikz-feynman}
 \graphicspath{{../images/}}
 
 \begin{document}
@@ -538,4 +538,196 @@ But why use the collider like this?
     \item $\sqrt{S} = \qty{100}{TeV}$ (FCC/SPPC)
 \end{itemize}
 But we can only find the cross section to grow with $S$ if $\abs{\mathcal{M}}^2$ is independent of $S$.`'
+
+\newpage
+\lhead{Lecture 18: 3/27/24}
+\paragraph*{Quiz Review}
+\subsection*{Feynman Rules}
+QED: $e^{\pm}, \gamma$
+
+% feynman diagram of e^+ e^- -> gamma using tikz package
+\begin{figure}[ht]
+    \begin{center}
+        \feynmandiagram [horizontal=a to b] {
+      i1 [particle=\(e^{+}\)] -- [anti fermion] a -- [anti fermion] i2 [particle=\(e^{-}\)],
+      a -- [photon, edge label=\(\gamma\), momentum'=Time] b,
+    };
+    \end{center}
+    \caption{Not allowed}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \feynmandiagram[vertical=a to b] {
+        i1 [particle=\(e^{-} (p_1)\)] -- [fermion] a -- [fermion] f1 [particle=\(e^{-} (p_3)\)],
+        a -- [photon, edge label=\(\gamma\)] b,
+        i2 [particle=\(e^{-} (p_2)\)] -- [anti fermion] b -- [anti fermion] f2 [particle=\(e^{-} (p_4)\)],
+    };
+    \caption{Allowed}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \feynmandiagram[vertical=a to b] {
+        i1 [particle=\(e^{-} (p_1)\)] -- [fermion] a -- [fermion] f1 [particle=\(e^{-} (p_3)\)],
+        a -- [photon, edge label=\(\gamma\)] b,
+        i2 [particle=\(e^{-} (p_2)\)] -- [anti fermion] b -- [anti fermion] f2 [particle=\(e^{-} (p_4)\)],
+    };
+    \caption{Allowed}
+\end{figure}
+is not allowed, but (diagram 3) is allowed only if the initial electron has some KE. But also there
+is (diagram 4) due to the symmetry.
+
+\paragraph*{Notation}
+\begin{itemize}
+    \item Fermion: solid line with a forward arrow for the direction of the particle, and a backward
+    arrow for the antiparticle.
+    \item Photon: wavy line
+    \item Gluon: springy line
+    \item $W/Z$ boson: triangle wave
+    \item Higgs: dashed line
+\end{itemize}
+\paragraph*{Rules}
+\begin{itemize}
+    \item Label the external momenta as $p_i$ and interntal momenta as $q_i$
+    \item For the Vertex, insert a factor of $-ig$
+    \item Propogator: For each internal line write a factor of 
+    \begin{align*}
+        \frac{i}{q_j^2 - m_j^2c^2}
+    \end{align*}
+    (For Virtual particles $q_j^2 \neq m_j^2 c^2$)
+    \item 4-momentum conservation: For each vertex, write a factor of \((2\pi)^4 \delta^4(k_1 + k_2 + k_3)\),
+    where $k_i$'s are momenta flowing into the vertex. (Total momentum is zero)
+    \item Integrate over all interal momenta
+    \begin{align*}
+        \prod_i \int \frac{\dd[4]{q_i}}{(2\pi)^4}
+    \end{align*}
+    \item Drop \((2\pi)^4 \delta^4(p_1 + p_2 + \dots - p_m - \dots - p_n)\)
+    \item Multiply the final result by $i$
+\end{itemize}
+\paragraph*{Example Decay} $A \to B + C$
+\begin{figure}[ht]
+    \centering
+    \feynmandiagram[horizontal=a to b] {
+        i1 [particle=\(B\)] -- [fermion] a -- [fermion] f1 [particle=\(A\)],
+        a -- [fermion] f2 [particle=\(C\)],
+    };
+    \caption{Decay}
+\end{figure}
+\begin{align*}
+    \mathcal{M} = i (-ig) \cancel{(2\pi)^4 \delta^4(p_1 - p_2 - p_3)} = g
+\end{align*}
+The decay rate is
+\begin{align*}
+    \Gamma &= \frac{S}{8\pi m_1^2 \hbar c} \abs{\mathcal{M}}^2 \abs{\vb p_B} \\
+    &= \frac{S}{8\pi m_A^2 \hbar c} g^2 \abs{\vb p_B} \\
+    \abs{\vb p_B} = \frac{c}{2m_A} \lambda^{1/2}(m_A^2, m_B^2, m_C^2)
+\end{align*}
+\paragraph*{Example: 2-2 Scattering} $A + A \to B + B$
+For the first diagram 
+\begin{figure}[ht]
+    \centering
+    \feynmandiagram[vertical=a to b] {
+        i1 [particle=\(A (p_1)\)] -- [fermion] a -- [fermion] f1 [particle=\(B (p_3)\)],
+        a -- [edge label=$C(q)$] b,
+        i2 [particle=\(A (p_2)\)] -- [anti fermion] b -- [anti fermion] f2 [particle=\(B (p_4)\)],
+    };
+    \caption{Diagram 1}
+\end{figure}
+we can take the virtual particle direction to be upwards, we get the amplitude
+\begin{align*}
+    \mathcal{M}_1 &= i \int (-ig)^2 \frac{i}{q^2 - m_C^2 c^2} (2\pi)^4 \delta^4(p_1 + q - q_3)
+    (2\pi)^4 \delta^4(p_2 - q - p_4) \frac{\dd[4]{q}}{(2\pi)^4}
+\end{align*}
+getting rid of the integral with the first delta function
+\begin{align*}
+    &= g^2 \frac{1}{(p_3 - p_1)^2 - m_C^2 c^2} (2\pi)^4 \delta^4(p_2 - (p_3 - p_1) - p_4)
+\end{align*}
+we can drop the factors using rule 6:
+\begin{align*}
+    = \frac{g^2}{(p_3 - p_1)^2 - m_C^2 c^2}
+\end{align*}
+From the second diagram we get
+\begin{align*}
+    \mathcal{M}_2 = \frac{g^2}{(p_4 - p_2)^2 - m_C^2 c^2}
+\end{align*}
+and the total amplitude is
+\begin{align*}
+    \mathcal{M} = \mathcal{M}_1 + \mathcal{M}_2 = \frac{g^2}{t^2 - m_C^2 c^2} + \frac{g^2}{u^2 - m_C^2 c^2}
+\end{align*}
+where
+\begin{align*}
+    t = (p_1 - p_3)^2,\qquad u = (p_1 - p_4)^2, \qquad s = (p_1 + p_2)^2
+\end{align*}
+And to find the cross section we use 
+\begin{align*}
+    \dv{\sigma}{\Omega} = \qt(\frac{\hbar c}{8\pi})^2 \frac{S \abs{\mathcal{M}}^2}{(E_1 + E_2)^2} \frac{\abs{\vb p_f}}{\abs{\vb p_i}}
+\end{align*}
+and in the center of mass frame we have
+\begin{align*}
+    m_A = m_B = m, \quad m_C = 0
+\end{align*}
+and from the conservation of momentum and energy momentum relation
+\begin{align*}
+    (p_1 - p_3)^2 &= p_1^2 + p_3^2 - 2p_1 p_3 \\
+        &= m_A^2 c^2 + m_B^2 c^2 - 2 \qt(\frac{E_1 E_3}{c^2} - \vb p_1 \cdot \vb p_3) \\
+        &= (m_A^2 + m_B^2)c^2 - 2 \qt(\frac{E_1 E_3}{c^2} - \abs{\vb p_1} \abs{\vb p_3} \cos\theta)
+\end{align*}
+where
+\begin{align*}
+    \vb p_1 + \vb p_2 = \vb 0 \implies \abs{\vb p_1} = \abs{\vb p_2} \\
+    \vb p_3 + \vb p_4 = \vb 0 \implies \abs{\vb p_3} = \abs{\vb p_4}
+\end{align*}
+so from the energy conservation
+\begin{align*}
+    E_1 + E_2 = E_3 + E_4
+\end{align*}
+\begin{align*}
+    \implies \sqrt{m^2 c^4 + \abs{\vb p_1}^2 c^2} + \sqrt{m^2 c^4 + \abs{\vb p_2}^2 c^2} 
+    = \sqrt{m^2 c^4 + \abs{\vb p_3}^2 c^2} + \sqrt{m^2 c^4 + \abs{\vb p_4}^2 c^2}
+\end{align*}
+so the energies are equivalent and thus we can simplify
+\begin{align*}
+    (p_1 - p_3)^2 &= 2m^2 c^2 - 2 \qt(\frac{E^2}{c^2} - \abs{\vb p}^2 \cos\theta)
+\end{align*}
+and using
+\begin{align*}
+    E^2 = m^2 c^4 + \abs{\vb p}^2 c^2 \\
+    \implies \frac{E^2}{c^2} = m^2 c^2 + \abs{\vb p}^2
+\end{align*}
+we finally get
+\begin{align*}
+    (p_1 - p_3)^2 = -2\abs{\vb p}^2 (1 - \cos\theta)
+\end{align*}
+and for the second diagram we get
+\begin{align*}
+    (p_1 - p_4)^2 = -2\abs{\vb p}^2 (1 + \cos\theta)
+\end{align*}
+Back to the total amplitude
+\begin{align*}
+    \mathcal{M} &= \frac{g^2}{-2\abs{\vb p}^2 } \qt(\frac{1}{1 - \cos\theta} + \frac{1}{1 + \cos\theta}) \\
+    &= - \frac{g^2}{\abs{\vb p}^2 \sin^2 \theta} 
+\end{align*}
+and now we can find the cross section:
+\begin{align*}
+    \dv{\sigma}{\Omega} = \qt(\frac{\hbar c}{8\pi})^2 \frac{1}{2} \frac{1}{4E^2} \frac{g^4}{\abs{\vb p}^4 \sin^4 \theta}
+\end{align*}
+integrating
+\begin{align*}
+    \sigma \propto \int_0^\pi \frac{\sin\theta \dd{\theta}}{\sin^4 \theta} \to \infty
+\end{align*}
+The mediator of the force is the photon $C$, a massless mediator, which is why the cross section is
+infinite. In the homework we will see that this will go to $\propto \frac{1}{m_C^4}$.
+\paragraph*{Vacuum Polarization} We can have multiple loops in the diagrams and we would get
+\begin{align*}
+    \mathcal{M} = \int \frac{\dd[4]{q}}{q^4} = \int_0^\infty \frac{q^3 \dd{q}}{q^4} = \infty
+\end{align*}
+and to get rid of this we use \emph{Regularization} i.e.
+\begin{align*}
+    \int^M \frac{\dd{q}}{q} = \ln(M)
+\end{align*}
+known as the Cut-off scale. We will get finite quantities
+\begin{align*}
+    m = m_0 + \delta m \\
+    g = g_0 + \delta g
+\end{align*}
+
 \end{document}

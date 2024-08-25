@@ -20,19 +20,20 @@
 % \usepackage[enable]{darkmode}
 \usepackage{import} 
 \usepackage{hyperref} % for hyperlinks
+\usepackage{bookmark} % for better bookmarks
 \hypersetup{
   colorlinks   = true,    % Colours links instead of ugly boxes
   urlcolor     = draculagreen,    % Colour for external hyperlinks without dracula theme: Cerulean
   linkcolor    = draculagreen,    % Colour of internal links "Cerulean"
+  filecolor    = draculagreen,    % Colour of file links "Cerulean"
   citecolor    = draculared      % Colour of citations "Red"
 }
-\usepackage{graphicx}
-\graphicspath{{./images/}} % set image path for graphicx
+\usepackage{graphicx} % set image path for graphicx
+\graphicspath{{./images/}} % set graphics path from current directory (./) to images directory for main.tex file
 \usepackage{caption}
 \usepackage{subcaption}
 
 \usepackage{subfiles} 
-\usepackage{pdfpages}
 
 % custom formatting
 \numberwithin{figure}{section}
@@ -52,11 +53,11 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{draculabg},   
-    commentstyle=\color{draculacomment},
-    keywordstyle=\color{draculacyan},
-    numberstyle=\tiny\color{draculagreen},
-    stringstyle=\color{draculaorange},
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
     basicstyle=\ttfamily\footnotesize,
     breakatwhitespace=false,         
     breaklines=true,                 
@@ -72,15 +73,14 @@
 
 \lstset{style=mystyle} 
 
-% math operators
+% hyperbolic math operators
 \DeclareMathOperator{\arccosh}{arccosh}
 \DeclareMathOperator{\arcsinh}{arcsinh}
 \DeclareMathOperator{\arctanh}{arctanh}
-\DeclareMathOperator{\Var}{Var}
-\DeclareMathOperator{\E}{E}
 
 % more math packages
 \usepackage{cancel}
+\usepackage{bbold}
 
 % seperation vector script r
 \usepackage{calligra}
@@ -90,6 +90,9 @@
 \newcommand{\scriptr}{\mathcalligra{r}\,}
 \newcommand{\boldscriptr}{\pmb{\mathcalligra{r}}\,}
 
-% physics constants/variables
-\newcommand{\ke}{\frac{1}{4\pi\epsilon_0}}
-\newcommand{\lagr}{\mathcal{L}}
+% physics constants
+\newcommand{\ke}{\frac{1}{4\pi\epsilon_0}} % coulomb's constant
+\newcommand{\lagr}{\mathcal{L}} % lagrangian
+\newcommand{\cf}{\vb F_{\text{cf}}} % coulomb force
+\newcommand{\cor}{\vb F_{\text{cor}}} % coriolis force
+\newcommand{\ext}{\vb F_{\text{ext}}} % external force

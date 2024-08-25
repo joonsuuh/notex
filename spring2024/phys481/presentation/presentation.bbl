@@ -1,0 +1,12 @@
+\begin{thebibliography}{1}
+
+\bibitem{8766229}
+Ieee standard for floating-point arithmetic.
+\newblock {\em IEEE Std 754-2019 (Revision of IEEE 754-2008)}, pages 1--84, 2019.
+
+\bibitem{Goldberg_1991}
+David Goldberg.
+\newblock What every computer scientist should know about floating-point arithmetic.
+\newblock {\em ACM Computing Surveys}, 23:5–48, Mar 1991.
+
+\end{thebibliography}

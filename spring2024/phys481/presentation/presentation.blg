@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: presentation.aux
+The style file: plain.bst
+Database file #1: refs.bib
+Warning--to sort, need author or key in 8766229
+Warning--empty author in 8766229
+You've used 2 entries,
+            2118 wiz_defined-function locations,
+            510 strings with 4237 characters,
+and the built_in function-call counts, 563 in all, are:
+= -- 55
+> -- 8
+< -- 1
++ -- 4
+- -- 2
+* -- 39
+:= -- 88
+add.period$ -- 5
+call.type$ -- 2
+change.case$ -- 7
+chr.to.int$ -- 0
+cite$ -- 4
+duplicate$ -- 27
+empty$ -- 54
+format.name$ -- 2
+if$ -- 124
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 12
+num.names$ -- 2
+pop$ -- 6
+preamble$ -- 1
+purify$ -- 5
+quote$ -- 0
+skip$ -- 20
+stack$ -- 0
+substring$ -- 43
+swap$ -- 7
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 8
+warning$ -- 2
+while$ -- 5
+width$ -- 3
+write$ -- 22
+(There were 2 warnings)

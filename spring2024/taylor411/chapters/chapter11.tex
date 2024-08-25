@@ -1,0 +1,366 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{../images/}}
+
+\begin{document}
+\subsection*{Lecture 30: \hfill  4/10/24}
+\hrule \vspace{10px}
+\section{Coupled Oscillators}
+\paragraph*{Three springs in series and two carts}
+We define equilibrium at $x_1 = 0, x_2 = 0$ and given the Lagrangian
+\begin{align*}
+    T &= \frac{1}{2}m_1\dot{x}_1^2 + \frac{1}{2}m_2\dot{x}_2^2 \\
+    U &= \frac{1}{2}k_1 x_1^2 + \frac{1}{2} k_2 (x_1 - x_2)^2 + \frac{1}{2} k_3 x_2^2
+\end{align*}
+For the $x_1$ equation the EL equation gives
+\begin{align*}
+    \pdv{\lagr}{x_1} &= - k_1 x_1 - k_2(x_1 - x_2) \\
+    \pdv{\lagr}{\dot x_1} &= m_1 \ddot{x}_1
+    m_1 \ddot x_1 &= - (k_1 + k_2) x_1 + k_2 x_2
+\end{align*}
+and for $x_2$ we have
+\begin{align*}
+    \pdv{\lagr}{x_2} &= k_2(x_1 - x_2) - k_3 x_2 \\
+    \pdv{\lagr}{\dot x_2} &= m_2 \ddot{x}_2 \\
+    m_2 \ddot x_2 &= k_2 x_1 - (k_2 + k_3) x_2
+\end{align*}
+We can rewrite these equations in matrix form
+\begin{align*}
+    \begin{pmatrix}
+        m_1 & 0 \\
+        0 & m_2
+    \end{pmatrix}
+    \begin{pmatrix}
+        \ddot x_1 \\
+        \ddot x_2
+    \end{pmatrix}
+    &=
+    \begin{pmatrix}
+        - (k_1 + k_2) & k_2 \\
+        k_2 & - (k_2 + k_3)
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2
+    \end{pmatrix}
+    \\
+    M \ddot{\vb x} &= -K \vb x
+\end{align*}
+where we must find $\vb x(t)$. From oscillators we know that the solution is in the form
+\begin{align*}
+    m \ddot x = -kx \implies x = x_0 e^{\pm i\omega t}
+\end{align*}
+so we can write the solution as
+\begin{align*}
+    \vb x(t) = \vb a e^{i\omega t}
+\end{align*}
+where we must find $\vb A$ and $\omega$ separately. Since
+\begin{align*}
+    \ddot{\vb x} = -\omega^2 \vb A e^{i\omega t} = -\omega^2 \vb x
+\end{align*}
+then we know that
+\begin{align*}
+    -\omega^2 M \vb x = - K \vb x \\
+    \implies (K - \omega^2 M) \vb x = 0
+\end{align*}
+so $\omega^2$ is an eigenvalue of $K M^{-1}$
+\begin{align*}
+    \implies \det(K - \omega^2 M) = 0
+\end{align*}
+With the assumption 
+\begin{align*}
+    m_1 = m_2 = m, \quad k_1 = k_2 = k_3 = k
+\end{align*}
+we have
+\begin{align*}
+    \det \mqty(2k - \omega^2 m & - k \\ -k & 2k - \omega^2 m) = 0 \\
+    (2k - \omega^2 m)^2 - k^2 = 0
+\end{align*}
+which is in the form $a^2 - b^2 = (a + b)(a - b) = 0$. So we have
+\begin{align*}
+    (2k - \omega^2 m + k)(2k - \omega^2 m - k) = 0
+\end{align*}
+which gives us the two solutions 
+\begin{align*}
+    \omega_1^2 = \frac{k}{m}, \quad \omega_2^2 = \frac{3k}{m}
+\end{align*}
+Question: Why not 4 solutions, i.e., $\pm \omega_1, \pm \omega_2$? 
+
+Plug in $\omega_1$ into $K \vb a = \omega_1^2 M \vb a$ to find $\vb a$:
+\begin{align*}
+    \mqty(2k - \omega_1^2 m & -k \\ -k & 2k - \omega_1^2 m) = \mqty(k & -k \\ k & -k) \vb a = 0
+\end{align*}
+with $\vb a = \mqty(1 \\ 1)$, so the solution is
+\begin{align*}
+    \vb x_1 &= \vb a (C_1 e^{i\omega t} + C_2 e^{i\omega t}) \\
+    &= A \vb a \cos(\omega_1 t - \delta)
+\end{align*}
+Which gives us the first normal mode
+\begin{align*}
+    \begin{cases}
+        x_1 = A \cos(\omega_1 t - \delta) \\
+        x_2 = A \cos(\omega_1 t - \delta)
+    \end{cases}
+\end{align*}
+This describes when the two carts are moving in phase. 
+For the second normal mode:
+\begin{align*}
+    (K - \omega_2 M) \vb a = 0 \\
+    \mqty(2k - \omega_2^2 m & -k \\ -k & 2k - \omega_2^2 m) \vb a = 0 \\
+    \mqty(-k & -k \\ -k & -k) \vb a = 0
+\end{align*}
+where $\vb a = \mqty(1 \\ -1)$, so the solution is
+\begin{align*}
+    \vb x &= A \vb a \cos(\omega_2 t - \delta) \\
+    \implies &\begin{cases}
+        x_1 = A \cos(\omega_2 t - \delta) \\
+        x_2 = -A \cos(\omega_2 t - \delta)
+    \end{cases}
+\end{align*}
+This describes when the two carts are moving in opposite directions. The generalized solution is a 
+linear combination of the normal modes
+\begin{align*}
+    \vb x(t) = A_1 \vb a_1 \cos(\omega_1 t - \delta_1) + A_2 \vb a_2 \cos(\omega_2 t - \delta_2)
+\end{align*}
+which can describe the complicated motion of the two carts when they are not completely in or out of
+phase. 
+
+\subsection*{Normal Coordinates}
+\begin{align*}
+    \xi_1 = \frac{1}{2} (x_1 + x_2) \\
+    \xi_2 = \frac{1}{2} (x_1 - x_2)
+\end{align*}
+$\implies \xi_1, \xi_2$ into the EOM:
+\begin{align*}
+    \ddot \xi_1 = f(\xi_1) \\
+    \ddot \xi_2 = f(\xi_2)
+\end{align*} 
+decouples the equations.
+
+\newpage
+\subsection*{Lecture 31: \hfill 4/12/21}
+\hrule \vspace{10px}
+\subsection*{Last Time:}
+\begin{align*}
+    M \ddot{\vb x} = - K \vb x
+\end{align*}
+For an undiagonalized matrix $K$ we have to solve
+\begin{align*}
+    \ddot{\vb x} = M^{-1} K \vb x
+\end{align*}
+where
+\begin{align*}
+    \vb x = \vb a e^{\pm i \omega t} \implies \omega^2 \vb a = M^{-1} K \vb a
+\end{align*}
+where the general solution is a linear combination of the normal modes
+\begin{align*}
+    \vb x(t) = A_1 \vb a_1 \cos(\omega_1 t - \delta_1) + A_2 \vb a_2 \cos(\omega_2 t - \delta_2)
+\end{align*}
+
+\subsection*{Double Pendulum} 
+The Potential energy is made up of two parts
+\begin{align*}
+    U_1 &= m_1 g L_1 (1 - \cos\phi_1) \\
+    U_2 &= m_2 g L_1 (1 - \cos\phi_1) + m_2 g L_2 (1 - \cos \phi_2)
+\end{align*}
+And the two kinetic energies are
+\begin{align*}
+    T_1 &= \frac{1}{2} m_1 L_1^2 \dot \phi_1^2 \\
+    T_2 &= \frac{1}{2} m_2 (L_1^2 \dot \phi_1^2 + L_2^2 \dot \phi_2^2 + 2 L_1 L_2 \dot \phi_1 \dot \phi_2 \cos(\phi_1 - \phi_2))
+\end{align*}
+where we use the Law of Cosines (or dot product), so the Lagrangian is
+\begin{align*}
+    \lagr &= T - U \\
+    &= \frac{1}{2} (m_1 + m_2) L_1^2 \dot \phi_1^2 
+        + \frac{1}{2} m_2 L_2^2 \dot \phi_2^2 
+        + m_2 L_1 L_2 \dot \phi_1 \dot \phi_2 \cos(\phi_1 - \phi_2) \\
+    &- (m_1 + m_2) g L_1 (1 - \cos\phi_1)  - m_2 g L_2 (1 - \cos \phi_2)
+\end{align*}
+Using a small angle approximation where both $\phi_1, \phi_2$ is small:
+\begin{align*}
+    \cos\phi \approx 1 - \frac{\phi^2}{2}
+\end{align*} 
+we can rewrite the Lagrangian as
+\begin{align*}
+    \lagr &= \frac{1}{2} (m_1 + m_2) L_1^2 \dot \phi_1^2 
+        + \frac{1}{2} m_2 L_2^2 \dot \phi_2^2 
+        + m_2 L_1 L_2 \dot \phi_1 \dot \phi_2 \\
+    &- (m_1 + m_2) g L_1 \phi_1^2  - m_2 g L_2 \phi_2^2
+\end{align*}
+where we use the second order terms in the potential energy, i.e.
+\begin{align*}
+    T (\dot\phi_1, \dot\phi_2) \quad U(\phi_1, \phi_2)
+\end{align*}
+So for the EL equations:
+\begin{align*}
+    \pdv{\lagr}{\dot\phi_1} &= (m_1 + m_2) L_1^2 \dot\phi_1 + m_2 L_1 L_2 \dot\phi_2 \\
+    \pdv{\lagr}{\phi_1} &= - (m_1 + m_2) g L_1 \phi_1 \\
+    \implies &(m_1 + m_2) L_1^2 \ddot\phi_1 + m_2 L_1 L_2 \ddot\phi_2 = - (m_1 + m_2) g L_1 \phi_1
+\end{align*}
+and for $\phi_2$:
+\begin{align*}
+    \pdv{\lagr}{\dot\phi_2} &= m_2 L_2^2 \dot\phi_2 + m_2 L_1 L_2 \dot\phi_1 \\
+    \pdv{\lagr}{\phi_2} &= - m_2 g L_2 \phi_2 \\
+    \implies &m_2 L_1 L_2 \ddot\phi_1 + m_2 L_2^2 \ddot\phi_2 = - m_2 g L_2 \phi_2
+\end{align*}
+This is a matrix in the form
+\begin{align*}
+    M = \mqty((m_1 + m_2) L_1^2 & m_2 L_1 L_2 \\ m_2 L_1 L_2 & m_2 L_2^2) \quad
+    K = \mqty((m_1 + m_2) g L_1 & 0 \\ 0 & m_2 g L_2)
+\end{align*}
+here the $K$ matrix is diagonal (opposite from the previous example). But we solve this the same way
+\begin{align*}
+    \det(K - \omega^2 M) = 0
+\end{align*}
+where $\omega^2$ is the eigenvalue of $M^{-1} K$. 
+\paragraph*{Equal Mass and Length Case}
+Assume $m_1 = m_2 = m, L_1 = L_2 = L$, then
+\begin{align*}
+    M = m L^2 \mqty(2 & 1 \\ 1 & 1) \quad K = m g L \mqty(2 & 0 \\ 0 & 1)
+\end{align*}
+From the simple pendulum we know that
+\begin{align*}
+    \omega_0 = \sqrt{\frac{g}{L}}, \quad g = \omega_0^2 L
+\end{align*}
+so we can rewrite
+\begin{align*}
+    K = m \omega_0^2 L^2 \mqty(2 & 0 \\ 0 & 1)
+\end{align*}
+The determinant of the matrix is
+\begin{align*}
+    \det(K - \omega^2 M) = m^2 L^4 \mqty(2\omega_0^2 - 2\omega^2 & - \omega^2 \\ - \omega^2 & \omega_0^2 - \omega^2) = 0
+\end{align*}
+which gives us the equation
+\begin{align*}
+    2(\omega_0^2 - \omega^2)^2 - \omega^4 = 0 \\
+    \omega^4 - 4\omega_0^2 \omega^2 + 2\omega_0^4 = 0
+\end{align*}
+so the two normal frequencies are
+\begin{align*}
+    \omega_1^2 = (2 - \sqrt 2) \omega_0^2, \quad \omega_2^2 = (2 + \sqrt 2) \omega_0^2
+\end{align*}
+\paragraph*{Normal Modes}
+To find the normal modes, we substitute $\omega_1, \omega_2$ into the equation again:
+\begin{align*}
+    K - \omega_1^2 M &= mL^2 \omega_0^2 \mqty(2 - (4 - 2\sqrt 2) & - (2 - \sqrt 2) \\ - (2 - \sqrt 2) & 1 - (2 - \sqrt 2)) \\
+    &= m L^2 \omega_0^2 \mqty(2\sqrt 2 - 2 & 2- \sqrt 2 \\ 2- \sqrt 2 & \sqrt 2 - 1) \\
+    &= m L^2 \omega_0^2 (\sqrt 2 - 1) \mqty(2 & -\sqrt 2 \\ -\sqrt 2 & 1)
+\end{align*}
+So 
+\begin{align*}
+    (k - \omega_1^2 M) \vb a_1 = 0, \quad \vb a_1 = \mqty(1 \\ \sqrt 2)
+\end{align*}
+and the first normal mode is 
+\begin{align*}
+    \vb \phi(t) &= A_1 \mqty(1 \\ \sqrt 2) \cos(\omega_1 t - \delta_1) \\
+    \phi_1 (t) &= A_1 \cos(\omega_1 t - \delta_1) \\
+    \phi_2 (t) &= \sqrt 2 A_1 \cos(\omega_1 t - \delta_1)
+\end{align*}
+where the two pendulums are moving exactly in phase (or the 2nd pendulum angle is always $\sqrt 2$
+times the first pendulum).
+The second normal mode is
+\begin{align*}
+    \vb \phi(t) &= A_2 \mqty(1 \\ -\sqrt 2) \cos(\omega_2 t - \delta_2)
+\end{align*}
+
+\newpage
+\subsection*{Lecture 32: \hfill 4/15/24}
+\paragraph*{Review} 
+For the General Case of Coupled Oscillators:
+\begin{align*}
+    M \ddot q = - K \vb q
+\end{align*}
+where $\vb q = \vb a e^{i \omega t}$, and $\omega^2$ is an eigenvalue of $M^{-1} K$.
+\begin{align*}
+    (K - \omega^2 M) \vb a = 0 \implies \det(K - \omega^2 M) = 0
+\end{align*}
+which gives the normal frequency, and to determine $\vb a$:
+\begin{align*}
+    \vb q = \sum_i A_i \vb a_i \cos(\omega_i t - \delta_i)
+\end{align*}
+where we have $2n$ unknowns and $2n$ initial conditions.
+
+\subsection*{Nodes Of a String}
+For a string of mass $M$ under tension $T$, we separate the string into small nodes of length
+$\ell$, and the nodes deviate $y_i$ to form a segmented wave. Assuming $y_i$ is small: N2L gives
+\begin{align*}
+    m \ddot y_2 = F_y = -T \sin\theta_1 - T \sin\theta_2 \\
+    \sin\theta_1 = \frac{y_i - y_{i-1}}{\ell}, \quad \sin\theta_2 = \frac{y_i - y_{i + 1}}{\ell}
+\end{align*}
+and
+\begin{align*}
+    m \ddot y_1 &= -T \frac{y_i - y_{i - 1}}{l} - T \frac{y_i - y_{i + 1}}{\ell} \\
+    &= \frac{T}{\ell} (y_{i - 1} - 2y_i + y_{i + 1}) \\
+    \implies &M \ddot{\vb y} = -K \vb y
+\end{align*}
+e.g. For $n = 2$ we have the two equations
+\begin{align*}
+    i = 1: \quad \ddot y_1 &= \frac{T}{m \ell} (y_2 - 2y_1) \\
+    i = 2: \quad \ddot y_2 &= \frac{T}{m \ell} (y_1 - 2y_2)
+\end{align*}
+which can be written in matrix form
+\begin{align*}
+    M = m \mqty(1 & 0 \\ 0 & 1) \quad K = \frac{T}{m \ell} \mqty(2 & -1 \\ -1 & 2)
+\end{align*}
+and for $n$ nodes we have a tri-diagonal matrix for $K$:
+\begin{align*}
+    K = \frac{T}{m \ell} \mqty(2 & -1 & 0 & \cdots & 0 \\ -1 & 2 & -1 & \cdots & 0 \\ 0 & -1 & 2 & \cdots & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & 0 & \cdots & 2)
+\end{align*}
+Solving for the normal modes where $n = 2$:
+\begin{align*}
+    \det(K - \omega^2 M) = 0 \\
+    \omega_1^2 = \omega_0^2, \quad \vb a = \mqty(1 \\ 1) \\
+    \omega_2^2 = 3\omega_0^2, \quad \vb a = \mqty(1 \\ -1)
+\end{align*}
+\paragraph*{$n \to \infty$?}
+We take the limit of the continuous string\dots
+\begin{align*}
+    m = \frac{M}{n} \to 0, \quad \ell = \frac{L}{n + 1} \to 0
+\end{align*}
+since these quanities go to zero, we have to define a nonzero quantity
+\begin{align*}
+    \mu = \frac{M}{L} \approx \frac{m}{\ell}
+\end{align*}
+The equation of motion is
+\begin{align*}
+    \ddot y_i = \frac{T}{m \ell} (y_{i - 1} - 2y_i + y_{i + 1})
+\end{align*}
+and since $y \to y(x), \qquad x \in [0, L]$, we can Taylor expand
+\begin{align*}
+    y_{i + 1} = y_i + y_i' \ell + \frac{1}{2} y_i'' \ell^2
+    y_{i - 1} = y_i - y_i'(-\ell) + \frac{1}{2} y_i'' \ell^2
+\end{align*}
+where the first two terms cancel out, so we have
+\begin{align*}
+    \ddot y = \frac{T}{m \ell} y'' \ell^2 = \frac{T}{\mu} y'' = c^2 y''
+\end{align*}
+A solution to $y$ is exponential in the form
+\begin{align*}
+    y(x) = a(x) e^{i \omega t} \\
+    -\omega^2 a(x) = c^2 a''(x) \\
+    a'' = -\frac{\omega^2}{c^2} a = -k^2 a
+\end{align*}
+where $k$ is the wave vector. The general solution is
+\begin{align*}
+    a(x) &= C_1 \sin{kx} + C_2 \cos{kx} \\
+    a(0) &= 0 \implies C_2 = 0 \\
+    a(L) &= 0 \implies \sin(kL) = 0 = \sin(n\pi) \implies k = \frac{n\pi}{L}
+\end{align*}
+so 
+\begin{align*}
+    k_n = \frac{n \pi}{L}, \quad \omega_n = \frac{n \pi c}{L}
+\end{align*}
+Which gives us
+\begin{align*}
+    a_n(x) &= A_n \sin(\frac{n\pi}{L} x) \\
+    y(x, t) &= \sum_n A_n \sin(\frac{n\pi}{L} x) e^{i \omega_n t}
+\end{align*}
+The initial conditions tell us
+\begin{align*}
+    y(x, 0) = f(x) = \sum_n A_n \sin(\frac{m\pi}{L} x) \\
+    A_n = \frac{2}{L} \int_0^L f(x) \sin(\frac{m\pi}{L} x) \dd{x}
+\end{align*}
+this is from the Fourier coefficient:
+\begin{align*}
+    \frac{2}{L} \int_0^L \sin(\frac{n\pi}{L} x) \sin(\frac{m\pi}{L} x) \dd{x} = \delta_{nm}
+\end{align*}
+\end{document}

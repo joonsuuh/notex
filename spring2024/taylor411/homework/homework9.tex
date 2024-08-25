@@ -1,0 +1,256 @@
+\documentclass[../hw.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{9}
+\begin{center}
+  \section*{Homework 9} \label{sec:homework9}
+\end{center}
+\addcontentsline{toc}{section}{\nameref{sec:homework9}}
+\hrule \vspace{10px}
+\paragraph*{1.} Inertia Tensor derivation using kronicker delta:
+The diagonal elements of the inertia tensor are given by
+\begin{align*}
+    I_{xx} &= \sum m_i (y_i^2 + z_i^2) \\
+    I_{yy} &= \sum m_i (x_i^2 + z_i^2) \\
+    I_{zz} &= \sum m_i (x_i^2 + y_i^2)
+\end{align*}
+and the off-diagonal elements are given by
+\begin{align*}
+    I_{xy} &= -\sum m_i x_i y_i \\
+    I_{xz} &= -\sum m_i x_i z_i \\
+    I_{yz} &= -\sum m_i y_i z_i
+\end{align*}
+For the diagonal element we can see that using the single equation
+\begin{align*}
+    I_{xx} &= \int \rho (r^2 \delta_{xx} - r_x r_x) \dd{V} \\
+    &= \int \rho (r^2 - x^2) \dd{V} \\
+    &= \int \rho (x^2 + y^2 + z^2 - x^2) \dd{V} \\
+    &= \int \rho (y^2 + z^2) \dd{V} = \sum m_i (y_i^2 + z_i^2)
+\end{align*}
+and similarly for the other diagonal elements. For the off-diagonal elements we can see that the 
+kronecker delta will be zero and thus
+\begin{align*}
+    I_{xy} &= \int \rho (0 - x y) \dd{V} \\
+    &= -\int \rho x y \dd{V} = -\sum m_i x_i y_i
+\end{align*}
+and similarly for the other off-diagonal elements. 
+
+\paragraph*{2.} (a) First we can see that
+\begin{align*}
+    (\vb A \cross \vb B)^2 &= (\vb A \cross \vb B) \cdot (\vb A \cross \vb B) \\
+    &= (A B \sin \theta \vu n) (A B \sin \theta \vu n) \\
+    &= A^2 B^2 (1 - \cos^2 \theta) \qusing \vb A \cdot \vb B = A B \cos \theta \\
+    &= A^2 B^2 - (\vb A \cdot \vb B)^2
+\end{align*}
+So the Kinetic Energy is
+\begin{align*}
+    T &= \frac{1}{2} \sum_\alpha m_\alpha v_\alpha^2 \\
+    &= \frac{1}{2} \sum_\alpha m_\alpha \vb v_\alpha \cdot \vb v_\alpha \\
+    &= \frac{1}{2} \sum_\alpha m_\alpha (\vb*\omega \cross \vb r_\alpha)^2 \\
+    &= \frac{1}{2} \sum_\alpha m_\alpha [(\omega r_\alpha)^2 - (\vb*\omega \cdot \vb r_\alpha)^2] 
+\end{align*}
+(b) Angular momentum is given by
+\begin{align*}
+    \vb L &= \sum_\alpha \vb r_\alpha \cross m_\alpha \vb v_\alpha \\
+    &= \sum_\alpha m_\alpha  \vb r_\alpha \cross (\vb*\omega \cross \vb r_\alpha)
+\end{align*}
+using the BAC-CAB rule (or WRR-RRW rule in this case) we get
+\begin{align*}
+    &= \sum_\alpha m_\alpha [\vb*\omega(\vb r_\alpha \cdot \vb r_\alpha) - \vb r_\alpha(\vb r_\alpha \cdot \vb*\omega)] \\
+    &= \sum_\alpha m_\alpha [\vb*\omega r_\alpha^2 - \vb r_\alpha(\vb*\omega \cdot \vb r_\alpha)]
+\end{align*}
+where dot products commute. 
+(c) From the previous part we can see that
+\begin{align*}
+    \frac{1}{2} \vb*\omega \cdot \vb L &= \frac{1}{2} \vb*\omega \cdot \sum_\alpha m_\alpha [\vb*\omega r_\alpha^2 - \vb r_\alpha(\vb*\omega \cdot \vb r_\alpha)] \\
+    &= \frac{1}{2} \sum_\alpha m_\alpha [\vb*\omega \cdot \vb*\omega r_\alpha^2 - \vb*\omega \cdot \vb r_\alpha(\vb*\omega \cdot \vb r_\alpha)] \\
+    &= \frac{1}{2} \sum_\alpha m_\alpha [\omega^2 r_\alpha^2 - (\vb*\omega \cdot \vb r_\alpha)^2] = T
+\end{align*}
+Since $\vb L = \vb I \vb*\omega$ we usually write the angular momentum as a column vector with three
+components
+\begin{align*}
+    \vb L = \mqty(L_x \\ L_y \\ L_z)
+\end{align*}
+and taking the cross product of $\vb L$ with $\vb*\omega$ we will have to transpose $\vb*\omega$ to
+get the correct matrix multiplication:
+\begin{align*}
+    \vb*\omega \cdot \vb L &= \vb*\omega^T \vb L \\
+    &= \mqty(\omega_x & \omega_y & \omega_z) \mqty(L_x \\ L_y \\ L_z) \\
+    &= \omega_x L_x + \omega_y L_y + \omega_z L_z
+\end{align*}
+So the kinetic energy is also equivalent to 
+\begin{align*}
+    T = \frac{1}{2} \vb*\omega^T \vb L = \frac{1}{2} \vb*\omega^T \vb I \vb*\omega
+\end{align*}
+
+\newpage
+\paragraph*{3.} (a) For a uniform hollow ice cream cone of radius $R$, height $h$, and mass $M$. 
+The mass density is given by the mass per unit area
+\begin{align*}
+    q &= \frac{M}{A} = \frac{M}{\pi R l} \quad \frac{R}{l} = \sin\theta \\
+    &= \frac{M}{\pi R^2} \sin\theta
+\end{align*} 
+where $l$ is the the slant of the cone and using cylindrical coordinates 
+\begin{align*}
+    I_{zz} &= q \int_A \dd{A} (x^2 + y^2) = q \int_A \dd{A} \rho^2
+\end{align*}
+The area element is a rectangular region with sides $\rho \dd{\phi}$ and $\frac{1}{\sin\theta} \dd{\rho}$
+(the $\dd{\phi}$ is projected onto the side of the cone) so the area element is
+\begin{align*}
+    \dd{A} = \rho \dd{\rho} \dd{\phi} \frac{1}{\sin\theta}
+\end{align*}
+and the moment of inertia is
+\begin{align*}
+    I_{zz} &= q \int_0^{2\pi} \dd{\phi} \int_0^R \dd{\rho} \frac{\rho^3}{\sin\theta} \\
+    &= \frac{M}{\pi R^2} \sin\theta (2\pi) \frac{R^4}{4 \sin\theta} \\
+    &= \frac{1}{2} M R^2
+\end{align*}
+$I_{xx} = I_{yy}$ since the cone is rotationally symmetric about the $z$-axis:
+\begin{align*}
+    I_{xx} &= q \int_A \dd{A} (y^2 + z^2) \\
+    &= q \int_A \dd{A} (\rho^2 \sin^2\phi + z^2) 
+\end{align*}
+Geometrically we have similar triangles where the ratio of the sides are
+\begin{align*}
+    \frac{z}{\rho} = \frac{h}{R} \implies z = \frac{h}{R} \rho
+\end{align*}
+so the integral becomes
+\begin{align*}
+    I_{xx} &= q  \int_0^{2\pi} \dd{\phi} \qt(\sin^2\phi + \frac{h^2}{R^2}) 
+        \int_0^R \dd{\rho}\rho^3 \\
+    &= \frac{M}{\pi R^2} \sin\theta \qt(\pi + 2\pi \frac{h^2}{R^2}) \frac{R^4}{4 \sin\theta} \\
+    &= \frac{1}{4} M R^2 \qt(1 + 2 \frac{h^2}{R^2}) \\
+    &= \frac{1}{4} M \qt(R^2 + 2h^2)
+\end{align*}
+And the off-diagonal elements are all zero due to the rotational symmetry of the cone which gives 
+the inertia tensor
+\begin{align*}
+    \vb I = \mqty(\frac{1}{4} M \qt(R^2 + 2h^2) & 0 & 0 \\
+        0 & \frac{1}{4} M \qt(R^2 + 2h^2) & 0 \\
+        0 & 0 & \frac{1}{2} M R^2)
+\end{align*}
+\newpage
+(b) An ellipsoid with volume $V = \frac{4}{3} \pi a b c$ and mass $M$ has a mass density of
+\begin{align*}
+    q &= \frac{M}{V} = \frac{3M}{4\pi abc}
+\end{align*}
+Using a change of variables $x = a x', y = b y', z = c z'$ the equation for the ellipsoid is
+\begin{align*}
+    x'^2 + y'^2 + z'^2 = 1
+\end{align*}
+and $\dd{x} = a \dd{x'}, \dd{y} = b \dd{y'}, \dd{z} = c \dd{z'}$ so the inertia tensor is
+\begin{align*}
+    I_{zz} &= q \int \dd{x} \dd{y} \dd{z} (x^2 + y^2) \\
+    &= qabc \int \dd{x'} \dd{y'} \dd{z'} (a^2 x'^2 + b^2 y'^2)
+\end{align*}
+and using spherical coordinates 
+\begin{align*}
+    x' &= r \sin\theta \cos\phi \\
+    y' &= r \sin\theta \sin\phi \\
+    z' &= r \cos\theta
+\end{align*}
+The integral becomes
+\begin{align*}
+    I_{zz} &= qabc \int_0^{2\pi} \dd{\phi} \int_0^\pi \dd{\theta} \int_0^1 \dd{r} r^2 \sin\theta 
+        (a^2 r^2 \sin^2\theta \cos^2\phi + b^2 r^2 \sin^2\theta \sin^2\phi) \\
+    &= q \int_0^{2\pi} \dd{\phi} (a^2 \cos^2\phi + b^2 \sin^2\phi) \int_0^\pi \dd{\theta} \sin^3\theta 
+    \int_0^1 r^4 \\
+    &= q (\pi a^2 + \pi b^2) \qt(\frac{4}{3}) \frac{1}{5} \\
+    &= \frac{1}{5} M (a^2 + b^2)
+\end{align*}
+and the other diagonal elements will follow a similar pattern (due the rotational symmetry)
+\begin{align*}
+    I_{yy} = \frac{1}{5} M (a^2 + c^2) \qquad I_{xx} = \frac{1}{5} M (b^2 + c^2)
+\end{align*}
+and the off-diagonal elements are zero. The inertia tensor is then
+\begin{align*}
+    \vb I = \mqty(\frac{1}{5} M (b^2 + c^2) & 0 & 0 \\
+        0 & \frac{1}{5} M (a^2 + c^2) & 0 \\
+        0 & 0 & \frac{1}{5} M (a^2 + b^2))
+\end{align*}
+(c) The triangle is rotationally symmetrical $I_{xx} = I_{yy}$. Since the triangle lies on the 
+$xy$-plane $z = 0$ so
+\begin{align*}
+    I_{xx} = \sigma \int_A \dd{A} (y^2 + z^2) = \sigma \int_A \dd{A} y^2
+\end{align*}
+the limits of integration are given by the lines $y = 0$ to $y = -x + 1$ and $x = 0 \to 1$ so 
+\begin{align*}
+    I_{xx} &= \sigma \int_0^1 \dd{x} \int_0^{-x + 1} \dd{y} y^2 \\
+    &= \sigma \int_0^1 \dd{x} \frac{1}{3} \qt(-x + 1)^3 \\
+    &= \frac{1}{12} \sigma = 2
+\end{align*}
+for $I_{zz}$ we have
+\begin{align*}
+    I_{zz} = \sigma \int_A \dd{A} (x^2 + y^2) = I_{xx} + \sigma \int_A \dd{A} x^2 
+\end{align*}
+and since $I_{yy} = \sigma \int_A \dd{A} (x^2 + z^2) = \sigma \int_A \dd_A x^2$
+\begin{align*}
+    I_{zz} = I_{xx} + I_{yy} = 4
+\end{align*}
+Sadly, only 4 diagonal elements (the ones containing $z$) are zero. So calculating the two off-diagonal
+elements $I_{xy} = I_{yx}$ we have
+\begin{align*}
+    I_{xy} &= -\sigma \int_A \dd{A} x y \\
+    &= -\sigma \int_0^1 \dd{x} \int_0^{-x + 1} \dd{y} xy \\
+    &= -\sigma \int_0^1 \dd{x} x\frac{1}{2}(-x + 1)^2 \\
+    &= -\sigma \int_0^1 \dd{x} \frac{1}{2} (x^3 - 2x^2 + x) \\
+    &= -\frac{1}{24} \sigma = -1
+\end{align*}
+So the inertia tensor is
+\begin{align*}
+    \vb I = \mqty(2 & -1 & 0 \\
+        -1 & 2 & 0 \\
+        0 & 0 & 4)
+\end{align*}
+To find the principal moments we find the eigenvalues for the matrix equation
+\begin{align*}
+    \det(\vb I - \lambda \vb 1) = 0 \\
+    \mqty(2 - \lambda & -1 & 0 \\
+        -1 & 2 - \lambda & 0 \\
+        0 & 0 & 4 - \lambda) = 0
+\end{align*}
+Where we can see that the sum of the rows can give us the eigenvalues $\lambda = 1, 4$ and since 
+the trace of the matrix is $8$ the last eigenvalue is $\lambda = 3$. Plugging in the eigenvalues
+into the matrix equation does indeed give us the correct solutions. To find the first principal axis
+we plug in $\lambda = 1$ into the matrix equation
+\begin{align*}
+    (\vb I - \lambda \vb 1) \vb*\omega = 0 \\
+    \mqty(1 & -1 & 0 \\
+        -1 & 1 & 0 \\
+        0 & 0 & 3) \mqty(\omega_x \\ \omega_y \\ \omega_z) = 0
+\end{align*}
+which gives us the equation $\omega_x = \omega_y = 1$ and $\omega_z = 0$ so the first principal axis is 
+\begin{align*}
+    \vu e_1 = \frac{1}{\sqrt{2}} \mqty(1 \\ 1 \\ 0)
+\end{align*}
+For $\lambda = 3$ we have 
+\begin{align*}
+    \mqty(-1 & -1 & 0 \\
+        -1 & -1 & 0 \\
+        0 & 0 & 1) \mqty(\omega_x \\ \omega_y \\ \omega_z) = 0
+\end{align*}
+which gives us the equation $\omega_x = -\omega_y$ and $\omega_z = 0$ so the second principal axis is
+\begin{align*}
+    \vu e_2 = \frac{1}{\sqrt{2}} \mqty(1 \\ -1 \\ 0)
+\end{align*}
+And for $\lambda = 4$ we have
+\begin{align*}
+    \mqty(-2 & -1 & 0 \\
+        -1 & -2 & 0 \\
+        0 & 0 & 0) \mqty(\omega_x \\ \omega_y \\ \omega_z) = 0
+\end{align*}
+Here, $\omega_x = \omega_y = 0$ is the only solution, so the third principal axis is
+\begin{align*}
+    \vu e_3 = \mqty(0 \\ 0 \\ 1)
+\end{align*}
+where we just used 1 since it makes the normalization easier. So the principal moments are
+\begin{align*}
+    \lambda_1 = 1 \quad \lambda_2 = 3 \quad \lambda_3 = 4
+\end{align*}
+and the principal axes are
+\begin{align*}
+    \vu e_1 = \frac{1}{\sqrt{2}} \mqty(1 \\ 1 \\ 0) \quad 
+    \vu e_2 = \frac{1}{\sqrt{2}} \mqty(1 \\ -1 \\ 0) \quad 
+    \vu e_3 = \mqty(0 \\ 0 \\ 1)
+\end{align*}
+\end{document}
