@@ -1,0 +1,63 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Lecture 2: 8/29/24}
+\chead{Chapter 2}
+\rhead{PHYS 463}
+
+\section{Statistical description of systems of particles}
+\barh \vspace*{1em}
+
+\paragraph*{Essential ingredients:}
+\begin{enumerate}
+    \item state of the system:
+    \begin{itemize}
+        \item single spin-1/2 particle. $\uparrow, \downarrow$
+        \item a bunch of spin-1/2 particles. $\uparrow\uparrow\downarrow\dots$
+        \item a simple 1D Harmonic Oscillator: $E = (n + 1/2) \hbar \omega$, with states $\ket{n}$
+        \item a bunch of 1D HO: $\ket{n_1, n_2, \dots, n_N}$
+    \end{itemize}
+    \item Statistical ensemble: Instead of a simple experiments, we consider an exsemble of many exps.
+    \item Basic postulate about a priori probabilities (relative prob of finding the system in any of its accessible states)
+    \item Calculate probabilities
+\end{enumerate}
+
+\paragraph*{Example:} 3 spin-1/2
+\begin{table} [ht]
+    \centering
+    \begin{tabular}{c|c|c|c|c}
+        State & Spin & Energy & $\Omega(E)$ & $y_k = \uparrow, \downarrow$ \\
+        \hline
+        $\uparrow\uparrow\uparrow$ & 3/2 & $-3\mu H$ & 1 & $\Omega(-\mu H, \uparrow)$ \\
+        $\uparrow\uparrow\downarrow$ & 1/2 & $-\mu H$ & 3 \\
+        $\uparrow\downarrow\uparrow$ & & & \\
+        $\downarrow\uparrow\uparrow$ & & & \\
+        $\uparrow\downarrow\downarrow$ & -1/2 & $\mu H$ & 3 \\
+        $\downarrow\uparrow\downarrow$ & & & \\
+        $\downarrow\downarrow\uparrow$ & & & \\
+        $\downarrow\downarrow\downarrow$ & -3/2 & $3\mu H$ & 1
+    \end{tabular}
+    \caption{Energy levels of 3 spin-1/2 particles}
+    \label{tab:3spin}
+\end{table}
+
+System: \emph{isolated}: energy cannot change
+\emph{equilibrium}: prob of finding the system in any one accessible state is constant in time
+
+\paragraph*{A fundamental postulate:}
+\[\boxed{\textrm{An isolated system in equilirbium is equally likely to be in any of its accessible states}}\]
+In calculating probabilities, e.g., isolated system with energy in range $[E, E+\delta E]$
+
+$\Omega(E)$: total number of states of the system in this range
+
+$\Omega(E,y_k)$: in this energy range and some other property $y_k$
+where the probability of having this property is
+\[P(y_k) = \frac{\Omega(E,y_k)}{\Omega(E)}\]
+
+\paragraph*{Density of states (DOS)}
+\[\Omega(E) = w(E) \dd E, \quad w(E) \sim E\]
+where $w(E)$ is the density of states.
+\end{document}

@@ -1,0 +1,137 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Lecture 1: 8/27/24}
+\chead{Chapter 1}
+\rhead{PHYS 463}
+
+\section{Intro to statistical methods}
+\barh \vspace*{1em}
+
+\begin{itemize}
+    \item Goal: Study systems consist of many particles (magnitude of moles) that interact with each other.
+    \item Stat Mech bridges the gap between the Macroscopic and Microscopic Description of a system.
+\end{itemize}
+Macroscopic Description $>\unit{\micro m}$:
+\begin{itemize}
+    \item Temperature, Pressure, Volume Entropy, etc.
+\end{itemize}
+Microscopic Description $\unit{\angstrom}$:
+
+\paragraph*{Worksheet}
+\paragraph*{(1)}
+Avogadro's number: $N_A = 6.022 \times 10^{23}$ e.g. in 12g of carbon-12, there are $N_A$ atoms!
+
+1 mole of air : 22.4 L at 273 K, 1 atm.
+
+e.g. Say a room is 5m x 5m x 8m = 200 m\(^3\) = \(200 \times 10^3\) L, how many moles of air are in the room?
+\(\sim 10000 N_A\)
+
+\paragraph*{(2)}
+\(k_B = 1.38 \times 10^{-23}\) J/K
+
+Physical Meaning: \(k_B T\) will roughly gives us the energy in one atom
+
+\paragraph*{(3)}
+On a number line with 1 and $+\infty$, where is $N_A$?
+
+In mathematics, we would place $N_A$ closer to 1, but in physics we would place it closer
+to $+\infty$ because this number is huge in the context of physics.
+
+\paragraph*{(4)}
+In the physics convention, we use $\theta$ as the polar angle and $\phi$ as the azimuthal angle. So a volume element in a sphere is
+\[r^2 \sin\theta \dd r \dd \theta \dd \phi \]
+Thus the volume of a sphere is
+\[V = \int_{\phi=0}^{2\pi} \int_{\theta = 0}^\pi \int_0^R r^2 \sin\theta \dd r \dd \theta \dd \phi = \frac{4}{3}\pi R^3\]
+
+\paragraph*{(5)}
+The ideal gas law comes in two forms:
+\[PV = Nk_BT\]
+\[PV = nRT\]
+where $n = \frac{N}{N_A}$, and $N$ is the number of particles in the system.
+
+\paragraph*{(6)}
+The container with gas confined to half a container at $t=0$ releases the gas to fill the whole container at $t>0$.
+What is the change in entropy?
+
+The equation for the change in entropy is
+\[\dd S = \frac{\dd Q}{T}\]
+but this doesn't tell us much\dots
+
+\newpage
+\paragraph*{Basic Statistical Concepts}: ``statistical ensemble''
+
+Example: Fair coin toss (50/50) $N$ times. The expected value of heads is $N/2$. Repeating this many times gives a Gaussian distribution centered at $N/2$.
+
+\subparagraph*{Random walk in 1D}
+
+Starting at $x=0$, we have a probability $p$ to move one unit to the right and probability $(1-p)=q$ to move left.
+
+For a `trajectory'
+\begin{itemize}
+    \item $n_L$: \# of steps left
+    \item $n_R$: \# of steps right
+    \item $N = n_L + n_R$
+    \item Displacement: $x = n_R - n_L$
+\end{itemize}
+Each step is independent: ``no memory'', ``Markovian/Markov process''
+
+The probability of a specific trajectory is
+\[p\cdot p \cdots p \cdot q\cdots q = p^{n_R} q^{n_L}\]
+
+How many ways this $(n_R, n_L)$ can be arranged?
+
+\[\binom{N}{n_R} = \frac{N!}{n_R! n_L!}\]
+
+So the probabilty of taking $n_R$ steps to the right is
+\[W_N (n_R) = \frac{N!}{n_R! n_L!} p^{n_R} q^{n_L} \]
+
+\newpage
+\lhead{Lecture 2: 8/29/24}
+\paragraph*{Finishing the Random Walk}
+\[W_N (n_R) = \frac{N!}{n_R! n_L!} p^{n_R} q^{n_L} \]
+is indeed the ``Binomial distribution''.
+
+The mean displacement (or expected value) is
+\[\bar m = \bar n_R -\bar n_L = pN - qN = N(p - q)\]
+How do we define variance/dispersion?
+\begin{align*}
+    \overline{(\Delta n_R)^2} = \overline{(n_R - \bar n_R)^2} &= \overline{n_R^2 - 2n_R \bar n_R + \bar n_R^2} \\
+    &= \overline{n_R^2} - 2\bar n_R^2 + \bar n_R^2 \\
+    &= \overline{n_R^2} - \bar n_R^2 = Npq
+\end{align*}
+So the deviation or width is roughly $\sim \sqrt{Npq}$
+
+For large $N$, the distribution can be approximated a continuous:
+\[\dv{W(n_R)}{n_R}\eval_{\bar n_R} = 0\]
+or equivalently
+\[\dv{\ln W(n_R)}{n_R}\eval_{\bar n_R} = 0\]
+And using 
+\[n_R \equiv \bar n_R + \xi\]
+where $\xi$ is the deviation from the mean.
+
+So now we can Taylor expand $\ln W$:
+\begin{align*}
+    \ln W(n_R) = \ln W(\bar n_R) + \cancel{\dv{\ln W(n_R)}{n_R}\eval_{\bar n_R} (n_R - \bar n_R)} + \frac{1}{2} B_z \xi^2 + \dots
+\end{align*}
+where
+\begin{align*}
+    W(n_R) \equiv W_{max} e^{-\frac{1}{2} B_z \xi^2}, \quad B_z = \frac{1}{Npq}
+\end{align*}
+This yields the Gaussian distribution approximation.
+\begin{align*}
+    P(m) = W(n_R) = (2\pi Npq)^{-1/2} e^{-\frac{[m - N(p-q)]^2}{8Npq}}
+\end{align*}
+
+\paragraph*{Worksheet}
+\begin{enumerate}
+    \item If a coin is flipped 400 times, what's the probability of getting 215 heads?
+    
+    $N = 215 + 185 = 400$, $p = 0.5$, $q = 0.5$, $m = 215 - 185 = 30$
+
+    Plugging in the numbers gives $P(30) = 1.295\%$
+\end{enumerate}
+\end{document}

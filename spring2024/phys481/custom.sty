@@ -13,8 +13,6 @@
 \msg_redirect_name:nnn { siunitx } { physics-pkg } { none }
 \ExplSyntaxOff 
 
-\usepackage{esint} % for path integral symbol
-
 % input packages
 \usepackage{draculatheme} % dracula theme, the best theme
 % \usepackage[enable]{darkmode}
@@ -32,9 +30,9 @@
 \graphicspath{{./images/}} % set graphics path from current directory (./) to images directory for main.tex file
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{pdfpages} % for including pdfs
 
-\usepackage{subfiles} 
-
+\usepackage{subfiles}
 % custom formatting
 \numberwithin{figure}{section}
 \numberwithin{equation}{section}
@@ -77,8 +75,11 @@
 \DeclareMathOperator{\arccosh}{arccosh}
 \DeclareMathOperator{\arcsinh}{arcsinh}
 \DeclareMathOperator{\arctanh}{arctanh}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\E}{\operatorname{E}}
 
-% more math packages
+% math packages
+\usepackage{esint} % for path integral symbol
 \usepackage{cancel}
 \usepackage{bbold}
 

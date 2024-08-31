@@ -1,6 +1,6 @@
 \ProvidesPackage{custom}
 
-% package list
+% bread and butter
 \usepackage[a4paper,left=1in, right=1in, top=1in]{geometry} % set document dimensions
 \usepackage[dvipsnames]{xcolor} % more colors
 \usepackage{physics}
@@ -13,31 +13,35 @@
 \msg_redirect_name:nnn { siunitx } { physics-pkg } { none }
 \ExplSyntaxOff 
 
-\usepackage{esint} % for path integral symbol
-
 % input packages
 \usepackage{draculatheme} % dracula theme, the best theme
 % \usepackage[enable]{darkmode}
 \usepackage{import} 
+\usepackage{subfiles} % for subfiles
+\usepackage{pdfpages} % for including pdfs
+\usepackage{graphicx} % set image path for graphicx
+\graphicspath{{./images/}} % set graphics path from current directory (./) to images directory for main.tex file
+
+% figures and more
 \usepackage{hyperref} % for hyperlinks
+\usepackage{bookmark} % for better bookmarks
 \hypersetup{
   colorlinks   = true,    % Colours links instead of ugly boxes
   urlcolor     = draculagreen,    % Colour for external hyperlinks without dracula theme: Cerulean
   linkcolor    = draculagreen,    % Colour of internal links "Cerulean"
+  filecolor    = draculagreen,    % Colour of file links "Cerulean"
   citecolor    = draculared      % Colour of citations "Red"
 }
-\usepackage{graphicx}
-\graphicspath{{./images/}} % set image path for graphicx
+
 \usepackage{caption}
 \usepackage{subcaption}
 
-\usepackage{subfiles} 
-\usepackage{pdfpages}
 
 % custom formatting
+\usepackage{fancyhdr}
 \numberwithin{figure}{section}
 \numberwithin{equation}{section}
-\setlength{\parindent}{0pt}
+% \setlength{\parindent}{0pt}
 
 % custom commmands
 \newcommand{\vect}[1]{\mathbf{#1}} % instead use \vb{#1} from physics package
@@ -54,9 +58,9 @@
 \lstdefinestyle{mystyle}{
     backgroundcolor=\color{draculabg},   
     commentstyle=\color{draculacomment},
-    keywordstyle=\color{draculacyan},
-    numberstyle=\tiny\color{draculagreen},
-    stringstyle=\color{draculaorange},
+    keywordstyle=\color{draculapurple},
+    numberstyle=\tiny\color{draculapink},
+    stringstyle=\color{draculacyan},
     basicstyle=\ttfamily\footnotesize,
     breakatwhitespace=false,         
     breaklines=true,                 
@@ -72,13 +76,10 @@
 
 \lstset{style=mystyle} 
 
-% hyperbolic math operators
-\DeclareMathOperator{\arccosh}{arccosh}
-\DeclareMathOperator{\arcsinh}{arcsinh}
-\DeclareMathOperator{\arctanh}{arctanh}
-
-% more math packages
+% more math/science packages
+\usepackage{esint} % for path integral symbol
 \usepackage{cancel}
+\usepackage{bbold}
 
 % seperation vector script r
 \usepackage{calligra}
@@ -88,5 +89,15 @@
 \newcommand{\scriptr}{\mathcalligra{r}\,}
 \newcommand{\boldscriptr}{\pmb{\mathcalligra{r}}\,}
 
-% physics constants
-\newcommand{\ke}{\frac{1}{4\pi\epsilon_0}}
+% math operators
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arctanh}{arctanh}
+
+% physics constants/operators/shortcuts
+\newcommand{\ke}{\frac{1}{4\pi\epsilon_0}} % coulomb's constant
+\newcommand{\lagr}{\mathcal{L}} % lagrangian
+\newcommand{\cf}{\vb F_{\text{cf}}} % coulomb force
+\newcommand{\cor}{\vb F_{\text{cor}}} % coriolis force
+\newcommand{\ext}{\vb F_{\text{ext}}} % external force
+\DeclareSIUnit\angstrom{\text{Å}} % angstrom unit
