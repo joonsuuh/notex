@@ -11,6 +11,7 @@
 \section{Statistical description of systems of particles}
 \barh \vspace*{1em}
 
+\subsection{Statistical formulation}
 \paragraph*{Essential ingredients:}
 \begin{enumerate}
     \item state of the system:
@@ -60,4 +61,158 @@ where the probability of having this property is
 \paragraph*{Density of states (DOS)}
 \[\Omega(E) = w(E) \dd E, \quad w(E) \sim E\]
 where $w(E)$ is the density of states.
+
+\newpage
+\lhead{Lecture 3: 9/3/24}
+\chead{Chapter 2.6-2.8}
+\subsection{Interactions between macroscopic systems} 
+
+\paragraph*{} In general: specify some macroscopic measureable paremeters $x_1, x_2, \dots x_n$
+
+\begin{itemize}
+    \item Micostate: A particula quantum state: $\gamma$ of the system with energy $E_r$
+    \[E_r = E_r(x_1, x_2,\dots, x_n)\]
+    \item Macrostate (Macroscopic state): Specify external parameters and any other conditions, and includes all the possible microstates—e.g., from Table \ref{tab:3spin} the macrostate of $-\mu H$ has 3 microstates.
+    ``Microstate'' is one particular specific state consistern with the macrostate.
+\end{itemize}
+
+\paragraph{} Consider two macro systems $A, A'$; they can interact with each other to exchange energy.
+
+Q: what are the different ways to exchange $E$? HEAT, WORK.
+e.g. If $A, A'$ are in a box seperated by a wall, then the wall moving due to pressure exchanges energy as work. If the wall cannot move, then there is no work exchanged.
+[insert image of two boxes with a wall]
+\paragraph*{Two Cases:}
+\begin{itemize}
+    \item  \emph{thermal interaction}: If all the external parameters are fixed
+    \[\Delta E = Q, \quad \Delta E' = Q'\]
+    where $Q, Q'$ are the heat absorbed by each macrosystem, and the energy of the whole system is unchanged, i.e.,
+    \[\Delta E + \Delta E' = 0 \implies Q + Q' = 0, \quad Q = -Q'\]
+    \item \emph{mechanical interaction} (thermal isolation): no heat exchange ``adiabatic''. I do work, negative work is done!
+\end{itemize}
+\paragraph*{Example:} Beaker of water, $A$, and a wheel attached to a pulley with a weight, $A'$ (2.7 Example 2). The work done by the pulley decreases the energy of system $A'$ by $ws$ (weight times distance).
+
+\paragraph*{In general} energy can be exchanged both as Heat and Work.
+\[Q \equiv \Delta E - \mathcal{W}\]
+where $\mathcal{W}$ is the work done to the system. And
+\[W = \mathcal{W}\]
+is the workd done by the system, i.e.,
+\[Q \equiv \Delta \bar E + W\]
+
+\paragraph*{Case of small amounts interaction:} Infinitesimal changes
+\[\dbar Q = d \bar E + \dbar W \]
+where the bar through the differential indicates the process as path dependent.
+
+\paragraph*{Worksheet}
+\begin{enumerate}
+    \item [(1)] For the infinitesimal quantity
+    \[dG = \alpha dx + \beta \frac{x}{y} dy\]
+    it is path dependent:
+    \begin{itemize}
+        \item $(1,1) \to (1,2) \to (2,2)$:
+        \begin{align*}
+            G &= \int_{(1,1)}^{(1,2)} dG + \int_{(1,2)}^{(2,2)} dG \\
+            &= \cancel{\alpha x\eval_{(1,1)}^{(1,2)}} + \beta \ln y\eval_{(1,1)}^{(1,2)} + \alpha x\eval_{(1,2)}^{(2,2)} + \cancel{\beta \ln y\eval_{(1,2)}^{(2,2)}} \\
+            &= \alpha + \beta \ln 2
+        \end{align*}
+        \item $(1,1) \to (2,1) \to (2,2)$:
+        \begin{align*}
+            G &= \alpha + 2\beta \ln 2
+        \end{align*}
+        So the path is dependent or $dG$ is an inexact differential.
+    \end{itemize}
+    \item [(2)] Is the following exact?
+    \[dF = \frac{a}{x} dx + \frac{b}{y} dy \]
+\end{enumerate}
+
+\newpage
+\lhead{Lecture 4: 9/5/24}
+\chead{Chapter 2.9-2.11}
+\paragraph*{General interaction process:} energy is exchanged both as heat and work
+\[Q = \delta E + W\]
+where $Q$ is the heat added to the system (positive $\Delta E$ adds energy)
+and $W$ is the work done by the system
+
+\paragraph*{Very very small work/heat:} infinitesimal
+\[\dbar Q = d\bar E + \dbar W\]
+where $d$ is an exact differential (path independent) and $\dbar$ is a inexact differential (path dependent).
+
+\paragraph*{Math:} multivariable differential
+
+A differential form is exact if its equal to the general differential $dF$ for some function $F(x,y)$
+
+e.g. \(A(x,y) dx + B(x,y) dy = dF(x,y)\)
+
+From last times worksheet:
+\[\frac{a}{x} dx + \frac{b}{y} dy = d (a \ln x + b \ln y)\]
+
+\paragraph*{How to check if its exact?} Assume $F$ exists:
+\[dF(x,y): \qqtext{is exact} \iff \quad \qt(\pdv{A}{y}_x) = \qt(\pdv{B}{x})_y\]
+where $\iff$ means iff or if and only if. e.g. from the worksheet:
+\[dG = a dx + b \frac{x}{y} dy, \quad A = a, \quad B = b\frac{x}{y} \]
+so
+\[\pdv{A}{y} = 0, \quad \pdv{B}{x} = \frac{b}{y}\]
+thus it is inexact.
+
+\paragraph{Quasi-static process:} A system interacts with other systems in a process that is so slow that $A$ remains arbitrarily close to equilibrium at all stages!
+
+e.g. a piston pushing very slowly in a cylinder; when the system is not in equilibrium, then the ideal gas law $pV = nRT$ does not hold.
+
+``relaxational time $\tau$'': time system requires to reach equilibrium if it experiences a sudden change.
+
+Recall we denote the external parameters of an isolated system
+\[x_1, x_2, \dots, x_x \]
+and the energy of a microstate $r$
+\[E_r = E_r(x_1, x_2, \dots, x_n )\]
+When we start to change the external parameter, energy of state $r$ will change:
+\[x_\alpha \to x_\alpha + d x_\alpha \]
+and the change in energy is
+\[dE_r = \sum_{\alpha = 1}^n \pdv{E_r}{x_\alpha} dx_\alpha\]
+Now in isolated case $\dbar Q = 0$ so
+\begin{align*}
+    dE_r &+ \dbar W_r = 0 \\
+    \implies \dbar W_r &= -dE_r = \sum_{\alpha = 1}^n \qt(-\pdv{E_r}{x_\alpha}) dx_\alpha
+\end{align*}
+where
+\[X_{\alpha, r} = -\pdv{E_r}{x_\alpha} \]
+is the ``generalized force''--- e.g. if $x$ is a distance, then $X$ is a force; if $x$ is a volume, then $X$ is a pressure.
+
+NOTE all discussion above are for : state $r$
+
+Consider an ensemble: in a quasi static process, $X_{\alpha, r}$ has definite value, so
+\[\dbar W = \sum_\alpha \bar X_{\alpha, r}dx_\alpha\]
+where $\bar X_{\alpha, r}$ is mean of the generalized force.
+
+\paragraph*{Example:} Cylindrical chamber in state $r$ (height $s$, circular area $A$, pressure $P_r$) with a piston pushing in $ds$
+
+Force on the piston: $P_r A$
+
+Volume: $V = A S$
+
+Thus work done is 
+\begin{align*}
+    \dbar W = F d s &= (P_r A) d s\\
+    &= P_r dV
+\end{align*}
+and 
+\begin{align*}
+    dE_r = -\dbar W_r = -P_r dV, \quad 
+    P_r = -\pdv{E_r}{V}
+\end{align*}
+
+\paragraph*{Worksheet}
+\begin{enumerate}
+    \item The mean pressure $p$ of thermally insulated gas vaires with volume $V$ by
+    \[pV^\gamma = K \]
+    where $K$ and $\gamma$ are constants. Find work from $p_i, V_i$ to $p_f, V_f$.
+    \begin{align*}
+        \int \dbar W &= \int_{V_i}^{V_f} p dV \\
+        &= \int_{V_i}^{V_f} \frac{K}{V^\gamma} dV \\
+        W &= \frac{KV^{1 - \gamma}}{1 - \gamma} \eval_{V_i}^{V_f}
+    \end{align*}
+    And since $p_i V_i^\gamma = p_f V_f^\gamma = K$, then
+    \begin{align*}
+        W &= \frac{K}{1 - \gamma} \qt(V_f^{1 - \gamma} - V_i^{1 - \gamma}) \\
+        &= \frac{1}{1 - \gamma} \qt(p_f V_f - p_i V_i)
+    \end{align*}
+\end{enumerate}
 \end{document}
