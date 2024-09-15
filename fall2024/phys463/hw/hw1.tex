@@ -1,0 +1,331 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Homework 1}
+\chead{Junseo Shin}
+\rhead{PHYS 463}
+
+\setcounter{section}{1}
+% 2.2, 2.5, 2.7, 2.8, 2.12, 2.16, 2.18
+\paragraph{1.}
+\begin{align*}
+    W(n) &= \sum_{i=1}^2 \sum_{j=1}^2 \sum_{k=1}^2 \dots \sum_{m=1}^2 w_i w_j w_k \dots w_m \\
+    &= \sum_{i=1}^2 w_i \sum_{j=1}^2 w_j \sum_{k=1}^2 w_k \dots \sum_{m=1}^2 w_m \\
+    &= (w_1 + w_2) (w_1 + w_2) (w_1 + w_2) \dots (w_1 + w_2) \\
+    &= (w_1 + w_2)^N
+\end{align*}
+since there are $N$ factors from $i \to m$. Using binomial theorem:
+\begin{align*}
+    (w_1 + w_2)^N &= \sum_{n=0}^N \binom{N}{n} w_1^n w_2^{N-n} \\
+    &= \sum_{n=0}^N \frac{N!}{n!(N-n)!} w_1^n w_2^{N-n}
+\end{align*}
+where the term involving $w_1^n$ is simply
+\begin{align*}
+    W(n) = \frac{N!}{n!(N-n)!} w_1^n w_2^{N-n}
+\end{align*}
+
+\newpage
+\paragraph*{2.} $N_0$ molecules in container of volume $V_0$. $N$ molecules in subvolume $V$.
+\begin{itemize}
+    \item [(a)]
+    Probability that any given molecule is in the subvolume $V$:
+
+    The probability of \textit{one single} molecule being in the subvolume is $p = \frac{V}{V_0}$, and $q = 1 - p$ for the opposite case.
+    Then for any given molecule, we use the binomial theorem:
+    \begin{align*}
+        P(n) &= \frac{N_0!}{N!(N_0 - N)!} \qt(\frac{V}{V_0})^N \qt(1 - \frac{V}{V_0})^{N_0 - N}
+    \end{align*}
+    \item [(b)] the mean \# of molecules in $V$ for a binomial distribution is simply [From Information Theory, Mackay eq 1.7]
+    \begin{align*}
+        \bar N = N_0 p = N_0 \frac{V}{V_0}
+    \end{align*}
+    \item [(c)] The relative dispersion:
+    \begin{align*}
+        \frac{\overline{(N - \bar N)^2}}{\bar N^2} &= \frac{\overline{N^2 - 2N\bar N + \bar N^2}}{\bar N^2} \\
+        &= \frac{\overline{N^2} - 2\bar N^2 + \bar N^2}{\bar N^2} \\
+        &= \frac{\overline{N^2} - \bar N^2}{\bar N^2}
+    \end{align*}
+    where the top term is the variance/dispersion $\overline{N^2} - \bar N^2 = N_0pq$, so
+    \begin{align*}
+        &= \frac{N_0pq}{\bar N^2} \\
+        &= \frac{N_0\frac{V}{V_0}\qt(1 - \frac{V}{V_0})}{(N_0\frac{V}{V_0}) \bar N} \\
+        \textrm{relative dispersion} &= \frac{1 - \frac{V}{V_0}}{\bar N}
+    \end{align*}
+    \item [(d)] When $V \ll V_0$, $\frac{V}{V_0} \approx 0$, so
+    \begin{align*}
+        \textrm{relative dispersion} \approx \frac{1}{\bar N} \to \infty
+    \end{align*}
+    \item [(e)] When $V \to V_0$:
+    \begin{align*}
+        \overline{(N - \bar N)^2} &= N_0pq \approx N_0 \frac{V_0}{V_0} \qt(1 - \frac{V_0}{V_0}) \\
+        &= 0
+    \end{align*}
+    which agrees with part (c) since
+    \begin{align*}
+        \textrm{relative dispersion} \to \frac{1 - \frac{V_0}{V_0}}{\bar N} = 0
+    \end{align*}
+\end{itemize}
+
+\newpage
+\paragraph{3.} $N$ antennas with em radiation of wavelength $\lambda$ and velocity $c$. Antennas are on the $x$-axis separated $\lambda$ apart.
+Observer on $x$-axis measures intensity $I$ from one antenna.
+\begin{itemize}
+    \item [(a)] Total intensity of all antennas:
+
+    All of the antennas are in phase, so the amplitudes add up i.e.
+    \begin{align*}
+        E_T = NE
+    \end{align*}
+    and since intensity is proportional to the square of the amplitude $I \propto E^2$, the total intensity is
+    \begin{align*}
+        I_T = N^2 I
+    \end{align*}
+    \item[(b)] For completely random phases (but same freq), the total amplitude as a vector is
+    \begin{align*}
+        E_T = \sum_{i=1}^N \vb E_i
+    \end{align*}
+    so the mean square amplitude is [from Reif eq (1.9.9)]
+    \begin{align*}
+        \overline{E_T^2} &= \overline{\sum_{i=1}^N \vb E_i \cdot \sum_{j=1}^N \vb E_j} \\
+        &= \sum_{i = 0}^N \overline{E^2}  + \sum_{i \neq j}\sum \overline{\vb E_i \cdot \vb E_j} \\
+        &= N E^2
+    \end{align*}
+    where the (second) cross terms add up to zero since the phases are random--- there are just as many positive and negative values.
+    So the mean intensity is
+    \begin{align*}
+        \bar I_T \propto \overline{E_T^2} = N I
+    \end{align*}
+\end{itemize}
+
+\newpage
+\paragraph{4.} $N$ particles of spin 1/2. Magnetic moment $\mu$ which points parallel or antiparallel in an applied field $H$.
+Energy $E$ in the field is then $E = - (n_1 - n_2) \mu H$ where $n_1$ is parallel and $n_2$ is antiparallel.
+\begin{itemize}
+    \item [(a)] In the energy range $[E, E + \delta E]$ the total \# of states $\Omega(E)$ in the range:
+
+    A single particle can have spin $\pm \mu H$, so in the range of $\delta E$ there are $\delta E / 2\mu H$ different states.
+    So the total number of states for a large number $N$ is
+    \begin{align*}
+        \Omega(E) = \binom{N}{n_1} \frac{\delta E}{2\mu H} = \frac{N!}{n_1! n_2!} \frac{\delta E}{2\mu H}
+    \end{align*}
+    And using $n_1 + n_2 = N$ or $n_2 = N - n_1$ and $n_1 = N - n_2$ we can get
+    \begin{align*}
+        E &= - (n_1 - n_2) \mu H \\
+        \frac{E}{\mu H} &= - (n_1 - (N - n_1)) = -2n_1 + N \\
+        \implies n_1 &= \frac{1}{2} \qt(N - \frac{E}{\mu H}), \quad n_2 = \frac{1}{2} \qt(N + \frac{E}{\mu H})
+    \end{align*} 
+    So the total number of states is
+    \begin{align*}
+        \Omega(E) = \frac{N!}{\qt[\frac{1}{2} \qt(N - \frac{E}{\mu H})]!\qt[\frac{1}{2} \qt(N + \frac{E}{\mu H})]!} \frac{\delta E}{2\mu H}
+    \end{align*}
+    \item [(b)] Using Stirling's approximation ($\ln N! \approx N \ln N - N$):
+    \begin{align*}
+        \ln \Omega(E) &\approx N \ln N - N - [n_1 \ln n_1 - n_1] - [n_2 \ln n_2 - n_2] + \ln \frac{\delta E}{2\mu H} \\
+    \end{align*}
+    simplifying some terms:
+    \begin{align*}
+        -[n_1 \ln n_1 - n_1] - [n_2 \ln n_2 - n_2] &= -n_1 \ln n_1 - n_2 \ln n_1 + n_1 + n_2 \\
+        \qq{where} n_1 + n_2 &= \frac{1}{2} \qt(N - \frac{E}{\mu H}) + \frac{1}{2} \qt(N + \frac{E}{\mu H}) = N
+    \end{align*}
+    so we can cancel out a term:
+    \begin{align*}
+        \ln \Omega(E) &= N \ln N - n_1 \ln n_1 - n_2 \ln n_2 + \ln \frac{\delta E}{2\mu H}
+    \end{align*}
+    \item [(c)] A Gaussian approximation to part (a): From (a)
+    \begin{align*}
+        \Omega(E) &= \frac{N!}{n_1! n_2!} \frac{\delta E}{2\mu H} \\
+        &= \frac{N!}{n_1! (N - n_1)!} \frac{\delta E}{2\mu H} \\
+        &= W(n_1) \frac{\delta E}{2\mu H}, \qquad W(n_1) = \frac{N!}{n_1! (N - n_1)!}
+    \end{align*}
+    Using $n_1 \equiv \bar n_1 + \xi$ the Taylor expansion gives [From lecture notes\dots]
+    \begin{align*}
+        \ln W(n_1) &\approx \ln W(\bar n_1) + \frac{1}{2} B_2 \xi^2 \\
+        \implies W(n_1) &= W(\bar n_1) e^{-\frac{1}{2} B_2 \xi^2}
+    \end{align*}
+    where
+    \begin{align*}
+        B_2 &= \frac{1}{Npq} \qusing p = \frac{1}{2},\; q = \frac{1}{2} \\
+        B_2 &= \frac{4}{N}
+    \end{align*}
+    and using $\bar n_1 = N/2$
+    \begin{align*}
+        \xi &= n_1 - \bar n_1 = \frac{1}{2} \qt(N - \frac{E}{\mu H}) - \frac{N}{2} \\
+        \implies \xi^2 &= \qt(\frac{E}{2\mu H})^2
+    \end{align*}
+    To find $W(\bar n_1)$ we must satisfy the normalization condtion:
+    the integral of $W(n_1)$ over all $n_1$ must equal the total number of possible spins $2^N$ (like $N$ coin flips) i.e.
+    \begin{align*}
+        \int_{-\infty}^\infty W(n_1) \dd{n_1} &= 2^N \\
+        \int_{-\infty}^\infty W(\bar n_1) e^{-\frac{1}{2} B_2 \xi^2} \dd{n_1} &= 2^N 
+    \end{align*}
+    and since [From Randy Harris Modern Physics Front Page]
+    \begin{align*}
+        \int_{-\infty}^\infty e^{-ax^2} = \sqrt{\frac{\pi}{a}} \\
+        \implies W(\bar n_1) = \frac{2^N}{\sqrt{2\pi/B_2}} = \frac{2^N}{\sqrt{\pi N/2}}
+    \end{align*}
+    So the Gaussian approximation is
+    \begin{align*}
+        W(n_1) &= \frac{2^N}{\sqrt{\pi N/2}} e^{-\frac{1}{2} B_2 \xi^2} \\
+        &= \frac{2^N}{\sqrt{\frac{\pi N}{2}}} e^{-\frac{2}{N} \qt(\frac{E}{2\mu H})^2}
+    \end{align*}
+    Finally, we get the total number of states from $\Omega(E) = W(n_1) \frac{\delta E}{2\mu H}$:
+    \begin{align*}
+        \boxed{
+            \Omega(E) = \frac{2^N}{\sqrt{\frac{\pi N}{2}}} e^{-\frac{2}{N} \qt(\frac{E}{2\mu H})^2} \frac{\delta E}{2\mu H}
+        }
+    \end{align*}
+\end{itemize}
+
+\newpage
+\paragraph{5.} \( Adx + B dy \equiv dF \)
+\begin{itemize}
+    \item [(a)] Show that $\pdv{A}{y} = \pdv{B}{x}$:
+    
+    Since $dF$ is an exact differential 
+    \begin{align*}
+        \pdv{F}{x} &= A, \quad \pdv{F}{y} = B \\
+    \end{align*}
+    so
+    \begin{align*}
+        \pdv{A}{y} &= \pdv{y}(\pdv{F}{x}) = \pdv{x}(\pdv{F}{y}) = \pdv{B}{x}
+    \end{align*}
+    \item [(b)] Show that $\int dF$ on any closed path in $xy$ plane is zero:
+    
+    For an exact differential
+    \begin{align*}
+        \int_a^b dF = F(b) - F(a)
+    \end{align*}
+    so for a closed path $a \to b$ then back $b \to a$:
+    \begin{align*}
+        \int_a^b dF + \int_b^a dF = F(b) - F(a) + F(a) - F(b) = 0
+    \end{align*}
+\end{itemize}
+
+\newpage
+\paragraph{6.} From $A \to B$ the mean pressure is
+\begin{align*}
+    \bar p = \alpha V^{-5/3}
+\end{align*}
+\begin{itemize}
+    \item [(a)] Work done when system expanded to final volume, heat added to maintain pressure $(V = 1 \to 8)$, $\bar p = 32$.
+    Heat extracted to reduce pressure to $\qty{e6}{dynes.cm^{-2}}$:
+
+    First finding $\alpha$ at macrostate $B$:
+    \begin{align*}
+        \alpha = \bar p V^{5/3} = 1 * 8^{5/3} = 32
+    \end{align*}
+    so the work done is
+    \begin{align*}
+        W_a = \int \dbar W &= \int_{V_i}^{V_f} \bar p \dd{V} \\
+        &= 32 V \eval_1^8 \\
+        &= \qty{224e9}{dynes.cm}
+    \end{align*}
+    From wikipedia, $\qty{1}{dynes} = \qty{e-5}{N}$, so the units of work is
+    \begin{align*}
+        \qty{e6}{dynes.cm^{-2}} \times \qty{e3}{cm^3} = \qty{e9}{dynes.cm} * \frac{\qty{e-5}{N}}{\qty{1}{dynes}} * \frac{\qty{1}{m}}{\qty{e2}{cm}}
+        = \qty{100}{J}
+    \end{align*}
+    so
+    \begin{align*}
+        W_a = \qty{22400}{J}
+    \end{align*}
+    To find the net heat absorbed we use the first law of thermodynamics:
+    \begin{align*}
+        \Delta E = Q - W \implies Q = \Delta E + W
+    \end{align*}
+    where from macro state $A$ to $B$ 
+    \begin{align*}
+        \Delta E = \int dE &= -\int \bar p \dd{V} \\
+        &= -32 \int_1^8 V^{-5/3} \dd{V} \\
+        &= 32 \frac{3}{2} V^{-2/3} \eval_1^8 \\
+        &= 48 (8^{-2/3} - 1) \\
+        &= \qty{-36e9}{dynes.cm} = \qty{-3600}{J}
+    \end{align*}
+    Finally the net heat absorbed is
+    \begin{align*}
+        Q = \Delta E + W = \qty{-3600}{J} + \qty{22400}{J} = \qty{18800}{J}
+    \end{align*}
+    \item [(b)] Volume increase and heat added to cause linear decrease in pressure:
+
+    New pressure equation is in the form $p = mV + b$, where the slope $m = \frac{-31}{7}$ and the intercept is at
+    \begin{align*}
+        32 = \frac{-31}{7} + b \implies b = \frac{255}{7}
+    \end{align*}
+    thus
+    \begin{align*}
+        p = \frac{-31}{7}V + \frac{255}{7}
+    \end{align*}
+    The work done is
+    \begin{align*}
+        W_b = \int_1^8 p \dd{V} &= \int_1^8 \qt(\frac{-31}{7}V + \frac{255}{7}) \dd{V} \\
+        &= -\frac{31}{14} V^2 + \frac{255}{7} V \eval_1^8 \\
+        &= \qty{11550}{J}
+    \end{align*}
+    and using the energy change found in part (a)
+    \begin{align*}
+        Q = \Delta E + W = \qty{-3600}{J} + \qty{11550}{J} = \qty{7950}{J}
+    \end{align*}
+    \item [(c)] Part (a) but in reverse: 
+    
+    First the pressure is reduced to $\qty{1e6}{dynes/cm^2}$, then expanding the volume from $V = 1 \to 8$ amounts to work
+    \begin{align*}
+        W_c = \int_1^8 p \dd{V} &= \int_1^8 1 \dd{V} \\
+        &= \qty{700}{J}
+    \end{align*}
+    and the net heat absorbed is
+    \begin{align*}
+        Q = \Delta E + W = \qty{-3600}{J} + \qty{700}{J} = \qty{-2900}{J}
+    \end{align*}
+\end{itemize}
+
+\newpage
+\paragraph{7.} 3D particle in a box with energy level
+\begin{align*}
+    E = \frac{\hbar^2}{2m} \pi^2 \qt(\frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2} + \frac{n_z^2}{L_z^2})
+\end{align*}
+\begin{itemize}
+    \item [(a)] Force by particle on wall perpendicular to $x$ axis:
+    \begin{align*}
+        \dbar W = -dE = -\pdv{E}{L_x} \dd{L_x} = F_x \dd{L_x}
+    \end{align*}
+    where $F_x$ is the generalized force on the wall perpendicular to the $x$ axis. 
+    This holds true as long as $\dbar Q = 0$.
+    \item [(b)] Pressure on the wall, and the mean pressure:
+    
+    The unit area for the pressure on the wall perpendicular to the $x$ axis is $a = L_y L_z$, so the pressure is
+    \begin{align*}
+        p_x = \frac{F_x}{a} = -\frac{1}{L_y L_z} \pdv{E}{L_x}
+    \end{align*}
+    where
+    \begin{align*}
+        \pdv{E}{L_x} = \frac{\hbar^2}{2m} \pi^2 n_x^2 \pdv{L_x}(\frac{1}{L_x^2}) = -\frac{\hbar^2}{m} \pi^2 \frac{n_x^2}{L_x^3}
+    \end{align*}
+    so 
+    \begin{align*}
+        p_x = \frac{\hbar^2}{mV} \pi^2 \frac{n_x^2}{L_x^2}
+    \end{align*}
+    where $V = L_x L_y L_z$ is the volume. The mean pressure is then 
+    \begin{align*}
+        \bar p = \frac{\hbar^2}{mV} \pi^2 \frac{\overline{n_x^2}}{L_x^2}
+    \end{align*}
+    Since $\overline{n_x^2} = \overline{n_y^2} = \overline{n_z^2}$ and $L_x = L_y = L_z$ by \textit{symmetry} we can rewrite the mean energy as 
+    \begin{gather*}
+        \bar E = \frac{\hbar^2}{2m} \pi^2 \qt(\frac{\overline{n_x^2}}{L_x^2} + \frac{\overline{n_y^2}}{L_y^2} + \frac{\overline{n_z^2}}{L_z^2}) = \frac{\hbar^2}{2m} \pi^2 \qt(\frac{3\overline{n_x^2}}{L_x^2}) \\
+        \implies \frac{2}{3} \bar E = \frac{\hbar^2}{m} \pi^2 \frac{\overline{n_x^2}}{L_x^2}
+    \end{gather*}
+    Thus we can substitute $\bar E$ into the mean pressure equation:
+    \begin{align*}
+        \bar p = \frac{2}{3} \frac{\bar E}{V} 
+    \end{align*}
+\end{itemize}
+
+\newpage
+\paragraph{8.} 
+\begin{itemize}
+    \item [(a)] yes
+    \item [(b)] I will try\dots should I reference equations from the main textbook as well?
+\end{itemize}
+\end{document}
