@@ -249,4 +249,267 @@ $\Omega(E, x)$ where $x$ is an external parameter. The change of energy is
     \pdv{E}{x} dx \qqtext{where} X = -\pdv{E}{x} \qqtext{``generalized force''}
 \end{align*}
 
+\newpage
+\lhead{Lecture 7: 9/17/24}
+\chead{Chapter 3.8-3.9}
+\paragraph{Review}
+\begin{align*}
+    \pdv{\ln\Omega(E)}{E} = \beta = \frac{1}{kT} \\
+    ds = \frac{\dbar Q}{T}, \quad S = k \ln \Omega
+\end{align*}
+
+\subsection{Density of states on external parameters}
+When a parameter $x \to x + dx$ the energy of each microstate $r$ changes by 
+\begin{align*}
+    \pdv{E_r}{x} dx
+\end{align*}
+where 
+\begin{align*}
+    X = -\pdv{E_r}{x}
+\end{align*}
+is the generalized force.
+
+\begin{itemize}
+    \item \( \Omega(E,x) \): external parameter $x$ for the \# of states in $[E, E + \delta E]$.
+    \item \( \Omega_Y(E,x) \): \# of states in $[E, E + \delta E]$ \textit{with} $Y = \pdv{E_r}{x}$ in $[Y, Y + \delta Y]$
+\end{itemize}
+The total number of states is now
+\begin{align*}
+    \Omega(E,x) = \sum_Y \Omega_Y(E,x)
+\end{align*}
+
+Consider energy $E$ when $x \to x + dx$:
+
+some states $r$ originally with energy $<E$ Can now aquire energy $>E$:
+\begin{itemize}
+    \item $\sigma(E)$: \# of state of originally
+    \item $\sigma_Y(E)$: \$ of states \dots with $Y = \pdv{E_r}{x}$ in $[Y, Y + \delta Y]$
+\end{itemize}
+
+For a given $E, Y$; the work done is the generalized force times the change in the parameter $Y dx$ which is like the width of the rectangle below the energy $E$.
+
+Above the energy $[E, E + \delta E]$ we can treat the total area as the total \# of states $\Omega_Y(E,x)$,
+and dividing by the width $\delta E$ kind of gives us a linear density of states per unit energy.
+Finally we can find $\sigma_Y$ by getting the area
+\begin{align*}
+    \sigma_Y(E) = \frac{\Omega_Y(E,x)}{\delta E} Y dx
+\end{align*}
+and thus
+\begin{align*}
+    \sigma (E,x) = \sum_Y \sigma_Y(E,x) &= \sum_Y \frac{\Omega_Y(E,x)}{\delta E} Y dx \\
+    &= \frac{\Omega(E,x)}{\delta E} \bar Y dx \\
+    \bar Y &= \frac{1}{\Omega(E,x)} \sum_Y Y \Omega_Y(E,x)
+\end{align*}
+
+The change of the DoS is
+\begin{align*}
+    \pdv{\Omega(E,x)}{x} dx = \sigma(E) - \sigma(E + \delta E) = -\pdv{\sigma(E)}{E} \delta E
+\end{align*}
+on the RHS
+\begin{align*}
+    \pdv{\sigma(E,x)}{E} = \frac{dx}{\delta E} \pdv{\Omega \bar Y}{E}
+\end{align*}
+and thus
+\begin{align*}
+    \pdv{\Omega(E,x)}{x} = -\pdv{\Omega \bar Y}{E} = -\pdv{\Omega}{E} \bar Y - \Omega \pdv{\bar Y}{E}
+\end{align*}
+dividing both sides by $\Omega$
+\begin{align*}
+    \frac{1}{\Omega} \pdv{\Omega}{x} = -\frac{1}{\Omega} \pdv{\Omega}{E} \bar Y - \pdv{\bar Y}{E}
+\end{align*}
+where
+\begin{align*}
+    \pdv{\ln \Omega}{x} = \frac{1}{\Omega} \pdv{\Omega}{x}, \quad \pdv{\ln \Omega}{E} = \frac{1}{\Omega} \pdv{\Omega}{E}
+\end{align*}
+and another trick: the second term is $\sim\bar Y / E$ and $\Omega \sim E^f$ so we can drop the second term
+\begin{align*}
+    \pdv{\ln \Omega}{x} &= -\pdv{\ln \Omega}{E} \bar Y = \beta \bar X
+\end{align*}
+
+\paragraph{Recap:}
+For a system with states $\Omega(E,x)$ we are give
+\begin{align*}
+    \boxed{\pdv{\ln \Omega}{E} = \beta}, \quad \boxed{\pdv{\ln \Omega}{x} = \beta \bar X}
+\end{align*}
+The second equation tells us that doing work will obviously increase $\Omega$.
+
+\paragraph{The rubber band example:}
+Stretching the rubber band (work done) adds energy or heat to the system.
+
+\subsection{Equilibrium of interacting systems}
+
+$\Omega^{(0)} (E,x)$ will be maximum at $\tilde E, \tilde x$.
+
+Consider an infinitesimal quasi-static process where $A$ and $A'$ are brought from equiilibrium to another state $\tilde E + d\tilde E, \tilde x + d\tilde x$.
+
+The differential of the log Dos is (using math)
+\begin{align*}
+    d\ln\Omega(E,x) &= \pdv{\ln\Omega}{E} d\tilde E + \pdv{\ln\Omega}{x} d\tilde x \\
+    &= \beta(d\tilde E + X d\tilde x) \quad Xd\tilde x = \dbar W \\
+    &= \beta \dbar Q \\
+    k d\ln\Omega(E,x) &= \frac{\dbar Q}{T} 
+\end{align*}
+where $S = k \ln \Omega$ or equivalently 
+\begin{align*}
+    dS = \frac{\dbar Q}{T}
+\end{align*}
+
+\begin{itemize}
+    \item [Case 1]: Thermally isolated and quasi-static process
+    \begin{align*}
+        \dbar Q = 0 \implies \Delta S = 0
+    \end{align*}
+    thus a \textbf{reversible process}
+\end{itemize}
+
+\paragraph{Worksheet} 
+
+A gas with $N$ atoms confined to half a box is released to fill the whole container:
+
+Given
+\begin{itemize}
+    \item Ideal gas: $PV = NkT$
+    \item Average energy: $\bar E(T) = \frac{3}{2} Nk T$
+\end{itemize}
+\begin{enumerate}
+    \item [(i)] Change in entropy $S = k \ln \Omega$: Originally we have only 1 macrostate or $\Omega_0$ microstates,
+    and now the total number of arrangements is $\Omega_0 2^N$ so
+    \begin{align*}
+        \Delta S = k \ln \Omega_0 2^N - k \ln \Omega_0 = Nk \ln 2
+    \end{align*}
+    where we have a volume independence $\Omega \sim V^N X(E)$.
+    \item [(ii)] Defining a quasi-static process where energy doesn't change from initial to final state: We can now use
+    \begin{align*}
+        dS = \frac{\dbar Q}{T} 
+    \end{align*}
+    and for a quasi-static process
+    \begin{align*}
+        \dbar Q &= \cancel{d\bar E} + \dbar W \\
+        \dbar Q &= \dbar W = P dV 
+    \end{align*}
+    So
+    \begin{align*}
+        \Delta S = \int ds = \int_{V_0}^{2V_0} \frac{PdV}{T} = \int_{V_0}^{2V_0} \frac{Nk}{V} dV = Nk \ln 2
+    \end{align*}
+\end{enumerate}
+
+\newpage
+\lhead{Lecture 8: 9/19/24}
+\chead{Chapter 3.10-3.12, 4.2-4.3}
+
+\subsection{Fundamental Results}
+\subsubsection{Thermodynamic laws}
+
+\paragraph{0th law} If two systems are in equilibrium with a 3rd system,
+they're in equilibrium with each other. (allows us to compare temp of systems via thermometer)
+
+\paragraph{1st law} Energy is conserved: $\dbar Q = d\bar E + \dbar W$
+
+\paragraph{2nd law} An equilibrium macrostate can be characterized by $S$ (entropy),
+whichhas properties that
+\begin{enumerate}
+    \item [a.] In any thermally isolated process goes from one macrostate to another,
+    entropy tends to increase
+    \[ \Delta S \geq 0 \]
+    \item [b.] If the system is not isolated and undergoes a quasi-static process (absorbs heat),
+    \[ dS = \frac{\dbar Q}{T} \]
+\end{enumerate}
+
+\paragraph{3rd law} The entropy $S$ of a system has the limiting properties that
+\[ T \to 0, \quad S \to S_0 \quad \textrm{(Absolute entropy)} \]
+
+\paragraph{Remarks} All four laws are \textit{macroscopic}. In the context of three parameters $\bar E, S, T$.
+
+\subsubsection{Statistical calculation of thermodynamic quantities}
+
+\paragraph{Statistical Relations (Microscopic nature)}
+
+\begin{itemize}
+    \item $S = k\ln \Omega$
+    \item $\beta = \pdv{\ln \Omega}{E}, \quad X_\alpha = \frac{1}{\beta} \pdv{\ln \Omega}{x_\alpha}$
+\end{itemize}
+
+For the free expansion of an idea gas:
+\begin{align*}
+    \Omega \propto V^N X(E)
+\end{align*}
+where the log of the DoS is
+\begin{align*}
+    \ln \Omega = N \ln V + \ln X(E) + C
+\end{align*}
+So from the mean pressure
+\begin{align*}
+    P &= \frac{1}{\beta} \pdv{\ln \Omega}{V} = \frac{1}{\beta} \pdv{\ln V^N}{V} = \frac{1}{\beta} \frac{N}{V} = \frac{NkT}{V} \\
+    PV &= NkT
+\end{align*}
+From the beta relation
+\begin{align*}
+    \beta = \frac{\ln X(E)}{E}
+\end{align*}
+thus it is only a function of energy and not volume $V$:
+\begin{align*}
+    \beta (\bar E) = E \implies \bar E(T) = \bar E
+\end{align*}
+
+% CHAPTER 4?
+\newpage
+\paragraph{Extensive vs Intensive parameters}
+
+For macroscopic parameters $y_1, y_2$ we have two cases:
+\begin{itemize}
+    \item Case 1: Extensive if $y_1 + y_2 = y$
+    \item Case 2: Intensive if $y_1 = y_2 = y$
+\end{itemize}
+% table of extensive vs intensive parameters
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c}
+        Extensive & Intensive \\
+        \hline
+        Volume & T \\
+        Energy & Pressure \\
+        entropy & specific heat \\
+        mass \\
+        heat capacity
+    \end{tabular}
+\end{table}
+
+\subsection{Heat capacity and specific heat}
+
+Suppose we add $\dbar Q$ to the system while other parameters are fixed, the system temperature raised by $dT$ 
+\[ \textrm{``Heat capacity''} \quad \qt(\frac{\dbar Q}{dT})_y = C_y \]
+
+\paragraph{In general} The heat capacity is defined by temperature and the parameter
+\[ C_y = C_y(T, y) \]
+We can also relate it to the entropy change $ds = \frac{\dbar Q}{T}$:
+\begin{align*}
+    C_y = \qt(\frac{\dbar Q}{dT})_y = T \qt(\frac{ds}{dT})_y
+\end{align*}
+
+\paragraph{Specific heat:} Intensive parameter
+\begin{align*}
+    C_y = \frac{C_V}{V} \qqtext{per mole} \\
+    C_y = \frac{C_P}{\text{mass}} \qqtext{per gram}
+\end{align*}
+or the ``specific heat/heat capacity per mole/gram''
+
+Defining some units:
+\begin{itemize}
+    \item Calorie: Heat required to raise temperature of 1 g of water @ 1 atm from 14.5 $\to$ 15.5 $^\circ$C.
+    \item Joule: Applied work
+    \begin{align*}
+        \qty{1}{cal} = \qty{4.1840}{J}
+    \end{align*}
+\end{itemize}
+
+\paragraph{Worksheet}
+\begin{enumerate}
+    \item Increase in entropy of a cup of water as it is heated from room temp to boiling:
+    \begin{align*}
+        \Delta S &= \int dS = \int \frac{\dbar Q}{T} = \int_{T_1}^{T_2} \frac{C_P}{T} dT \\
+        &= C_P \ln \frac{T_2}{T_1} = C_P \ln \frac{373}{298}
+    \end{align*}
+    where $q = m C_P \Delta T$
+\end{enumerate}
+
 \end{document}
