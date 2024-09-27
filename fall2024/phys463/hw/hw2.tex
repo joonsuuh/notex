@@ -1,0 +1,228 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Homework 2}
+\chead{Junseo Shin}
+\rhead{PHYS 463}
+
+\setcounter{section}{2}
+
+\paragraph{1.}
+\begin{itemize}
+    \item [(a)] Given 
+    \begin{align*}
+        \Omega(E, E + \delta E) &= \frac{N!}{(N/2 - E/(2\mu H))!(N/2 + E/(2\mu H))!} \frac{\delta E}{2\mu H}
+    \end{align*}
+    and using $\beta = \pdv{\ln\Omega}{E}$ \& stirling approx $\ln N! = N\ln N - N$, so taking the log of the DoS:
+    \begin{align*}
+        \ln \Omega(E) = \ln N! &- \ln (N/2 - E/(2\mu H))! - \ln (N/2 + E/(2\mu H))! + \ln \frac{\delta E}{2\mu H} \\
+        = \ln N! & \color{draculagreen} - (N/2 - E/(2\mu H)) \ln(N/2 - E/(2\mu H)) + (N/2 - \cancel{E/(2\mu H)}) \\
+        &- (N/2 + E/(2\mu H)) \ln(N/2 + E/(2\mu H)) + (N/2 + \cancel{E/(2\mu H)}) + \ln \frac{\delta E}{2\mu H} \\
+        = \ln N! + N &- (N/2 - E/(2\mu H))\ln(N/2 - E/(2\mu H)) \\
+        &- (N/2 + E/(2\mu H))\ln(N/2 + E/(2\mu H)) + \ln \frac{\delta E}{2\mu H} 
+    \end{align*}
+    Finally taking the partial derivative
+    \begin{align*}
+        \pdv{\ln \Omega}{E} &= \frac{1}{2\mu H}\ln(N/2 - E/(2\mu H)) - \cancel{\frac{N/2 - E/(2\mu H)}{N/2 - E/(2\mu H)}} \qt(-\frac{1}{2\mu H})\\
+        &- \frac{1}{2\mu H}\ln(N/2 + E/(2\mu H)) - \frac{1}{2\mu H} \\
+        \beta &= \frac{1}{2\mu H} \qt[\ln(N/2 - E/(2\mu H)) - \ln(N/2 + E/(2\mu H))] \\
+        &= \frac{1}{2\mu H} \ln(\frac{N/2 - E/(2\mu H)}{N/2 + E/(2\mu H)}) \\
+        &= \frac{1}{2\mu H} \ln(\frac{N/2}{N/2} \frac{1 - E/(N\mu H)}{1 + E/(N\mu H)}) \\
+        &= \frac{1}{2\mu H} \ln(\frac{1 - E/(N\mu H)}{1 + E/(N\mu H)}) \\
+    \end{align*}
+    or using the inverse hyperbolic tangent 
+    \begin{align*}
+        \arctanh(x) = \frac{1}{2} \ln(\frac{1 + x}{1 - x})
+    \end{align*}
+    So we set $x = -E/(N\mu H)$
+    \begin{align*}
+        \beta &= \frac{1}{\mu H} \arctanh(-E/(N\mu H)) 
+    \end{align*}
+    Thus using $\beta = 1/kT$ and the odd function $\tanh(-x) = -\tanh(x)$
+    \begin{align*}
+        \frac{\mu H}{kT} &= \arctanh(-\frac{E}{N\mu H}) \\
+        \implies \tanh(\frac{\mu H}{kT}) &= -\frac{E}{N\mu H}
+    \end{align*}
+    and finally
+    \begin{align*}
+        \boxed{
+            E = -N\mu H \tanh(\frac{\mu H}{kT})
+        }
+    \end{align*}
+    \item [(b)] For $T = -T_0 < 0$ the sign of the hyperbolic tangent is negative
+    \begin{align*}
+        E = -N \mu H \tanh(-\frac{\mu H}{kT_0}) = N \mu H \tanh(\frac{\mu H}{kT_0})
+    \end{align*}
+    $\implies \boxed{E > 0}$
+    \item [(c)] The total magnetic moment is proportional to the difference of parallel and antiparallel spins
+    \begin{align*}
+        M = \mu(n_1 - n_2) = \mu (n_1 - (N - n_1)) = \mu (2n_1 - N)
+    \end{align*}
+    and from the previous HW 1 we know that
+    \begin{align*}
+        n_1 = \frac{1}{2} \qt(N - \frac{E}{\mu H}) 
+    \end{align*}
+    thus
+    \begin{align*}
+        M = \mu \qt[(N - \frac{E}{\mu H}) - N] = -\frac{E}{H} 
+    \end{align*}
+    and therefore
+    \begin{align*}
+        \boxed{
+            M (H, T) = N \mu \tanh(\frac{\mu H}{kT})
+        }
+    \end{align*}
+\end{itemize}
+
+\newpage
+\paragraph{2.}
+\begin{itemize}
+    \item [(a)]  Once again the numnber of ways is
+    \begin{align*}
+        \Omega(N, n_+) = \frac{N!}{n_+!(N - n_+)!}
+    \end{align*}
+    And the total length is
+    \begin{align*}
+        \ell = (n_+ - n_-) d = (2n_+ - N)d \implies n_+ = \frac{1}{2}(N + \ell/d)
+    \end{align*}
+    so
+    \begin{align*}
+        \boxed{
+            \Omega(\ell) = \frac{N!}{\qt[\frac{1}{2}(N + \ell/d)]! \qt[\frac{1}{2}(N - \ell/d)]!}
+        }
+    \end{align*}
+    \item [(b)] And using
+    \begin{align*}
+        x = \frac{\ell}{Nd} \implies \ell = xNd
+    \end{align*}
+    we can equate the two expressions above:
+    \begin{align*}
+        xNd = (2n_+ - N)d \implies xN = 2n_+ - N \implies n_+ = \frac{N}{2}(1 + x)
+    \end{align*}
+    So
+    \begin{align*}
+        \Omega = \frac{N!}{\frac{N}{2}(1 + x)!(N - \frac{N}{2}(1 + x))!} = \frac{N!}{\qt[\frac{N}{2}(1 + x)]!\qt[\frac{N}{2}(1 - x)]!}
+    \end{align*}
+    and using stirling's approximation
+    \begin{align*}
+        \ln \Omega = N \ln N - \cancel{N} &- \frac{N}{2}(1 + x) \ln(\frac{N}{2}(1 + x)) + \cancel{\frac{N}{2}(1 + x)} \\
+        &- \frac{N}{2}(1 - x) \ln(\frac{N}{2}(1 - x)) + \cancel{\frac{N}{2}(1 - x)} \\
+        = N \ln N &- \frac{N}{2}(1 + x) \ln(\frac{N}{2}(1 + x)) - \frac{N}{2}(1 - x) \ln(\frac{N}{2}(1 - x))
+    \end{align*}
+    and from
+    \begin{align*}
+        -\qt(\pdv{S}{\ell})_E &= - k \qt(\pdv{\ln \Omega}{\ell})_E \\
+        \implies S &= k \ln \Omega
+    \end{align*}
+    or
+    \begin{align*}
+        \boxed{
+            S = k \qt[N \ln N - \frac{N}{2}(1 + x) \ln(\frac{N}{2}(1 + x)) - \frac{N}{2}(1 - x) \ln(\frac{N}{2}(1 - x))]
+        }
+    \end{align*}
+    \newpage
+    \item [(c)] Using
+    \begin{align*}
+        \pdv{S}{\ell} = \frac{S}{\partial x} \pdv{x}{\ell} = \pdv{S}{x} \frac{1}{Nd} 
+    \end{align*}
+    So the force relation is
+    \begin{align*}
+        \frac{F}{T} = -\pdv{S}{\ell} &= -\pdv{S}{x} \pdv{x}{\ell} \\
+        = -k(
+            0 &- \frac{N}{2} \qt[
+                \ln(\frac{N}{2}(1 + x)) + \cancel{\frac{1 + x}{1 + x} \frac{2}{N}}
+            ] \\ &- \frac{N}{2} \qt[
+                -\ln(\frac{N}{2}(1 - x)) + \cancel{\frac{1 - x}{1 - x} \frac{2}{N} (-1)}
+            ]
+        ) \pdv{x}{\ell} \\
+        = k \frac{N}{2} &\qt(\ln \frac{1 + x}{1 - x}) \pdv{x}{\ell} 
+    \end{align*}
+    and since for small $x$ we can Taylor expand (or see graphically)
+    \begin{align*}
+        \ln (1 + x) \approx x \quad \ln (1 - x) \approx -x
+        \implies \ln \frac{1 + x}{1 - x} \approx 2x
+    \end{align*}
+    So
+    \begin{align*}
+        \frac{F}{T} = \frac{kN}{2} (2x) \frac{1}{Nd} = \frac{kx}{d}
+    \end{align*}
+    and finally $x = \ell/(Nd)$ thus
+    \begin{align*}
+        \boxed{
+            F \approx \frac{kT\ell}{Nd^2}
+        }
+    \end{align*}
+\end{itemize}
+
+\newpage
+\paragraph{3.}
+From the 2nd law of thermodynamics the total entropy $S_T$ of the thermally isolated system must increase i.e.
+\begin{align*}
+    \Delta S_T = \Delta S + \Delta S' \geq 0
+\end{align*}
+and since system $A$ absorbs heat $Q$ from system $A'$ the change in entropy of system $A'$ is
+\begin{align*}
+    \Delta S' = -\frac{Q}{T'}
+\end{align*}
+thus
+\begin{align*}
+    \Delta S + \Delta S' = \Delta S - \frac{Q}{T'} \geq 0
+\end{align*}
+which implies
+\begin{align*}
+    \boxed{
+        \Delta S \geq \frac{Q}{T'}
+    }
+\end{align*}
+
+\newpage
+\paragraph{4.} A glass bulb with air at room temp and 1 atm is placed in to a chamber with helium at 1 atm.
+Since the glass bulb is only permeable to helium, so over time, the pressure of helium outside the bulb will have to equal the
+partial pressure of helium inside the bulb. Thus the final pressure inside the bulb after equilibrium is
+\begin{align*}
+    \boxed{P_0 + P_\text{Helium out} = \qty{2}{atm}}
+\end{align*}
+
+\newpage
+\paragraph{5.} $m_c = 750$ g copper calorimeter can contains $m_w = 200$ g of water in equilibrium at $T_i = 293$ K.
+$m_\text{ice} = 30$ g of ice at $T_\text{ice} = 273$ K is placed in the calorimeter and enclosed in a heat-insulating shield.
+\begin{itemize}
+    \item [(a)] Given
+    \begin{align*}
+        c_w &= \qty{4.18}{J/gK} \quad c_c = \qty{0.418}{J/gk} 
+    \end{align*}
+    After the ice melts and reaches equilibrium the final temperature of the water and calorimeter must be equal
+    \begin{align*}
+        \Delta Q &= Q_{ice} + Q_\text{melted ice} + Q_{water} + Q_{copper} = 0 \\
+        &= m_\text{ice} L_f + m_\text{ice} c_w (T_f - T_\text{ice}) + m_w c_w (T_f - T_i) + m_c c_c (T_f - T_i) \\
+        &= \qty{30}{g} \times \qty{333}{J/g} + \qty{30}{g} \times \qty{4.18}{J/gK} (T_f - \qty{273}{K}) \\
+            &+ \qty{200}{g} \times \qty{4.18}{J/gK} (T_f - \qty{293}{K}) + \qty{750}{g} \times \qty{0.418}{J/gK} (T_f - \qty{293}{K}) \\
+        &= 9990 + 125.4 (T_f - 273) + 836 (T_f - 293) + 313.5 (T_f - 293) \\
+        \implies T_f &= \qty{283}{K}
+    \end{align*}
+    \item [(b)] The total entropy for ice melting at $T = 273$ K is 
+    \begin{align*}
+        \Delta S_\text{ice} = \frac{Q_\text{ice}}{T_\text{ice}} = \frac{m_\text{ice} L_f}{T_\text{ice}}
+    \end{align*}
+    and for three other processes
+    \begin{align*}
+        \Delta S_a = \int_{T_0}^{T_f} \frac{m_a c_a}{T} dT = mc \ln \frac{T_f}{T_i}
+    \end{align*}
+    so
+    \begin{align*}
+        \Delta S &= \frac{m_\text{ice} L_f}{273} + m_\text{ice} c_w \ln \frac{283}{273} + m_w c_w \ln \frac{283}{293} + m_c c_c \ln \frac{283}{293} \\
+        \Delta S &= \qty{1.19}{J/K}
+    \end{align*}
+    \item [(c)] The work required to bring the water back to $T_i = 293$ K i.e. $\Delta T = T_f - T_i = 293 - 283 = 10$ K
+    \begin{align*}
+        W &= \Delta Q \\
+        &= (m_w + m_i) c_w (T_f - T_i) + m_c c_c (T_f - T_i) \\
+        &= 230 (4.18) 10 + 750 (0.418) 10 \\
+        W &= \qty{12749}{J}
+    \end{align*}
+\end{itemize}
+
+\end{document}

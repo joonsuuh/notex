@@ -1,0 +1,146 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Lecture 10: 9/26/24}
+\chead{Chapter 5.5-6}
+\rhead{PHYS 463}
+
+\section{Simple Applications of macroscopic thermodynamics}
+
+\subsection{General relationship of thermodynamics}
+
+Fundamental thermodynamic relation for a \textit{quasi-static process}:
+\begin{align*}
+    dS = \frac{\dbar Q}{T}
+\end{align*}
+where
+\begin{align*}
+    \dbar Q = dE + \dbar W = dE + pdV
+\end{align*}
+The only external parameter of change is $V$
+\begin{align*}
+    \implies dE = TdS - pdV
+\end{align*}
+This specifies certain relationship between $T,S,p,V$ i.e. $S$ \& $V$ are independent variables
+\begin{align*}
+    E = E(S,V)
+\end{align*}
+So we have a pure mathematical relationship
+\begin{align*}
+    dE = \qt(\pdv{E}{S})_V dS + \qt(\pdv{E}{V})_S dV
+\end{align*}
+where
+\begin{align*}
+    \begin{cases}
+        T = \qt(\pdv{E}{S})_V \\
+        -p = \qt(\pdv{E}{V})_S
+    \end{cases}
+\end{align*}
+which we already know! Because $dE$ is an exact differential
+\begin{align*}
+    \qt(\pdv{T}{V})_S = -\qt(\pdv{p}{S})_V
+\end{align*}
+this is known as the first Maxwell relation \href{https://en.wikipedia.org/wiki/Maxwell_relations#/media/File:Thermodynamic_map.svg}{(wiki)}.
+
+\paragraph{How about} $S, P$?
+
+From our favorite starting point
+\begin{align*}
+    dE = TdS - pdV 
+\end{align*}
+we need to change $dV \to dp$ so from chain rule
+\begin{align*}
+    d(pV) = p dV + V dp \implies pdV = d(pV) - V dp 
+\end{align*}
+so
+\begin{align*}
+    dE = TdS - d(pV) + V dp
+\end{align*}
+or
+\begin{align*}
+    d(E + pV) = TdS + Vdp
+\end{align*}
+lets call this new parameter $H = E + pV$ the \textbf{enthalpy} i.e.
+\begin{align*}
+    H = H(S,p)
+\end{align*}
+So
+\begin{align*}
+    \begin{cases}
+        T = \qt(\pdv{H}{S})_p \\
+        V = \qt(\pdv{H}{p})_S
+    \end{cases}
+\end{align*}
+where $dH$ is an exact differential
+\begin{align*}
+    \qt(\pdv{T}{p})_S = \qt(\pdv{V}{S})_p
+\end{align*}
+or the second Maxwell relation!
+
+\paragraph{Worksheet}
+We can derive the Helmholtz free energy $F = F(T,V)$ by starting with
+\begin{align*}
+    d(TS) = TdS + SdT \implies TdS = d(TS) - SdT
+\end{align*}
+so
+\begin{align*}
+    dE &= d(TS) -SdT - pdV \\
+    d(E - TS) &= -SdT - pdV
+\end{align*}
+\begin{enumerate}
+    \item Thus the Hemholtz free energy $F \equiv E - TS$ so
+    \begin{align*}
+        dF &= dE - (TdS + SdT) \\
+        &= TdS - pdV - Tds - SdT \\
+        &= -SdT - pdV
+    \end{align*}
+    \item So $F = F(T,V)$ the we know that
+    \begin{align*}
+        \begin{cases}
+            -S = \qt(\pdv{F}{T})_V \\
+            -p = \qt(\pdv{F}{V})_T
+        \end{cases}
+    \end{align*}
+    and $dF$ is an exact differential
+    \begin{align*}
+        \qt(\pdv{S}{V})_T = \qt(\pdv{p}{T})_V
+    \end{align*}
+\end{enumerate}
+Finally for independent parameters $T,p$:
+\begin{align*}
+    dE = TdS - pdV 
+\end{align*}
+we need to change $dV \to dp$ so from chain rule
+\begin{align*}
+    d(pV) = p dV + V dp \implies pdV = d(pV) - V dp 
+\end{align*}
+so also using $TdS = d(TS) - S dT$
+\begin{align*}
+    dE &= (d(TS) - S dT) - (d(pV) - V dp) \\
+    d(E - TS + pV) &= -S dT + V dP
+\end{align*}
+where $G = E - TS + pV$ is the Gibbs free energy $G = G(T,p)$
+\begin{align*}
+    \begin{cases}
+        -S = \qt(\pdv{G}{T})_p \\
+        V = \qt(\pdv{G}{p})_T
+    \end{cases}
+\end{align*}
+and $dG$ is an exact differential
+\begin{align*}
+    \qt(\pdv{V}{T})_p = -\qt(\pdv{S}{p})_T
+\end{align*}
+\paragraph{Summary of Maxwell relations}
+\begin{align*}
+    \qt(\pdv{T}{V})_S = -\qt(\pdv{p}{S})_V \\
+    \qt(\pdv{T}{p})_S = \qt(\pdv{V}{S})_p \\
+    \qt(\pdv{S}{V})_T = \qt(\pdv{p}{T})_V \\
+    \qt(\pdv{V}{T})_p = -\qt(\pdv{S}{p})_T
+\end{align*}
+or in box form
+\table
+\end{document}
+

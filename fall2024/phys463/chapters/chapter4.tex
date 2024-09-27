@@ -1,0 +1,91 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Lecture 9: 9/24/24}
+\chead{Chapter 4.1,6}
+\rhead{PHYS 463}
+
+\section{Macroscopic Parameters and their measurement}
+
+\subsection{Work \& internal energy}
+From the first law of thermodynamics we always talk about
+\begin{align*}
+    Q = \Delta \bar E + W
+\end{align*}
+Given a system, work is \textit{easy} measure i.e. we integrate
+\begin{align*}
+    W = -\int p \dd V
+\end{align*}
+\paragraph{Measure of internal energy}
+\begin{itemize}
+    \item Thermal isolation case: $Q = 0$
+    \begin{align*}
+        \Delta \bar E = \bar E_b - \bar E_b = -W_{ab} = \int_a^b \dbar W
+    \end{align*}
+    e.g. a thermally isolated piston goes from state $a$ to $b$.
+\end{itemize}
+
+\subsection{Heat}
+
+The heat absorbed by a system going from macrostate $a$ to $b$ is simply
+\begin{align*}
+    Q_{ab} = (\bar E_b - \bar E_a) + W_{ab}
+\end{align*}
+\paragraph{Example} A superconducting circuit $A$ is connected to the circuit $B$ with a resistor.
+
+Adding $\qty{20}{\micro W}$ of heat to the system: we actuallly are doing work on a resistor.
+
+\subsubsection*{Method of Mixers (Comparison Method)}
+
+Bring system $A$ into contact with system $B$ that has a known relation between its internal energy and some parameters (T).
+\begin{align*}
+    Q_A = \Delta \bar E_B = -Q_B
+\end{align*}
+e.g. system $A$ is submerged in water $B$ and we can measure the change in internal energy of water quite easily.
+
+\subsection{Entropy} 
+
+We define entropy $S$
+\begin{align*}
+    dS = \frac{\dbar Q}{T}
+\end{align*}
+and \textbf{Absolute entropy} from the 3rd law
+\begin{align*}
+    T \to 0,\quad S \to S_0
+\end{align*}
+
+\paragraph{Example:} Tin
+
+Two structures of a solid:
+\begin{enumerate}
+    \item White tin---a metal $\to$ stable $> 298$ K
+    \item Grey tin---semiconductor $\to$ stable $< 298$ K
+\end{enumerate}
+Thus it requires some amount of heat $Q$ to transform from grey to white tin.
+\begin{itemize}
+    \item Case 1: a mole of white tin from $T=0 \to T_0$ with specific heat $C^{(w)}(T)$
+    \begin{align*}
+        S^{(w)} (T_0) = S^{(w)}(T = 0) + \int_0^{T_0} \frac{C^{(w)}(T)}{T} \dd T
+    \end{align*}
+    \item Case 2: Grey tin from $0$ K $\to T_0$ and then it transforms to white tin quasi-statically.
+    It absorbs heat $Q$ and the entropy change is
+    \begin{align*}
+        S^{(w)}(T_0) = S^{(g)}(T=0) + \int_0^{T_0} \frac{C^{(g)} (T)}{T} dT + \frac{Q}{T_0}
+    \end{align*}
+    where
+    \begin{align*}
+        S^{(g)}(T=0) = S^{(w)}(T=0) = S_0
+    \end{align*}
+\end{itemize}
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.3\linewidth]{/moleoftin.png}
+    \caption{Mole of Tin (DALL-E 3)}
+    \label{fig:moleoftin}
+\end{figure*}
+
+\end{document}
