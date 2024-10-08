@@ -1,0 +1,407 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Lecture 11: 10/1/24}
+\chead{Chapter 4}
+\rhead{PHYS 421}
+
+\section{Electric Fields in Matter}
+\barh \vspace{1em}
+
+\subsection{Polarization} 
+
+\subsubsection{Dielectrics}
+
+In dieletrics, ``All charges are attached to specific atoms or molecules'' (Griffith, pg.166)
+
+\subsubsection{Induced Dipoles}
+
+% fig4_1_2.png
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig4_1_2.png}
+    \caption{Left: Simple Nucleus $+q$ surrounded by spherical cloud $-q$ of radius $a$. Right: In an external electric field $E$ the nucleus shifts right $d$ and the cloud shifts left.}
+    \label{fig:4_1_2}
+\end{figure*}
+
+For a simple model of the atom (Fig. \ref{fig:4_1_2}), the electric field at $d$ is
+\begin{align*}
+    E_d = \ke \frac{qd}{a^3}
+\end{align*}
+where the dipole moment is $p = qd$. We have equilibrium when
+\begin{align*}
+    F_\text{ext} = q E_\text{ext} = q_- E_d
+\end{align*}
+So using the dipole moment 
+\begin{align*}
+    \abs{\vb p} = qd = 4\pi \epsilon_0 a^3 E_\text{ext} = \alpha E_\text{ext} 
+\end{align*}
+Here we have this ``atomic polaritability''
+\begin{align*}
+    \alpha = 4\pi \epsilon_0 a^3 = 3\epsilon v
+\end{align*}
+where $v$ is the volume of the atom. Comment: this crude approximation is still accurate by a factor of 4.
+
+In general we have a vector
+\begin{align*}
+    \vb p = \hat \alpha \vb E
+\end{align*}
+where $\hat \alpha$ is the polarizability tensor. For a linear dielectric relation between $E$ and $p$ we get
+\begin{align*}
+    \hat \alpha = \begin{bmatrix}
+        \alpha_{xx} & \alpha_{xy} & \alpha_{xz} \\
+        \alpha_{yx} & \alpha_{yy} & \alpha_{yz} \\
+        \alpha_{zx} & \alpha_{zy} & \alpha_{zz}
+    \end{bmatrix}
+\end{align*}
+
+\subsubsection{Alignment of Polar Molecules}
+
+The dipole will experience a torque in and $E$-field
+\begin{align*}
+    \vb N &= (\vb r_+ \cross \vb F_+) + (\vb r_- \cross \vb F_-) \\
+    &= \qt(\frac{\vb d}{2} \cross q\vb E) + \qt(-\frac{\vb d}{2} \cross q\vb E) \\
+    &= q \vb d \cross \vb E
+\end{align*}
+thus
+\begin{align*}
+    \vb N = \vb p \times \vb E
+\end{align*}
+which implies that there is a force that acts to align $\vb p \parallel \vb E$.
+
+\paragraph{WHat if E is not uniform?}
+\begin{align*}
+    \vb F = \vb F_+ + \vb F_- = q \vb E + q \vb E = q \Delta E
+\end{align*}
+assuming small $d$ in $E_x$, then
+\begin{align*}
+    \Delta E_x = (\grad \vb E_x) \cdot \vb d
+\end{align*}
+So the total change in the field is
+\begin{align*}
+    \Delta \vb E = (\vb d \cdot \grad) \vb E
+\end{align*}
+thus
+\begin{align*}
+    \vb F = (\vb p \cdot \grad) \vb E
+\end{align*}
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig4_4_5.png}
+    \caption{Dipole moment in oxygen molecule, and in an electric field.}
+    \label{fig:4_4_5}
+\end{figure*}
+
+\paragraph{Example:} Problem 4.5
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.3\linewidth]{fig4_7.png}
+    \caption{Infinitely grounded conductor with dipole at an angle $\theta$ from the normal plane and nailed in place.}
+    \label{fig:fig4_7}
+\end{figure*}
+Using the method of images % fig4_7a.png and fig4_7b.png
+\begin{figure*}
+    \centering
+    \begin{tabular}{c c}
+        \includegraphics[width=0.3\linewidth]{fig4_7a.png} & \includegraphics[width=0.3\linewidth]{fig4_7b.png}
+    \end{tabular}
+    \caption{Left: Method of images using image dipole. Right: Coordinate using image dipole up as $z'$.}
+\end{figure*}
+
+Where look at $\vb p_i$ coordinate (pointing up) thus $2z$ away we have the dipole pointing perpendicular to the image dipole i.e.
+\begin{align*}
+    \vb E_i = \ke \frac{p_i}{r^3} \qt(
+        2\cos\theta \vu r + \sin\theta \vu \theta
+    )
+\end{align*}
+where
+\begin{align*}
+    \vb p = p\cos\theta \vu r + p\sin\theta \vu \theta
+\end{align*}
+So the torque $\vb N = \vb p \cross \vb E_i$ is
+\begin{align*}
+    \vb N &= \ke \frac{p^2}{(2z)^3} (\cos\theta \vu r + \sin\theta \vu \theta) \cross \qt(
+        2\cos\theta \vu r + \sin\theta \vu \theta
+    ) \\
+    &= \ke \frac{p^2}{(2z)^3} \qt(
+        \cos\theta \sin\theta \vu*\phi + 2\cos\theta\sin\theta (-\vu*\phi)
+        ) \\
+    &= \ke \frac{p^2 \cos\theta\sin\theta}{(2z)^3} (-\vu*\phi) \\
+    &= \ke \frac{p^2 \sin(2\theta)}{8\pi \epsilon_0 (8z^3)} (-\vu*\phi)
+\end{align*}
+So
+\begin{align*}
+    \begin{cases}
+        0 < \theta < \frac{\pi}{2} & N\sim -\vu*\phi \\
+        \frac{\pi}{2} < \theta < \pi & N\sim \vu*\phi
+    \end{cases}
+\end{align*}
+Which means the dipole can either align perdendicularly up or down depending on the angle $\theta$.
+
+\subsubsection{Polarization}
+\begin{align*}
+    \vb P \equiv \textrm{dipole moment per unit volume}
+\end{align*}
+i.e. the little $\vb p$ is
+\begin{align*}
+    \vb p = \vb P \dd\tau
+\end{align*}
+
+\subsection{The Field of a Polarized Object}
+\subsubsection{Bound Charges}
+
+For a single dipole
+\begin{align*}
+    V_\text{dip}(\vb r) = \ke \frac{\vb p \cdot \vu \scriptr}{\scriptr^2}
+\end{align*}
+and using the dipole moment per unit volume def:
+\begin{align*}
+    V_\text{dip}(\vb r) = \ke \int \frac{\vb P(\vb r') \cdot \vu \scriptr}{\scriptr^2} \dd\tau'
+\end{align*}
+recalling the math fact
+\begin{align*}
+    \grad' \qt(\frac{1}{\scriptr}) = \frac{\vu \scriptr}{\scriptr^2}
+\end{align*}
+thus
+\begin{align*}
+    V &= \ke \int \vb P(\vb r') \cdot \grad' \qt(\frac{1}{\scriptr}) \dd\tau'
+\end{align*}
+using another math fact
+\begin{align*}
+    \div (F \vb A) = F(\div \vb A) + \vb A \cdot (\grad F)
+\end{align*}
+So we can rewrtite the integral
+\begin{align*}
+    V &= \ke \qt[
+        \int_V \div(\frac{\vb P}{\scriptr}) \dd\tau' - \int_V \frac{1}{\scriptr} \div \vb P \dd\tau'
+    ] \\
+    &= \ke \qt[
+        \oint_S \frac{1}{\scriptr} \vb P \cdot \dd \vb a' - \int_V \frac{1}{\scriptr} \div \vb P \dd\tau'
+    ]
+\end{align*}
+where we used the divergence theorem for the first term. For charge densities
+\begin{align*}
+    \begin{cases}
+        \textrm{surface charge} & \sigma_b \equiv \vb P \cdot \vu n \\
+        \textrm{volume charge} & \rho_b \equiv -\div \vb P
+    \end{cases}
+\end{align*}
+then
+\begin{align*}
+    V = \ke \qt[
+        \oint_S \frac{\sigma_b}{\scriptr} \dd a' + \int_V \frac{\rho_b}{\scriptr} \dd\tau'
+    ]
+\end{align*}
+
+\subsubsection{Physical Interpretation of Bound Charges}
+So for a charge neutral sphere with an applied $E$-field, we can imagine this sphere as two oppositely charge spheres superimposed on each other but slighly shifted (Fig. \ref{fig:4_15}).
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.3\linewidth]{fig4_15.png}
+    \caption{Charge neutral sphere with applied $E$-field.}
+    \label{fig:4_15}
+\end{figure*}
+Thus we can imagine a collection of dipoles for each atom in a material with alternating charges.
+This is actually wrong (read Berry Phases in Electronic Structure Theory by David Vanderbilt).
+
+\newpage
+\lhead{Lecture 12: 10/3/21}
+\paragraph{Example:} Find $\vb E$ of a uniformly polarized sphere of radius $R$.
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.2\linewidth]{fig4_9.png}
+    \caption{Uniformly polarized sphere of radius $R$.}
+    \label{fig:4_9}
+\end{figure*}
+
+We choose $\vb P \propto \vu z$ as shown in Fig. \ref{fig:4_9}. The bound volume and surface charges are 
+\begin{align*}
+    \rho_b = -\div \vb P = 0 \qqtext{but} \sigma_b = \vb P \cdot \vu n = P \cos\theta
+\end{align*}
+Thus using the result from before
+\begin{align*}
+    V = \ke \qt[
+        \oint_S \frac{\sigma_b}{\scriptr} \dd a' + \int_V \frac{\rho_b}{\scriptr} \dd\tau'
+    ]
+\end{align*}
+or 
+\begin{align*}
+    V(r \theta) = \begin{cases}
+        \frac{P}{3\epsilon_0} r \cos\theta & r \leq R \\
+        \frac{P}{3\epsilon_0} \frac{R^3}{r^2} \cos\theta & r > R
+    \end{cases}
+\end{align*}
+Recalling $z = r \cos\theta \quad \vb E = -\grad V$ we get
+\begin{align*}
+    \vb E_\text{in} &= -\frac{P}{3\epsilon_0} \vu z = -\frac{1}{3\epsilon_0} \vb P
+\end{align*}
+and for outside the potential is
+\begin{align*}
+    V_\text{out} = \ke \frac{\vb p \cdot \vu r}{r^2}
+\end{align*}
+with the total dipole moment
+\begin{align*}
+    \vb p = \frac{4\pi}{3} R^3 \vb P
+\end{align*}
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.3\linewidth]{fig4_10.png}
+    \caption{Polarized sphere in an external $E$-field.}
+    \label{fig:4_10}
+\end{figure*}
+
+So the polarized sphere is similar to the spherical conductor but with $E$-fields inside it (Fig. \ref{fig:4_10}).
+
+\subsection{The Displacement Field}
+\begin{align*}
+    \rho_b = -\div \vb P \qand \sigma_b = \vb P \cdot \vu n
+\end{align*}
+The $\rho_\text{free} \to$ anything \textit{not} due to Polarization
+\begin{align*}
+    \rho = \rho_b + \rho_f
+\end{align*} 
+and from Gauss' Law
+\begin{gather*}
+    \div \vb E = \frac{\rho}{\epsilon_0} \\
+    \implies \epsilon_0 \div \vb E = \rho_b + \rho_f = - \div \vb P + \rho_f
+\end{gather*}
+where $\vb E$ is the total electric field. Moving some terms around we get
+\begin{align*}
+    \div \qt(\epsilon_0 \vb E + \vb P) = \rho_f
+\end{align*}
+where we now define the electric displacement field
+\begin{align*}
+    \vb D \equiv \epsilon_0 \vb E + \vb P
+\end{align*}
+which has the same laws as $\vb E$:
+\begin{align*}
+    \boxed{\div \vb D = \rho_f} \qquad \boxed{\oint \vb D \cdot \dd\vb a = Q_\text{f, enc}}
+\end{align*}
+
+\paragraph{Example:} Long straight wire, with unform $\lambda$ (charge per length),
+surrounded by rubber insulation out to radius $a$; Find $\vb D$
+
+Using the Gaussian surface (cylinder) of length $l$ and radius $s$ so the enclosed charge is
+\begin{gather*}
+    \oint \vb D \cdot \dd\vb a = 2\pi s l \vb D = \lambda l \\
+    \vb D = \frac{\lambda}{2\pi s} \vu s
+\end{gather*}
+$\implies$ holds for both $s \leq a$ and $s > a$. 
+
+For $s > a$
+\begin{align*}
+    \vb P_\text{out} = 0 \implies \vb E = \frac{\vb D}{\epsilon_0} = \frac{\lambda}{2\pi \epsilon_0 s} \vu s
+\end{align*}
+But for inside $s \leq a$ we can't determine $\vb P_\text{in}$ yet!
+
+\paragraph{Comments} While the two equations
+\begin{align*}
+    \div \vb D = \rho_f \qand \div \vb E = \frac{\rho}{\epsilon_0}
+\end{align*}
+are similar, the $E$-field has a Coulomb law 
+\begin{align*}
+    \vb E = \ke \frac{q}{\scriptr^2} \vu \scriptr
+\end{align*}
+but there is no equivalent for $\vb D$
+\begin{align*}
+    \cancel{\vb D = \ke \frac{q}{\scriptr^2} \vu \scriptr}
+\end{align*}
+since there is this tensor relation $\vb p = \hat \alpha \vb E$.
+Furthermore, the curl is also different:
+\begin{align*}
+    \curl \vb D = \curl (\epsilon_0 \vb E + \vb P) = \cancel{\epsilon_0 \curl \vb E} + \curl \vb P
+\end{align*}
+since $\curl \vb E = \curl (-\grad V) = 0$.
+
+\paragraph{What is D?} Units $\si{\frac{C}{m^2}}$ which is the same as $\sigma$ (surface charge density).
+
+\subsection{Linear Dielectrics}
+\begin{align*}
+    \vb P = \epsilon_0 \chi_e \vb E
+\end{align*}
+where $\chi_e$ is the electric susceptibility (dimensionless). For here, we will assume linear (isotropic \& homogeneous) dielectrics.
+\begin{itemize}
+    \item vacuum: $\chi_e = 0$
+    \item air: $1.00054$
+    \item salt: $\sim 4.9$
+    \item Si: $\sim 11$
+    \item water: $\sim 80$ (water is already polarized!)
+    \item SrTiO$_3$: $\sim 50,000$ at low temperatures
+\end{itemize}
+\paragraph{}
+$\vb E$ is the \textit{total} electric field.
+
+Starting with
+\begin{align*}
+    \vb D &= \epsilon_0 \vb E + \vb P \\
+    &= \epsilon_0 \vb E + \epsilon_0 \chi_e \vb E \\
+    &= \epsilon_0 (1 + \chi_e) \vb E \quad \epsilon = \epsilon_0(1 + \chi_e) \\
+    &= \epsilon \vb E
+\end{align*}
+where $\epsilon$ is the \textit{permitivity} of the material and the relative permitivity or \textit{dielectric constant} is
+\begin{align*}
+    \epsilon_r \equiv \frac{\epsilon}{\epsilon_0} = 1 + \chi_e
+\end{align*}
+
+\paragraph{Example:} Metal sphere with charge $Q$, radius $a$, surrounded by a linear dielectric,
+$\epsilon$, out to radius $b$. Find potential at the center (relative to $\infty$).
+
+Inside the metal sphere $\vb E = \vb P = \vb D = 0$.
+Drawing the Gaussian surface between the sphere and the dielectric we get
+\begin{align*}
+    \oint \vb D \cdot \dd\vb a = Q_\text{f, enc}
+\end{align*}
+for $r > a$ 
+\begin{align*}
+    \vb D = \frac{Q}{4\pi r^2} \vu r
+\end{align*}
+
+Now finding $\vb E$ from $\vb D = \epsilon \vb E$ i.e. in the vacuum $\epsilon = \epsilon_0$ and in the dielectric $\epsilon = \epsilon$:
+\begin{align*}
+    \vb E = \begin{cases}
+        \frac{Q}{4\pi \epsilon r^2} & a < r < b \\
+        \frac{Q}{4\pi \epsilon_0 r^2} & r > b
+    \end{cases}
+\end{align*}
+
+The potential at the origin is therefore
+\begin{align*}
+    V &= - \int_\infty^0 \vb E \cdot \dd\vb*\ell = - \int_\infty^b \frac{Q}{4\pi \epsilon_0 r^2} \dd r - \int_b^a \frac{Q}{4\pi \epsilon r^2} \dd r - \int_a^0  0 \dd r \\
+    &= \frac{Q}{4\pi} \qt(
+        \frac{1}{\epsilon_0 b} + \frac{1}{\epsilon a} - \frac{1}{\epsilon b}
+    )
+\end{align*}
+
+Now we can find $\vb P$ since $\vb E$ is fixed by $\vb D$:
+\begin{align*}
+    \vb P = \epsilon_0 \chi_e \vb E = \frac{\epsilon_0 \chi_e Q}{4\pi \epsilon r^2} \vu r \qqtext{(in the dielectric)}
+\end{align*}
+Thus we can get the volume bound charge 
+\begin{align*}
+    \rho_b = -\div \vb P = 0 \quad \div(\frac{\vu r}{r^2}) = 0 \qqtext{except at $r = 0$}
+\end{align*}
+and
+\begin{align*}
+    \sigma_b = \vb P \cdot \vu n = \begin{cases}
+        \dfrac{\epsilon_0 \chi_e Q}{4\pi \epsilon b^2} & \text{outer} \\ \\
+        \dfrac{-\epsilon_0 \chi_e Q}{4\pi \epsilon a^2} & \text{inner}
+    \end{cases}
+\end{align*}
+
+% fig4_23.png for example
+\begin{figure*}[ht]
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.3\linewidth]{fig4_23.png} & \includegraphics[width=0.3\linewidth]{fig4_23b.png} \\
+        (a) & (b)
+    \end{tabular}
+    \caption{(a) Dielectric sphere surrounding metal sphere. (b) Electric field of resulting system.}
+    \label{fig:4_23}
+\end{figure*}
+\end{document}
