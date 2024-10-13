@@ -1,0 +1,89 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Homework 7}
+\chead{Junseo Shin}
+\rhead{PHYS 421}
+
+\setcounter{section}{7}
+
+% 4.15, 4.17, 4.19, 4.37
+\paragraph{4.15} Thick spherical shell of inner radius $a$, outer radius $b$, with polarization
+\begin{align*}
+    \vb P (\vb r) = \frac{k}{r} \vu r    
+\end{align*}
+\begin{itemize}
+    \item [(a)] E-field in all regions using bound charges: The volume bound charge is
+    \begin{align*}
+        \rho_b &= -\div \vb P = - \frac{1}{r^2} \pdv{r}(r^2 \frac{k}{r}) = -\frac{k}{r^2}
+    \end{align*}
+    and the surface bound charges are ($\vu n = -\vu r$ at $r = a$)
+    \begin{align*}
+        \sigma_b = \vb P \vdot \vu n = \begin{cases}
+            -\dfrac{k}{a} & r = a \\
+            \dfrac{k}{b} & r = b
+        \end{cases}
+    \end{align*}
+    Using Gauss's Law
+    \begin{align*}
+        \oint \vb E \vdot \dd \vb a &= \frac{Q_\text{enc}}{\epsilon_0}
+    \end{align*}
+    \begin{itemize}
+        \item [(i)] $r < a$: $Q_\text{enc} = 0$, so $\vb E = 0$
+        \item [(ii)] $a < r < b$: The enclosed charge is the inner surface charge plus the volume charge:
+        \begin{align*}
+            Q_\text{enc} &= \oint_S \sigma_b \dd{\vb a} + \int_V \rho_b \dd{\tau} \\
+            &= \int -\frac{k}{a} a^2 \sin\theta \dd{\theta} \dd{\phi} + \int -\frac{k}{r^2} r^2 \sin\theta \dd{r} \dd{\theta} \dd{\phi} \\
+            &= -4\pi k a - 4\pi k (r - a) = -4\pi k r
+        \end{align*}
+        So using Gauss's Law
+        \begin{align*}
+            \oint \vb E \vdot \dd{\vb a} &= \frac{Q_\text{enc}}{\epsilon_0} \\
+            \abs{\vb E} \oint \dd{a} &= -\frac{4\pi k r}{\epsilon_0} \\
+            \abs{\vb E} 4\pi r^2 &= -\frac{4\pi k r}{\epsilon_0} \\
+            \abs{\vb E} &= -\frac{k}{\epsilon_0 r} 
+        \end{align*}
+        or 
+        \begin{align*}
+            \vb E = -\frac{k}{\epsilon_0 r} \vu r
+        \end{align*}
+        \item [(iii)] $r > b$: The total enclosed charge of a dielectric is zero (from last HW 4.14), so $\vb E = 0$
+    \end{itemize}
+    \item [(b)] Using
+    \begin{align*} \tag{4.23}\label{eq:4.23}
+        \oint D \vdot \dd{\vb a} = Q_\text{free}
+    \end{align*}
+    and 
+    \begin{align*}
+        \vb D = \epsilon_0 \vb E + \vb P
+    \end{align*}
+    the total free enclosed charge is zero, so
+    \begin{align*}
+        \vb D = 0
+    \end{align*}
+    Thus
+    \begin{align*}
+        \epsilon_0 \vb E + \vb P = 0 
+    \end{align*}
+    or
+    \begin{align*}
+        \vb E = -\frac{1}{\epsilon_0} \vb P = \begin{cases}
+            0 & r < a \qand r > b \\
+            -\dfrac{k}{\epsilon_0 r} \vu r & a < r < b
+        \end{cases}
+    \end{align*}
+\end{itemize}
+
+\newpage
+\paragraph{4.17} Bar electret from Prob. 4.11 has $\rho_b = 0$: From divergence theorem
+\begin{align*}\tag{4.22}
+    \int_V (\div \vb D) \dd{\tau} = \oint_S \vb D \vdot \dd{\vb a} = Q_\text{free} = 0 \implies \div \vb D = 0
+\end{align*}
+So, the field lines for $\vb D$ are closed loops as shown in Fig.
+
+\newpage
+\paragraph{4.19}
+\end{document}
