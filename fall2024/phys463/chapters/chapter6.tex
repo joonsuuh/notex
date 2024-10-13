@@ -1,0 +1,65 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Lecture 13: 10/10/24}
+\chead{Chapter 6}
+\rhead{PHYS 463}
+
+\section{Stat Mech Results and Methods}
+
+Our Return to th stat mech part\dots with systems $A$ and heat reservoir $A'$ where
+\begin{align*}
+    A \ll A'
+\end{align*}
+
+\paragraph{} What is the prob of finding system $A$ in a ny particular microstate $r$ with energy $E_r$?
+\begin{align*}
+    E_r + E' = E^{(0)}, \implies E' = E^{(0)} - E_r
+\end{align*}
+And from the DoS the number of states in $A'$ is
+\begin{align*}
+    \Omega'(E^{(0)} - E_r) 
+\end{align*}
+or the Multiplicity of $A'$ given $E_r$. The prob $P_r$ has a proportionality
+\begin{align*}
+    P_r \propto C' \Omega'(E^{(0)} - E_r)
+\end{align*}
+Since $A \ll A'$ and $E_r \ll E^{(0)}$ we can take the log and Taylor expand
+\begin{align*}
+    \ln\Omega'(E^{(0)} - E_r) = \ln\Omega'(E^{(0)}) - \pdv{\ln\Omega'}{E'}\eval_{E^{(0)}} E_r
+\end{align*}
+where the derivative is the thermodynamic beta
+\begin{align*}
+    \pdv{\ln\Omega'}{E'}\eval_{E^{(0)}} = \frac{1}{kT} = \beta
+\end{align*}
+which is independent of $E_r$. So taking the exponential again\dots
+\begin{align*}
+    \Omega'(E^{(0)} - E_r) = \Omega'(E^{(0)})e^{-\beta E_r} = C e^{-\beta E_r}
+\end{align*}
+where the $\Omega'(E^{(0)})$ is a constant, i.e.
+\begin{align*}
+    P_r = C e^{-\beta E_r}
+\end{align*}
+This must be normalized by
+\begin{align*}
+    \sum P_r = 1
+\end{align*}
+or
+\begin{align*}
+    C = \frac{1}{\sum e^{-\beta E_r}}
+\end{align*}
+where the ``Partition Function'' is
+\begin{align*}
+    Z \equiv \sum_r e^{-\beta E_r}
+\end{align*}
+coined by Planck (1920) as ``Zustandsumme'' or ``Sum over all states''.
+
+The probability is
+\begin{align*}
+    P_r = \frac{e^{-\beta E_r}}{Z}
+\end{align*}
+Where we have a ``Boltzmann funtion'' $e^{-\beta E_r}$ and $P_r$ is the cannonincal distribution.
+\end{document}

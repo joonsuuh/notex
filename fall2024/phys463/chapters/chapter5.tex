@@ -476,6 +476,115 @@ The work done is
 \begin{align*}
     W = \int_a^b PdV + \int_b^c PdV + \int_c^d PdV + \int_d^a PdV
 \end{align*}
-so using the ideal gas law $PV = nRT$
+\begin{itemize}
+    \item $b \to c$: Using the ideal gas law $PV = nRT$ we get
+    \begin{align*}
+        W = \int PdV = \int_{V_b}^{V_c} \frac{nRT_1}{V} dV = nRT_1 \ln \frac{V_c}{V_b}
+    \end{align*}
+    and since $\Delta E = 0$ we know that
+    \begin{align*}
+        q_1 = W = nRT_1 \ln \frac{V_c}{V_b}
+    \end{align*}
+    \item $d \to a$: Same as above
+    \begin{align*}
+        q_2 = nRT_2 \ln \frac{V_a}{V_d}
+    \end{align*}
+    so
+    \begin{align*}
+        W = q_1 - q_2
+    \end{align*}
+    where the work done should be the total heat of the system as we go from $a \to b \to c \to d \to a$, i.e.
+    \begin{align*}
+        \Delta E = 0 \implies W = \Delta Q
+    \end{align*}
+\end{itemize}
+The efficiency of the Carnot engine is by definition
+\begin{align*}
+    \eta = \frac{W}{q_1} = \frac{q_1 - q_2}{q_1} = 1 - \frac{q_2}{q_1} = 1 - \frac{T_2}{T_1} \frac{\ln(V_d/V_a)}{\ln(V_c/V_b)}
+\end{align*}
+
+\newpage
+\lhead{Lecture 13: 10/10/24}
+\chead{Chapter 5.11-5.12}
+
+\paragraph{Argument:} 
+\begin{align*}
+    \frac{V_d}{V_a} = \frac{V_c}{V_b}
+\end{align*}
+From the adiabatic process
+\begin{align*}
+    PV^\gamma = \text{Constant}
+\end{align*}
+so
+\begin{gather*}
+    P_a V_a^\gamma = P_b V_b^\gamma \\
+    P_d V_d^\gamma = P_c V_c^\gamma \\
+    \implies \frac{P_a V_a^\gamma}{P_d V_d^\gamma} = \frac{P_b V_b^\gamma}{P_c V_c^\gamma}
+\end{gather*}
+And from the Isothermal process
+\begin{align*}
+    PV = \text{Constant} \implies \frac{P_a V_a}{P_b V_b} = \frac{P_d V_d}{P_c V_c}
+\end{align*}
+From the former equation we can rewrite it as
+\begin{align*}
+    \frac{P_a V_a V_a^{\gamma - 1}}{P_d V_d V_d^{\gamma - 1}} = \frac{P_b V_b V_b^{\gamma - 1}}{P_c V_c V_c^{\gamma-1}}
+\end{align*}
+which cancels out some terms
+\begin{align*}
+    \frac{V_a^{\gamma - 1}}{V_d^{\gamma -1}} = \frac{V_b^{\gamma -1}}{V_c^{\gamma -1}} \implies \frac{V_d}{V_a} = \frac{V_c}{V_b}
+\end{align*}
+
+\subsection{Refrigerators}
+
+[insert figure of 2 fridges] 
+
+From the Thermo Laws
+\begin{itemize}
+    \item 1st law:
+    \begin{align*}
+        W + q_2 + q_1
+    \end{align*}
+    \item 2nd law:
+    \begin{align*}
+        \Delta S = \frac{q_1}{T_1} + \frac{-q_2}{T_2} \geq 0
+    \end{align*}
+    or
+    \begin{align*}
+        \frac{q_1}{q_2} \geq \frac{T_1}{T_2}
+    \end{align*}
+\end{itemize}
+We define the ``coefficient of performance''
+\begin{align*}
+    CoP \equiv \frac{q_2}{W} = \frac{q_2}{q_1 - q_2} = \frac{1}{\frac{q_1}{q_2} - 1} \leq \frac{1}{\frac{T_1}{T_2} - 1} = \frac{T_2}{T_1 - T_2}
+\end{align*}
+Case:
+\begin{itemize}
+    \item Room temp: $T_1 = 300 K$
+    \item Freezer: $T_2 = 255 K$
+\end{itemize}
+so the CoP is roughly
+\begin{align*}
+    \frac{255}{45} \approx 5.67
+\end{align*}
+since less work is required to move heat rather than converting into heat, the number is greater than one $COP > 1$.
+
+\paragraph{Recap:} Classical thermodynamics only focuses on macroscopic parameters and their measures.
+
+Key Points:
+\begin{itemize}
+    \item $dE = \dbar Q + \dbar W$ from 1st law.
+    \item $dE = TdS - PdV$, and from 2nd law $dS = \dbar Q /T$
+    \item Relationship between $(T,S)$ and $(P,V)$
+    \begin{table*}
+        \centering
+        \begin{tabular}{c|c|c}
+            & $-TS \to$ \\
+            \hline
+            $+pV \downarrow$ & E & F \\
+            & H & G
+        \end{tabular}
+    \end{table*}
+    where $F$ is the Hemholtz, $G$ is Gibbs, and $H$ is enthalpy.
+\end{itemize}
 \end{document} 
 

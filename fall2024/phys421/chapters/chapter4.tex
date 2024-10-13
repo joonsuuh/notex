@@ -209,7 +209,7 @@ Thus we can imagine a collection of dipoles for each atom in a material with alt
 This is actually wrong (read Berry Phases in Electronic Structure Theory by David Vanderbilt).
 
 \newpage
-\lhead{Lecture 12: 10/3/21}
+\lhead{Lecture 12: 10/3/24}
 \paragraph{Example:} Find $\vb E$ of a uniformly polarized sphere of radius $R$.
 
 \begin{figure*}[ht]
@@ -322,6 +322,8 @@ since $\curl \vb E = \curl (-\grad V) = 0$.
 \paragraph{What is D?} Units $\si{\frac{C}{m^2}}$ which is the same as $\sigma$ (surface charge density).
 
 \subsection{Linear Dielectrics}
+
+\subsubsection{Susceptibility, Permittivity, and Dielectric constant}
 \begin{align*}
     \vb P = \epsilon_0 \chi_e \vb E
 \end{align*}
@@ -404,4 +406,196 @@ and
     \caption{(a) Dielectric sphere surrounding metal sphere. (b) Electric field of resulting system.}
     \label{fig:4_23}
 \end{figure*}
+
+\newpage
+\lhead{Lecture 13: 10/10/24}
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig4_24.png}
+    \caption{Interface between polarized dielectric and vacuum.}
+    \label{fig:4_24}
+\end{figure*}
+
+Since $\vb P$ is zero on the vacuum side but not on the dielectric side
+\begin{align*}
+    \oint \vb P \cdot \dd{\vb*\ell} \neq 0
+\end{align*}
+In addition, the displacement field $\vb D = \epsilon \vb E + \vb P$ implies
+\begin{align*}
+    \oint \vb D \cdot \dd{\vb a} \neq 0 \neq \curl \vb D
+\end{align*}
+Furthermore, the proportionality factor $\epsilon_0 \chi_e$ is different on both sides.
+For the homogeneous linear dielectric
+\begin{align*}
+    \div \vb D = \rho_f \qand \curl \vb D = 0
+\end{align*}
+where 
+\begin{align*}
+    \begin{cases}
+        \chi_f \vb E_\text{vac} = \ke \frac{q}{r^2} \\
+        \chi_c \vb D = \ke \frac{q}{r^2}
+    \end{cases}
+    \implies \vb E = \epsilon \vb E
+\end{align*}
+or
+\begin{align*}
+    \vb E = \frac{1}{\epsilon} \vb D
+\end{align*}
+
+\paragraph{Example:} Parallel plate capacitor with insulating material of dielectric constant $\epsilon_r$
+\begin{align*}
+    \vb E \to \frac{\vb E}{\epsilon_r} 
+\end{align*}
+and the potential differnce between the plates is
+\begin{align*}
+    V = - \int \vb E \cdot \dd{\vb*\ell} = - Ed \to \frac{Ed}{\epsilon_r}
+\end{align*}
+And the capacitance is
+\begin{align*}
+    C = \frac{Q}{V} \to \frac{\epsilon_r Q}{V} = \epsilon_r C
+\end{align*}
+
+\subsubsection*{Boundary Value Problems with Linear Dielectrics}
+
+From the given properties of the displacement vector
+\begin{align*}
+    \vb D &= \epsilon_0 \vb E + \vb P \\
+    &= \epsilon_0 (1 + \chi_e) \vb E 
+\end{align*}
+where $\vb P = \epsilon_0 \chi_e \vb E$ so
+\begin{align*}
+    \vb D = \epsilon \vb E
+\end{align*}
+We can get the bound charge densities
+\begin{align*}
+    \rho_b = -\div \vb P = -\div(\frac{\epsilon_0 \chi_e}{\epsilon} \vb D), \quad \sigma_b = \vb P \cdot \vu n
+\end{align*}
+which implies
+\begin{align*}
+    \boxed{
+        \rho_b = -\qt(\frac{\chi_e}{1 + \chi_e}) \rho_f
+    }
+\end{align*}
+Since the net charge resides in the surface of the dielectric, i.e. $\rho = 0$ so from Laplace's equation
+\begin{align*}
+    \epsilon_\text{above} \vb E_\text{above}^\perp - \epsilon_\text{below} \vb E_\text{below}^\perp = \sigma_f
+\end{align*}
+or in terms of voltage (from $\vb E = -\grad V$)
+\begin{align*}
+    \epsilon_\text{above} \pdv{V_\text{above}}{n} - \epsilon_\text{below} \pdv{V_\text{below}}{n} = -\sigma_f
+\end{align*}
+And since the potential is still continuous
+\begin{align*}
+    V_\text{above} = V_\text{below}
+\end{align*}
+
+\paragraph{Example:} Sphere of homogeneous linear dielectric material in a uniform $\vb E_0$.
+Find $\vb E$ in sphere.
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.3\linewidth]{fig4_30.png}
+    \caption{Homogeneous linear dielectric sphere in uniform E-field $\vb E_0$.} 
+    \label{fig:4_30}
+\end{figure*}
+
+Using B.C. to solve Laplace's equation
+\begin{itemize}
+    \item [(i)] $V_\text{in} = V_\text{out}$ at $r = R$
+    \item [(ii)] $\epsilon \pdv{V_\text{in}}{r} = \epsilon_0 \pdv{V_\text{out}}{r}$ at $r = R$ where $\epsilon = \epsilon_0 \epsilon_r$
+    \item [(iii)] $V_\text{out} = -E_0 r\cos\theta$ at $r \gg R$
+\end{itemize}
+
+From the Legendre polynomials
+\begin{align*}
+    V_\text{in} = \sum_{l = 0}^\infty A_l r^l P_l(\cos\theta)
+\end{align*}
+and outside the sphere
+\begin{align*}
+    V_\text{out} = \underbrace{-E_0 r \cos\theta}_\text{external field} + \underbrace{\sum_{l = 0}^\infty \frac{B_l}{r^{l + 1}} P_l(\cos\theta)}_\text{due to sphere} 
+\end{align*}
+and at $r = R \to V_\text{in} = V_\text{out}$ so
+\begin{align*}
+    \sum_l A_l R^l P_l(\cos\theta) = -E_0 R \cos\theta + \sum_l \frac{B_l}{R^{l + 1}} P_l(\cos\theta)
+\end{align*}
+Remembering that $P_0 = 1$ and $P_1 = \cos\theta$ we get from (i)
+\begin{align*}
+    \begin{cases}
+        A_1 R = -\epsilon_0 R + \frac{B_1}{R^2} & l = 1 \\
+        A_l R_l = \frac{B_l}{R^{l + 1}} & l \neq 1
+    \end{cases}
+\end{align*}
+and from (ii) 
+\begin{align*}
+    \epsilon_r \sum_l A_l R^{l + 1} P_l (\cos\theta) = -\epsilon_0 \cos\theta
+        - \sum_l \frac{(l + 1)B_l}{R^{l + 2}} P_l(\cos\theta)
+\end{align*}
+so the orthogonality of the Legendre polynomials gives
+\begin{align*}
+    \begin{cases}
+        \epsilon_r A_1 = -\epsilon_0 - \frac{2B_1}{R^3} & l = 1 \\
+        \epsilon_r l A_l R^{l - 1} = - \frac{(l + 1)B_l}{R^{l + 2}} & l \neq 1
+    \end{cases}
+\end{align*}
+After staring at it for some time and looking through the math
+\begin{align*}
+    \begin{cases}
+        A_l = B_l = 0 & l \neq 1 \\
+        A_1 = -\frac{3}{\epsilon_r + 2} E_0 \qand B_1 = \frac{\epsilon_r - 1}{\epsilon_r + 2} R^3 E_0 & l = 1
+    \end{cases}
+\end{align*}
+Thus the potentials are
+\begin{align*}
+    V_\text{in} (r, \theta) = -\frac{3\epsilon_0}{\epsilon_r + 2} r \cos\theta = -\frac{3\epsilon_0}{\epsilon_r + 2} z
+\end{align*}
+so the electric field is
+\begin{align*}
+    \vb E_\text{in} = -\grad V = \frac{3}{\epsilon_r + 2} \vb E_0
+\end{align*}
+The field inside the sphere will go to zero if the dielectric constant is infinite.
+
+\paragraph{Another example:} Everything below plane $z = 0$ is linear dielectric with susceptibility $\chi_e$.
+Calculating the force on a charge $q$ a distance $d$ above the origin.
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.3\linewidth]{fig4_31.png}
+    \caption{Everything below $z = 0$ is a dielectric}
+    \label{fig:4_31}
+\end{figure*}
+
+Earlier we found a relationship in the volume of a dielectric sphere being $\rho_b \propto \rho_f = 0$,
+so we only need to worry about the bound surface charge density
+\begin{align*}
+    \sigma_b &= \vb P \cdot \vu n = P_z, \quad \vb P = \epsilon_0 \chi_e \vb E \\
+    &= P_z = \epsilon_0 \chi_e E_z
+\end{align*}
+where $E_z$ is the $z$-component of the TOTAL field. The total field due to $q$ and $\sigma_b$:
+\begin{itemize}
+    \item $z$-comp of the charge $q$
+    \begin{align*}
+        E_q = -\ke \frac{q}{r^2 + d^2} \cos\theta = -\ke \frac{qd}{(r^2 + d^2)^{3/2}}
+    \end{align*}
+    \item $z$-comp of the bound surface charge
+    \begin{align*}
+        E_{\sigma_b} = -\frac{\sigma_b}{2\epsilon_0} 
+    \end{align*}
+\end{itemize}
+So
+\begin{align*}
+    \sigma_b = \epsilon_0 \chi_e \qt[
+        -\ke \frac{qd}{(r^2 + d^2)^{3/2}} - \frac{\sigma_b}{2\epsilon_0}
+    ]
+\end{align*}
+and solving for $\sigma_b$ we get
+\begin{align*}
+    \sigma_b = -\frac{1}{2\pi} \qt(\frac{\chi_e}{\chi_e + 2}) \frac{qd}{(r^2 + d^2)^{3/2}}
+\end{align*}
+Which is exactly the same as the surface charge of an induced surface charge on an infinite conducting plane\dots
+
+The total bound charge is therefore
+\begin{align*}
+    q_b = -\qt(\frac{\chi_e}{\chi_e + 2}) q
+\end{align*}
 \end{document}
