@@ -26,8 +26,8 @@ For points outside the sphere $(r > R)$,
 For points inside the sphere $(r < R)$,
 \begin{align*}
     V(r) &= - \int_\infty^R \vb{E} \vdot \dd{\vb{l}} - \int_R^r \vb{E} \vdot \dd{\vb{l}} \\
-    &= \ke \frac{q}{R} - \ke \frac{q}{R^2} \int_R^r r' \dd{r'} \\
-    &= \ke \frac{q}{R} - \ke \frac{q}{R^2} \qt(\frac{r'^2}{2}) \eval_R^r \\
+    &= \ke \frac{q}{R} - \ke \frac{q}{R^3} \int_R^r r' \dd{r'} \\
+    &= \ke \frac{q}{R} - \ke \frac{q}{R^3} \qt(\frac{r'^2}{2}) \eval_R^r \\
     &= \ke \frac{q}{2R} \qt(3 - \frac{r^2}{R^2}) 
 \end{align*}
 The gradient of $V$ for $r > R$:

@@ -5,7 +5,7 @@
 \begin{document}
 \pagestyle{fancy}
 \lhead{Lecture 13: 10/10/24}
-\chead{Chapter 6}
+\chead{Chapter 6.1-6.2}
 \rhead{PHYS 463}
 
 \section{Stat Mech Results and Methods}
@@ -62,4 +62,230 @@ The probability is
     P_r = \frac{e^{-\beta E_r}}{Z}
 \end{align*}
 Where we have a ``Boltzmann funtion'' $e^{-\beta E_r}$ and $P_r$ is the cannonincal distribution.
+
+\newpage
+\lhead{Lecture 14: 10/15/24}
+\chead{Chapter 6.4-6.6}
+The probability of $A$ having energy $E$ is given by
+\begin{align*}
+    P(E) = \frac{\Omega{E} e^{-\beta E}}{Z} 
+\end{align*}
+where the partition function $Z$ is incredibly useful for
+\begin{itemize}
+    \item Average energy: From $P_r, E_r$
+    \begin{align*}
+        \bar E = \sum_r P_r E_r = \frac{\sum_r e^{-\beta E_r} E_r}{Z}, \quad Z = \sum_r e^{-\beta E_r}
+    \end{align*}
+    Using the mathematically useful fact
+    \begin{align*}
+        \pdv{Z}{\beta} = -\sum_r E_r e^{-\beta E_r}
+    \end{align*}
+    So we can get
+    \begin{align*}
+        \bar E = -\frac{1}{Z} \pdv{Z}{\beta}
+    \end{align*}
+    which is just equivalent to
+    \begin{align*}
+        \boxed{
+            \bar E = -\pdv{\beta}(\ln Z)
+        }
+    \end{align*}
+    The variance of the change in energy is (NOTE: the square is inside because $(\overline{\Delta E})^2 = 0$ )
+    \begin{align*}
+        \overline{(\Delta E)^2} = \overline{(E - \bar E)^2} = \overline{E^2} - \bar E^2
+    \end{align*}
+    where
+    \begin{align*}
+        \overline{E^2} = \sum_r P_r E_r^2 = \frac{\sum_r e^{-\beta E_r} E_r^2}{Z}
+    \end{align*}
+    The top part is equivalent to the second derivative of $Z$
+    \begin{align*}
+        \pdv[2]{Z}{\beta} = \sum_r e^{-\beta E_r} E_r^2 
+    \end{align*}
+    So
+    \begin{align*}
+        \overline{E^2} = \frac{1}{Z^2} \qt(\pdv{Z}{\beta})^2 = \pdv{\beta}(\frac{1}{Z} \pdv{Z}{\beta}) + \frac{1}{Z} \qt(\pdv{Z}{\beta})^2 = -\pdv{\bar E}{\beta} + \bar E^2
+    \end{align*}
+    where we get second part of the variance from above
+    \begin{align*}
+        \bar E^2 = \frac{1}{Z^2} \qt(\pdv{Z}{\beta})^2
+    \end{align*}
+    Thus
+    \begin{align*}
+        \overline{(\Delta E)^2} = -\pdv{\bar E}{\beta} = \pdv[2]{\ln Z}{\beta}
+    \end{align*}
+    \item Change in Work:
+    \begin{align*}
+        \dbar W &= \frac{\sum e^{\-beta E_r} \qt(\pdv{E_r}{x} dx)}{Z} \\
+        &= \frac{1}{\beta} \pdv{\ln Z}{x} dx \\
+        \dbar W &= \bar X dx, \quad \boxed{\bar X = \frac{1}{\beta} \pdv{\ln Z}{x}}
+    \end{align*}
+\end{itemize}
+
+\chead{Chapter 6.3}
+\paragraph{Example:} A spin-$\frac{1}{2}$ particle (or a two-level system) in a magnetic field $B$ with magnetic moment $\mu$ so the two states are
+\begin{itemize}
+    \item $\mu B \to \ket{+}$
+    \item $-\mu B \to \ket{-}$
+\end{itemize}
+The partition function is
+\begin{align*}
+    Z = \sum_r e^{-\beta E_r} = e^{\beta \mu B} + e^{-\beta \mu B} = 2\cosh(\beta \mu B)
+\end{align*}
+Thus
+\begin{align*}
+    \bar E = -\pdv{\ln Z}{\beta} = -\frac{1}{Z} \pdv{Z}{\beta} = -\mu B \frac{\sinh(\beta \mu B)}{\cosh(\beta \mu B)} = -\mu B \tanh(\beta \mu B)
+\end{align*}
+And the temperature limits
+\begin{align*}
+    T \to 0, \bar E = -\mu B \\
+    T \to \infty, \bar E = 0
+\end{align*}
+\paragraph{Example:} Harmonic Oscillator
+\begin{align*}
+    E = \qt(n + \frac{1}{2}) \hbar \omega
+\end{align*}
+Thus the partition function is
+\begin{align*}
+    Z &= \sum e^{-\beta E_r} = \sum_{n = 0}^\infty e^{-\beta (n + 1/2) \hbar \omega} \\
+    &= e^{\frac{1}{2} \beta \hbar \omega} \sum \qt(
+        e^{-\beta \hbar \omega}
+    )^n
+\end{align*}
+We can simplify the summation using a geometric series
+\begin{align*}
+    \sum_n x^2 = 1 + x + x^2 + \cdots = \frac{1}{1 - x}
+\end{align*}
+Therefore
+\begin{align*}
+    Z = \frac{e^{-\frac{1}{2} \beta \hbar \omega}}{1 - e^{-\beta \hbar \omega}}
+\end{align*}
+and
+\begin{align*}
+    \bar E = -\pdv{\ln Z}{\beta} = \frac{1}{2} 
+    \hbar \omega+ \frac{\hbar \omega}{e^{\beta \hbar \omega} - 1}
+\end{align*}
+Looking at the temperature limits
+\begin{itemize}
+    \item $T \to 0, \beta \to \infty \quad \bar E = \frac{1}{2} \hbar \omega$
+    \item $T \to \infty, \beta \to 0 \quad \bar E \to \infty$
+\end{itemize}
+
+\newpage
+\lhead{Lecture 15: 10/17/24}
+\chead{Chapter 9.9-9.10}
+
+\paragraph{Example:} Particle in a Box: the solution in 1D is
+\begin{align*}
+    E_n = \frac{n^2 \pi^2 \hbar^2}{2mL^2}
+\end{align*}
+where we get this from the Schr\"odinger equation wavefunction for a infinite well
+\begin{align*}
+    \psi(x) = A \sin(\frac{n_x\pi x}{L_x}),\quad k_x = \frac{n_x\pi}{L_x}
+\end{align*}
+with boundary conditions $\psi(0) = \psi(L) = 0$. For the 3D box we remember
+\begin{align*}
+    \psi = A \sin(k_x x) \sin(k_y y) \sin(k_z z)
+\end{align*}
+where the momentum is $p = \hbar k$ and the energy is
+\begin{align*}
+    E = \frac{p^2}{2m} = \frac{\hbar^2 k^2}{2m} = \frac{\hbar^2}{2m} \qt(k_x^2 + k_y^2 + k_z^2)
+\end{align*}
+
+\paragraph{} In $k$-space the volume of a point (microstate) is 
+\begin{align*}
+    k_x k_y k_z = \frac{\pi^3}{L_x L_y L_z} = \frac{\pi^3}{V}
+\end{align*}
+We assume the box is large, so in the range $k \to k + dk$. The volume of the ``orange peel'' in this range divided by the volume in $k$-space is
+\begin{align*}
+    \Omega(k) = \frac{1}{8} \frac{4\pi k^2 dk}{\pi^3 / V} = \frac{V}{2\pi^2} k^2 dk
+\end{align*}
+Note: the $k$-space is spherical since the vector basis is
+\begin{align*}
+    k = \sqrt{k_x^2 + k_y^2 + k_z^2}
+\end{align*}
+and we only deal with positive $k_i$ i.e. the positve $x,y,z$ octant in the Cartesian $k$-space.
+
+The partition function is then
+\begin{align*}
+    Z &= \int_0^\infty \Omega(k) e^{-\beta \frac{\hbar^2 k^2}{2m}} dk = \frac{V}{2\pi^2} \int_0^\infty k^2 e^{-\beta \frac{\hbar^2 k^2}{2m}} dk \\
+    &= \frac{V}{2\pi^2} \frac{\sqrt{\pi}}{4} \qt(\frac{2m}{\beta\hbar})^{3/2} 
+\end{align*}
+or
+\begin{align*}
+    \boxed{
+        Z = \qt(\frac{2m}{\hbar^2\pi})^{3/2} \beta^{-3/2} V
+    }
+\end{align*}
+
+\paragraph{Multiple Particles:} The system
+\begin{align*}
+    A^{(0)} &= A + A', \qqtext{For} A^{(0)}, \quad E_{r,s}^{(0)} = E_r + E_s'
+\end{align*}
+and
+\begin{align*}
+    A' \text{ has } E_s, \quad Z^{(0)} = \sum_{r,s} e^{-\beta E_{r,s}^{(0)}}
+\end{align*}
+The partition function
+\begin{align*}
+    Z^{(0)} &= \sum_{r,s} e^{-\beta(E_r + E_s')} \\
+    &= \sum_r e^{-\beta E_r} \sum_s e^{-\beta E_s'} = Z Z'
+\end{align*}
+So for $N$ particles
+\begin{align*}
+    Z_N = \qt[
+        \qt(\frac{2m}{\hbar^2\pi})^{3/2} \beta^{-3/2} V
+    ]^N
+\end{align*}
+The average Energy is now
+\begin{align*}
+    \bar E = -\pdv{\ln Z_N}{\beta} = \frac{3}{2} N kT
+\end{align*}
+
+\paragraph{Density of States} For average pressure is equivalent to the generalized force so
+\begin{align*}
+    \bar P &= \frac{1}{\beta} \pdv{(\ln Z)}{V} = \frac{1}{\beta} N \frac{1}{V} \\
+    &= \frac{NkT}{V}
+\end{align*}
+thus
+\begin{align*}
+    \bar P V = NkT 
+\end{align*}
+
+\paragraph{Connection to Thermo} For $Z(\beta, x)$ the differential is mathematically stated by
+\begin{align*}
+    d\ln Z(\beta, x) = \pdv{\ln Z}{\beta} d\beta + \pdv{\ln Z}{x} dx 
+\end{align*}
+or 
+\begin{align*}
+    d \ln Z &= -\bar E d\beta + \beta \dbar W \\
+    &= (\beta \dbar W - d(\bar E \beta)) + \beta d \bar E \\
+    d(\ln Z + \bar E \beta) &= \beta(\dbar W + d\bar E) = \beta dQ \\
+    &= \frac{1}{k} dS
+\end{align*}
+Thus the entropy of an ideal gas system is
+\begin{align*}
+    S = k(\ln Z + \bar E \beta)
+\end{align*}
+so using $\bar E = \frac{3}{2} N kT$ we get
+\begin{align*}
+    S = Nk \qt[
+        \frac{3}{2} \ln(\frac{2m}{\hbar^2\pi}) - \frac{3}{2} \ln(\beta) + \ln(V) + \frac{3}{2}
+    ]
+\end{align*}
+where
+\begin{align*}
+    \frac{3}{2} \ln \beta = \frac{3}{2} \ln k + \frac{3}{2} \ln T
+\end{align*}
+so
+\begin{align*}
+    S = Nk \qt(
+        \ln V + \frac{3}{2} \ln T + \sigma_0
+    ), \quad \sigma_0 = \frac{3}{2} \ln(\frac{2m}{\hbar^2\pi}) + \frac{5}{2}
+\end{align*}
+\paragraph{Two Issues:}
+\begin{itemize}
+    \item The second law is violated: $T \to 0$ which implies $S \to -\infty$
+    \item Gibbs paradox: 
+\end{itemize}
 \end{document}

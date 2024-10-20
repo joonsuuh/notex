@@ -598,4 +598,137 @@ The total bound charge is therefore
 \begin{align*}
     q_b = -\qt(\frac{\chi_e}{\chi_e + 2}) q
 \end{align*}
+
+\newpage
+\lhead{Lecture 14: 10/15/24}
+
+\subsubsection{Energy in Dielectrics}
+The work it takes to charge a capacitor is
+\begin{align*}
+    W = \frac{1}{2} CV^2
+\end{align*}
+where the a capacitor filled with a linear dielectric has a capacitance
+\begin{align*}
+    C = \epsilon_r C_0
+\end{align*}
+Thus the energy stored in this system is
+\begin{align*}
+    W_\text{die} &= \frac{\epsilon_0} \int \epsilon_r E^2 \dd{\tau}
+\end{align*}
+and using $\vb D = \epsilon \vb E = \epsilon_0 \epsilon_r \vb E$ we get
+\begin{align*}
+    \boxed{
+        W = \frac{1}{2} \int \vb D \cdot \vb E \dd{\tau}
+    }
+\end{align*}
+which is integrated over all space.
+
+\paragraph{Example} Sphere of radius $R$ filled with dielectric $\epsilon_r$ and free charge $\rho_f$ has energy (from Gauss's Law)
+\begin{gather*}
+    \oint D \cdot \dd{\vb a} = Q_{\text{f, enc}} \\
+    \implies \vb D(\vb r) = \begin{cases}
+        \dfrac{\rho_f}{3} \vb r & r < R \\
+        \dfrac{\rho_f}{3} \dfrac{R^3}{r^2} \vb r & r > R
+    \end{cases}
+\end{gather*}
+Thus the correlated E-field
+\begin{align*}
+    \vb E (\vb r) = \begin{cases}
+        \dfrac{\rho_f}{3\epsilon_0 \epsilon_r} \vb r & r < R \\
+        \dfrac{\rho_f}{3\epsilon_0 \epsilon_r} \dfrac{R^3}{r^2} \vb r & r > R
+    \end{cases}
+\end{align*}
+The purely electrostatic energy is $W_\text{es} = \frac{\epsilon_0}{2} \int E^2 \dd{\tau}$ or
+\begin{align*}
+    W_\text{es} &= \frac{\epsilon_0}{2} \qt[
+        \qt(\frac{\rho_f}{3 \epsilon_0 \epsilon_r})^2 \int_0^R r^2 (4\pi r^2) \dd{r}
+        + \qt(\frac{\rho_f}{3 \epsilon_0})^2 R^6 \int_R^\infty \frac{1}{r^4} (4\pi r^2) \dd{r} 
+    ] \\
+    &= \frac{2\pi}{9\epsilon_0} \rho_f^2 R^5 \qt(\frac{1}{5\epsilon_r^2} + 1)
+\end{align*}
+but the total energy is
+\begin{align*}
+    W_\text{tot} &= \frac{1}{2} \int \vb D \cdot \vb E \dd{\tau} \\
+    &= \frac{1}{2} \qt[
+        \frac{\rho_f^2}{9 \epsilon_0 \epsilon_r} \int_0^R r^2 (4\pi r^2) \dd{r}
+        + \qt(\frac{\rho_f}{3} R^3) \qt(\frac{\rho_f}{3\epsilon_0} R^3) \int_R^\infty \frac{1}{r^4} (4\pi r^2) \dd{r}
+    ] \\
+    &= \frac{2\pi}{9\epsilon_0} \rho_f^2 R^5 \qt(\frac{1}{5\epsilon_r} + 1)
+\end{align*}
+Thus 
+\begin{align*}
+    W_\text{es} < W_\text{tot} 
+\end{align*}
+So starting with the unpolarized dielectric sphere and using the ``method of assembly'' i.e. adding charge $\dd{q}$ to each layer of the sphere, we have the field in three regions
+\begin{align*}
+    \vb E(\vb r) = \begin{cases}
+        \dfrac{\rho_f}{3\epsilon_0 \epsilon_r} \vb r & r < r' \\
+        \dfrac{\rho_f}{3\epsilon_0 \epsilon_r} \dfrac{R^3}{r^2} \vb r & r' < r < R \\
+        \dfrac{\rho_f}{3\epsilon_0} \dfrac{R^3}{r^2} \vb r & r > R
+    \end{cases}
+\end{align*}
+And bringing down $\dd{q}$ from $\infty \to r'$ the infinitesimal work is
+\begin{align*}
+    \dd{W} &= -\dd{q} \qt[\int_\infty^R \vb E \cdot \dd{\vb l} + \int_R^{r'} \vb E \cdot \dd{\vb l}] \\
+    &= -\dd{q} \qt[
+        \frac{\rho_f r'^3}{3 \epsilon_0} \int_\infty^R \frac{1}{r^2} \dd{r} 
+        + \frac{\rho_f r'^3}{3 \epsilon_0 \epsilon_r} \int_R^{r'} \frac{1}{r^2} \dd{r}
+    ] \\
+    &= \frac{\rho_f r'^3}{3\epsilon_0} \qt(
+        \frac{1}{R} + \frac{1}{\epsilon_r} \qt(\frac{1}{r'} - \frac{1}{R})
+    ) \dd{q} 
+\end{align*}
+which increases the radius by
+\begin{align*}
+    \dd{q} = \rho \dd{V} = \rho_f (4\pi'^2) \dd{r'}
+\end{align*}
+thus
+\begin{align*}
+    \dd{W} = \frac{\rho_f}{3\epsilon_0} \qt[
+        \frac{r'^3}{R} \qt(1 - \frac{1}{\epsilon_r}) + \frac{r'^2}{\epsilon_r} 
+    ] \dd{q}
+\end{align*}
+So the total work is done by integrating over $0 \to R$
+\begin{align*}
+    W &= \int \dd{W} = \int (\;) \dd{q} \to \int (\;) \dd{r'} \\
+    &= \frac{4\pi \rho_f^2}{3\epsilon_0} \qt[
+        \frac{1}{R} \qt(1 - \frac{1}{\epsilon_r}) \int_0^R r'^5 \dd{r'} + \frac{1}{\epsilon_r} \int_0^R r'^4 \dd{r'}
+    ] \\
+    &= \frac{2\pi}{9 \epsilon_0} \rho_f^3 R^5 \qt[
+        \frac{1}{5\epsilon_r} + 1
+    ] = W_\text{tot}
+\end{align*}
+So the energy of deformation is
+\begin{align*}
+    W_\text{def} = W_\text{tot} - W_\text{es} = \frac{2\pi}{45\epsilon_0 \epsilon_r^2} \rho_f^2 R^5 (\epsilon_r - 1)
+\end{align*}
+\paragraph{Another way\dots}
+We can pretend that this deformation energy is analogous to a spring (separated by distance $d$ and spring constant $k$)
+connecting two charges where one charge $+q$ is nailed down so 
+\begin{align*}
+    qE = kd
+\end{align*}
+here
+\begin{align*}
+    \vb E = \frac{\rho_f}{3\epsilon_0 \epsilon_r} \vb r \implies \qqtext{field of free charge, inside dielectric}
+\end{align*}
+thus the dipole $p = qd$ and polarization $P = p/ \dd{\tau}$. The spring constant and infinitesimal change in work is
+\begin{align*}
+    k &= \frac{\rho_f}{3\epsilon_0 \epsilon_r d^2} P r \dd{\tau} \\
+    \dd{W} &= \frac{1}{2} kd^2 = \frac{\rho_f}{6\epsilon_0 \epsilon_r} P r \dd{\tau}
+\end{align*}
+This is will give us the energy stored in the dipole ``spring'' i.e.
+\begin{align*}
+    W_\text{sp} = \frac{\rho_f}{6\epsilon_0 \epsilon_r} \int P r \dd{\tau} 
+\end{align*}
+and the polarization is
+\begin{align*}
+    \vb P = \epsilon_0 (1 + \chi_e) \vb E = \epsilon_0 \chi_e \frac{\rho_f}{3\epsilon_0 \epsilon_r} \vb r = \frac{(\epsilon_r - 1) \rho_f}{3\epsilon_r} \vb r
+\end{align*}
+So
+\begin{align*}
+    W_\text{sp} &= \frac{\rho_f}{6\epsilon_0 \epsilon_r} \int \frac{(\epsilon_r - 1) \rho_f}{3\epsilon_r} (4\pi) \int_0^R r^4 \dd{r}  \\
+    &= \frac{2\pi}{45\epsilon_0 \epsilon_r^2} \rho_f^2 R^5 (\epsilon_r - 1)
+\end{align*}
+which is the exact same thing! This is because our approximation for the polarization $\vb P = \epsilon_0 \chi_e \vb E$ is linear i.e. we were approximating for a spring the whole time!
 \end{document}

@@ -87,7 +87,7 @@ where we can solve for the Constants $C_{nm}$ using the boundary condition (i) $
 \end{align*}
 Doing the Fourier series by multiplying by $\sin(\frac{n'\pi x}{a}) \sin(\frac{m'\pi y}{a})$ and integrating over $x,y = [0,a]$:
 \begin{align*}
-    \int_0^a& \int_0^a V_0 \sin(\frac{n\pi x}{a}) \sin(\frac{m\pi y}{a}) \sin(\frac{n\pi x}{a}) \sin(\frac{m\pi y}{a}) dx dy \\
+    \int_0^a& \int_0^a V_0 \sin(\frac{n\pi x}{a}) \sin(\frac{m\pi y}{a}) dx dy \\
     &= \sum\sum C_{nm} \sinh(\frac{\pi}{a} \sqrt{n^2 + m^2} a) \int_0^a \int_0^a \sin^2(\frac{n\pi x}{a}) \sin^2(\frac{m\pi y}{a}) dx dy
 \end{align*}
 where the integral
