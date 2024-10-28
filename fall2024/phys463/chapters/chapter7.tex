@@ -1,0 +1,145 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+
+\lhead{Lecture 16: 10/24/24}
+\chead{Chapter 7.3,7.5-7.7}
+\rhead{PHYS 463}
+
+\section{Simple Applications of Stat Mech}
+\subsection{Gibbs Paradox}
+From the last lecture the Gibbs paradox $S > S' + S''$ is puzzling\dots
+
+\paragraph{(indistinguishable)} If the particles are identical we can keep track double counting with
+\begin{align*}
+    Z_N = \frac{Z_1^N}{N!}
+\end{align*}
+And from the log of the partition function
+\begin{align*}
+    \ln Z_N &= N\ln Z_1 - \ln N! \qusing \ln N! = N \ln N - N \\
+    &= N \ln Z_1 - N\ln N + N
+\end{align*}
+NOTE: This does not affect $\bar E, \bar P$ as they are still
+\begin{align*}
+    \bar E = \frac{3}{2} N kT, \quad \bar P = \frac{NkT}{V}
+\end{align*}
+The entropy is recaculated as
+\begin{align*}
+    S = k (\ln Z + \beta E)
+\end{align*}
+Using
+\begin{align*}
+    Z_1 = \qt(\frac{2m}{\hbar^2 \pi})^{3/2} \beta^{-3/2} V
+\end{align*}
+we have the entropy
+\begin{align*}
+    S = kN \qt[
+        \ln\frac{V}{N} + \frac{3}{2} \ln T + \sigma_0
+    ], \quad \sigma_0 = \sigma + 1 = \frac{3}{2}\ln\qt(\frac{2\pi mk}{h^2})^{3/2} + \frac{5}{2}
+\end{align*}
+
+\subsection{Equipartition Theorem} Using the Boltzmann function
+
+Consider some systems described by generalized coordinates $q_k, p_k$ with energies
+\begin{align*}
+    E = E(q_1, \dots, q_N, p_1, \dots, p_N)
+\end{align*}
+\begin{itemize}
+    \item Assumption 1: The total energy is additive
+    \begin{align*}
+        E = \epsilon_i(p_i) + E(q_1, \dots, q_N, p_1, \dots, \text{no } p_i, \dots, p_N)
+    \end{align*}
+    \item Assumption 2: function $\epsilon_i$ is quasi-staic in $p_i$ or usually the energy is quadratic i.e.
+    \begin{align*}
+        \epsilon_i(p_i) = bp_i^2
+    \end{align*}
+\end{itemize}
+The average value of $\epsilon_i$ is
+\begin{align*}
+    \overline{\epsilon_i} &= \frac{1}{Z} \int \epsilon_i e^{-\beta E} dq dp \\
+    &= \frac{\int_{-\infty}^\infty e^{-\beta E(q_1,\dots, p_N)} \epsilon_i dq_1, \dots, dp_N}{\int_{-\infty}^\infty e^{-\beta E(q_1,\dots, p_N)} dq_1, \dots, dp_N}
+\end{align*}
+From the first assumption we know that the energy is additive so
+\begin{align*}
+    \overline{\epsilon_i} &= \frac{\int_{-\infty}^\infty e^{-\beta \epsilon_i} \epsilon_i dp_i \cancel{\int e^{-\beta E'} dq_1, \dots, dp_N}}{\int_{-\infty}^\infty e^{-\beta \epsilon_i} dp_i \cancel{\int e^{-\beta E'} dq_1, \dots, dp_N}} \\
+    &= -\pdv{\beta} \ln(\int e^{-\beta E} dp_i)
+\end{align*}
+Now using the second assumption the intgral becomes
+\begin{align*}
+    \int e^{-\beta \epsilon_i} dp_i = \int e^{-\beta bp_i^2} dp_i
+\end{align*}
+With a change of variables
+\begin{align*}
+    y = \sqrt{\beta} p_i, \quad dy = \sqrt{\beta} dp_i
+\end{align*}
+the integral becomes
+\begin{align*}
+    = \frac{1}{\sqrt{\beta}} \int_{-\infty}^\infty e^{-y^2} dy = \sqrt{\frac{\pi}{\beta}}
+\end{align*}
+which is independent of $\beta$ so
+\begin{align*}
+    \int e^{-\beta \epsilon_i} dp_i = C \beta^{-1/2} 
+\end{align*}
+where $C$ is a constant. Thus
+\begin{align*}
+    \overline{\epsilon_i} = -\pdv{\beta} \ln(C \beta^{-1/2}) = \frac{1}{2\beta} = \frac{1}{2} kT
+\end{align*}
+
+\paragraph{Worksheet}
+\begin{itemize}
+    \item [1.] Use the equipartition theorem to determine the molar heat capacity at constant volume of a monoatomic gas: Given
+    \begin{align*}
+        \bar \epsilon = \frac{1}{2} kT \qqtext{for} q_x, q_y, q_z \implies \bar E = \frac{3}{2} N kT
+    \end{align*}
+    so the molar heat capacity is
+    \begin{align*}
+        c_V = \pdv{\bar E}{T} = \frac{3}{2} N k \implies c_p = \frac{c_V}{n} = \frac{3}{2} R ,\quad R = \frac{N}{n} k = N_A k
+    \end{align*}
+    \item [2.] A small particle undergoing Brownian motion in a liquid. The particle is in equilibrium with a bath at temp T.
+    Use the equipartition theorem to determine the velocity dispersion
+    \begin{align*}
+        \bar E_x &= \frac{1}{2} m \overline{v_x}^2 = \frac{1}{2} kT \\
+        \implies \overline{v_x}^2 &= \frac{2\bar E_x}{m} = \frac{kT}{m}
+    \end{align*}
+\end{itemize}
+
+\subsection{Specifc heat of solids}
+In 3D the energy is
+\begin{align*}
+    E = \sum_{i=1}^{3N} \qt[
+        \frac{p_i^2}{2m} + \frac{1}{2} m k_i^2 q_i^2
+    ]
+\end{align*}
+where we have three dimensions as well as a kinetic and potential dimension (6N degrees of freedom).
+From the equipartition theorem the average energy is
+\begin{align*}
+    \bar E = 3N \qt(\frac{1}{2} kT \cdot 2) = 3N kT
+\end{align*}
+The molar heat capacity is roughly
+\begin{align*}
+    c_p = \frac{c_V}{n} = \frac{3Nk}{n} = 3R
+\end{align*}
+The molar heat capacity of a solids at $T = 300$ K are
+% list of values for c_p of Ag, S, Zn, Al, C
+\begin{align*}
+    c_p = \begin{cases}
+        25.35 \text{ J/mol K} & \text{Ag} \\
+        22.75 \text{ J/mol K} & \text{S} \\
+        25.39 \text{ J/mol K} & \text{Zn} \\
+        24.20 \text{ J/mol K} & \text{Al} \\
+        6.01 \text{ J/mol K} & \text{C}
+    \end{cases}
+\end{align*}
+
+\paragraph{Einstein's Solids:} All atoms have the same spring constant $\omega = \sqrt{k/m}$
+From the partition function, the average energy in 3D is
+\begin{align*}
+    \bar E = 3N \hbar \omega \qt(
+        \frac{1}{2} + \frac{1}{e^{\beta \hbar \omega} - 1}
+    )
+\end{align*}
+
+\end{document}

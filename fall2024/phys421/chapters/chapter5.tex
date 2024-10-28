@@ -1,0 +1,377 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead{Lecture 15: 10/22/24}
+\chead{Chapter 5}
+\rhead{PHYS 421}
+
+\section{Magnetostatics}
+\barh \vspace{1em}
+
+\paragraph{In class demonstration} Two parrell wires connected to high voltage source:
+\begin{itemize}
+    \item Parallel current: The wires move towards each
+    \item Antiparallel current: The wires move away from each other
+\end{itemize}
+This implies some sort of force acting on each wire which cannot not be explained by the electrostatics we have covered thus far\dots
+
+\subsection{Lorentz Force Law}
+
+\begin{align*}
+        \vb F_\text{mag} = Q (\vb v \cross \vb B)
+\end{align*}
+where $Q$ and $\vb v$ describe the moving test charge.
+Compared to the force of the electric field
+\begin{align*}
+    \vb F_\text{elec} = Q \vb E
+\end{align*}
+Thus the total force is give by the Lorentz Force Law
+\begin{align*}
+    \boxed{
+        \vb F_\text{tot} = Q(\vb E + \vb v \cross \vb B)
+    }
+\end{align*}
+\subsubsection{Magnetic Fields}
+
+Skip discussion so we can move straight to
+
+\subsubsection{Magnetic Forces}
+\paragraph{Cyclotron motion}
+
+A $\vb B$ field is place into to page, and a test charge has velocity $\vb v$ moving up on the $y$-axis:
+So using the right-hand-rule (RHR) the force from the magnetic field points to the left with magnitude
+\begin{align*}
+    F_\text{mag} = qvB = \text{acceleration} = \frac{mv^2}{R}
+\end{align*}
+where we have a circular motion similar to large masses rotating under gravity i.e. the ``cylotron'' radius 
+\begin{align*}
+    R = \frac{mv}{qB}
+\end{align*}
+
+\paragraph{Cycloid motion}
+
+Add an $\vb E \perp \vb B \dots \vb B = B \vu x \quad \vb E = E \vu z$ 
+
+The velocity of the test charge is given by
+\begin{align*}
+    \vb v = \qt(0, \dv{y(t)}{t}, \dv{z(t)}{t}) = (0, \dot y, \dot z)
+\end{align*}
+Where the charge is constrained in the $yz$ plane. The math says
+\begin{align*}
+    \vb v \cross \vb B = \begin{vmatrix}
+        \vu x & \vu y & \vu z \\
+        0 & \dot y & \dot z \\
+        B & 0 & 0
+    \end{vmatrix}
+    = B \dot z \vu y - B \dot y \vu z
+\end{align*}
+So the force is
+\begin{align*}
+    \vb F &= q(\vb E + \vb v \cross \vb B) \\
+    &=q (E \vu z + B \dot z \vu y) = m\vb a = m (\ddot y \vu y + \ddot z \vu z)
+\end{align*}
+This gives us the equations of motion
+\begin{align*}
+    q B \dot z &= m \ddot y \\
+    q E - qB \dot y &= m \ddot z
+\end{align*}
+And using the ``cyclotron frequency''
+\begin{align*}
+    \omega \equiv \frac{qB}{m} \quad \sim \qty{}{\frac{C.T}{kg}} \sim \qty{}{\frac{rad}{s}}
+\end{align*}
+We can rewrite the equations of motion as
+\begin{align*}
+    \ddot y &= \omega \dot z \\
+    \ddot z &= \omega \qt(\frac{E}{B} - \dot y)
+\end{align*}
+Which we can solve with the general solution
+\begin{align*}
+    y(t) &= C_1 \cos(\omega t) + C_2 \sin(\omega t) + \frac{E}{B}t + C_3 \\
+    z(t) &= C_2 \cos(\omega t) - C_1 \sin(\omega t) + C_4
+\end{align*}
+with the intial conditions
+\begin{align*}
+    \dot y(0) &= \dot z(0) = 0 \\
+    y(0) &= z(0) = 0
+\end{align*}
+The solution is
+\begin{align*}
+    y(t) &= \frac{E}{\omega B} (\omega t - \sin(\omega t)) \\
+    z(t) &= \frac{E}{\omega B} (1 - \cos(\omega t))
+\end{align*}
+NOTE: $v = \omega R$ so the force $F = q(E + v \cross B)$ we have a length scale
+\begin{gather*}
+    \frac{E}{B} \sim \omega R, \quad E \sim v \cross B, \quad v \sim E/B \\
+    \boxed{R \equiv \frac{E}{\omega B}}
+\end{gather*}
+So the equations are simplified to
+\begin{align*}
+    y(t) &= R(\omega t - \sin(\omega t))  \quad z(t) &= R(1 - \cos(\omega t))\\
+    (y - \omega t R)^2 = R^2 \sin^2(\omega t) \quad (z - R)^2 &= R^2 \cos^2(\omega t)
+\end{align*}
+thus
+\begin{align*}
+    R^2 (c^2 + s^2) = R^2 = (z - R)^2 + (y - \omega t R)^2
+\end{align*}
+Since
+\begin{align*}
+    \dot y = v = \omega R = \frac{E}{B} 
+\end{align*}
+and the equation is similar to the circle $x^2 + y^2 = R^2$ so the motion is a cycloid.
+So we can imagine the motion of the charge as rolling a circle along the $y$ axis! [insert cycloid path]
+
+NOTE:
+\begin{align*}
+    \boxed{\textbf{magnetic fields do no work}}
+\end{align*}
+As a charge $q$ moves $\dd{l} = \vb v \dd{t}$ the change in word is
+\begin{align*}
+    \dd{\omega_\text{mag}} = \vb F_\text{mag} \cdot \dd{\vb l} = q(\vb v \cross \vb B) \cdot \vb v \dd{t} = 0
+\end{align*}
+But why did the wires move in the demonstration?
+
+\subsubsection*{Currents}
+We usually define the current direction $I$ using a positive charge (conventional current) because the the negative charge moving in the opposite direction of the positive charge is equivalent i.e.
+\begin{align*}
+    q_+ v_+ = (-q)(-v_+)
+\end{align*}
+The current is charge/time
+\begin{align*}
+    I \sim \qty{}{C/s} \sim \qty{}{A}
+\end{align*}
+The the line charge has current
+\begin{align*}
+    \vb I = \lambda \vb v \sim \qty{}{C/m.m/s} = \qty{}{A/m}
+\end{align*}
+In a neutral wire (or in general)
+\begin{align*}
+    I = \lambda_+ v_+ + \lambda_- v_-
+\end{align*}
+The force on a current carrying wire:
+\begin{align*}
+    F_\text{mag} &= \int (\vb v \cross \vb B) \dd{q} = \int (\vb v \cross \vb B) \lambda \dd{l} \\
+    &= \int (\vb I \cross \vb B) \dd{l} = \int I(\dd{\vb l} \cross \vb B)
+\end{align*}
+where we assume that the current is constant \textit{usually} so
+\begin{align*}
+    \boxed{
+        F_\text{mag} = I \int (\dd{\vb l} \cross \vb B)
+    }
+\end{align*}
+% insert fig5_9.png
+
+\paragraph{Example:}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig5_9.png}
+    \caption{Magnetic field above point into page}
+    \label{fig:fig5_9}
+\end{figure}
+The current will move clockwise in the loop because on the top side in order to have the force point upwards to counteract the mass.
+The force on the sides of the loop will cancel out, so the magnitude is
+\begin{align*}
+    \abs{\vb F_\text{mag}} = I a B = mg
+\end{align*}
+Now increasing $I$ will increase the force which means the whole wire move upwards with velocity $\vb u$ and a change in height $\delta h = u \delta t$.
+This now looks like work
+\begin{align*}
+    \delta W_\text{mag} = I a B \delta h
+\end{align*}
+Who is doing the work to keep lifting the wire? The battery!
+This is analogous to normal force on applying force to a mass on an incline;
+the normal force does no work, but only redirects the force upwards. So magnetic force is like the normal force.
+
+\lhead{Lecture 16: 10/24/24}
+
+\paragraph{Surface Current Density} When charge flows on a surface, this density
+\begin{align*}
+    \vb K \equiv \dv{\vb I}{l_\perp}
+\end{align*}
+where we can image $l_\perp$ as a thin ribbon (\ref{fig:fig5_12}) and $K$ is the current per unit width thus
+\begin{align*}
+    \vb K = \sigma \vb v
+\end{align*}
+
+% fig5_12.png
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{fig5_12.png}
+    \caption{Surface current density}
+    \label{fig:fig5_12}
+\end{figure*}
+
+\paragraph{Magnetic force in 2D} From the 1D $\vb F_\text{mag} = I \int \dd{\vb l} \cross \vb B$, so for 2D
+\begin{align*}
+    \vb F_\text{mag} = \int (\vb v \cross \vb B) \sigma \dd{a} = \int (\vb K \cross \vb B) \dd{a}
+\end{align*}
+
+\paragraph{For a charge dist. in a volume}
+\begin{align*}
+    \vb J \equiv \frac{\vb I}{a_\perp} \sim \text{current/unit area}
+\end{align*}
+
+% fig5_13.png
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{fig5_13.png}
+    \caption{Volume current density}
+    \label{fig:fig5_13}
+\end{figure*}
+
+So we can find this (mobile) volume charge density with
+\begin{align*}
+    \vb J = \rho \vb v
+\end{align*}
+Think of this steady current as a column of water moving along this pipe.
+Rather than looking at each individual water molecule, we can look at the flow of the water as a whole.
+
+In a $\vb B$ field there is a force
+\begin{align*}
+    \vb F_\text{mag} = \int (\vb v \cross \vb B) \rho \dd{\tau} = \int (\vb J \cross \vb B) \dd{\tau}
+\end{align*}
+With current $I$ \& uniform cross-sectional area (a wire), the volume charge density is
+\begin{align*}
+    \vb J = \frac{I}{\pi a^2}
+\end{align*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.6\textwidth]{fig5_14_15.png}
+    \caption{Volume current density}
+    \label{fig:fig5_14}
+\end{figure*}
+
+With $J \propto$ distance from the center of the wire thus
+\begin{align*}
+    J = ks, \quad k\sim \text{constant}
+\end{align*} 
+The current is 
+\begin{align*}
+    I &= \int \dd{I} = \int \vb J \cdot \dd{\vb a_\perp} \\
+    &= \int (ks) s \dd{s} \dd(\phi) \\
+    &= 2\pi k \int_0^a s^2 \dd{s} = 2\pi k \frac{a^3}{3}
+\end{align*}
+
+\paragraph{Total current crossing a surface}
+\begin{align*}
+    I = \int_S J \dd{\vb a_\perp} = \int_S \vb J \cdot \dd{\vb a_\perp}
+\end{align*}
+If the surface is \textit{closed}: 
+if there is a source inside the surface, there is a net flow coming out of the surface and vice versa.
+\begin{align*}
+    \oint_S \vb J \cdot \dd{\vb a} = -\dv{t} \int_V \rho \dd{\tau} = - \int_V \qt(\dv{\rho}{t}) \dd{\tau}
+\end{align*}
+From the divergence theorem
+\begin{align*}
+    \oint_S \vb J \cdot \dd{\vb a} = \int_V (\div{\vb J}) \dd{\tau}
+\end{align*}
+or also known as the ``continuity equation''
+\begin{align*}
+    \boxed{
+        \div{\vb J} = -\pdv{\rho}{t}
+    }
+\end{align*}
+\newpage
+\subsection{Biot-Savart Law}
+\begin{itemize}
+    \item Stationare charge $\to$ const. $\vb E \to$ electrostatics (Coloumbs Law)
+    \item Steady currents $\to$ const. $\vb B \to$ magnetostatics (Biot-Savart Law)
+\end{itemize}
+
+\subsubsection{Steady Currents}
+ASSUME
+\begin{align*}
+    \pdv{\rho}{t} = 0 \implies \pdv{\vb J}{t} = 0
+\end{align*}
+For most technologies, computers, etc.
+\begin{itemize}
+    \item freq $\to \sim$ 10-100 MHz; which is fast and reaches a limit due to the speed of light\dots (lets not worry about this for now)
+\end{itemize}
+% fig5_16.png
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{fig5_16.png}
+    \caption{Biot-Savart Law along a wire}
+    \label{fig:fig5_16}
+\end{figure*}
+
+The $\vb B$ field of a steady current line currents is
+\begin{align*}
+    \vb B(\vb r) &= \frac{\mu_0}{4\pi} \int \frac{\vb I \cross \vu{\scriptr}}{\scriptr^2} \dd{l'} \\
+    &= \frac{\mu_0}{4\pi} I \int \frac{\dd{\vb l'} \cross \vu{\scriptr}}{\scriptr^2}
+\end{align*}
+where we integrate along the current path and $\mu_0$ is the permeability of free space
+\begin{align*}
+    \mu_0 \approx 4\pi \times 10^{-7} \qty{}{\frac{N}{A^2}}
+\end{align*}
+Units of magnetic field:
+\begin{align*}
+    B \sim \qty{}{\frac{N}{A.m}} \sim \qty{}{\frac{V.s}{m^2}} \sim T \to \text{Tesla}
+\end{align*}
+Where the Earth has a magnetic field of a few $\mu$ T compared to a NMR machine which has a field of a few T.
+
+\newpage
+\paragraph{Example:} Find $\vb B$ field a distance $s$ from a long striaght current carrying wire $I$.
+
+% fig5_17_18.png
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig5_17_18.png}
+    \caption{B-field a disance along a wire}
+    \label{fig:fig5_17}
+\end{figure*}
+
+From the Biot-Savart Law
+\begin{align*}
+    \vb B (\vb r) = \frac{\mu_0}{4\pi} I \int \frac{\dd{\vb l'} \cross \vu{\scriptr}}{\scriptr^2}
+\end{align*}
+So looking at each part:
+\begin{itemize}
+    \item $\dd{\vb l' \cross \vu{\scriptr}}$ at P tells us $\vb B \sim (-\vu y)$ (RHR)
+    with magnitude
+    \begin{align*}
+        \dd{l'} \sin\alpha = \dd{l'} \cos\theta
+    \end{align*}
+    \item $l' = s\tan\theta$ so
+    \begin{align*}
+        \dd{l'} = s \sec^2\theta \dd{\theta}
+    \end{align*}
+    \item $s = \scriptr \cos\theta$ so 
+    \begin{align*}
+        \frac{1}{\scriptr^2} = \frac{\cos^2\theta}{s^2}
+    \end{align*}
+\end{itemize}
+\newpage
+Thus
+\begin{align*}
+    \abs{\vb B} &= \frac{\mu_0 I}{4\pi} \int_{\theta_1}^{\theta_2} \frac{\cos\theta}{s} \dd{\theta} \\
+    &= \frac{\mu_0 I}{4\pi s} \int_{-\pi/2}^{\pi/2} \cos\theta \dd{\theta} = \frac{\mu_0 I}{2\pi s}
+\end{align*}
+We can imagine this as a circle around the wire capturing this B-field or wrapping your fingers around the wire where the thumb point in the direction of the current (RHR).
+
+% figure finger.png
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{finger.png}
+    \caption{Right-hand rule}
+    \label{fig:finger}
+\end{figure*}
+
+\paragraph{Back to demo}
+% fig5_19.png
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{fig5_19.png}
+    \caption{Demo}
+    \label{fig:fig5_19}
+\end{figure*}
+We can now see the forces on the wires due to each other's magnetic fields.
+
+
+
+
+
+\end{document}

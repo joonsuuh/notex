@@ -16,18 +16,20 @@
 \usepackage{esint} % for path integral symbol
 
 % input packages
-% \usepackage{draculatheme} % dracula theme, the best theme
+\usepackage{draculatheme} % dracula theme, the best theme; commment out for default theme
 % \usepackage[enable]{darkmode}
 \usepackage{import} 
 \usepackage{hyperref} % for hyperlinks
+\usepackage{bookmark} % for better bookmarks
 \hypersetup{
   colorlinks   = true,    % Colours links instead of ugly boxes
-  urlcolor     = Cerulean,    % Colour for external hyperlinks without dracula theme: Cerulean
-  linkcolor    = Cerulean,    % Colour of internal links "Cerulean"
-  citecolor    = Red      % Colour of citations "Red"
+  urlcolor     = draculagreen,    % Colour for external hyperlinks without dracula theme: Cerulean
+  linkcolor    = draculagreen,    % Colour of internal links "Cerulean"
+  filecolor    = draculagreen,    % Colour of file links "Cerulean"
+  citecolor    = draculared      % Colour of citations "Red"
 }
-\usepackage{graphicx}
-\graphicspath{{images/}} % set image path for graphicx
+\usepackage{graphicx} % set image path for graphicx
+\graphicspath{{./images/}} % set graphics path from current directory (./) to images directory for main.tex file
 \usepackage{caption}
 \usepackage{subcaption}
 
@@ -36,7 +38,7 @@
 % custom formatting
 \numberwithin{figure}{section}
 \numberwithin{equation}{section}
-\setlength{\parindent}{0pt}
+% \setlength{\parindent}{0pt} % no ident after new line
 
 % custom commmands
 \newcommand{\vect}[1]{\mathbf{#1}} % instead use \vb{#1} from physics package
@@ -75,9 +77,15 @@
 \DeclareMathOperator{\arccosh}{arccosh}
 \DeclareMathOperator{\arcsinh}{arcsinh}
 \DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\sgn}{sgn}
 
 % more math packages
 \usepackage{cancel}
+\usepackage{bbold}
+\usepackage{polynom} % polynomial long division e.g. \polylongdiv{2x^3-4x^2+2x+1}{x-1} its kinda cracked
+
+% format/style packages
+\usepackage{fancyhdr}
 
 % seperation vector script r
 \usepackage{calligra}
@@ -88,4 +96,10 @@
 \newcommand{\boldscriptr}{\pmb{\mathcalligra{r}}\,}
 
 % physics constants
-\newcommand{\ke}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\ke}{\frac{1}{4\pi\epsilon_0}} % coulomb's constant
+\newcommand{\lagr}{\mathcal{L}} % lagrangian
+\newcommand{\cf}{\vb F_{\text{cf}}} % coulomb force
+\newcommand{\cor}{\vb F_{\text{cor}}} % coriolis force
+\newcommand{\ext}{\vb F_{\text{ext}}} % external force
+
+\DeclareSIUnit\angstrom{\text{Å}}
