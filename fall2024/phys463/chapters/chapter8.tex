@@ -1,0 +1,62 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+
+\lhead{Lecture 18: 10/31/24}
+\chead{Chapter 8.1}
+\rhead{PHYS 463}
+
+\section{Equilibrium between Phases}
+vapor $\rightleftharpoons$ water $\rightleftharpoons$ ice
+
+\paragraph{General Aspects}:
+\begin{itemize}
+    \item For an isolated system, at equilibrium, the entropy is maximized
+    \item For multiple systems, we must consider the entire system's entropy as a maximized quantity.
+\end{itemize}
+
+\paragraph{Case 1:} Isolated System
+\begin{align*}
+    Q &= \Delta \bar E + W \\
+    W &= 0, Q = 0, \Delta \bar E = 0
+\end{align*}
+For some fluctuation:
+\begin{align*}
+    P(y) \propto \Omega (y) = e^{S(y)/k}, \quad
+    \frac{P(y)}{P(\tilde y)} = \frac{e^{S(y)/k}}{e^{S(\tilde y)/k}} = e^{\Delta S/k}
+\end{align*}
+where the relative prob is exponentially suppressed.
+
+\paragraph{Case 2:} System is in contact with a reservoir at $T$
+\begin{align*}
+    A' + A = A^{(0)}
+\end{align*}
+where $S^{(0)}$ is maximized
+\begin{align*}
+    \Delta S^{(0)} \geq 0 = \Delta S + \Delta S'
+\end{align*}
+Heat transfer from the heat reservoir $A'$ (which doesn't change in Tempertature) to the system $A$ is
+\begin{align*}
+    \Delta S' = -\frac{Q}{T_0}
+\end{align*}
+In additiion, there is no work done on the system i.e. $Q = \Delta \bar E$ so
+\begin{align*}
+    \Delta S^{(0)} = \Delta S - \frac{Q}{T_0} = \frac{T_0 \Delta S - \Delta \bar E}{T_0} = \frac{\Delta (T_0 S - \bar E)}{T_0} 
+    = \frac{-F_0}{T_0}
+\end{align*}
+where
+\begin{align*}
+    F_0 = T_0 S - \bar E
+\end{align*}
+is the Helmholtz free energy of system $A$ as it has the same temperature of the reservoir. 
+Furthermore,
+\begin{align*}
+    \Delta F_0 \leq 0
+\end{align*}
+So the equilibrium condition requires a minimized free energy!
+
+
+\end{document}

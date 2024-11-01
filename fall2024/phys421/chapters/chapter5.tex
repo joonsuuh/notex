@@ -370,8 +370,321 @@ We can imagine this as a circle around the wire capturing this B-field or wrappi
 \end{figure*}
 We can now see the forces on the wires due to each other's magnetic fields.
 
+\newpage 
+\lhead{Lecture 17: 10/29/24}
 
+\subsection{Divergence and Curl of B}
+\subsubsection{Straight Line Currents}
+Integrating $\vb B$ around a circle of radius $s$ for a long straight wire:
+\begin{align*}
+    &\oint \vb B \cdot \dd{\vb l} \quad \vb B = \frac{\mu_0 I}{2\pi s} \vu*\phi \\
+    &= \oint \frac{\mu_0 I}{2\pi s} s \dd{\phi} = \mu_0 I
+\end{align*}
+which is independent of $s$!
 
+Even for any loop around the wire $\dd{\vb l} = \dd{s} \vu*{s} + s \dd{\phi} \vu*{\phi} + \dd{z} \vu{z}$ so
+\begin{align*}
+    \oint \vb B \cdot \dd{\vb l} = \int \frac{\mu_0 I}{2\pi s} s \dd{\phi} = \mu_0 I
+\end{align*}
+For a bundle of straight wires,
+\begin{align*}
+    \oint \vb B \cdot \dd{\vb l} = \mu_0 I_\text{enc}
+\end{align*}
+From our intuitin we can use the divergence theorem to get
+\begin{align*}
+    \oint \vb B \cdot \dd{\vb l} = \in (\curl \vb B) \cdot \dd{\vb a} = \mu_0 I = \mu \int \vb J \cdot \dd{\vb a}
+\end{align*}
+or ``Ampere's Law''
+\begin{align*}
+    \boxed{
+        \curl \vb B = \mu_0 \vb J
+    }
+\end{align*}
 
+\subsubsection{Divergence and Curl of B}
+\paragraph{How about div of B?}
+\begin{align*}
+    \vb B (\vb r) = \frac{\mu_0}{4\pi} \int \frac{\vb J (\vb r') \cross \vu*{\scriptr}}{\scriptr^2} \dd{\tau'}
+\end{align*}
+so 
+\begin{align*}
+    \div \vb B = \frac{\mu_0}{4\pi} \int \div \qt(\vb J \cross \frac{\vu*{\scriptr}}{\scriptr^2}) \dd{\tau'}
+\end{align*}
+where the quantity in the integral is
+\begin{align*}
+    \frac{\vu*{\scriptr}}{\scriptr^2} \cdot (\curl \vb J) - \vb J \qt(\curl \frac{\vu*{\scriptr}}{\scriptr^2}) = 0 
+\end{align*}
+this is proved in Griffiths Prob 1.63\dots anyways this tells us
+\begin{align*}
+    \boxed{
+        \div \vb B = 0
+    }
+\end{align*}
 
+\subsubsection{Ampere's Law}
+Again
+\begin{align*}
+    \curl \vb B = \mu_0 \vb J
+\end{align*}
+where
+\begin{align*}
+    \in (\curl \vb B) \cdot \dd{\vb a}  = \oint \vb B \cdot \dd{\vb l} = \mu \int \vb J \cdot \dd{\vb a} = \mu_0 I_\text{enc}
+\end{align*}
+thus
+\begin{align*}
+    \boxed{
+        \oint \vb B \cdot \dd{\vb l} = \mu_0 I_\text{enc}
+    }
+\end{align*}
+for a current enclosed by an ``Amp\`erian oop''
+
+\paragraph{Example:} The magnetic field of a long straight wire with steady current $I$ is
+\begin{align*}
+    &\oint B \cdot \dd{\vb l} = B \int s \dd{\phi} = B 2\pi s = \mu I_\text{enc} \\
+    &\implies B = \frac{\mu_0 I}{2\pi s} \vu*{\phi}
+\end{align*}
+which is easier to get to compared to the last time we did this.
+
+\paragraph{Example:} Find $\vb B$ due to infinite uniform surface current $\vb K = K_0 = \vu x$:
+
+Drawing an amperian loop as a rectangle perpendicular to current above and below the current sheet: $\dd{\vb l} = 2 B l$ and
+\begin{align*}
+    I_\text{enc} = K_0 l
+\end{align*}
+so
+\begin{align*}
+    B = \frac{\mu_0 K_0}{2}
+\end{align*}
+
+\paragraph{Example:} An infinitely long solenoid\dots using an amperian loop: a rectangle around the middle of the solenoid and outside it.
+\begin{align*}
+    2Bl = \mu_0 I (n l)
+\end{align*}
+but we can make the loop outside the solenoid go infinitely far away so
+\begin{align*}
+    Bl = \mu_0 n I l
+\end{align*}
+or the classic result
+\begin{align*}
+    \boxed{
+        B = \mu_0 n I
+    }
+\end{align*}
+
+\newpage
+\lhead{Lecture 18: 10/31/24}
+
+\subsection{Magnetic Vector Potential}
+
+\subsubsection*{The Vector Potential}
+From the divergence of $\vb B$ we introduce a vector potential of the magnetic field such that
+\begin{align*}
+    \div \vb B = 0 \implies \div (\curl \vb V) = 0
+\end{align*}
+so we define
+\begin{align*}
+    \boxed{
+        \vb B = \curl \vb A
+    }
+\end{align*}
+and from Ampere's Law
+\begin{align*}
+    \curl \vb B = \mu_0 \vb J = \curl (\curl \vb A) = \grad (\div \vb A) - \laplacian \vb A
+\end{align*}
+In electrostatics we had
+\begin{align*}
+    \vb E = - \grad V \quad V \to V + C \qqtext{``gauge freedom''}
+\end{align*}
+where ``gauge freedom'' is a fancy way of saying we can add a constant to the potential and it won't change the physics.
+
+Similarly for $\vb B$:
+\begin{align*}
+    \curl \grad F = 0 
+\end{align*}
+where we want to make 
+\begin{align*}
+    \div A \to 0
+\end{align*}
+Method: Say we have a potential $\vb A_0$ where $\vb B_0 = \curl \vb A_0$ i.e.
+\begin{align*}
+    \vb A_0 \to \vb A + \grad \lambda \equiv \vb A
+\end{align*}
+Thus
+\begin{align*}
+    \vb B = \curl A = \curl (\vb A_0 + \grad \lambda) = \curl \vb A_0 + 0 = \vb B_0
+\end{align*}
+but we know that
+\begin{align*}
+    \div \vb A = \div \vb A_0 + \underbrace{\div(\grad \lambda)}_{\laplacian \lambda}= 0, \quad 
+\end{align*}
+So we get $\div \vb A \if \laplacian \lambda = - \div \vb A_0$. To find this $\lambda$ we can you the same Poisson's equation method like in electrostatics.
+
+$\implies$ From electrostatics:
+\begin{align*}
+    \laplacian V = -\frac{\rho}{\epsilon_0} \to V = \ke \int \frac{\rho}{\scriptr} \dd{\tau'}
+\end{align*}
+So for magnetostatics
+\begin{align*}
+    \lambda = \frac{1}{4\pi} \int \frac{\div \vb A_0}{\scriptr} \dd{\tau'}
+\end{align*}
+
+Why did we do all this?
+
+$\implies$ All for Amp\`er's law:
+\begin{align*}
+    \curl \vb B = -\laplacian \vb A = \mu_0 \vb J
+\end{align*}
+where we fnially get
+\begin{align*}
+    \boxed{
+        \laplacian \vb A = -\mu_0 \vb J
+    }
+\end{align*}
+Now we can just find the vector potential from a current distribution
+\begin{align*}
+    \vb A (\vb r) = \frac{\mu_0}{4\pi} \int \frac{\vb J (\vb r)}{\scriptr} \dd{\tau'}
+\end{align*}
+which is a much easier way to find the magnetic field rather than our previous Bio-Savart Law which had a curl inside the integral!
+for line and sheet currents
+\begin{align*}
+    \to \int \frac{\vb I}{\scriptr} \dd{l'} \quad \int \frac{\vb K}{\scriptr} \dd{a'}
+\end{align*}
+
+Before we tackle this example heavy in math, we recommend reading the Feynmane lectures \href{https://www.feynmanlectures.caltech.edu/}{Website}.
+\paragraph{Example} A spherical shell, radius, $R$, uniform fixed surface charge $\sigma$ set to spin at $\vb \omega$. Find $\vb A(\vb r)$
+
+% fig5_48_49.png
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig5_48_49.png}
+    \caption{All the components}
+    \label{fig:fig5_48}
+\end{figure*}
+All the stuff we need:
+\begin{itemize}
+    \item The vector potential
+    \begin{align*}
+        \vb A (\vb r) = \frac{\mu_0}{4\pi} \int \frac{\vb K (\vb r')}{\scriptr} \dd{a'}
+    \end{align*}
+    \item With current density $\vb K = \sigma \vb v$ and separation vector $\vb \scriptr = \vb r - \vb r'$ with magnitude
+    \begin{align*}
+        \scriptr = \sqrt{R^2 + r'^2 - 2Rr' \cos\theta}
+    \end{align*}
+    \item The area element
+    \begin{align*}
+        \dd{a'} = R^2 \sin\theta' \dd{r'} \dd{\theta'} \dd{\phi'}
+    \end{align*}
+    and from position vector
+    \begin{align*}
+        \vb r' = R(\sin\theta' \cos\phi', \sin\theta' \sin\phi', \cos\theta')
+    \end{align*}
+    \item The velocity
+    \begin{align*}
+        \vb v &= \vb \omega \cross \vb r' = R \begin{vmatrix}
+            \vu x & \vu y & \vu z \\
+            \omega \sin\theta' & 0 & \omega \cos\theta' \\
+            \sin\theta' \cos\phi' & \sin\theta' \sin\phi' & \cos\theta'
+        \end{vmatrix} \\
+        &= \omega R \qt[
+            -(\cos\psi \sin\theta' \sin\phi') \vu x
+            + (\cos\psi \sin\theta' \cos\phi' - \sin\psi \cos\theta') \vu y
+            + (\sin\psi \sin\theta' \sin\phi') \vu z
+        ]
+    \end{align*}
+    We do this so that any terms including $\sin\phi'$ or $\cos\phi'$ will integrate to zero:
+    \begin{align*}
+        \int_0^{2\pi} \sin\phi' = \int_0^{2\pi} \cos\phi' \dd{\phi'} = 0
+    \end{align*}
+    So we can a much simpler
+    \begin{align*}
+        \vb v = -\omega R \qt[
+            \sin\psi \cos\theta' \vu y
+        ]
+    \end{align*}
+\end{itemize}
+Thus we have 
+\begin{align*}
+    \vb A (\vb r) = \frac{\mu_0}{4\pi} \sigma (-\omega R \sin\psi) R^2 2\pi \vu y
+    \int_0^\pi \frac{\cos\theta'\sin\theta'}{\sqrt{R^2 + r^2 - 2Rr\cos\theta'}} \dd{\theta'}
+\end{align*}
+after integration with substitution\dots we have two results
+\begin{itemize}
+    \item If $\abs{\vb r} < R$ the integral goes to
+    \begin{align*}
+        \int \to \frac{2r}{3R^2}
+    \end{align*}
+    \item If $\abs{\vb r} > R$ the integral goes to
+    \begin{align*}
+        \int \to \frac{2R}{3r^2}
+    \end{align*}
+    We can see that
+    \begin{align*}
+        \vb*\omega \cross \vb r = (-\omega R \sin\psi) \vu y
+    \end{align*}
+    which will transform our tilted form to the original form (Fig. \href{fig:fig5_48}).
+
+    Finally
+    \begin{align*}
+        \vb A (\vb r) = \begin{cases}
+            \frac{\mu_0 R \sigma}{3} (\vb*\omega \cross \vb r) & \text{Inside sphere} \\
+            \frac{\mu_0 R^4 \sigma}{3r^2} (\vb*\omega \cross \vb r) & \text{Outside sphere}
+        \end{cases}
+    \end{align*}
+    And letting $\vb*\omega \propto \vu z$, and $\vb r$ at $(r, \theta, \phi)$:
+    \begin{align*}
+        \vb A (r, \theta, \phi) = \begin{cases}
+            \frac{\mu_0 R \sigma}{3} \omega r \sin\theta \vu \phi & \text{Inside sphere} \\
+            \frac{\mu_0 R^4 \sigma}{3r^2} \omega r \sin\theta \vu \phi & \text{Outside sphere}
+        \end{cases}
+    \end{align*}
+    Thus the magnetic field in side the sphere is
+    \begin{align*}
+        \vb B(\abs{\vb r} < R) = \curl \vb A = \frac{2}{3} \mu_0 R \sigma \omega \vu{z}
+    \end{align*}
+    Suprisingly a uniform magnetic field!
+\end{itemize}
+Or (from Feynman) a sphere with wire wrapped around it like a solenoid.
+
+\newpage
+\subsubsection{Multipole Expansion}
+Recalling what we did for the electric field
+\begin{align*}
+    \frac{1}{\scriptr} = \frac{1}{r} \sum_{n = 0}^\infty \qt(\frac{r'}{r})^n P_n (\cos\alpha)
+\end{align*}
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{fig5_54.png}
+    \caption{Field point $P$ for loop of line current}
+    \label{fig:5_54}
+\end{figure*}
+
+For the line charge, the vector potential is
+\begin{align*}
+    \vb A (\vb r) &= \frac{\mu_0 I}{4\pi} I \int \frac{\dd{\vb l'}}{\scriptr} \\
+    &= \frac{\mu_0 I}{4\pi} \sum_{n = 0}^\infty \frac{1}{r^{n+1}} \oint (r')^n P_n (\cos\alpha) \dd{\vb l'} \\
+    &= \frac{\mu_0 I}{4\pi} \qt[
+        \underbrace{\cancel{\frac{1}{r} \oint \dd{\vb l'}}}_{\text{mono}} 
+        + \underbrace{\frac{1}{r^2} \oint r' \cos\alpha \dd{\vb l'}}_{\text{dipole}}
+        + \underbrace{\frac{1}{r^3} \oint (r')^2 P_2 (\cos\alpha) \dd{\vb l'}}_{\text{quadrupole}}
+        + \dots
+    ]
+\end{align*}
+Where we can see that the monopole term is zero as magnetic monopoles do not exist.
+Looking at the dipole term
+\begin{align*}
+    \vb A_\text{dip} (\vb r) &= \frac{\mu_0 I}{4\pi r^2} \oint r' \cos\alpha \dd{\vb l'}
+\end{align*}
+where the integral has $\vu r \cdot \vb r'$ so
+\begin{align*}
+    \oint (\vu r \cdot \vb r) \dd{\vb l'} = - \vu r \cross \int \dd{\vb a'} = \int \dd{\vb a'} \cross \vu r
+\end{align*}
+This gives us
+\begin{align*}
+    \vb A_\text{dip} (\vb r) = \frac{\mu_0 I}{4\pi r^2}  \vb m \cross \vu r
+\end{align*}
+where
+\begin{align*}
+    \vb m = I \int \dd{\vb a'}
+\end{align*}
+The field lines rather go through the loop and because we have no monopole term.
 \end{document}

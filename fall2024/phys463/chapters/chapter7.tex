@@ -134,6 +134,9 @@ The molar heat capacity of a solids at $T = 300$ K are
     \end{cases}
 \end{align*}
 
+\newpage
+\lhead{Lecture 17: 10/29/24}
+\chead{Chapter 7.7, 7.9}
 \paragraph{Einstein's Solids:} All atoms have the same spring constant $\omega = \sqrt{k/m}$
 From the partition function, the average energy in 3D is
 \begin{align*}
@@ -141,5 +144,104 @@ From the partition function, the average energy in 3D is
         \frac{1}{2} + \frac{1}{e^{\beta \hbar \omega} - 1}
     )
 \end{align*}
+To find the heat capacity:
+\begin{align*}
+    c_V = \qt(\pdv{\bar E}{T})_V = \qt(\pdv{\bar E}{\beta}) \qt(\pdv{\beta}{T})
+\end{align*}
+so
+\begin{align*}
+    c_V &= 3N \hbar \omega \qt(
+        -\frac{1}{(e^{\beta \hbar \omega} - 1)^2} e^{\beta \hbar \omega} \hbar \omega
+    )
+    \qt(\frac{1}{kT^2}) \\
+    &= 3Nk \frac{\hbar^2 \omega^2}{T^2} \frac{e^{\beta \hbar \omega}}{(e^{\beta \hbar \omega} - 1)^2}
+\end{align*}
+Einstein was smart and defined an ``Einstein temperature'' $\Theta_E \equiv \hbar \omega / k$ and using 
+\begin{align*}
+    \beta = \frac{1}{kT} \implies \beta \hbar \omega = \frac{\hbar \omega}{kT} = \frac{\Theta_E}{T}
+\end{align*}
+so the heat capacity is (using $Nk = nR$)
+\begin{align*}
+    c_V = 3 n R \qt(\frac{\Theta_E}{T})^2 \frac{e^{\Theta_E/T}}{(e^{\Theta_E/T} - 1)^2}
+\end{align*}
 
+\paragraph{Temperature limits}
+\begin{itemize}
+    \item High $T$ limit: $\Theta_E \ll T$
+
+    Using the approximation $e^x \approx 1 + x$ for $x \ll 1$ we have
+    \begin{align*}
+        c_V = 3nR \qt(\frac{\Theta_E}{T})^2 \frac{1 + \Theta_E/T}{(\Theta_E/T)^2} = 3nR \qt(1 + \frac{\Theta_E}{T}) = 3nR
+    \end{align*}
+    For most solids $\Theta_E \approx 300$ K, but for Carbon $\Theta_E \approx 1300$ K---since the frequency of $\omega = \sqrt{k/m}$ is high for low molecular weight.
+    \item For a low temperature limit $\Theta_E \gg T$ and $\Theta_E / T \gg 1$ so
+    \begin{align*}
+        c_V \to 3nR \qt(\frac{\Theta_E}{T})^2 e^{-\Theta_E/T} \to 0 \qqtext{as} T \to 0
+    \end{align*}
+\end{itemize}
+
+\subsection{Maxwell velocity distribution}
+The average velocity of a distribution of particles in a box is
+\begin{align*}
+    \overline {\vb v} = 0
+\end{align*}
+For a simple molecule in a gas
+\begin{align*}
+    \epsilon = \frac{p^2}{2m} + \epsilon_\text{int}
+\end{align*}
+where we can ignore this constant internal energy due to rotation and vibration of a molecule.
+The probablity should also be proportional to the boltzmann factor
+\begin{align*}
+    P(\vb r, \vb p)\dd[3]{\vb r} \dd[3]{\vb p} \propto e^{-\beta \frac{p^2}{2m}} \dd[3]{\vb r} \dd[3]{\vb p}
+\end{align*}
+Since $\vb v = \vb p / m$ we have
+\begin{align*}
+    f(\vb r, \vb v) \dd[3]{\vb r} \dd[3]{\vb v} \equiv &\qqtext{mean \# of molecules in } \\
+    &\vb r \to \vb r + \dd{\vb r} \text{ and } \vb v \to \vb v + \dd{\vb v} \\
+    &\propto e^{-\beta \frac{m v^2}{2}} \dd[3]{\vb r} \dd[3]{\vb v}
+\end{align*}
+So we get
+\begin{align*}
+    f(\vb r, \vb v) \dd[3]{\vb r} \dd[3]{\vb v} = C e^{-\beta \frac{m v^2}{2}} \dd[3]{\vb r} \dd[3]{\vb v}
+\end{align*}
+where $C$ is the normalization factor taken from integrating over all space
+\begin{align*}
+    N = \int_{\vb r} \int_{\vb v} f(\vb r, \vb v) \dd[3]{\vb r} \dd[3]{\vb v}
+\end{align*}
+This function only depends on velocity because it does not matter where the particle is inside the box to get the velocity distribution so
+\begin{align*}
+    N &= \int_{\vb r} \dd[3]{\vb r} \int_{\vb v} f(\vb v) \dd[3]{\vb v} \\
+    &= V C\iiint_{-\infty}^\infty e^{-\beta \frac{m v^2}{2}} \dd[3]{\vb v} \quad v = \sqrt{v_x^2 + v_y^2 + v_z^2}, \quad \dd[3]{\vb v} = \dd{v_x} \dd{v_y} \dd{v_z}
+\end{align*}
+and using the Gaussian integral
+\begin{align*}
+    \int_{-\infty}^\infty e^{-ax^2} \dd{x} = \sqrt{\frac{\pi}{a}}
+\end{align*}
+we get the normalization factor
+\begin{align*}
+    N = V C \qt(\frac{2\pi}{\beta m})^{3/2}
+\end{align*}
+or
+\begin{align*}
+    C = \frac{N}{V} \qt(\frac{\beta m}{2\pi})^{3/2}
+\end{align*}
+Now that we are equipped with the normalization factor we can find the \emph{Maxwell velocity distribution}
+\begin{align*}
+    f(\vb v) \dd[3]{\vb r} \dd[3]{\vb v} = \frac{N}{V} \qt(\frac{\beta m}{2\pi})^{3/2} e^{-\beta \frac{m v^2}{2}} \dd[3]{\vb r} \dd[3]{\vb v}
+\end{align*}
+
+\paragraph{Worksheet}
+\begin{enumerate}
+    \item [1.] IN a laser absorption experiment
+    \begin{align*}
+        V f(\vb v) \dd{v_x} &= \frac{N}{V} \qt(\frac{\beta m}{2\pi})^{3/2} e^{-\beta \frac{m v_x^2}{2}} \dd{v_x} \int  e^{-\beta \frac{m v^2}{2}} \dd{v_y} \dd{v_z}\\
+        &= N \qt(\frac{\beta m}{2\pi})^{3/2} \frac{2\pi}{\beta m} e^{-\beta \frac{mv_x^2}{2}} \dd{v_x} \\
+        g(\vb v) \dd{v_x} &=  N \qt(\frac{\beta m}{2\pi})^{1/2} e^{-\beta \frac{m v_x^2}{2}} \dd{v_x}
+    \end{align*}
+\end{enumerate}
+
+\newpage
+\lhead{Lecture 18: 10/31/24}
+
+Maxwell velocity distribution cont'd
 \end{document}
