@@ -261,7 +261,7 @@ Using the definition $\Delta S = Q / T$ or latent heat of transformation from ph
 
 \newpage
 \chead{Chapter 8.7}
-\subsection{Chemical Equilibrium}
+\subsection{Chemical Equilibrium: systems with several components}
 E.g. 
 \begin{align*}
     2H_2 + O_2 \rightleftharpoons 2H_2O
@@ -323,4 +323,49 @@ If there is only 1 species of a molecule then
     G = G(T,p, N) = N g' (T,p) \implies \mu = g'(T,p)
 \end{align*}
 
+\newpage
+\lhead{Lecture 21: 11/12/24}
+\chead{Chapter 8.9}
+\subsection{General conditions for chemical equilibrium}
+For $m$ different molecules labels $B_1, B_2, \dots, B_m$: e.g.
+\begin{gather*}
+    2H_2 + O_2 \rightleftharpoons 2H_2O \\
+    2H_2 + O_2 - 2H_2O = 0
+\end{gather*}
+and $b_1, b_2, \dots, b_m$ are the stoichiometric coefficients so
+\begin{align*}
+    \sum b_i B_i = 0
+\end{align*}
+So for the water example $m = 3$:
+\begin{gather*}
+    B_1 = H_2, \quad B_2 = O_2, \quad B_3 = H_2O \\
+    b_1 = 2, \quad b_2 = 1, \quad b_3 = -2
+\end{gather*}
+For $N_i$ number of $B_i$ molecules
+\begin{align*}
+    dN_i = \lambda b_i
+\end{align*}
+where $\lambda$ is a constant.
+
+\begin{itemize}
+    \item For an isolated system, the entropy $S$ is maximized 
+    \begin{gather*}
+        dS = 0 \\
+        V = \textrm{constant}  \implies dV = 0 \\
+        \bar E = \textrm{constant} \implies dE = 0
+    \end{gather*}
+    so from the previous lecture
+    \begin{align*}
+        dS = \frac{1}{T} dE + \frac{P}{T} dV - \sum_i \frac{\mu_i}{T} dN_i
+        \implies \sum \frac{\mu_i}{T} dN_i = 0
+    \end{align*}
+    or
+    \begin{align*}
+        \sum_{i = 1}^m \mu_i b_i = 0
+    \end{align*}
+    So if we measure the $\mu_1, \mu_2, \mu_3$ for the water example, we can determine the equilibrium condition
+    \begin{align*}
+        \sum b_i \mu_i = 0 = 2 \mu_1 + \mu_2 - 2 \mu_3
+    \end{align*}
+\end{itemize}
 \end{document}

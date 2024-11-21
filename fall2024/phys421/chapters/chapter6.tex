@@ -272,4 +272,135 @@ Then using Ampere's law; an amperian circular loop far away
     \oint \vb B \cdot \dd{\vb l} = \mu_0 (I_J + I_K) = 0 \implies \vb B = 0
 \end{align*}
 but inside the cyclinder it starts from zero and increases until we get to the surface where it drops to zero again.
+
+\newpage
+\lhead{Lecture 21: 11/9/24}
+\subsection{The H Field}
+
+\subsubsection{Ampere's Law in Magnetized Materials}
+In bound currents,
+\begin{align*}
+    \vb J_b = \curl \vb M \qor \vb K_b = \vb M \cross \vu n
+\end{align*}
+where similar to the electric case $\rho_\text{tot} = \rho_\text{free} + \rho_\text{bound}$, 
+we have a total current density
+\begin{align*}
+    \vb J_\text{tot} = \vb J_\text{free} + \vb J_b
+\end{align*}
+and from Ampere's law
+\begin{align*}
+    \frac{1}{\mu_0} (\curl \vb B) = \vb J_\text{tot} &= \vb J_\text{free} + \vb J_b \\
+    &= \vb J_\text{free} + \curl \vb M
+\end{align*}
+and moving all the curl terms to one side
+\begin{align*}
+    \curl \qt(\frac{1}{\mu_0} \vb B - \vb M) = \vb J_\text{free}
+\end{align*}
+or defining the auxiliary field 
+\begin{align*}
+    \boxed{\curl \vb H = \vb J_\text{free}}
+\end{align*}
+In integral form we can use the Stoke's theorem to get
+\begin{align*}
+    \boxed{
+        \oint \vb H \cdot \dd{\vb l} = I_\text{free}
+    }
+\end{align*}
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{fig6_19_20.png}
+    \caption{At the cross section, the currents from the dipoles point downward while there is a net current $\vb K_b$ upwards at the boundary.}
+    \label{fig:gr6_19}
+\end{figure*}
+\paragraph{Example} A long copper rod of radius $R$, carrying a uniform free current $I$\dots find $\vb H$:
+
+Copper is a weakly diamagnetic material so the magnetization responding to the field opposes it
+
+\begin{itemize}
+    \item Fields $\sim \vu*\phi$
+    \item Magnetizations $\sim \vu*\phi$
+\end{itemize}
+So for an Amperian loop of radius $s$ inside the rod we have
+\begin{gather*}
+    \oint \vb H \cdot \dd{\vb l} = H (2\pi s) = I_\text{f, enc} = I \frac{\pi s^2}{\pi R^2} \\
+    \implies \vb H_\text{in} = I \frac{s}{2\pi R^2} \vu*\phi \quad s < R
+\end{gather*}
+For outside $s > R$,
+\begin{align*}
+    \vb H_\text{out} = I \frac{1}{2\pi s} \vu*\phi \quad s > R
+\end{align*}
+So the H-field increases linearly with $s$ inside the rod and drops off by $\sim 1/s$ outside the rod
+Outside the rod, we can find the magnetic field since the magnetization is zero $\vb M = 0$ so
+\begin{align*}
+    \vb B_\text{in} = \frac{\mu_0 I}{2\pi s} \vu*\phi
+\end{align*}
+but we can't readily find the B-field inside since we are not sure what $\vb M$ is inside.
+
+\subsubsection{Deceptive Parallels}
+From electrostatics
+\begin{align*}
+    \div \vb D &= \frac{\rho_\text{free}}{\epsilon_0} \cancel{\to} \textrm{Coulomb's Law} \to \curl \vb D \neq 0 \\
+    \div \vb E &= \frac{\rho}{\epsilon_0} \to \vb E = \ke \frac{q}{r^2} \vu r \to \curl \vb E = 0
+\end{align*}
+but in magnetostatics
+\begin{align*}
+    \div \vb B &= 0 \\
+    \div \vb H &= \cancel{\frac{1}{\mu_0} \div \vb B} - \div \vb M = -\div \vb M
+\end{align*}
+where the source---e.g., a bar magnet $\div \vb M \neq 0$---will elucidate a B-field even if $\vb H = 0$.
+
+\subsubsection{Boundary Conditions}
+From $\div \vb H = - \div \vb M$,
+\begin{align*}
+    H_{\perp, \text{above}} - H_{\perp, \text{below}} = -(M_{\perp, \text{above}} - M_{\perp, \text{below}})
+\end{align*}
+where the curl $\curl \vb H = \vb J_\text{free}$ so
+\begin{align*}
+    \vb H_{\parallel, \text{above}} - \vb H_{\parallel, \text{below}} = \vb K_f \cross \vu n
+\end{align*}
+which points in opposite directions i.e. a discontinuity of the H-field above and below the sheet current.
+
+For the B-field
+\begin{align*}
+    B_{\perp, \text{above}} - B_{\perp, \text{below}} = 0
+\end{align*}
+for the tangential components and
+\begin{align*}
+    \vb B_{\parallel, \text{above}} - \vb B_{\parallel, \text{below}} = \mu_0 \vb K_f \cross \vu n
+\end{align*}
+for a continuous B-field across the boundary.
+
+\subsection{Linear (and Nonlinear) Media}
+
+\subsubsection{Magnetic Susceptibility + Permeability}
+From electrostatics:
+\begin{align*}
+    \vb P = \epsilon \chi_e \vb E + O(\vb E^2)
+\end{align*}
+where we can assume a linear media and omit the higher order $O(\vb E^2)$ terms.
+
+In magnetostatics:
+\begin{align*}
+    \vb M = \chi_m \vb H + O(\vb H^2)
+\end{align*}
+where $\chi_m$ is the magnetic susceptibility and we omit the higher order terms for a linear media.
+This is roughly $\chi_m \sim 10^{-5}$ for typical values. In relation to the B-field
+\begin{align*}
+    \vb B = \mu_0 (\vb H + \vb M) = \mu_0 (1 + \chi_m) \vb H = \mu \vb H \qquad \mu = \mu_0 (1 + \chi_m)
+\end{align*}
+In free space $\chi_m = 0$ and $\mu = \mu_0$.
+
+\paragraph{Example} An infinite solenoid, $n$ turnes/length, current $I$, filled with linear material $\chi_m$\dots find field in solenoid.
+\begin{align*}
+    \oint \vb H \vdot \dd{\vb l} = I_\text{f, enc} \implies \vb H = n I \vu z \qqtext{ inside}
+\end{align*}
+So the B-field is
+\begin{align*}
+    \vb B = \mu \vb H = \mu_0 (1 + \chi_m) \vb H
+\end{align*}
+\begin{itemize}
+    \item Paramagnets $\chi_m > 0$
+    \item Diamagnets $\chi_m < 0$
+\end{itemize}
 \end{document}

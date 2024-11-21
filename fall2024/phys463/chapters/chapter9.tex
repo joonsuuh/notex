@@ -1,0 +1,328 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+\pagestyle{fancy}
+
+\lhead{Lecture 21: 11/12/24}
+\chead{Chapter 9.1-9.2}
+\rhead{PHYS 463}
+
+\section{Quantum Statistics}
+
+\subsection{Identical particles and symmetry}
+From Gibbs' paradox
+\begin{align*}
+    Z = = \frac{Z_1^N}{N!}
+\end{align*}
+where we have indistinguishable particles.
+
+\begin{itemize}
+    \item Classical particles: $A, B, C, \dots$ where we have distinguishable particles
+    \item Quantum particles: $A, A, A, \dots$ which are indistinguishable\dots but we also have two types of quantum particles
+    \begin{itemize}
+        \item Bosons: Integer spin, symmetric total wave function $\Psi$
+        e.g. photons, gamma rays
+        \item Fermions: Half-integer spin, antisymmetric total wave function $\Psi \to$ pauli exclusion principle, 
+        e.g. electrons
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Worksheet}
+\begin{itemize}
+    \item [1.] Assume 2 partilces and each particle can be in one of three possible staes,
+    \begin{align*}
+        r = 1, 2, 3
+    \end{align*}
+    \begin{itemize}
+        \item [(1)] Maxwell-Boltzmann statistics (classical particle) total number of available states
+        \begin{align*}
+            \Omega = 3^2 = 9
+        \end{align*}
+        \item [(2)] Bose-Einstein statistics (bosons) total number of available states
+        \begin{align*}
+            \Omega = 3 + 3 = 6 
+        \end{align*}
+        \item [(3)] Fermi-Dirac statistics (fermions) we take away the same states occupations
+        \begin{align*}
+            \Omega = 6 - 3 = 3
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Formulation of quantum statistical problem}
+Consider a gas of particles in volume $V$ at temperature $T$.
+\begin{itemize}
+    \item $\epsilon_r$: is the energy of a particle in state $r$
+    \item $n_r$: \# of particles in state $r$
+    \item $R$: specify all possible states of the whole system
+\end{itemize}
+So the total energy of the system is
+\begin{align*}
+    E_R = n_1 \epsilon_1 + n_2 \epsilon_2 + \dots = \sum_r n_r \epsilon_r
+\end{align*}
+where $\sum_r n_r = N$. The partition function is
+\begin{align*}
+    Z = \sum_R e^{-\beta E_R} = \sum_R e^{-\beta \sum_r n_r \epsilon_r}
+\end{align*}
+Since the probability of having $\{n_1, n_2, \dots, n_r, \dots\}$ state is
+\begin{align*}
+    \frac{e^{-\beta E_R}}{Z}
+\end{align*}
+for a state $R$, the mean number of particles in states $S$ is
+\begin{align*}
+    \bar n_S = \frac{\sum_R n_S e^{-\beta E_R}}{Z}
+\end{align*}
+or
+\begin{align*}
+    = \frac{1}{Z} \sum_R \qt(-\frac{1}{\beta} \pdv{Z}{\epsilon_S})
+\end{align*}
+
+\newpage
+\lhead{Lecture 22: 11/14/24}
+\chead{Chapter 9.3}
+\begin{itemize}
+    \item Bose-Einstein Statistics (BE)
+    \begin{align*}
+        \sum n_R = N
+    \end{align*}
+    \item Photon statistics: no restriction of particle number
+    \item Fermi-Dirac Statistics (FD): for $n_r = 0, 1$
+\end{itemize}
+Using the mulitplication math thing
+\begin{align*}
+    e^{-\beta (n_1 \epsilon_1 + n_2 \epsilon_2 + \dots)} = e^{-\beta n_s \epsilon_s} e^{-\beta n_1 \epsilon_1 + \dots}
+\end{align*}
+where the second term doesn't have a $n_s$ term. So the mean number of particles in state $S$ is
+\begin{align*}
+    \bar n_S &= \frac{1}{Z} \sum_R n_S e^{-\beta E_R} \\ 
+    &= \frac{1}{Z} \sum_R n_S e^{-\beta n_s \epsilon_s} e^{-\beta n_1 \epsilon_1 + \dots} \\
+    &= \frac{
+        \sum_{R} \qt(
+            n_s e^{-\beta n_s \epsilon_s} e^{-\beta n_1 \epsilon_1 + \dots}
+        )
+    }
+    {
+        \sum_R \qt(
+            e^{-\beta n_s \epsilon_s} e^{-\beta n_1 \epsilon_1 + \dots}
+        )
+    } \\
+    &= \frac{
+        \sum_{n_s} \qt(
+            n_s e^{-\beta n_s \epsilon_s} \sum_{n_1, n_2, \dots}^{(S)} e^{-\beta n_1 \epsilon_1 + \dots}
+        )
+    }
+    {
+        \sum_{n_s} \qt(
+            e^{-\beta n_s \epsilon_s} \sum_{n_1, n_2, \dots}^{(S)} e^{-\beta n_1 \epsilon_1 + \dots}
+        )
+    }
+\end{align*}
+\paragraph{Photon statistics} No restriction on \# of particles $\implies$ the sum $\sum_{n_1, n_2, \dots}$ is always infinite,
+so the second term cancels out
+\begin{align*}
+    \bar n_S = \frac{
+        \sum_{n_s} n_s e^{-\beta n_s \epsilon_s}
+    }
+    {
+        \sum_{n_s} e^{-\beta n_s \epsilon_s}
+    } -\frac{1}{\beta} \pdv{\epsilon_s} \ln(\sum_{n_s = 0}^\infty e^{-\beta n_s \epsilon_s})
+\end{align*}
+and using the geometric series
+\begin{align*}
+    &= -\frac{1}{\beta} \pdv{\epsilon_s} \ln \frac{1}{1 - e^{-\beta \epsilon_s}} \\
+    &= \frac{1}{\beta} \pdv{\epsilon_s} \ln(1 - e^{-\beta \epsilon_s}) \\
+    &= \frac{1}{\beta} \frac{\beta e^{-\beta \epsilon_s}}{1 - e^{-\beta \epsilon_s}} \\
+    &= \frac{1}{e^{\beta \epsilon_s} - 1}
+\end{align*}
+
+\paragraph{Fermi-Dirac statistics} For $n_r = 0, 1$ (the easier one)
+\begin{align*}
+    \bar n_S &= \frac{
+        0 + e^{-\beta \epsilon_s} Z_S (N - 1)
+    }
+    {
+        Z_S (N) + e^{-\beta \epsilon_S} Z_S (N - 1)
+    } \\
+    &= \frac{1}{
+        \qt(
+            \frac{Z_S (N)}{Z_S (N - 1)} e^{-\beta \epsilon_s} + 1
+        )
+    }
+\end{align*}
+where the $Z_S$ ommits the $n_s$ term
+\begin{align*}
+    Z_S (N) \equiv \sum_{n_1, n_2, \dots}^{(S)} e^{-\beta n_1 \epsilon_1 + \dots}
+\end{align*}
+To relate $Z_S (N)$ and $Z_S (N - 1)$ for large $N$:
+\begin{align*}
+    \ln Z_S (N-1) = \ln Z_S (N) - \pdv{\ln Z_S (N)}{N} \cdot 1
+\end{align*}
+where the $\pdv{\ln Z_S (N)}{N} = \alpha_S$ so
+\begin{gather*}
+    Z_S (N - 1) = Z_S (N) e^{-\alpha_S} \\
+    \implies \frac{Z_S (N)}{Z_S (N - 1)} = e^{\alpha_S}
+\end{gather*}
+ASSUMPTION: Since the sum of $Z_S$ includes \emph{many} states,
+$\alpha_S$ cannot does not depend too much on $S$, so we assume a constant
+\begin{align*}
+    \alpha_S = \alpha = \pdv{\ln Z}{N}
+\end{align*}
+So the mean number of particles in state $S$ is
+\begin{align*}
+    \bar n_S = \frac{1}{e^{\alpha + \beta \epsilon_s} + 1}
+\end{align*}
+Since we know the relation
+\begin{align*}
+    F = -kT \ln Z \implies \pdv{F}{N} = -kT \pdv{\ln Z}{N} = \mu \implies \alpha = -\beta \mu
+\end{align*}
+So we get the Fermi-Dirac distribution
+\begin{align*}
+    \bar n_S = \frac{1}{e^{\beta (\epsilon_s - \mu)} + 1}
+\end{align*}
+
+\paragraph{Worksheet} Bose-Einstein stats using
+\begin{align*}
+    \frac{Z_S(N)}{Z_S(N-1)} = e^{\alpha}
+\end{align*}
+The average number of particles in state $S$ is
+\begin{align*}
+    \bar n_S &= \frac{
+        0 + e^{-\beta \epsilon_s} Z_S (N - 1) + 2 e^{-\beta \epsilon_s} Z_S (N - 2) + \dots
+    }
+    {
+        Z_S (N) + e^{-\beta \epsilon_s} Z_S (N - 1) + e^{-2\beta \epsilon_s} Z_S (N - 2) + \dots
+    }
+\end{align*}
+taking out a $Z_S (N)$ term for each e.g.
+\begin{align*}
+    e^{-\beta \epsilon_s} Z_S (N - 1) = Z_S(N) \qt(e^{-\beta \epsilon_s} \frac{Z_S(N - 1)}{Z_S(N)}) = Z_S(N) e^{-\beta \epsilon_s}e^{-\alpha}
+\end{align*}
+and for the next term
+\begin{align*}
+    e^{-2\beta \epsilon_s} Z_S (N - 2) &= Z_S(N) e^{-2\beta \epsilon_s} \frac{Z_S(N - 2)}{Z_S(N)} \\
+    &= Z_S(N) e^{-2\beta \epsilon_s} \frac{Z(N - 2)}{Z(N - 1)} e^{-\alpha} \\
+    &= Z_S(N) e^{-2\beta \epsilon_s} e^{-2\alpha}
+\end{align*}
+So
+\begin{align*}
+    \bar n_S = \frac{
+        Z_S(N) \qt(
+            0 + e^{-\beta \epsilon_s} e^{-\alpha} + e^{-2\beta \epsilon_s} e^{-2\alpha} + \dots
+        )
+    }
+    {
+        Z_S(N) \qt(
+            1 + e^{-\beta \epsilon_s} e^{-\alpha} + e^{-2\beta \epsilon_s} e^{-2\alpha} + \dots
+        )
+    }
+\end{align*}
+
+\newpage
+\lhead{Lecture 23: 11/19/24}
+\chead{Chapter 9.4-9.7}
+From last time
+\begin{itemize}
+    \item Photon Statistics (Boson):
+    \begin{align*}
+        \bar n_s = \frac{1}{e^{\beta \epsilon_s} - 1}
+    \end{align*}
+    \item Bose-Einstein Statistics:
+    \begin{align*}
+        \bar n_s = \frac{1}{e^{\beta (\epsilon_s - \mu)} - 1}
+    \end{align*}
+    \item Fermi-Dirac Statistics: 
+    \begin{align*}
+        \bar n_s = \frac{1}{e^{\beta (\epsilon_s - \mu)} + 1}
+    \end{align*}
+\end{itemize}
+Today: Partition function for quantum statistics\dots
+\begin{align*}
+    Z = \sum_R e^{-\beta (n_1 \epsilon_1 + n_2 \epsilon_2 + \dots)}
+\end{align*}
+where for BE and FD, $\sum n_r = N$
+
+\subsection{Photon statistics}
+\begin{align*}
+    Z &= \sum_{n_1, n_2, \dots} e^{-\beta n_1 \epsilon_1 + \dots} \\
+    &= \underbrace{\sum_{n_1 = 0}^\infty e^{-\beta n_1 \epsilon_1}}_{1 + e^{-\beta \epsilon_1} + e^{-2\beta \epsilon_1} + \dots} \sum_{n_2 = 0}^\infty e^{-\beta n_2 \epsilon_2} \dots \\
+    &= \frac{1}{1 - e^{-\beta \epsilon_1}} \frac{1}{1 - e^{-\beta \epsilon_2}} \dots \\
+\end{align*}
+So the log of the partition function is
+\begin{align*}
+    \ln Z &= \sum_r \ln \frac{1}{1 - e^{-\beta \epsilon_r}} \\
+    &= -\sum_r \ln (1 - e^{-\beta \epsilon_r})
+\end{align*}
+The mean number of particles in one state $\epsilon_S$ is
+\begin{align*}
+    \bar n_S &= -\frac{1}{\beta} \pdv{\ln Z}{\epsilon_S} \\
+    &= \frac{1}{\beta} \frac{- (-\beta) e^{-\beta \epsilon_S}}{1 - e^{-\beta \epsilon_S}} \\ 
+    &= \frac{e^{-\beta \epsilon_S}}{1 - e^{-\beta \epsilon_S}} \\
+    & = \frac{1}{e^{\beta \epsilon_S} - 1}
+\end{align*}
+
+\subsection{Bose-Einstein statistics}
+The partition function for BE:
+\begin{align*}
+    Z = \sum_R = e^{-\beta (n_1 \epsilon_1 + n_2 \epsilon_2 + \dots)}
+\end{align*}
+where $\sum_r n_r = N$ so $Z(N')$ has a rapidly increasing with $N'$ which is a variable.
+
+$Z(N') e^{-\alpha N'}$ has a sharp maximum, so if we choose $\alpha$, this maximum happens at
+$N = N'$. First we define a Grand Partition function
+\begin{align*}
+    \mathcal{Z} \equiv \sum_{N'} Z(N') e^{-\alpha N'}
+\end{align*}
+so
+\begin{align*}
+    \mathcal{Z} &= \sum_R e^{-\beta(n_1 \epsilon_1 + n_2 \epsilon_2 + \dots)} e^{-\alpha (n_1 + n_2 + \dots)} \\
+    &= \sum_{n_1 = 0}^\infty e^{-\beta(n_1 \epsilon_1) - \alpha n_1} \sum_{n_2 = 0}^\infty e^{-\beta(n_2 \epsilon_2) - \alpha n_2} \dots \\
+    &= \frac{1}{1 - e^{-\beta \epsilon_1} e^{-\alpha}} \frac{1}{1 - e^{-\beta \epsilon_2} e^{-\alpha}} \dots
+\end{align*}
+where
+\begin{align*}
+    \ln \mathcal{Z} = - \sum_r \ln(1 - e^{-(\alpha + \beta e_r)})
+\end{align*}
+And using the taylor series approximation $\ln Z = \alpha N + \ln \mathcal{Z}$, and the maximum condition
+\begin{align*}
+    \pdv{\ln(Z(N') e^{-\alpha N'})}{N'}\eval_{N' = N} = 0
+\end{align*}
+and
+\begin{align*}
+    \pdv{N} \ln Z - \alpha = 0 \implies \alpha = \alpha(N)
+\end{align*}
+So we get
+\begin{align*}
+    N + \pdv{\ln\mathcal{Z}}{\alpha} = 0 \implies \pdv{\ln{Z(N)}}{\alpha} = 0
+\end{align*}
+
+\paragraph{Worksheet} From BE
+\begin{align*}
+    \ln (Z) = -\beta \mu N - \sum_R \ln(1 - e^{-\beta (\epsilon_r - \mu)})
+\end{align*}
+\begin{itemize}
+    \item [1.] Determine $\bar n_S$ for BE
+    \begin{align*}
+        \bar n_S &= \frac{1}{e^{\beta (\epsilon_S - \mu)} - 1} \\
+        &= \frac{1}{\beta} \frac{-\beta e^{-\beta (\epsilon_S - \mu)}}{1 - e^{-\beta (\epsilon_S - \mu)}} \\
+        &= \frac{e^{-\beta (\epsilon_S - \mu)}}{1 - e^{-\beta (\epsilon_S - \mu)}} \\
+        &= \frac{1}{e^{\beta (\epsilon_S - \mu)} - 1}
+    \end{align*}
+    \item [2.] Partition function for Fermions (Fermi-Dirac statistics):
+    Since each $n_r$ can be 0 or 1, the partition function is
+    \begin{align*}
+        \mathcal{Z} &= \sum_{n_1 = 0}^1 e^{-\beta n_1 \epsilon_1 - \alpha n_1} \sum_{n_2 = 0}^1 e^{-\beta n_2 \epsilon_2 - \alpha n_2} \dots \\
+        &= \qt(1 + e^{-\beta \epsilon_1 - \alpha}) \qt(1 + e^{-\beta \epsilon_2 - \alpha}) \dots
+    \end{align*}
+    so 
+    \begin{align*}
+        \ln\mathcal{Z} &= \sum_r \ln(1 + e^{-\beta \epsilon_r - \alpha})
+    \end{align*}
+    Thus the partition function is
+    \begin{align*}
+        \ln Z &= \alpha N + \ln \mathcal{Z} \\
+        &= \alpha N + \sum_r \ln(1 + e^{-\beta \epsilon_r - \alpha})
+    \end{align*}
+\end{itemize}
+\end{document}
