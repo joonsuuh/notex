@@ -1,0 +1,622 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+
+\pagestyle{fancy}
+\lhead{Lecture 1: 1/13/24}
+\chead{[insert chapter]}
+\rhead{MATH 310}
+
+
+\section{The Foundations: Logic and Proofs}
+
+Consider the following argument:
+\begin{quotation}
+    i eat chocolate if i am depressed
+
+    i am not depressed
+
+    therefore i am not eating chocolate
+\end{quotation}
+Obviously, the logic is flawed\dots but how do we write this in a more formal way?
+
+\subsection{Propositional Logic}
+
+A \emph{statement} is a senetence or mathematical expression that is either \emph{true} or
+\emph{false}---e.g.
+\begin{itemize}
+    \item $P:$ The number 3 is odd
+    \item $Q:$ The number 6 is even
+    \item $R:$ The number 4 is odd
+\end{itemize}
+
+\subsection*{\underline{Not a statement}}
+\begin{itemize}
+    \item $x > 2$ (the true value depends on $x$)
+    \item $x = 2, \; t + 4q = 17$
+\end{itemize}
+
+\subsection*{\underline{Combining statements}}
+
+Given statements $P$ and $Q$:
+\begin{itemize}
+    \item ``$P$ and $Q$'' is a statement ($P \land Q$)
+    \item ``$P$ or $Q$'' is a statement ($P \lor Q$)
+\end{itemize}
+
+We can construct a truth table to represent the truth values of $P \land Q$ and $P \lor Q$:
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c}
+        $P$ & $Q$ & $P \land Q$ \\
+        \hline
+        T & T & T \\
+        T & F & F \\
+        F & T & F \\
+        F & F & F
+    \end{tabular}
+    % add vertical separator
+    \hspace{2cm}
+    \begin{tabular}{c|c|c}
+        $P$ & $Q$ & $P \lor Q$ \\
+        \hline
+        T & T & T \\
+        T & F & T \\
+        F & T & T \\
+        F & F & F
+    \end{tabular}
+    \caption{Truth tables for conjunction ($\land$) and disjunction ($\lor$)}
+\end{table}
+
+\subsection*{\underline{Conditional Statements}}
+
+The expression:
+\begin{quote}
+    If $P$, then $Q$ (or $P \Rightarrow Q$)
+\end{quote}
+is a \emph{conditional statement}.
+% insert truth table for conditional statements
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c}
+        $P$ & $Q$ & $P \Rightarrow Q$ \\
+        \hline
+        T & T & T \\
+        T & F & F \\
+        F & T & T \\
+        F & F & T
+    \end{tabular}
+    \caption{Truth table for conditional statements}
+\end{table}
+
+\paragraph{Example:}
+\begin{quote}
+    $P(n)$: The integer $n$ is odd
+
+    $Q(n)$: The integer $n^2$ is odd
+\end{quote}
+$P(n)$ and $Q(n)$ are not statements, but they are \emph{predicates} (statements once $n$ is
+determined). So the conditional statement is
+
+\begin{quote}
+    $P(n) \Rightarrow Q(n)$: If the integer $n$ is odd, then the integer $n^2$ is odd
+\end{quote}
+
+\subsection*{\underline{Proving a statement of the form $P \Rightarrow Q$}}
+
+\begin{enumerate}
+    \item Direct proof: Assume $P$ is true and ``prove'' that $Q$ is also true
+\end{enumerate}
+
+
+\newpage
+\lhead{Lecture 2: 1/15/24 by Jesus!}
+
+Example: Let's construct a truth table for $(P \lor Q) \Rightarrow R$
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c|c|c}
+        $P$ & $Q$ & $R$ & $P \lor Q$ & $(P \lor Q) \Rightarrow R$ \\
+        \hline
+        T & T & T & T & T \\
+        T & F & T & T & T \\
+        T & F & F & T & F \\
+        F & T & T & T & T \\
+        F & F & T & F & T \\
+        F & F & F & F & T
+    \end{tabular}
+    \caption{Truth table for $(P \lor Q) \Rightarrow R$}
+\end{table}
+
+Where we want to prove
+\begin{quote}
+    If $n$ is odd, then $n^2$ is odd.
+\end{quote}
+The first proposition is symbolically $O(n): n$ is odd, and the conditional statement is
+\begin{align*}
+    O(n) \Rightarrow O(n^2)
+\end{align*}
+\paragraph{Def}
+
+First we define and integer $n$ odd if $n = 2k + 1$ for some integer $k$. An integer is even if
+$n = 2k$ for some integer $k$. 
+
+\paragraph{Remark}
+
+The set of integers
+\begin{align*}
+    \mathbb{Z} = \{ \dots, -3, -2, -1, 0, 1, 2, 3, \dots \}
+\end{align*}
+where $k$ is an integer is denoted as $k \in \mathbb{Z}$.
+
+\paragraph{Proof}
+
+Suppose $n$ is odd. So by definition, $n = 2k + 1$ for some $k \in \mathbb{Z}$.
+
+\begin{align*}
+    \implies n^2 = (2k + 1) (2k + 1) = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1
+\end{align*}
+
+Since $2k^2 + 2k$ is an integer, we have that $n^2$ is in fact odd. $\square$
+
+\paragraph{Another Example} (Because students love examples)
+Suppose $x$ and $y$ are positive numbers. Prove that if $x < y$ then $x^2 < y^2$.
+
+\paragraph{Sol}
+
+Suppose $x$ and $y$ are positive real numbers and further suppose that $x < y$. A fundamental
+property of $<$ on the real numbers is that if $a < b$ and $c > 0$, then $a \cdot c < b \cdot c$
+since if 
+\begin{align*}
+    a < b \implies 0 < b - a
+\end{align*}
+and the product of the two positve numbers is positive, i.e.
+\begin{align*}
+    0 < c(b - a) = c b - c a
+\end{align*}
+Which now implies $ca < cb$. In this case, if $a = x, b = y, c = x$, then
+\begin{align*}
+    x^2 = x \cdot x < x \cdot y
+\end{align*}
+Now if we swap and use $c = y$, we have
+\begin{align*}
+    x \cdot y < y \cdot y = y^2
+\end{align*}
+Concatenating the two inequalities, we find that
+\begin{align*}
+    x^2 = x \cdot x < x \cdot y < y \cdot y = y^2
+\end{align*}
+Because $x$ and $y$ were arbitrary positive numbers, the conclusion holds. $\square$
+
+\subsection{Logical Equivalence}
+
+Two statements are \emph{logically equivalent} if they have the same truth value, e.g. $x$ \& $y$
+are real numbers
+\begin{quote}
+    $P: \; x \cdot y = 0$
+
+    $Q: \; x = 0$ or $y = 0$
+\end{quote}
+are equivalence since they are either both T or both F.
+
+\paragraph{}
+
+If $P$ and $Q$ are equivalent we say $P$ if and only if $Q$ and we write
+\begin{align*}
+    P \iff Q \qqtext{or} P \equiv Q
+\end{align*}
+which is a \emph{biconditional statement}. Note that $P$ \& $Q$ are predicates but $P \iff Q$ is a
+statement.
+
+\paragraph{Example} $P, Q,$ and $R$ are statements
+\begin{align*}
+    ((P \lor Q) \Rightarrow R) \iff ((P \Rightarrow R)) \land (Q \Rightarrow R)
+\end{align*}
+% truth table
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c|c}
+        $P$ & $Q$ & $R$ & $P \lor Q$ & $P \Rightarrow R$ & $Q \Rightarrow R$ & $(P \lor Q) \Rightarrow R$  & $(P \Rightarrow R) \land (Q \Rightarrow R)$ \\
+        \hline
+        T & T & T & T & T & T & T & T \\
+        T & T & F & T & F & F & F & F \\
+        T & F & T & T & T & T & T & T \\
+        T & F & F & T & F & T & F & F \\
+    \end{tabular}
+    \caption{Truth table}
+\end{table}
+
+\newpage
+\lhead{Lecture 3: 1/17/24 by Jesus (Sanchez)!}
+
+\paragraph{\underline{Contrapositive}}
+
+The \emph{contrapositive} state is
+
+\begin{quote}
+    If not $Q$, then not $P$
+\end{quote}
+
+\paragraph{Claim}
+
+The statement $P \Rightarrow Q$ and its contrapositive $\neg Q \Rightarrow \neg P$ are logically 
+equivalent.
+
+\paragraph{Proof}
+
+For fun watch the YouTube video \href{https://youtu.be/QcLfb0PhfO0?si=ngcYSId-1LFhW5fA}{Not Knot}
+
+\begin{table*}[h]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c}
+        $P$ & $Q$ & $P \Rightarrow Q$ & $\neg Q$ & $\neg P$ & $\neg Q \Rightarrow \neg P$ \\
+        \hline
+        T & T & T & F & F & T \\
+        T & F & F & T & F & F \\
+        F & T & T & F & T & T \\
+        F & F & T & T & T & T
+    \end{tabular}
+    \caption{Truth table proof}
+\end{table*}
+
+\paragraph{Remark} 
+
+A proof of a condition statement by proving the contrapositive is called a \emph{contrapositive proof}.
+
+\paragraph{Example}
+
+Let's prove the statement
+\begin{quote}
+    Suppose $x$ is a real number. If $x^2 + 5x < 0$, then $x <0$
+\end{quote}
+using a contrapositive proof.
+
+\paragraph{Proof}
+
+\begin{align*}
+    P:& \; x^2 + 5x < 0 \\
+    Q:& \; x < 0
+\end{align*}
+So $\neg Q \Rightarrow \neg P$ is
+\begin{quote}
+    If $x \geq 0$, then $x^2 + 5x \geq 0$
+\end{quote}
+Suppose $x$ is a real number satisfying $x \geq 0$. Then $5x \geq 0$ \& $x^2 \geq 0$. Thus
+\begin{align*}
+    x^2 + 5x \geq 0
+\end{align*}
+Because $x \geq 0$ was arbitrary, we have $\neg Q \Rightarrow \neg P$.
+
+\paragraph{\underline{Converse}}
+
+$Q \Rightarrow P$ is called the \emph{converse} of $P \Rightarrow Q$.
+
+\paragraph{Example}
+
+\begin{quote}
+    $P$: $f$ is differentiable at $x = 0$
+
+    $Q$: $f$ is continuous at $x = 0$
+\end{quote}
+
+As an example, $f = |x|$ is continuous at $x = 0$ but not differentiable at $x = 0$---so here
+\begin{quotation}
+    $P \Rightarrow Q$ is true, but
+
+    $Q \Rightarrow P$ is false
+\end{quotation}
+Another example is
+\begin{quotation}
+    $P$: $A$ is an invertible $2 \times 2$ matrix
+
+    $Q$: $\det A \neq 0$
+\end{quotation}
+
+\newpage
+\paragraph{\underline{Negation \& Quantifiers}}
+
+\paragraph{Example}
+
+Let $m$ and $n$ be integers. If 4 divides the product $mn$ (results in an integer),
+then 4 divides $m$ or 4 divides $n$.
+
+\begin{itemize}
+    \item Converse: If 4 divides $m$ or 4 divides $n$, then 4 divides $mn$
+    \item Contrapositive: If 4 does not divide $m$ and 4 does not divide $n$, then 4 does not divide $mn$
+\end{itemize}
+
+This statement is False!
+
+\paragraph{Proof}
+
+If $m = n = 2$, then 4 divides $mn = 4$. But 4 does \emph{not} divide $m$ or $n$, thus the 
+statement is F. $\square$
+
+The \emph{negation} of a statement $P$ is the statement whose truth values are opposite for those of
+$P$ and is denoted as $\neg P$.
+
+\paragraph{Claim} Let $P$ and $Q$ be statements.
+
+The negation of the conditional statement $P \Rightarrow Q$ is $P \land (\neg Q)$.
+
+\paragraph{Proof}
+    We check that $\neg(P \Rightarrow Q)$ and $P \land (\neg Q)$ are logically equivalent with a
+    truth table.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c}
+        $P$ & $Q$ & $P \Rightarrow Q$ & $\neg(P \Rightarrow Q)$ & $\neg Q$ & $P \land (\neg Q)$ \\
+        \hline
+        T & T & T & F & F & F \\
+        T & F & F & T & T & T \\
+        F & T & T & F & F & F \\
+        F & F & T & F & T & F
+    \end{tabular}
+    \caption{Truth table for negation of a conditional statement}
+\end{table}
+
+\paragraph{Discussion}
+
+Let $P$ and $Q$ be statements and negate $P \lor Q$, and find what it is equivalent to.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c|c|c}
+        $P$ & $Q$ & $P \lor Q$ & $\neg(P \lor Q)$ & $\neg P \land \neg Q$ \\
+        \hline
+        T & T & T & F & F \\
+        T & F & T & F & F \\
+        F & T & T & F & F \\
+        F & F & F & T & T
+    \end{tabular}
+    \caption{Truth table for negation of a disjunction}
+\end{table}
+
+So the two statements are logically equivalent $\neg(P \lor Q) \Longleftrightarrow \neg P \land \neg Q$.
+This is one of De Morgan's Laws:
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c}
+        $\neg(P \lor Q) \Longleftrightarrow \neg P \land \neg Q$ \\
+        $\neg(P \land Q) \Longleftrightarrow \neg P \lor \neg Q$
+    \end{tabular}
+    \caption{De Morgan's Laws}
+\end{table}
+
+\newpage
+\paragraph{Example}
+
+Every nonempty subset of $\mathbb{N}$ has a smallest element.
+
+\paragraph{Notation} $\mathbb{N} = \{0, 1, 2, 3, \dots\}$ is the set of natural numbers.
+
+\paragraph{Definition} The symbols $\forall$ and $\exists$ are called \emph{quantifiers}.
+
+\begin{itemize}
+    \item $\forall$ stands for ``for all'' or ``for every''
+    \item $\exists$ stands for ``there exists'' or ``there is''
+\end{itemize}
+
+thus we write the above statement as logical mathematical symbols is
+
+\begin{quote}
+    $\forall X \subset \mathbb{N}$ with $X \neq \phi$, $\exists x_0 \in X$ such that
+    $x_0 \leq x \quad \forall x \in X$
+\end{quote}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%% 240 notes %%%%%
+\newpage
+
+\section*{240 Lecture Notes*}
+
+\subsection{Propositional Logic}
+
+Proposition $=$ statement that has a \underline{true value} (T or F)
+\begin{quote}
+    $p = $ ``$1 + 1 = 2$'': T
+
+    $q = $ ``St. Louis is the capial of MO'': F
+\end{quote}
+
+\paragraph{\underline{Negation}} NOT $\quad \neg$
+
+\begin{quote}
+    $\neg p =$ ``not p'' or ``$p$ is false''
+\end{quote}
+
+Or in a truth table:
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c}
+        $p$ & $\neg p$ \\
+        \hline
+        T & F \\
+        F & T
+    \end{tabular}
+\end{table}
+
+e.g. from before:
+
+\begin{itemize}
+    \item $\neg p = $ ``$1 + 1 \neq 2$'': F
+    \item $\neg q = $ ``St. Louis is \emph{not} the capital of MO'': T
+\end{itemize}
+
+\paragraph{\underline{Conjunction}:} AND $\quad \land$
+
+\begin{quote}
+    $p \land q =$ ``$p$ and $q$'' or ``both $p$ and $q$ are true''
+\end{quote}
+
+Or in a truth table:
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c}
+        $p$ & $q$ & $p \land q$ \\
+        \hline
+        T & T & T \\
+        T & F & F \\
+        F & T & F \\
+        F & F & F
+    \end{tabular}
+\end{table}
+
+e.g.
+\begin{quote}
+    $p = $ ``Alan Turing was born in England'': T
+
+    $q = $ ``Alan Turing was born in 1912'': T
+
+    $p \land q = $ ``Alan Turing was born in England in 1912'': T
+\end{quote}
+
+\paragraph{\underline{Disjunction}} OR $\quad \lor$
+
+\begin{quote}
+    $p \lor q =$ ``$p$ or $q$'' or ``$p$ is true or $q$ is true (or both)'' (inclusive)
+\end{quote}
+
+As a truth table:
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c}
+        $p$ & $q$ & $p \lor q$ \\
+        \hline
+        T & T & T \\
+        T & F & T \\
+        F & T & T \\
+        F & F & F
+    \end{tabular}
+\end{table}
+
+e.g.
+\begin{quote}
+    $p = $ ``2 is a prime number'': T
+
+    $q = $ ``The Blues will win the Stanley Cup this year''
+
+    $p \lor q = $ T (since $p$ is true, we can't determine the truth value without knowing $q$)
+\end{quote}
+
+To wrap this around our head listen to
+\href{https://youtu.be/LjdCFat9rjI?si=1ZF7paZ8Hdt_-iI7}{Conjunction Junction} - Schoolhouse Rock.
+
+\paragraph{\underline{Exclusive OR}} XOR $\quad \oplus$
+
+\begin{quote}
+    $p \oplus q =$ ``$p$ x-or $q$'' 
+    or ``$p$ or $q$ is true but not both''
+\end{quote}
+
+As a truth table:
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c}
+        $p$ & $q$ & $p \oplus q$ \\
+        \hline
+        T & T & F \\
+        T & F & T \\
+        F & T & T \\
+        F & F & F
+    \end{tabular}
+\end{table}
+
+Rather than using T or F we can use bits (1 or 0) to represent the truth values such that
+\begin{align*}
+    1 \oplus 1 = 2 \equiv 0 (\text{mod } 2)
+\end{align*}
+
+\paragraph{\underline{Multiple Propositions}}
+
+\begin{quote}
+    $p \land q \land r =$ ``All of $p, q, r$ are true''
+
+    $p \lor q \lor r =$ ``At least one of $p, q, r$ is true''
+\end{quote}
+
+For the truth table:
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c|c|c}
+        $p$ & $q$ & $r$ & $p \land q \land r$ & $p \lor q \lor r$ \\
+        \hline
+        T & T & T & T & T \\
+        T & T & F & F & T \\
+        T & F & T & F & T \\
+        T & F & F & F & T \\
+        F & T & T & F & T \\
+        F & T & F & F & T \\
+        F & F & T & F & T \\
+        F & F & F & F & F
+    \end{tabular}
+\end{table}
+
+which can be generalized to $n$ propositions.
+
+\paragraph{\underline{Truth Tables for Compound propositions}}
+
+\begin{quote}
+    $(p \lor q) \land (\neg q \lor r)$
+\end{quote}
+
+So filling out the truth table:
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c}
+        $p$ & $q$ & $r$ & $\neg q$ & $p \lor q$ & $\neg q \lor r$ & $(p \lor q) \land (\neg q \lor r)$ \\
+        \hline
+        T & T & T & F & T & T & T \\
+        T & T & F & F & T & F & F \\
+        T & F & T & T & T & T & T \\
+        T & F & F & T & T & T & T \\
+        F & T & T & F & T & T & T \\
+        F & T & F & F & T & F & F \\
+        F & F & T & T & F & T & F \\
+        F & F & F & T & F & T & F
+    \end{tabular}
+\end{table}
+
+We don't always have to construct truth tables, especially when we are given the truth values of the
+propositions---e.g.
+\begin{align*}
+    (\neg p \land q) \lor (q \land \neg r) \qquad p = T \; q = F \; r = T \\
+    (\neg T \land F) \lor (F \land \neg T) = (F \land F) \lor (F \land F) = F \lor F = F
+\end{align*}
+\end{document}
