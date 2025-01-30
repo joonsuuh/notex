@@ -13,7 +13,7 @@
 \msg_redirect_name:nnn { siunitx } { physics-pkg } { none }
 \ExplSyntaxOff 
 
-\usepackage{amssymb} %% <- for \square and \blacksuare
+\usepackage{amssymb, amsmath, amsfonts, amsthm} %% <- for \square and \blacksuare
 \usepackage{esint} % for path integral symbol
 
 % input packages
@@ -104,3 +104,13 @@
 \newcommand{\ext}{\vb F_{\text{ext}}} % external force
 
 \DeclareSIUnit\angstrom{\text{Å}}
+
+% Math commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newtheorem*{remark}{Remark}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{definition}{Definition}

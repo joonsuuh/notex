@@ -5,10 +5,188 @@
 \begin{document}
 
 \pagestyle{fancy}
-\lhead{Lecture 1: 1/13/24}
-\chead{[insert chapter]}
+\lhead{Lecture 1: 1/13/25}
+\chead{BOP: Chapter 2}
 \rhead{MATH 310}
 
+%%%%% 240 notes %%%%%
+% \newpage
+
+% \section*{240 Lecture Notes*}
+
+% \subsection{Propositional Logic}
+
+% Proposition $=$ statement that has a \underline{true value} (T or F)
+% \begin{quote}
+%     $p = $ ``$1 + 1 = 2$'': T
+
+%     $q = $ ``St. Louis is the capial of MO'': F
+% \end{quote}
+
+% \paragraph{\underline{Negation}} NOT $\quad \neg$
+
+% \begin{quote}
+%     $\neg p =$ ``not p'' or ``$p$ is false''
+% \end{quote}
+
+% Or in a truth table:
+% \begin{table}[ht]
+%     \centering
+%     \begin{tabular}{c|c}
+%         $p$ & $\neg p$ \\
+%         \hline
+%         T & F \\
+%         F & T
+%     \end{tabular}
+% \end{table}
+
+% e.g. from before:
+
+% \begin{itemize}
+%     \item $\neg p = $ ``$1 + 1 \neq 2$'': F
+%     \item $\neg q = $ ``St. Louis is \emph{not} the capital of MO'': T
+% \end{itemize}
+
+% \paragraph{\underline{Conjunction}:} AND $\quad \land$
+
+% \begin{quote}
+%     $p \land q =$ ``$p$ and $q$'' or ``both $p$ and $q$ are true''
+% \end{quote}
+
+% Or in a truth table:
+% \begin{table}[ht]
+%     \centering
+%     \begin{tabular}{c|c|c}
+%         $p$ & $q$ & $p \land q$ \\
+%         \hline
+%         T & T & T \\
+%         T & F & F \\
+%         F & T & F \\
+%         F & F & F
+%     \end{tabular}
+% \end{table}
+
+% e.g.
+% \begin{quote}
+%     $p = $ ``Alan Turing was born in England'': T
+
+%     $q = $ ``Alan Turing was born in 1912'': T
+
+%     $p \land q = $ ``Alan Turing was born in England in 1912'': T
+% \end{quote}
+
+% \paragraph{\underline{Disjunction}} OR $\quad \lor$
+
+% \begin{quote}
+%     $p \lor q =$ ``$p$ or $q$'' or ``$p$ is true or $q$ is true (or both)'' (inclusive)
+% \end{quote}
+
+% As a truth table:
+% \begin{table}[ht]
+%     \centering
+%     \begin{tabular}{c|c|c}
+%         $p$ & $q$ & $p \lor q$ \\
+%         \hline
+%         T & T & T \\
+%         T & F & T \\
+%         F & T & T \\
+%         F & F & F
+%     \end{tabular}
+% \end{table}
+
+% e.g.
+% \begin{quote}
+%     $p = $ ``2 is a prime number'': T
+
+%     $q = $ ``The Blues will win the Stanley Cup this year''
+
+%     $p \lor q = $ T (since $p$ is true, we can't determine the truth value without knowing $q$)
+% \end{quote}
+
+% To wrap this around our head listen to
+% \href{https://youtu.be/LjdCFat9rjI?si=1ZF7paZ8Hdt_-iI7}{Conjunction Junction} - Schoolhouse Rock.
+
+% \paragraph{\underline{Exclusive OR}} XOR $\quad \oplus$
+
+% \begin{quote}
+%     $p \oplus q =$ ``$p$ x-or $q$'' 
+%     or ``$p$ or $q$ is true but not both''
+% \end{quote}
+
+% As a truth table:
+% \begin{table}[ht]
+%     \centering
+%     \begin{tabular}{c|c|c}
+%         $p$ & $q$ & $p \oplus q$ \\
+%         \hline
+%         T & T & F \\
+%         T & F & T \\
+%         F & T & T \\
+%         F & F & F
+%     \end{tabular}
+% \end{table}
+
+% Rather than using T or F we can use bits (1 or 0) to represent the truth values such that
+% \begin{align*}
+%     1 \oplus 1 = 2 \equiv 0 (\text{mod } 2)
+% \end{align*}
+
+% \paragraph{\underline{Multiple Propositions}}
+
+% \begin{quote}
+%     $p \land q \land r =$ ``All of $p, q, r$ are true''
+
+%     $p \lor q \lor r =$ ``At least one of $p, q, r$ is true''
+% \end{quote}
+
+% For the truth table:
+% \begin{table}[ht]
+%     \centering
+%     \begin{tabular}{c|c|c|c|c}
+%         $p$ & $q$ & $r$ & $p \land q \land r$ & $p \lor q \lor r$ \\
+%         \hline
+%         T & T & T & T & T \\
+%         T & T & F & F & T \\
+%         T & F & T & F & T \\
+%         T & F & F & F & T \\
+%         F & T & T & F & T \\
+%         F & T & F & F & T \\
+%         F & F & T & F & T \\
+%         F & F & F & F & F
+%     \end{tabular}
+% \end{table}
+
+% which can be generalized to $n$ propositions.
+
+% \paragraph{\underline{Truth Tables for Compound propositions}}
+
+% \begin{quote}
+%     $(p \lor q) \land (\neg q \lor r)$
+% \end{quote}
+
+% So filling out the truth table:
+% \begin{table}[ht]
+%     \centering
+%     \begin{tabular}{c|c|c|c|c|c|c}
+%         $p$ & $q$ & $r$ & $\neg q$ & $p \lor q$ & $\neg q \lor r$ & $(p \lor q) \land (\neg q \lor r)$ \\
+%         \hline
+%         T & T & T & F & T & T & T \\
+%         T & T & F & F & T & F & F \\
+%         T & F & T & T & T & T & T \\
+%         T & F & F & T & T & T & T \\
+%         F & T & T & F & T & T & T \\
+%         F & T & F & F & T & F & F \\
+%         F & F & T & T & F & T & F \\
+%         F & F & F & T & F & T & F
+%     \end{tabular}
+% \end{table}
+
+% We don't always have to construct truth tables, especially when we are given the truth values of the
+% propositions---e.g.
+% \begin{align*}
+%     (\neg p \land q) \lor (q \land \neg r) \qquad p = T \; q = F \; r = T \\
+%     (\neg T \land F) \lor (F \land \neg T) = (F \land F) \lor (F \land F) = F \lor F = F
+% \end{align*}
 
 \section{The Foundations: Logic and Proofs}
 
@@ -112,7 +290,7 @@ determined). So the conditional statement is
 
 
 \newpage
-\lhead{Lecture 2: 1/15/24 by Jesus!}
+\lhead{Lecture 2: 1/15/25 by Jesus!}
 
 Example: Let's construct a truth table for $(P \lor Q) \Rightarrow R$
 \begin{table}[ht]
@@ -143,13 +321,14 @@ The first proposition is symbolically $O(n): n$ is odd, and the conditional stat
 First we define and integer $n$ odd if $n = 2k + 1$ for some integer $k$. An integer is even if
 $n = 2k$ for some integer $k$. 
 
-\paragraph{Remark}
+\begin{remark}
+    The set of integers
+    \begin{align*}
+        \mathbb{Z} = \{ \dots, -3, -2, -1, 0, 1, 2, 3, \dots \}
+    \end{align*}
+    where $k$ is an integer is denoted as $k \in \mathbb{Z}$.
+\end{remark}
 
-The set of integers
-\begin{align*}
-    \mathbb{Z} = \{ \dots, -3, -2, -1, 0, 1, 2, 3, \dots \}
-\end{align*}
-where $k$ is an integer is denoted as $k \in \mathbb{Z}$.
 
 \paragraph{Proof}
 
@@ -229,7 +408,7 @@ statement.
 \end{table}
 
 \newpage
-\lhead{Lecture 3: 1/17/24 by Jesus (Sanchez)!}
+\lhead{Lecture 3: 1/17/25 by Jesus (Sanchez)!}
 
 \paragraph{\underline{Contrapositive}}
 
@@ -408,215 +587,471 @@ thus we write the above statement as logical mathematical symbols is
     $x_0 \leq x \quad \forall x \in X$
 \end{quote}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%%%%% 240 notes %%%%%
 \newpage
+\lhead{Lecture 4: 1/22/25}
 
-\section*{240 Lecture Notes*}
+\paragraph{HW NOTES}
 
-\subsection{Propositional Logic}
+\begin{align*}
+    (P \Leftrightarrow Q) \equiv [ (P \Rightarrow Q) \land (Q \Rightarrow P) ]
+\end{align*}
 
-Proposition $=$ statement that has a \underline{true value} (T or F)
+Show both $P \Rightarrow Q$ and $Q \Rightarrow P$ are true.
+
+\paragraph{Example}
+
+Negate the statemen:
+
 \begin{quote}
-    $p = $ ``$1 + 1 = 2$'': T
-
-    $q = $ ``St. Louis is the capial of MO'': F
+    The integers 5 \underline{and} 9 are both odd.
 \end{quote}
 
-\paragraph{\underline{Negation}} NOT $\quad \neg$
+Using De Morgan's Laws $\neg(P \land Q) \equiv \neg P \lor \neg Q$ we can rewrite the statement as
 
 \begin{quote}
-    $\neg p =$ ``not p'' or ``$p$ is false''
+    Either 5 is even or 9 is even.
 \end{quote}
 
-Or in a truth table:
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{c|c}
-        $p$ & $\neg p$ \\
-        \hline
-        T & F \\
-        F & T
-    \end{tabular}
-\end{table}
-
-e.g. from before:
+Let $A$ be a set and $a \in A$.
 
 \begin{itemize}
-    \item $\neg p = $ ``$1 + 1 \neq 2$'': F
-    \item $\neg q = $ ``St. Louis is \emph{not} the capital of MO'': T
+    \item $\forall a \in A, P(a)$: means $P(a)$ is true \underline{for every} element of set $A$.
+    \item $\exists a \in A, P(a)$: means $P(a)$ is true \underline{for some} element of set $A$.
+    \item $\neg (\forall a \in A, P(a)) \equiv \exists a \in A, \neg P(a)$
+    \item $\neg (\exists a \in A, P(a)) \equiv \forall a \in A, \neg P(a)$
 \end{itemize}
 
-\paragraph{\underline{Conjunction}:} AND $\quad \land$
+\paragraph{WARNING}:
+
+\begin{itemize}
+    \item $\neg (a \in A) \equiv a \notin A$ is not the same as
+    \item $\neg (\forall a \in A) \equiv \exists a \in A$
+\end{itemize}
+
+\paragraph{Example}
+Let $C(x)$: $x$ has taken calculus ($x$ is a 310 student).
 
 \begin{quote}
-    $p \land q =$ ``$p$ and $q$'' or ``both $p$ and $q$ are true''
+    $G(x,y):\quad x > y \qquad (x, y \in \mathbb{R})$ 
+
+    $P(x): \quad x$ is prime $\qquad (x \in \mathbb{N} = \{0, 1, 2, \dots\})$
 \end{quote}
 
-Or in a truth table:
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{c|c|c}
-        $p$ & $q$ & $p \land q$ \\
-        \hline
-        T & T & T \\
-        T & F & F \\
-        F & T & F \\
-        F & F & F
-    \end{tabular}
-\end{table}
+\begin{enumerate}
+    \item $\forall x, C(x)$ as a statement: Every 310 student has taken calculus
+    
+    \underline{Negation}: There is some 310 student who has not taken calculus, or
 
-e.g.
-\begin{quote}
-    $p = $ ``Alan Turing was born in England'': T
+    \item $\exists x, C(x)$
+    
+    \item Negate $\forall x \in \mathbb{N}, \neg P(x)$
 
-    $q = $ ``Alan Turing was born in 1912'': T
+    \begin{quote}
+        Statement: Every natural number is not prime.
+    
+        \underline{Negation}: $\exists x \in \mathbb{N}, P(x)$---There exist a natural number that is
+        prime.
+    \end{quote}
+    
+    \item Negate $\exists x \in \mathbb{R}, G(x, 2)$
+    
+    \begin{quote}
+        Statement: There exists a real number greater than 2.
 
-    $p \land q = $ ``Alan Turing was born in England in 1912'': T
-\end{quote}
+        \underline{Negation}: $\forall x \in \mathbb{R}, \neg G(x, 2)$---Every real number is less
+        than or equal to 2. $\iff$
+    \end{quote}
+\end{enumerate}
 
-\paragraph{\underline{Disjunction}} OR $\quad \lor$
+\paragraph{Example} Negate the following statements:
 
-\begin{quote}
-    $p \lor q =$ ``$p$ or $q$'' or ``$p$ is true or $q$ is true (or both)'' (inclusive)
-\end{quote}
+\begin{enumerate}
+    \item For all $X \subseteq \mathbb{N}$, there exists an integer $n$ such that $|X| = n$.
 
-As a truth table:
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{c|c|c}
-        $p$ & $q$ & $p \lor q$ \\
-        \hline
-        T & T & T \\
-        T & F & T \\
-        F & T & T \\
-        F & F & F
-    \end{tabular}
-\end{table}
+    Symbolically: $\forall X \subseteq \mathbb{N}\quad \exists n \in \mathbb{Z},\quad |X| = n$. Where $|X|$
+    is ``the number of elements in the set $X$, cardinality of $X$''.
 
-e.g.
-\begin{quote}
-    $p = $ ``2 is a prime number'': T
+    e.g.
+    \begin{itemize}
+        \item $X = \{1, 2, 3\}$ then $|X| = 3$
+        \item All even natural numbers $X = \{0, 2, 4, 6, 8, \dots\}$
+        
+        then $|X| = \infty$,
+        so $\cancel{\exists}$ an integer $n$ such that $|X| = n$.
+    \end{itemize}
 
-    $q = $ ``The Blues will win the Stanley Cup this year''
+    Thus the negatation
+    $\exists X \subseteq \mathbb{N}\quad \forall n \in \mathbb{Z},\quad |X| \neq n$
+    shows that the statement is \underline{false}.
+    \item There exists $x \in \mathbb{Z}$ such that for all $n \in \mathbb{Z},\quad x \neq n + 2$.
+    
+    Symbolically: $\exists x \in \mathbb{Z}\quad \forall n \in \mathbb{Z},\quad x \neq n + 2$.
 
-    $p \lor q = $ T (since $p$ is true, we can't determine the truth value without knowing $q$)
-\end{quote}
+    Negation: $\forall x \in \mathbb{Z}\enspace \exists n \in \mathbb{Z},\quad x = n + 2$.
 
-To wrap this around our head listen to
-\href{https://youtu.be/LjdCFat9rjI?si=1ZF7paZ8Hdt_-iI7}{Conjunction Junction} - Schoolhouse Rock.
+    which is \underline{true}.
+    \item For all $x \in \mathbb{R}$, there exists $y \in \mathbb{R}$ such that $y^3 = x$.
+    
+    \dots this is \underline{true}
+    \item There exists $x \in \mathbb{Z}$ such that for all $n \in \mathbb{Z},\quad x \neq n + 2$.
+    
+    \dots this is \underline{false}.
+\end{enumerate}
 
-\paragraph{\underline{Exclusive OR}} XOR $\quad \oplus$
+% \begin{itemize}
+%     \item $\Leftrightarrow$ vs. $\iff$
+%     \item $\Rightarrow$ vs. $\implies$
+%     \item $\neg$ vs. $\sim$
+% \end{itemize}
 
-\begin{quote}
-    $p \oplus q =$ ``$p$ x-or $q$'' 
-    or ``$p$ or $q$ is true but not both''
-\end{quote}
+\newpage
+\lhead{Lecture 5: 1/24/25}
+\chead{BOP: Chapter 1}
 
-As a truth table:
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{c|c|c}
-        $p$ & $q$ & $p \oplus q$ \\
-        \hline
-        T & T & F \\
-        T & F & T \\
-        F & T & T \\
-        F & F & F
-    \end{tabular}
-\end{table}
+\paragraph{Example} True or False; Negate
 
-Rather than using T or F we can use bits (1 or 0) to represent the truth values such that
+\begin{enumerate}
+    \item For all $x \in \R$, there exists $y \in \R$ such that $y^2 = x$
+    \begin{align*}
+        \forall x \in \R \enspace \exists y \in \R, \enspace y^2 = x
+    \end{align*}
+    Negation: $\exists x \in \R \enspace \forall y \in \R, \enspace y^2 \neq x$
+    \begin{quote}
+        There exists $x \in \R$ so that for all $y \in \R$, $y^2 \neq x$
+    \end{quote}
+    The original statement is \underline{false}:
+    \begin{quote}
+        Let $x = -1$. Then $y^2 \neq -1 \enspace \forall y \in \R$
+    \end{quote}
+    
+    \item For all $x \in \R$, there exists $y \in \R$ such that $y^3 = x$.
+    \begin{align*}
+        \forall x \in \R \enspace \exists y \in \R, \enspace y^3 = x
+    \end{align*}
+    Negation: $\exists x \in \R \enspace \forall y \in \R, \enspace y^3 \neq x$
+
+    The original statement is \underline{true} because every real number has a cube root.
+\end{enumerate}
+
+\paragraph{Definition} A \emph{set} is a collection of objects.
+
+The objects in a set are called \emph{elements}.
+
+\paragraph{Definition} The unique set containing no elements is called the \emph{empty set}, 
+denoted by $\emptyset$ or $\varnothing$.
+
+\paragraph{Example}
+
+$ A = \{1, 2, 3, 4, 5, \{6, 7\}\}$
+
+\begin{enumerate}
+    \item [(a)] $1 \in A$ (1 is an element of $A$) T
+    \item [(b)] $\{1\} \in A \qquad$ F
+    \item [(c)] $1 \subseteq A \qquad$ F
+    \item [(d)] $\{1\} \subseteq A \qquad$ F
+    \item [(e)] $\{6, 7\} \subseteq A \qquad$ F
+    \item [(e)'] $\{\{6,7\}\} \subseteq A \qquad$ T
+    \item [(f)] $\{4, 5\} \subseteq A \qquad$ T
+    \item [(g)] $|A| = 6 \qquad$ T
+    \item [(h)] $\emptyset \in A \qquad$ F
+\end{enumerate}
+
+\paragraph{Set-builder notation} used to describe sets when its difficult to list all elements.
+
+\paragraph{Example} Even integers $\{\dots, -4, -2, 0, 2, 4, \dots\}$
+
 \begin{align*}
-    1 \oplus 1 = 2 \equiv 0 (\text{mod } 2)
+    = \{2k \; | \;  k \in \Z\} = \{2k : k \in \Z\}
 \end{align*}
 
-\paragraph{\underline{Multiple Propositions}}
+\paragraph{Example} The set of rational numbers
 
-\begin{quote}
-    $p \land q \land r =$ ``All of $p, q, r$ are true''
-
-    $p \lor q \lor r =$ ``At least one of $p, q, r$ is true''
-\end{quote}
-
-For the truth table:
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{c|c|c|c|c}
-        $p$ & $q$ & $r$ & $p \land q \land r$ & $p \lor q \lor r$ \\
-        \hline
-        T & T & T & T & T \\
-        T & T & F & F & T \\
-        T & F & T & F & T \\
-        T & F & F & F & T \\
-        F & T & T & F & T \\
-        F & T & F & F & T \\
-        F & F & T & F & T \\
-        F & F & F & F & F
-    \end{tabular}
-\end{table}
-
-which can be generalized to $n$ propositions.
-
-\paragraph{\underline{Truth Tables for Compound propositions}}
-
-\begin{quote}
-    $(p \lor q) \land (\neg q \lor r)$
-\end{quote}
-
-So filling out the truth table:
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{c|c|c|c|c|c|c}
-        $p$ & $q$ & $r$ & $\neg q$ & $p \lor q$ & $\neg q \lor r$ & $(p \lor q) \land (\neg q \lor r)$ \\
-        \hline
-        T & T & T & F & T & T & T \\
-        T & T & F & F & T & F & F \\
-        T & F & T & T & T & T & T \\
-        T & F & F & T & T & T & T \\
-        F & T & T & F & T & T & T \\
-        F & T & F & F & T & F & F \\
-        F & F & T & T & F & T & F \\
-        F & F & F & T & F & T & F
-    \end{tabular}
-\end{table}
-
-We don't always have to construct truth tables, especially when we are given the truth values of the
-propositions---e.g.
 \begin{align*}
-    (\neg p \land q) \lor (q \land \neg r) \qquad p = T \; q = F \; r = T \\
-    (\neg T \land F) \lor (F \land \neg T) = (F \land F) \lor (F \land F) = F \lor F = F
+    \Q :=\qt{\frac{P}{q} \; | \; p, q \in \Z, \; q \neq 0}
 \end{align*}
+
+The set of \emph{irrational numbers} is set of all real numbers that are not rational.
+
+\paragraph{Remark} $\N \subsetneq \Z \subsetneq \Q \subsetneq \R$
+
+\paragraph{Example} Write in set-builder notation:
+
+\begin{enumerate}
+    \item \(\qt{\dots, \frac{1}{27}, \frac{1}{9}, 1, 3, 9, 27 \dots}\)
+    \begin{align*}
+        = \{3^k \; | \; k \in \Z\}
+    \end{align*}
+    \item The set of odd integers
+    \begin{align*}
+        \{2k + 1 \; | \; k \in \Z\}
+    \end{align*}
+    \item $(-\infty, 3] = \{x \in \R \; | \; x \leq x\}$
+\end{enumerate}
+
+\paragraph{Definition} Let $A$ and $B$ be sets.
+
+\begin{itemize}
+    \item \emph{Union}: $A \cup B := \{x \mid x \in A \lor x \in B\}$
+
+    \item \emph{Intersection}: $A \cap B := \{x \mid x \in A \land x \in B\}$
+    
+    Definition: The sets $A$ and $B$ are \emph{disjoint} if $A \cap B = \emptyset$. $\quad \varnothing$
+
+    \item \emph{Set-difference}: $A - B = A \setminus B := \{x \in A \mid x \notin B\}$
+    
+    \item The \emph{compliment} of $A$ in a set $U$ is
+    $A^c = \overline{A} := \{x \in U \mid x \notin a\}$
+
+    \item \emph{Cartesian product}:
+    \begin{align*}
+        A \cross B := \{(a, b) \mid a \in A, b \in B\}
+    \end{align*}
+    (e.g. $\R \cross \R = \R^2$)
+\end{itemize}
+
+\paragraph{T/F}
+\begin{enumerate}
+    \item $A \cross B = B \cross A \qquad$
+
+    F: $A = \{1\}, \; B = \{2\}$, so $A \cross B = \{(1, 2)\}$ but $B \cross A = \{(2, 1)\}$
+    \item If $|A| = 2$ and $|B| = 3$, then $|A \cross B| = 6 \qquad$ T
+    \item $\R \subseteq \R^2 \qquad$ F
+    \item [4'.] $\R \cross \{O\} = \R^2 \qquad$ T
+\end{enumerate}
+
+\newpage
+\lhead{Lecture 6: 1/27/25}
+
+\paragraph{Example} Write out the sets by listing all elements:
+
+\begin{enumerate}
+    \item 
+    \(
+        \{x \in \R \mid \cos(x) = 0, \, 0 \leq x \leq 2\pi\}
+    \)
+    \begin{align*}
+        = \qt{
+            \frac{\pi}{2}, \frac{3\pi}{2}
+        }
+    \end{align*}
+    \item 
+    \(
+        \{x \in \R \mid \sin(x) = 0, \, 0 \leq x \leq 2\pi\}
+    \)
+    \begin{align*}
+        = \qt{
+            0, \pi, 2\pi
+        }
+    \end{align*}
+
+    \item
+    \(
+        \{
+            m \mid m \in \N,\, m^2 < 10
+        \}
+    \)
+    \begin{align*}
+        = \{1, 2, 3, 0\}
+    \end{align*}
+\end{enumerate}
+
+\paragraph{Example} Compute the following sets:
+
+\begin{enumerate}
+    \item 
+    \(
+        \bigcup\limits_{n \in \N} \qt[
+            \frac{1}{n +1} ,\, n + 1 
+        ]
+        = \color{draculagreen} (0, \infty)
+    \)
+
+    Looking at a few of our favorite natural numbers\dots
+    \begin{itemize}
+        \item $n = 4$: $\qt[\frac{1}{5}, 5]$
+        \item $n = 0$: $[1, 1] = \{1\}$
+        \item $n = 2$: $\qt[\frac{1}{3}, 3]$
+    \end{itemize}
+    So the union of all these sets is $\qt(0, \infty)$.
+
+    \item \( \bigcap\limits_{n \in \N} \qt[\frac{1}{n + 1} ,\, n + 1] 
+    = \color{draculagreen} \{1\} \)
+
+    The intersection of all these sets is when $n = 0$ because that is when the two values are equal
+    to each other.
+\end{enumerate}
+
+\paragraph{Claim} Let $A, B,$ and $C$ be sets.
+
+If $B \subseteq C$, then $A \cross B \subseteq A \cross C$.
+
+\begin{proof}
+    Let $(a, b) \in A \cross B$. By definition of the Cartesian product, $a \in A$ and $b \in B$.
+    Since $B \subseteq C$, $b \in C$. Thus, $(a, b) \in A \cross C$.
+\end{proof}
+
+\paragraph{Claim} For all sets $A$ and $B$, $(A \cup B)^c = A^c \cap B^c$.
+
+\begin{proof}
+    $(\subseteq)$ Let $x \in (A \cup B)^c$. 
+
+    This implies $x \notin A$ and $x \notin B$. Thus, $x \in A^c$ and $x \in B^c$ so
+    $x \in A^c \cap B^c$.
+
+    \paragraph{}
+    $(\supseteq)$ Let $x \in A^c \cap B^c$, so $x \notin A$ and $x \notin B$.
+
+    This implies $x$ is not in $A$ or $B$. Thus, $x \notin A \cup B$ so $(A \cup B)^c$.
+\end{proof}
+
+\paragraph{Claim} $\Z = \{25 a + 24b \mid a, b \in \Z\}$.
+
+\begin{proof}
+    $(\supseteq)$ This is obvious, since $25a +24b \in \Z$ for all $a, b \in \Z$.
+
+    \paragraph{}
+    $(\subseteq)$ Let $k \in \Z$. Set $a = k$ and $b = -k$. Then $25 a + 24b = 25k - 24k = k$.
+\end{proof}
+
+To get to the forwards proof we can test a few values of $k$ to find anything:
+\begin{itemize}
+    \item $k = 0$: $25(0) + 24(0) = 0$
+    \item $k = 1$: $25(1) + 24(-1) = 1$
+    \item $k = 2$: $25(2) + 24(-2) = 2$\dots so we can see the pattern
+    \item $k = 25k + 24(-k)$
+\end{itemize}
+
+\newpage
+\lhead{Lecture 7: 1/29/25}
+
+\subsection{Proof by Contradiction}
+\paragraph{Example}
+
+Suppose $A, B$, and $C$ are nonempty sets
+
+\begin{quote}
+    T/F: If $A \cross B = A \cross C$ then $B = C$ \\
+    \color{draculagreen} True
+
+    Note: $A = \emptyset$
+    \begin{align*}
+        A \cross B = \emptyset = A \cross C
+    \end{align*}
+    for all $B, C$
+\end{quote}
+
+\begin{proof}
+    $(B \subseteq C)$ Let $b \in B$. \cancel{Suppose $a \in A$}
+    Since $A = \emptyset$, there is an element $a \in A$. Then
+    \begin{align*}
+        (a,b) \in A \cross B
+    \end{align*}
+    Since $A \cross B = A \cross C$, we know
+    \begin{align*}
+        (a,b) \in A \cross C
+    \end{align*}
+    By definition of the Cartesian product, $b \in C$. This proves $B \subseteq C$
+
+    \paragraph{}
+    $(C \subseteq B)$ By similar reasoning (with the roles of $B$ and $C$ reversed),
+    we can show $C \subseteq B$.
+\end{proof}
+
+\paragraph{Example} Prove that if $a, b \in \Z$, then $a^2 \neq 4b +2$.
+
+\paragraph{Ideas}
+
+\begin{enumerate}
+    \item Cases: $a$ is odd vs. $a$ is even
+    \begin{align*}
+        a = 2k 
+    \end{align*}
+    \item looking at all the squares
+    \begin{align*}
+        c_0 = 0^2 = 0, \quad c_1 = 1^2 = 1, \quad 2^2 = 4, \quad 3^2 = 9, \quad 4^2 = 16, \quad 5^2 = 25 \dots
+    \end{align*}
+    which can be written as
+    \begin{align*}
+        c_n = c_{n - 1} + (n - 1)(2k + 1)
+    \end{align*}
+    \item Claim: The prod of odd numbers is odd and the prod of even numbers is even.
+    \begin{align*}
+        a^2 = 4b + 2 = 2(2b + 1)
+    \end{align*}
+    So if $a^2$ is even $\Rightarrow$ $a$ is even: $a = 2k$
+    \begin{align*}
+        (2k)^2 &= 2(2b + 1) \\
+        \implies 4k^2 &= 2 (2b + 1) \\
+        \implies 2k^2 &= 2b + 1 
+    \end{align*}
+    where the RHS is odd but the LHS is even, which is a contradiction.
+\end{enumerate}
+\begin{proof}
+    (Contradiction) Asume there exist $a, b \in \Z$ such that $a^2 = 4b + 2$.
+    Then $a^2$ is even, so $a$ is even. Write $a = 2k$ for some $k \in \Z$.
+
+    Then
+    \begin{align*}
+        (2k)^2 = 4b + 2 \implies 2k^2 = 2b + 1
+    \end{align*}
+    THe LHS of the equation is even, while the RHS is odd. This is a contradiction.
+\end{proof}
+
+Suppose you want to prove statement $P$\dots
+
+\paragraph{Proof by Contradiction}
+
+\begin{enumerate}
+    \item Assume $\neg P$
+    \item Show that $\neg P$ implies that there is some statement $C$ so that
+    $C \land \neg P$ (Contradiction)
+    \item $\neg P$ is False $\Leftrightarrow$ $P$ is True
+\end{enumerate}
+
+\paragraph{Proposition} The number $\sqrt{2}$ is irrational.
+
+\paragraph{Ideas}
+\begin{align*}
+    \sqrt{2} = \frac{a}{b} &\implies \sqrt{2} b = a \\
+                           &\implies 2b^2 = a^2
+\end{align*}
+$a^2$ is even $\implies a = 2k$
+\begin{align*}
+    &\implies 2b^2 = (2k)^2 \\
+    &\implies b^2 = 2k^2
+\end{align*}
+$b^2$ is even $\implies b = 2l$
+\begin{proof}
+    (Contradiction) Assume $\sqrt{2}$ is rational. Thus there are integers $a, b \in \Z$, $b \neq 0$
+    so that $\sqrt{2} = \frac{a}{b}$. We can assume $a$ and $b$ have no common factors---that is,
+    there is no positive integer greater than 1 that divides both $a$ and $b$. Now,
+    \begin{align*}
+        \sqrt{2} = \frac{a}{b} \implies \sqrt{2} b = 2 \implies 2b^2 = a^2
+    \end{align*}
+    So $a^2$ is even, and thus $a$ is even. Write $a = 2k$ for some $k \in \Z$. Then the equation
+    becomes:
+    \begin{align*}
+        2b^2 = (2k)^2 \implies 2b^2 = 2k,
+    \end{align*}
+    so $b^2$ is even, and thus $b$ is also even. 
+
+    Thus both $a$ and $b$ are even, which contradicts our earlier assumption that they have no
+    common factors.
+\end{proof}
+
+\paragraph{Example}
+
+\begin{enumerate}
+    \item Prove there is no integer $x$ such that 
+    \begin{align*}
+        x^2 = 5 \qand x^2 = 9
+    \end{align*}
+    
+    \item Suppose $a, b$ are nonzero. Prove that if $ab$ is irrational, then $a$ is irrational or 
+    $b$ is irrational.
+\end{enumerate}
+
+
+
+
 \end{document}

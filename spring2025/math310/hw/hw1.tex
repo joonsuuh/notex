@@ -1,0 +1,259 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amsthm}
+\usepackage{fancyhdr,parskip}
+\usepackage{fullpage}
+\usepackage[margin=.7in]{geometry}
+\usepackage[answerdelayed]{exercise}
+\usepackage{physics}
+%%
+%% Stuff above here is packages that will be used to compile your document.
+%% If you've used unusual LaTeX features, you may have to install extra packages by adding them to this list.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setlength{\headheight}{15.2pt}
+\setlength{\headsep}{20pt}
+\pagestyle{fancyplain}
+
+
+%%
+%% Stuff above here is layout and formatting.  If you've never used LaTeX before, you probably don't need to change any of it.
+%% Later, you can learn how it all works and adjust it to your liking, or write your own formatting code.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This section contains some useful macros that will save you time typing.
+%%
+
+% Using \displaystyle (or \ds) in a block of math has a number of effects, but most notably, it makes your fractions come out bigger.
+\newcommand{\ds}{\displaystyle}
+
+% These lines are for displaying integrals; typing \dx will make the dx at the end of the integral look better.
+\newcommand{\is}{\hspace{2pt}}
+\newcommand{\dx}{\is dx}
+
+% These commands produce the fancy Z (for the integers) and other letters conveniently.
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is the header.  It will appear on every page, and it's a good place to put your name, the assignment title, and stuff like that.
+%% I usually leave the center header blank to avoid clutter.
+%%
+
+\lhead{Math 310}
+\chead{Homework 1}
+\rhead{Junseo Shin}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Actual math starts here!
+%% I've included some examples of how to do a section header, a problem header, etc.
+%% You should (of course) delete this part before turning in your homework.
+%%
+
+
+% If your assignment includes problems from more than one section of a textbook, you might want to separate different parts of the assignment with section headers.
+% This is how to do a section header:
+
+\begin{enumerate}
+  \item $P$ and $Q$ are T, $U$ and $V$ are F, and $W$ is unknown:
+  \begin{enumerate}
+    \item Since $(P \lor Q) \equiv$ (T $\lor$ T) $\equiv$ T
+    and $(U \land V) \equiv$ (F $\land$ F) $\equiv$ F, we have
+    \begin{align*}
+      (P \lor Q) \lor (U \land V) &\equiv T \lor F \\
+      &\equiv T
+    \end{align*}
+    \item Since $(\neg P \lor \neg U) \equiv$ (F $\lor$ T) $\equiv$ T,
+    and $(Q \lor \neg V) \equiv$ (T $\lor$ T) $\equiv$ T, we have
+    \begin{align*}
+      (\neg P \lor \neg U) \land (Q \lor \neg V)
+      &\equiv T \land T \\
+      &\equiv T
+    \end{align*}
+    \item We know that $(P \land \neg V) \equiv (T \land T) \equiv T$, but
+    $(U \lor W)$ can either be T or F depending on what $W$ is and one of the two truth values
+    must be T for $U \lor W \equiv T$. Therefore, the statement is an unknown truth.
+
+    \textit{Citations: NONE}
+  \end{enumerate}
+
+  \newpage
+  \item Let $x$ be a real number:
+  \begin{enumerate}
+    \item If $x = 3$, then $x^2 = 9$:
+    This statement is T because we can simply see that $3^2 = 9$.
+
+    \item If $x^2 = 9$, then $x = 3$:
+    This statement is F because $x$ can also be $-3$ since $(-3)^2 = 9$.
+
+    \item If $x^2 \neq 9$, then $x \neq 3$:
+    Looking at the contrapositive, if $x = 3$, then $x^2 = 9$ which is logically equivalent to (a),
+    so the statement is T.
+
+    \item If $x \neq 3$, then $x^2 \neq 9$:
+    This is the contrapositive of (b) which is logically equivalent, so the statement is F.
+
+    \textit{Citations: BOP Section 2.6}
+    Contrapositive Law (2.1) $P \Rightarrow Q \equiv (\neg Q) \Rightarrow (\neg P)$
+  \end{enumerate}
+
+  \newpage
+  \item 
+  \begin{enumerate}
+    \item Let $N, O, P, Q,$ and $R$ be mathematical statements. Constructing truth tables:
+    \begin{enumerate}
+      \item Truth table for $\neg(P \Rightarrow \neg Q)$:
+      \begin{center}
+        \begin{tabular}{|c|c|c|c|c|}
+          \hline
+          $P$ & $Q$ & $\neg Q$ & $P \Rightarrow \neg Q$ & $\neg(P \Rightarrow Q)$ \\
+          \hline
+          T & T & F & F & T \\
+          T & F & T & T & F \\
+          F & T & F & T & F \\
+          F & F & T & T & F \\
+          \hline
+        \end{tabular}
+      \end{center}
+      \item Truth table for $(P \land Q) \lor R$:
+      \begin{center}
+        \begin{tabular}{|c|c|c|c|c|}
+          \hline
+          $P$ & $Q$ & $R$ & $P \land Q$ & $(P \land Q) \lor R$ \\
+          \hline
+          T & T & T & T & T \\
+          T & T & F & T & T \\
+          T & F & T & F & T \\
+          T & F & F & F & F \\
+          F & T & T & F & T \\
+          F & T & F & F & F \\
+          F & F & T & F & T \\
+          F & F & F & F & F \\
+          \hline
+        \end{tabular}
+      \end{center}
+    \end{enumerate}
+
+    \item $N \land O \land P \land Q \land R$ will have $2^5 = 32$ rows in the truth table since
+    we have 5 statements and each statement can be either T or F. All of the statements must be T
+    for the entire statement to be T, so there is \emph{only one} row where the entire statement is T, and
+    31 rows where the entire statement is F.
+
+    \textit{Citations: NONE}
+  \end{enumerate}
+
+  \newpage
+  \item Prove that $(\neg P \land Q) \Rightarrow (Q \lor R)$ is a tautology:
+  From clase we showed that $A \Rightarrow B \equiv A \land (\neg B)$ or
+  from De Morgan's Law $A \Rightarrow B \equiv (\neg A) \lor B$. Therefore,
+  \begin{align*}
+    (\neg P \land Q) \Rightarrow (Q \lor R) &\equiv \neg(\neg P \land Q) \lor (Q \lor R) \\
+    &\equiv (P \lor \neg Q) \lor (Q \lor R) \qq{De Morgan's Law} \\
+    &\equiv P \lor (\neg Q \lor Q) \lor R \qq{Associative Law} \\
+    &\equiv P \lor T \lor R \\
+    &\equiv T
+  \end{align*}
+  because having one T in a disjunction makes the entire statement T i.e $P \lor T \equiv T$
+  which carries over to $T \lor R \equiv T$.
+
+  For example, let's say 
+  \begin{quote}
+    $P$: Penguins have wings \\
+    $Q$: Penguins swim in water \\
+    $R$: Penguins fly in the sky
+  \end{quote}
+  In English: if penguins do not have wings and penguins swim in water,
+  then penguins swim in water or penguins fly in the sky.
+
+  \textit{Citations: Lecture 3 1/17/25 (Jesus Sanchez!) \&
+  Discrete Mathematics and its Applications by Kenneth Rosen---Section 1.3, Table 7} 
+  \newpage
+  \item Prove that $n$ and $m$ are odd integers if and only if $nm$ is odd:
+
+  \begin{quote}
+    $P$: $n$ and $m$ are odd integers \\
+    $Q$: $nm$ is odd
+  \end{quote}
+  From lecture an odd integer can be expressed as $2k + 1$ for some integer $k$, and an even integer
+  can be expressed as $2l$ for some integer $l$.
+  Also $(P \Leftrightarrow Q) \equiv (P \Rightarrow Q) \land (Q \Rightarrow P)$, so
+  we need to show both $P \Rightarrow Q$ and $Q \Rightarrow P$:
+
+  \begin{itemize}
+    \item $P \Rightarrow Q$: Assume $n$ and $m$ are odd integers. Then $n = 2k + 1$ and $m = 2l + 1$
+    for some integers $k$ and $l$. Multiplying the two odd integers gives
+    \begin{align*}
+      nm &= (2k + 1)(2l + 1) \\
+      &= 4kl + 2k + 2l + 1 \\
+      &= 2(2kl + k + l) + 1
+    \end{align*}
+    Since $2kl + k + l$ is an integer, $nm$ is odd.
+    So $n$ and $m$ being odd integers implies $nm$ is odd $\qed$
+
+    \item $Q \Rightarrow P$: The contrapositive is $\neg P \Rightarrow \neg Q$.
+    Assume $n$ and $m$ are even integers.
+    Then $n = 2k$ and $m = 2l$ for some integers $k$ and $l$. Multiplying the two even integers
+    gives $nm = 4kl = 2(2kl)$. Since $2kl$ is an integer, $nm$ is even. So the contrapositive 
+    is true, thus $Q \Rightarrow P$ $\qed$
+  \end{itemize}
+
+  \textit{Citations: Lecture 2 1/15/25}
+
+  \newpage
+  \item For each statement write it out in English, write the negation in symbolic form, and
+  write the negation in English:
+
+  \begin{enumerate}
+    \item $\exists x \in \Q, x > \sqrt 2$:
+    \begin{quote}
+      English: There exists a rational number $x$ such that $x$ is greater than $\sqrt 2$ \\
+      Negation: $\forall x \in \Q, x \leq \sqrt 2$ \\
+      Negation in English: For all rational numbers $x$, $x$ is less than or equal to $\sqrt 2$
+    \end{quote}
+
+    \item $\forall x \in \Q, x^2 - 2 \neq 0$:
+    \begin{quote}
+      English: For all rational numbers $x$, $x^2 - 2$ does not equal 0 \\
+      Negation: $\exists x \in \Q, x^2 - 2 = 0$ \\
+      Negation in English: There exists a rational number $x$ such that $x^2 - 2$ equals 0
+    \end{quote}
+
+    \item $\forall x \in \Z, x^2 \textrm{ is odd} \Rightarrow x \textrm{ is odd}$:
+    \begin{quote}
+      English: For all integers $x$, if $x^2$ is odd, then $x$ is odd \\
+      Negation: $\exists x \in \Z, x^2 \textrm{ is odd} \land x \textrm{ is even}$ \\
+      Negation in English: There exists an integer $x$ such that $x^2$ is odd and $x$ is even
+    \end{quote}
+
+    \item $\exists x \in \R, \cos(2x) = 2 \cos(x)$:
+    \begin{quote}
+      English: There exists a real number $x$ such that $\cos(2x) = 2 \cos(x)$ \\
+      Negation: $\forall x \in \R, \cos(2x) \neq 2 \cos(x)$ \\
+      Negation in English: For all real numbers $x$, $\cos(2x)$ does not equal $2 \cos(x)$
+    \end{quote}
+  \end{enumerate}
+  \textit{Citations: Lecture 4 1/22/25}
+\end{enumerate}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Actual math ends here.  Don't put any content below the \end{document} line.
+%%
+
+\end{document}
