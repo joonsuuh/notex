@@ -1,0 +1,79 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\usepackage[noend]{algpseudocode} % for pseudocode
+\usepackage[plain]{algorithm} % float environment for algorithms
+% preferred pseudocode style
+\algrenewcommand{\algorithmicprocedure}{}
+\algrenewcommand{\algorithmicthen}{}
+
+% ``do { ... } while (cond)''
+\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+
+% ``for (x in y ... z)''
+\newcommand{\ForRange}[3]{\For{#1 \textbf{in} #2 \ \ldots \ #3}}
+
+\begin{document}
+\pagestyle{fancy}
+\chead{Module 4}
+\rhead{Junseo Shin}
+\lhead{CSE 4059}
+
+
+\renewcommand{\thefigure}{\arabic{figure}}
+\section*{CUDA Code Profiling Exercise}
+
+\subsection*{Questions}
+
+\begin{enumerate}
+    \item Basic Matrix Multiplication kernel runtime: $\qty{0.0081}{ms}$
+   
+    \item HtoD memcpy $= \qty{0.019}{ms}$, DtoH memcpy $= \qty{0.006}{ms}$,
+
+    Duration of memory transfer $= 0.019 + 0.006 = \qty{0.025}{ms}$
+
+    \item Achieved occupancy: 16.46\%
+
+    Occupancy is the number of active warps per SM divided by the maximum number of warps per SM 
+    48 warps.
+    
+
+    \item The main performance bottleneck comes from the low achieved occupancy. 
+
+    There are 48 warps per SM, but on average only 7.9 warps are active per SM i.e. 
+    $7.9 \times 32 \approx 252$ threads are active per SM (out of the max 1536 threads per 
+    multiprocessor). So several threads are idle in the SM while waiting for the high latency
+    global memory accesses.
+
+    \item Tiling uses shared memory which would reduce the latency of memory accesses and improve the throughput of
+    the multiplication and addition operations. This doesn't match the bottleneck
+    of the basic matrix multiplication but the bottle makes the latency of memory accesses very
+    visible.
+
+    \item Tiling kernel runtime: $\qty{0.00774}{ms}$
+    Runtime improvement: $\qty{0.0081}{ms} - \qty{0.00774}{ms} = \qty{0.36}{\micro s}$ or $4.35\%$
+
+    \item HtoD memcpy $= \qty{0.013}{ms}$, DtoH memcpy $= \qty{0.004}{ms}$
+
+    Duration of memory transfer $= 0.013 + 0.004 = \qty{0.017}{ms}$
+
+    Difference in memory transfer time: $\qty{0.025}{ms} - \qty{0.017}{ms} = \qty{0.008}{ms}$ or
+    $\sim 30\%$
+
+    \item Achieved occupancy: 16.52\% 
+
+    Difference in achieved occupancy: $16.52\% - 16.46\% = 0.06\%$ or $\sim 0.36\%$ Difference
+
+    \item There was no significant overall improvement in the performance because the data set was
+    too small to see the benefits of tiling. Furthermore the difference in the memory transfer 
+    is too small (in the order of $\unit{\micro s}$) for there to be a significant difference.
+
+    \item To improve the performance of the matrix multiplication, we can implement memory
+    coalescing by loading the $B$ matrix (from $A \cross B$) from global memory to shared memory
+    by inputing into the shared memory via column-major order. Accessing the \texttt{B\_s} matrix
+    in consecutive DRAM locations allows the data to be delivered in bursts which will be
+    faster than the non-coalesced memory access.
+\end{enumerate}
+
+\end{document} 

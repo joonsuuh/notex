@@ -1,0 +1,60 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\usepackage[noend]{algpseudocode} % for pseudocode
+\usepackage[plain]{algorithm} % float environment for algorithms
+% preferred pseudocode style
+\algrenewcommand{\algorithmicprocedure}{}
+\algrenewcommand{\algorithmicthen}{}
+
+% ``do { ... } while (cond)''
+\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+
+% ``for (x in y ... z)''
+\newcommand{\ForRange}[3]{\For{#1 \textbf{in} #2 \ \ldots \ #3}}
+
+\begin{document}
+\pagestyle{fancy}
+\chead{PreLab 5}
+\rhead{Junseo Shin}
+\lhead{CSE 247}
+
+
+\renewcommand{\thefigure}{\arabic{figure}}
+\section*{Questions}
+
+\begin{enumerate}
+    \item One paramenter \texttt{root} of type \texttt{TreeNode<T>} which is used
+    to access its children nodes.
+        
+    It returns the height of the tree rooted at \texttt{root}.
+
+    \item One paramenter \texttt{root} of type \texttt{TreeNode<T>} which is used
+    to access its children nodes again.
+
+    It returns the height difference between the left and right subtrees of the
+    tree at \texttt{root}.
+
+    \item The \texttt{root} node is an unbalanced subtree that needs to balance
+    for the 4 cases: left-left, left-right, right-right, and
+    right-left. Then it returns the root node of the balanced subtree.
+
+    \item The \texttt{root} node needs to be rotated to the right which makes its
+    left child the new root which is returned.
+
+    \item The max height of a tree's root node is \texttt{height = max(leftHeight, rightHeight) + 1}
+
+    \item A new allocated leaf node has a height of 0, and an empty tree has a height of -1.
+    
+    \item The helper functions makes it so we can pass the original root node as a parameter
+    for the recursive function.
+
+    \item Because the old root node is now the right child of the new root node so the pointer has
+    to update to point the other way around now.
+\end{enumerate}
+
+
+
+
+\end{document} 

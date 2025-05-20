@@ -9,6 +9,10 @@
 *.out
 *.synctex.gz
 *.toc
+*.bbl
+*.blg
+*.nav
+*.snm
 
 # Ignore vscode settings
 .vscode/settings.json

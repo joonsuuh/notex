@@ -1,0 +1,81 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{../images/}}
+
+\begin{document}
+
+\section{Section}
+\barh 
+
+\paragraph{Paragraph}
+
+
+\section{Module 8 Studio}
+
+\subsection{Master Theorem}
+
+\paragraph{Set 1}
+
+\begin{enumerate}
+    \item $T (n) = 3 T(n/2) + cn^2$
+    \begin{align*}
+        a &=3, \quad b = 2, \quad f(n) = O(n^2) = O(n^c) \quad c = 2 \\
+        \quad c_\text{crit} &= \log_b{a} = \log_2{3} \approx 1.X \quad c_\text{crit} < c \\
+        f(n) &= O(n^2)
+    \end{align*}
+    so we have $T(n) = \Theta(n^2)$.
+
+    \item $T(n) = 4 T(n/2) + cn^2$
+    \begin{align*}
+        c_\text{crit} = \log_2{4} = 2, \quad c_\text{crit} = c
+    \end{align*}
+    so we have $T(n) = \Theta(n^2 \log{n})$.
+
+    \item $T(n) = T(n/2) + 2^n$
+    \begin{align*}
+        c_\text{crit} = \log_2{1} = 0, \quad c_\text{crit} < c
+    \end{align*}
+    so we have $T(n) = \Theta(2^n)$.
+
+    \item $T(n) = 16 T(n/4) + n$
+    \begin{align*}
+        c_\text{crit} = \log_4{16} = 2, \quad c = 1, \quad c_\text{crit} > c
+    \end{align*}
+    so we have $T(n) = \Theta(n^2)$.
+
+    \item $T(n) = 2 T(n/2) + n \log{n}$
+    \begin{align*}
+        c_\text{crit} = \log_2{2} = 1, \quad c = 1, \quad c_\text{crit} = c \\
+        f(n) = \Theta(n^{c_\text{crit}} \log{n}^k), \quad k = 1
+    \end{align*}
+    so $T(n) = \Theta(n \log^2{n})$.
+
+    \item $T(n) = 2T(n/2) + n \log^2 n$ 
+    \begin{align*}
+        c_\text{crit} = 1, \quad f(n) = \Theta(n \log^2 n), \quad c = 1, k = 2
+    \end{align*}
+    so $T(n) = \Theta(n \log^3 n)$.
+    
+    \item $2 T(n/2) + n / \log n$
+    \begin{align*}
+        c_\text{crit} = 1, \quad f(n) = \Theta(n / \log n), \quad c = 1, k = -1
+    \end{align*}
+    so $T(n) = \Theta(n \log \log n)$.
+
+    \item $T(n) = \Theta(n!)$
+    
+    \item $T(n) = \Theta(n^{\log_2{3}} \log n)$
+    
+    \item $T(n) = \Theta(n \log n)$
+    
+    \item $T(n) = \Theta(n)$
+
+    \item $T(n) = \Theta(n \log n)$
+
+    \item DNA
+
+    \item DNA
+
+    \item $T(n) = \Theta(n^2)$
+\end{enumerate}
+\end{document}

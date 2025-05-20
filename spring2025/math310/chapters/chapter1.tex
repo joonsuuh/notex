@@ -999,7 +999,7 @@ Suppose $A, B$, and $C$ are nonempty sets
 
 Suppose you want to prove statement $P$\dots
 
-\paragraph{Proof by Contradiction}
+\paragraph{Proof by Contradiction Steps}
 
 \begin{enumerate}
     \item Assume $\neg P$
@@ -1051,7 +1051,208 @@ $b^2$ is even $\implies b = 2l$
     $b$ is irrational.
 \end{enumerate}
 
+\newpage
+\lhead{Lecture 8: 1/31/25} 
 
+\paragraph{Example} Prove that for any integer $n$,
+\begin{align*}
+    n^2 = 4k \qor n^2 = 4k + 1 \qqtext{for some} k \in \Z
+\end{align*}
 
+\begin{proof}
+    If $n$ is even, then $n = 2m$ for some $m \in Z$. Then $n^2 = (2m)^2 = 4m^2$ so
+    if $k = m^2$, the claim holds.
 
+    If $n$ is odd, $n = 2m +1$ for some $m \in \Z$.
+    Then $n^2 = (2m + 1)^2 = 4m^2 + 4m + 1 = 4(m^2 + m) + 1$.
+    If $k = m^2 + m$, the claim holds.
+\end{proof}
+
+\begin{definition}
+    Given $a, b \in \Z$, we say $a$ divides $b (a \mid b)$ if $b = a k$ for some $k \in \Z$.
+\end{definition}
+
+\paragraph{Example} $2 \mid 12,\, 3 \mid  27,\, 3 \,\cancel{\mid}\, 10 $
+
+\paragraph{Example} Let $a, b, c \in \Z$ Prove that if $a \mid b$ and $b \mid c$ then $a \mid c$.
+
+\begin{proof}
+    Since $a \mid b$ and $b \mid c$, there exists $k, l \in \Z$ such that $b = ak$ and $c = bl$. 
+    Thus $c = (ak) l = a(kl)$. Since $kl \in \Z$, $a \mid c$.
+\end{proof}
+
+\paragraph{Recall} $\N = \{0 , 1, 2, 3, \dots\} \subseteq \Z$
+
+\emph{Well-ordering Principle}: Every nonempty subset of $\N$ has a smallest element.
+
+\begin{theorem}
+    Division Algorithm: Let $a, b \in \Z$ with $b > 0$. \underline{There exists} \underbar{unique}
+    integers $q$ and $r$ such
+    that:
+    \begin{align*}
+        a = qb + r,\quad 0 \leq r < b.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    Let $a, b \in Z$ with $b > 0$.
+
+    Consider the set 
+    \begin{align*}
+        A = \{
+            a - xb \mid x \in \Z,\, a - xb \geq 0
+        \}
+    \end{align*}
+
+    The set $A$ is nonempty: If $a \geq 0$, then $a \in A$. If $a < 0$, then $a - ab \in A$ 
+    since $a - ab = a (1 - b)$ where $b > 0 \Rightarrow b \geq 1 \Rightarrow (1 - b) \leq 0$.
+
+    By the well-ordering principle, $A$ has a smallest element, call it $r$. Since $r \in A$,
+    there exists $q \in \Z$ such that $r = a - qb.$ Thus $a = qb + r$.
+
+    Since $r \in A,\, r \geq 0$. We want to show $r < b$. If not, $r \geq b$ and:
+    \begin{align*}
+        r - b = a - qb - b = a - (q + 1)b \geq 0
+    \end{align*}
+    so $r - b \in A$. This contradicts our choice of $r$ as the smallest element of $A$,
+    so $r < b$.
+
+    To prove $r$ and $q$ are unique let $q_1, r_1 \in \Z$ such that $a = q_1 b + r_1$ and
+    $0 \leq r_ 1 \leq b.$ We have:
+    \begin{align*}
+        0 = a - a &= (qb + r) - (q_1 b + r_1) \\
+                  &= (q - q_1) b + (r - r_1) \\
+        \implies  r - r_1 &=  (q_1 - q) b
+    \end{align*}
+    We may assume $r \geq r_1$, so $r - r_1 \geq 0$. 
+
+    Further, $r < b$ so $r - r_1 < b$. But $r - r_1 = (q_1 - q) b$ implies that
+    $r - r_1 \geq b$, because $r - r_1$ is a multiple of b. Thus $ 0 \leq r - r_1 < b$,
+    so since $r - r_1$ is a multiple of $b$, it must be zero. Thus $r = r_1$ and thus
+    $0 = (q_1 - q)b \Rightarrow q_1 = q$.
+\end{proof}
+
+\paragraph{Example} If $5 \,\cancel{|}\, n$, then the ones digit of $n^2$ is not 5.
+From the division algorithm
+\begin{align*}
+    n = 5q +r, \quad r \in \{1,2,3,4\}
+\end{align*}
+Looking at some examples:
+\begin{align*}
+    n = 5q + 1 \implies n^2 &= 25q^2 + 10q + 1 \\
+                            &= 5(5q^2 + 2q) + 1 \\
+    n = 5q + 3 \implies n^2 &= 25q^2 + 30q + 9 \\
+                            &= 5(5q^2 + 6q + 1) + 4
+\end{align*}
+
+\newpage
+\lhead{Lecture 9: 2/3/25}
+\paragraph{Week 4}
+
+\paragraph{Recall} Given $a, b \in \Z$ $a$ divides $b$ or $a \mid b$. This means there is some
+integer $c$ such that $b = ac$.
+
+\paragraph{Warm-up} \textcolor{draculagreen}{T} or F
+
+Let $a,b,m$ be integers and $m \neq 0$. If $ma \mid mb$, then $a \mid b$.
+
+\begin{proof}
+    $ma \mid mb$ implies that $mb = mac$ for some integer $c$. Because $m \neq 0$ (dividing both
+    side), we get $b = ac$ which is equivalent to $a \mid b$.
+\end{proof}
+
+\paragraph{Definition}
+
+For integers $a, b, d$ if $d \mid a$, we say $d$ is a divisor of $a$. If $d \mid a$ and $d \mid b$,
+we say $d$ is a common divisor of $a, b$ (with $\abs{d} \leq \abs{a},\, \abs{d} \leq \abs{b}$).
+
+If $d$ is the largest positive integer that divides both $a$ and $b$ we call $d$ the greatest common
+divisor of $a, b$. 
+\begin{align*}
+    d = \gcd(a, b)
+\end{align*}
+
+Example: \(\gcd(2,3) = 1, \quad \gcd(9,12) = 3\)
+
+\paragraph{The Euclidean Algorithm}
+
+\begin{quotation}
+    Input: $a,b$ positive integers
+
+    Output: $\gamma_n$ positive integer
+
+    Claim: $\gamma_n = \gcd(a,b)$
+\end{quotation}
+where we repeatedly apply the division algorithm to find the gcd.
+
+Assume $a < b$
+\begin{align*}
+    b &= q_1 a + \gamma_1 \qqtext{where} 0 \leq \gamma_1 < a \\
+    a &= q_2 \gamma_1 + \gamma_2 \qqtext{where} 0 \leq \gamma_2 < \gamma_1 \\
+\end{align*}
+
+e.g $\gcd(5817, 1428)$:
+\begin{align*}
+    \longdivision[0]{5817}{1428}, \quad \longdivision[0]{1428}{105}
+\end{align*}
+So
+\begin{align*}
+    a &= 1428, \quad b = 5817 \\
+    % long division here 
+    5817 &= 4 \cdot 1428 + 105 \\
+    1428 &= 13 \cdot 105 + 63 \\
+    105 &= 1 \cdot 63 + 42 \\
+    63 &= 1 \cdot 42 + 21 \\
+    42 &= 2 \cdot 21 + 0
+\end{align*}
+Thus the claim $\gcd(5817, 1428) = 21$. Or in symobolic form:
+\begin{align*}
+    \gamma_1 &= q_3 \gamma_2 + \gamma_3 \qqtext{where} 0 \leq \gamma_3 < \gamma_2 \\
+    &\vdots \\
+    \gamma_{n -2} &= q_n \gamma{n - 1} + \gamma_n \qqtext{where} 0 \leq \gamma_n < \gamma_{n - 1} \\
+    \gamma_{n-1} &= q_{n + 1} \gamma_n + 0
+\end{align*}
+
+\begin{theorem}
+    $\gamma_n = \gcd(a,b)$
+\end{theorem}
+
+\begin{proof}
+    Step 1: We will prove $\gamma_n \geq \gcd(a,b)$.
+
+    To show $\gamma_n \geq d$, we will prove $d \mid \gamma_n$. By definition,
+    $d \mid a$ and $d \mid b$. Because $\gamma_1 = b - q_1 a$, so $d \mid \gamma_1$.
+    Because $\gamma_2 = a - q_2 \gamma_1$, so $d \mid \gamma_2$. With the same argument we conclude
+    $d \mid \gamma_n$.
+
+    Step 2: We will prove $\gamma_n \leq d = \gcd(a,b)$. We need to show $\gamma_n \mid a$ and 
+    $\gamma_n \mid b$. From $\gamma_1 = q_{n+1} \gamma_n$, we get $\gamma_n \mid \gamma_{n-1}$.
+    From $\gamma_2 = q_n \gamma_{n - 1} + \gamma_n$, we get $\gamma_n \mid \gamma_2$. With the same
+    argument, we get $\gamma_n \mid \gamma_1$ and $\gamma_n \mid \gamma_2$ which implies
+    $\gamma_n \mid a$ and $\gamma_n \mid b$.
+\end{proof}
+
+\begin{theorem}
+    (Bezout's Identity) There exists such integers $s, t$ such that
+    \begin{align*}
+        \gcd(a, b) = as + bt
+    \end{align*}
+\end{theorem}
+e.g. $\gcd(5,7) = 1$ and from the identity:
+\begin{align*}
+    1 = 5 \cdot 3 + 7 \cdot (-2)
+\end{align*}
+From our previous example $\gcd(5817, 1428) = 21$ and from the identity:
+\begin{align*}
+    21 = 5817 s + 1428 t
+\end{align*}
+Using the Euclidean Algorithm we can do the following:
+\begin{align*}
+    21 &= 63 - 42 \\
+       &= 63 - (105 - 63) \\
+       &= -104 + 2(1428 - 13 \cdot 105) \\
+       &= 2 \cdot 1428 - 27 (5817 - 4 \cdot 1428) \\
+       &= -27 \cdot 5817 + 110 \cdot 1428
+\end{align*}
+where $s = -27$ and $t = 110$.
 \end{document}
