@@ -1,3 +1,6 @@
 [submodule "spring2024/phys481/IEEE-Presentation"]
 	path = spring2024/phys481/IEEE-Presentation
 	url = git@github.com:joonsuuh/IEEE-Presentation.git
+[submodule "fall2024/phys322/lab1-fourier-methods"]
+	path = fall2024/phys322/lab1-fourier-methods
+	url = git@github.com:joonsuuh/lab1-fourier-methods.git
